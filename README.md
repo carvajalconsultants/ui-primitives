@@ -4,6 +4,40 @@ Foundation UI components for CCI applications.
 
 These components form the building blocks for the entire application.
 
+## Getting Started
+
+Install the package using your preferred package manager:
+
+```bash
+# npm
+npm install @carvajalconsultants/cci-ui-primitives
+
+# yarn
+yarn add @carvajalconsultants/cci-ui-primitives
+
+# pnpm
+pnpm add @carvajalconsultants/cci-ui-primitives
+
+# bun
+bun add @carvajalconsultants/cci-ui-primitives
+```
+
+Then you can use the components in your application:
+
+```tsx
+import { Heading } from "@carvajalconsultants/cci-ui-primitives";
+
+import { Stack } from "~/styled-system/jsx";
+
+export const OnlyMobile = () => (
+  <Stack alignItems="center" justifyContent="center" height="full" textWrap="balance" textAlign="center">
+    <Heading level={1} size="xl">
+      Please view on a larger screen
+    </Heading>
+  </Stack>
+);
+```
+
 Keep in mind the following rules when working on this project:
 
 - These project should ONLY have the following dependencies:
