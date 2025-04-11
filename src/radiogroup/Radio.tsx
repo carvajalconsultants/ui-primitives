@@ -11,18 +11,23 @@ import type { RadioGroupVariantProps } from "../../styled-system/recipes";
 /**
  * ARIA compliant Radio component that renders a radio button.
  */
+// export type RadioProps = Omit<AriaRadioProps, "children"> &
 export type RadioProps = AriaRadioProps & Partial<RadioGroupVariantProps>;
 
-export const Radio: FC<RadioProps> = (props) => {
+export const Radio: FC<RadioProps> = ({ children, ...props }) => {
   const classes = radioGroup();
 
   return (
     <AriaRadio className={cx(classes.radio)} {...props}>
-      <div className={cx(classes.control)}>
-        <div className={cx(classes.indicator)} />
-      </div>
+      {(props) => (
+        <>
+          <div className={cx(classes.control)}>
+            <div className={cx(classes.indicator)} />
+          </div>
 
-      {props.children}
+          {typeof children === "function" ? children(props) : children}
+        </>
+      )}
     </AriaRadio>
   );
 };

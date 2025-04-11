@@ -177,6 +177,7 @@ export function useInfiniteQuery<
  * };
  * ```
  */
+// @ts-expect-error - Type is enforced by function overloads
 export function useInfiniteQuery({ variables = { orderBy: [] }, dataPath, ...queryArgs }): unknown {
   // Track the cursor for the next page
   const [after, setAfter] = useState<string | null | undefined>(null);
