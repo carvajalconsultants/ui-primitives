@@ -1,7 +1,10 @@
 {
   "name": "@carvajalconsultants/ui-primitives",
-  "private": true,
   "version": "0.0.1",
+  "repository": "git@github.com:carvajalconsultants/ui-primitives.git",
+  "author": "Carvajal Consultants, Inc. <support@carvajalonline.com>",
+  "license": "MIT",
+  "private": false,
   "type": "module",
   "main": "src/index.ts",
   "files": [
