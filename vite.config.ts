@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "cci-ui-primitives",
+      name: "ui-primitives",
       formats: ["es"],
       fileName: (format) => `index.${format}.js`,
     },

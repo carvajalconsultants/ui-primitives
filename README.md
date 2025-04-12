@@ -10,7 +10,7 @@ Install the package using your preferred package manager:
 
 ```bash
 # yarn
-yarn add @carvajalconsultants/cci-ui-primitives
+yarn add @carvajalconsultants/ui-primitives
 ```
 
 ## Panda CSS Setup
@@ -34,7 +34,7 @@ yarn add -D "@pandacss/dev": "^0.52.0"
 3. Create `panda.config.ts` in root directory:
 
 ```typescript
-import { cciPreset } from "@carvajalconsultants/cci-ui-primitives/src/cci-preset";
+import { cciPreset } from "@carvajalconsultants/ui-primitives/src/cci-preset";
 import { defineConfig } from "@pandacss/dev";
 
 export default defineConfig({
@@ -115,7 +115,7 @@ export default defineConfig({
 After configuring the variants, you can use them in your components:
 
 ```tsx
-import { Button } from "@carvajalconsultants/cci-ui-primitives";
+import { Button } from "@carvajalconsultants/ui-primitives";
 
 // Using the new red variant
 <Button variant="red">Delete</Button>
@@ -171,7 +171,7 @@ Note: When adding new colors, make sure to include all necessary color variation
 Then you can use the components in your application:
 
 ```tsx
-import { Heading } from "@carvajalconsultants/cci-ui-primitives";
+import { Heading } from "@carvajalconsultants/ui-primitives";
 
 import { Stack } from "~/styled-system/jsx";
 
@@ -191,7 +191,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Form } from "react-aria-components";
 
-import { Avatar, Button, Heading, Paragraph, TextField } from "@carvajalconsultants/cci-ui-primitives";
+import { Avatar, Button, Heading, Paragraph, TextField } from "@carvajalconsultants/ui-primitives";
 
 import { css } from "~/styled-system/css";
 import { Box, Stack } from "~/styled-system/jsx";
