@@ -124,6 +124,50 @@ import { Button } from "@carvajalconsultants/cci-ui-primitives";
 <Button variant="primary">Submit</Button>
 ```
 
+### Extending Semantic Tokens
+
+You can also extend or modify semantic tokens, such as colors, in your `panda.config.ts`. Here's an example of adding new brand colors:
+
+```typescript
+export default defineConfig({
+  presets: [cciPreset],
+  include: ["app/**/*.{js,jsx,ts,tsx}"],
+  preflight: true,
+  jsxFramework: "react",
+  strictTokens: true,
+  strictPropertyValues: true,
+  exclude: [],
+  theme: {
+    extend: {
+      semanticTokens: {
+        colors: {
+          fg: {
+            brand: {
+              primary: {
+                index: { value: { _light: "#dda15e", _dark: "#415a77" } },
+                _alt: { value: { _light: "#3a5a40", _dark: "#a3b18a" } },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+});
+```
+
+You can then use these colors in your components:
+
+```tsx
+import { Box } from "~/styled-system/jsx";
+
+// Using the new brand colors
+<Box width="full" height="20" bg="fg.brand.primary.index" />
+<Box width="full" height="20" bg="fg.brand.primary._alt" />
+```
+
+Note: When adding new colors, make sure to include all necessary color variations (light/dark modes, hover states, etc.) to maintain consistency across your application.
+
 Then you can use the components in your application:
 
 ```tsx
