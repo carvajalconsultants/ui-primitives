@@ -1,3 +1,7 @@
+import { useCallback } from "react";
+
+import type { DependencyList } from "react";
+
 /**
  * A tuple type that represents the previous depth levels in a recursive type.
  * This is used to limit the depth of recursive type operations to prevent infinite recursion.
@@ -66,3 +70,30 @@ export type GetNodeFromConnection<T, P extends PathTuple<T>> = NonNullable<GetAt
  * @returns {string} The camelCase version of the input string (e.g. "userFirstName")
  */
 export const snakeToCamel = (str: string): string => str.toLowerCase().replace(/_([a-z])/g, (_, letter: string) => letter.toUpperCase());
+
+/**
+ * Creates a stable callback that safely handles asynchronous functions in React event handlers.
+ * This is particularly useful when you need to call async functions from synchronous event handlers
+ * like onClick or onPress, where TypeScript would normally complain about Promise misuse.
+ *
+ * @template T - The type of arguments that the async function accepts
+ * @param {(...args: T) => Promise<unknown>} asyncFn - The asynchronous function to be wrapped
+ * @param {DependencyList} deps - React dependencies array that controls when the callback should be recreated
+ * @returns {(...args: T) => void} A stable function that safely calls the async function without returning a Promise
+ *
+ * @example
+ * // Usage in a component
+ * const handleClick = useAsyncCallback(async (event) => {
+ *   await someAsyncOperation();
+ * }, []);
+ *
+ * <button onClick={handleClick}>Click me</button>
+ */
+export const useAsyncCallback = <T extends unknown[]>(asyncFn: (...args: T) => Promise<unknown>, deps: DependencyList): ((...args: T) => void) =>
+  useCallback((...args: T) => {
+    // Using void operator to explicitly ignore the Promise returned by asyncFn
+    // This prevents TypeScript from complaining about unhandled Promises
+    // while still allowing the async function to execute
+    void asyncFn(...args);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
