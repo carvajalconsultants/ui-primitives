@@ -131,15 +131,9 @@ export const cciPreset = definePreset({
             },
           },
 
-          success: {
-            primary: { value: { _light: "#069024", _dark: "#4EBB84" } },
-          },
-          warning: {
-            primary: { value: { _light: "#E4A500", _dark: "#B54708" } },
-          },
-          danger: {
-            primary: { value: { _light: "#EA3731", _dark: "#EF6C63" } },
-          },
+          success: { primary: { value: { _light: "#069024", _dark: "#4EBB84" } } },
+          warning: { primary: { value: { _light: "#E4A500", _dark: "#B54708" } } },
+          danger: { primary: { value: { _light: "#EA3731", _dark: "#EF6C63" } } },
         },
         bg: {
           primary: {
@@ -156,19 +150,12 @@ export const cciPreset = definePreset({
           },
           active: { value: { _light: "#F2F5FF", _dark: "#F2F5FF" } },
 
-          success: {
-            primary: { value: { _light: "#E7FFDE", _dark: "#4EBB84" } },
-          },
-          warning: {
-            primary: { value: { _light: "#FDFAEE", _dark: "#B54708" } },
-          },
-          danger: {
-            primary: { value: { _light: "#FFE9E9", _dark: "#EF6C63" } },
-          },
+          success: { primary: { value: { _light: "#E7FFDE", _dark: "#4EBB84" } } },
+          warning: { primary: { value: { _light: "#FDFAEE", _dark: "#B54708" } } },
+          danger: { primary: { value: { _light: "#FFE9E9", _dark: "#EF6C63" } } },
         },
         text: {
           primary: { value: { _light: "#01173B", _dark: "#FFFFFF" } },
-          // primary: { value: { _light: "#626264", _dark: "#FFFFFF" } },
           secondary: { value: { _light: "#4A4A4A", _dark: "#C9C2B7" } },
           tertiary: { value: { _light: "#2E2E2E", _dark: "#2E2E2E" } },
           white: { value: { _light: "#FFFFFF", _dark: "#FFFFFF" } },
@@ -178,9 +165,7 @@ export const cciPreset = definePreset({
         },
         border: {
           primary: { value: { _light: "#7A8499", _dark: "#5A5858" } },
-          secondary: {
-            _alt: { value: { _light: "#2E2E2E40", _dark: "#fff" } },
-          },
+          secondary: { _alt: { value: { _light: "#2E2E2E40", _dark: "#fff" } } },
           brand: { value: { _light: "#3E80C4", _dark: "#3E80C4" } },
           error: { value: { _light: "#FFE9E9", _dark: "#EF6C63" } },
           disabled: { value: { _light: "#8B8B8B", _dark: "#0B0806" } },
@@ -249,34 +234,10 @@ export const cciPreset = definePreset({
           secondary: { value: { _light: "#FFEEED", _dark: "#1C0503" } },
         },
 
-        gold: { value: { _light: "#3E80C4", _dark: "#3E80C4" } },
         white: { value: { _light: "#fff", _dark: "#fff" } },
         black: { value: { _light: "#000 ", _dark: "#000 " } },
         transparent: { value: "transparent" },
         overlay: { value: "rgba(48, 48, 48, 0.65)" },
-
-        red: { index: { value: "#FEF3F2" }, text: { value: "#F04438" } },
-        green: { index: { value: "#ECFDF3" }, text: { value: "#12B76A" }, gradient: { value: "linear-gradient(180deg, #46D640 0%, #2BB426 100%)" }, light: { value: "#23D24A" } },
-        blue: { index: { value: "#0651C6" }, dark: { value: "#254F8F" }, gradient: { value: "linear-gradient(180deg, #3F9CFF 0%, #1E6BD8 100%)" }, header: { value: "#0346B0" } },
-        yellow: {
-          index: { value: "#EA5B12" },
-          gradient: { value: "linear-gradient(180deg, #FFD24B 0%, #FFA627 100%)" },
-          light: { value: "#D0F387" },
-          btn: { value: "#FFC955" },
-          btnHover: { value: "#FFD24B" },
-        },
-        orange: { gradient: { value: "linear-gradient(180deg, #EA6200 0%, #EC4C32 100%)" } },
-
-        purple: { index: { value: "#48145C" }, light: { value: "#A51EF7" } },
-        game: { value: "radial-gradient(123.09% 61.67% at 50% 52.6%, #3EE4FE 0%, #0651C6 100%)" },
-
-        custom: {
-          green: { value: "#457A50" },
-          yellow: { value: "#FEC53E" },
-          skyBlue: { value: "#43BBBA" },
-          darkRed: { value: "#723939" },
-          text: { value: "#475467" },
-        },
       },
     },
 
