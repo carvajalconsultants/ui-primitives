@@ -1,11 +1,18 @@
 {
-  "name": "@carvajalconsultants/cci-ui-primitives",
-  "private": true,
-  "version": "0.0.1",
+  "name": "@carvajalconsultants/ui-primitives",
+  "version": "0.0.5",
+  "repository": "git@github.com:carvajalconsultants/ui-primitives.git",
+  "author": "Carvajal Consultants, Inc. <support@carvajalonline.com>",
+  "license": "MIT",
+  "private": false,
   "type": "module",
   "main": "src/index.ts",
   "files": [
-    "src"
+    "src",
+    "public",
+    "styled-system",
+    "panda.config.ts",
+    "postcss.config.cjs"
   ],
   "scripts": {
     "prepare": "panda codegen && husky",
@@ -35,7 +42,7 @@
     "@eslint/js": "^9.23.0",
     "@faker-js/faker": "^9.4.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
-    "@pandacss/dev": "^0.52.0",
+    "@pandacss/dev": "^0.53.3",
     "@storybook/addon-essentials": "^8.6.2",
     "@storybook/addon-interactions": "^8.6.2",
     "@storybook/addon-links": "^8.6.2",
@@ -47,7 +54,7 @@
     "@types/react-dom": "^19.0.3",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
-    "@vitejs/plugin-react-swc": "^3.7.2",
+    "@vitejs/plugin-react-swc": "^3.8.1",
     "@welldone-software/why-did-you-render": "^10.0.1",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
@@ -68,8 +75,8 @@
     "terser": "^5.37.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.28.0",
-    "vite": "^6.0.11",
-    "vite-plugin-dts": "^3.0.0"
+    "vite": "^6.2.6",
+    "vite-plugin-dts": "^4.5.3"
   },
   "lint-staged": {
     "src/**": [
