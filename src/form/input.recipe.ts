@@ -14,6 +14,7 @@ export const inputRecipe = defineSlotRecipe({
     wrapper: {
       display: "flex",
       flexDirection: "column",
+      width: "full",
       gap: "1.5",
     },
 
