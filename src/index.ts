@@ -27,6 +27,7 @@ export { DataGridMessageBox } from "./grid/DataGridMessageBox";
 export { Link } from "./link/Link";
 export { ListBox } from "./listbox/ListBox";
 export { Dialog } from "./overlay/Dialog";
+export { Modal } from "./overlay/Modal";
 export { Radio } from "./radiogroup/Radio";
 export { RadioGroup } from "./radiogroup/RadioGroup";
 export { Heading } from "./typography/Heading";
@@ -48,12 +49,12 @@ export { DataGridBodyRow } from "./grid/DataGridBodyRow";
 export { DataGridBodySpanCell } from "./grid/DataGridBodySpanCell";
 export { DataGridExpandableRow } from "./grid/DataGridExpandableRow";
 export { DataGridExpandedRow } from "./grid/DataGridExpandedRow";
+export { DataGridFooter } from "./grid/DataGridFooter";
 export { DataGridHeader } from "./grid/DataGridHeader";
 export { DataGridHeaderCell } from "./grid/DataGridHeaderCell";
 export { DataGridHeaderRow } from "./grid/DataGridHeaderRow";
 export { DataGridSortableHeaderCell } from "./grid/DataGridSortableHeaderCell";
 export { DataGridVirtualizedBody } from "./grid/DataGridVirtualizedBody";
-export { DataGridFooter } from "./grid/DataGridFooter";
 
 export { cciPreset } from "./cci-preset";
 

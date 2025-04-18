@@ -14,15 +14,12 @@ import type { InputVariantProps } from "../../styled-system/recipes";
 
 type SearchFieldProps = Omit<InputProps, "size" | "onChange"> &
   Partial<InputVariantProps> & {
-    // If we want to pass some additional styles
-    className?: string;
-
     onClear?: () => void;
     debounceTime?: number;
     onDebounceChange?: (value: string | undefined) => void;
   };
 
-export const SearchField = ({ onClear, size, debounceTime = 500, value: initialValue = "", onDebounceChange, bordered = false, className, ...props }: SearchFieldProps) => {
+export const SearchField = ({ onClear, size, debounceTime = 500, value: initialValue = "", onDebounceChange, bordered = false, ...props }: SearchFieldProps) => {
   const classes = input({ size, bordered });
 
   // Handle input changes
@@ -66,8 +63,7 @@ export const SearchField = ({ onClear, size, debounceTime = 500, value: initialV
             classes.input,
             css({
               paddingLeft: size === "sm" ? "9" : "10",
-            }),
-            className
+            })
           )}
           {...props}
         />

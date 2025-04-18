@@ -12,6 +12,7 @@ import { ListItem } from "./combobox/ListItem";
 import { Label } from "./common/Label";
 import { ContentHeader } from "./contentheader/ContentHeader";
 import { DatePicker } from "./datepicker/DatePicker";
+import { SearchField } from "./form/SearchField";
 import { SliderField } from "./form/slider/SliderField";
 import { SwitchField } from "./form/SwitchField";
 import { TextField } from "./form/TextField";
@@ -98,6 +99,7 @@ export const App = () => {
         // minWidth: "[1068px]",
         maxWidth: "[1324px]",
       }}>
+      <SearchField bordered />
       <Stack gap="0" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
         <Paragraph weight="semibold" size="md" color="primary">
           Mark Clarke
@@ -196,7 +198,6 @@ export const App = () => {
         Learn More
       </Link>
 
-      {/* <SearchField /> */}
       <TextField placeholder="Some placeholder text" label="Text field" />
 
       <ContentHeader title="Page Header" description="This is a description" />
