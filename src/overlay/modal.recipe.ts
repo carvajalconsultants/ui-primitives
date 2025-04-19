@@ -52,6 +52,14 @@ export const modalRecipe = defineSlotRecipe({
         overlay: {
           alignItems: "end",
         },
+        modal: {
+          "&[data-entering]": {
+            animation: "slideUp",
+          },
+          "&[data-exiting]": {
+            animation: "slideDown",
+          },
+        },
       },
     },
   },
