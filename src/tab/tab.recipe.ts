@@ -106,7 +106,7 @@ export const tabRecipe = defineSlotRecipe({
           borderBottomColor: "border.secondary",
           _selected: {
             borderBottomColor: "border.brand",
-            color: "text.brand",
+            color: "text.primary",
           },
         },
       },
