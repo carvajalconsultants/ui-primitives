@@ -14,6 +14,7 @@ import { dialogRecipe } from "./overlay/dialog.recipe";
 import { modalRecipe } from "./overlay/modal.recipe";
 import { radioGroupRecipe } from "./radiogroup/radioGroup.recipe";
 import { selectRecipe } from "./select/select.recipe";
+import { tabRecipe } from "./tab/tab.recipe";
 import { cellRecipe } from "./table/cell.recipe";
 import { headerCellRecipe } from "./table/headerCell.recipe";
 import { rowRecipe } from "./table/row.recipe";
@@ -72,6 +73,7 @@ export const cciPreset = definePreset({
       tableHeader: tableHeaderRecipe,
       heading: headingRecipe,
       text: textRecipe,
+      tab: tabRecipe,
     },
     // extend: {
     //   recipes: {
