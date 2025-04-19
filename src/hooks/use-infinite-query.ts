@@ -229,7 +229,6 @@ export function useInfiniteQuery({ variables = { orderBy: [] }, dataPath, ...que
     hasNextPage,
     fetchMore,
     totalCount,
-    totalFetched: (nodes as [])?.length ?? 0,
     queryState,
     error: error ?? null,
   };

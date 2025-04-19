@@ -15,12 +15,6 @@ declare module "@tanstack/react-table" {
   interface ColumnMeta<TData extends RowData, TValue> {
     sortKey: string;
   }
-
-  interface TableState {
-    isFetching?: boolean;
-    totalFetched?: number;
-    totalCount?: number;
-  }
 }
 
 /**
@@ -192,15 +186,17 @@ export const useGrid = <TData, TId, TRouter extends AnyRouter = RegisteredRouter
         // When (scrollHeight - scrollTop - clientHeight) is small, we're near the bottom
         if (
           onBottomReached &&
-          scrollHeight - scrollTop - clientHeight < scrollThreshold &&
-          !gridOptions.state?.isFetching &&
-          (gridOptions.state?.totalFetched ?? 0) < (gridOptions.state?.totalCount ?? 0)
+          scrollHeight - scrollTop - clientHeight < scrollThreshold
+
+          // Theoretically, we could add these checks to prevent extra API calls. Could not reproduce the issue though, so leaving it out for now.
+          // !gridOptions.state?.isFetching &&
+          // (gridOptions.state?.totalFetched ?? 0) < (gridOptions.state?.totalCount ?? 0)
         ) {
           onBottomReached();
         }
       }
     },
-    [onBottomReached, bottomThreshold, gridOptions.state?.isFetching, gridOptions.state?.totalFetched, gridOptions.state?.totalCount]
+    [onBottomReached, bottomThreshold]
   );
 
   // Get current search parameters from the URL
