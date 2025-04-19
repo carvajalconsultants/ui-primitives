@@ -75,7 +75,7 @@ export const dialogRecipe = defineSlotRecipe({
             maxWidth: "auto",
             maxHeight: "70dvh",
             borderRadius: "none",
-            height: "70dvh",
+            height: "fit-content",
             overflowY: "auto",
 
             roundedTop: "xl",

@@ -24,6 +24,10 @@ import { Modal } from "./overlay/Modal";
 import { Radio } from "./radiogroup/Radio";
 import { RadioGroup } from "./radiogroup/RadioGroup";
 import { Select } from "./select/Select";
+import { Tab } from "./tab/Tab";
+import { TabList } from "./tab/TabList";
+import { TabPanel } from "./tab/TabPanel";
+import { Tabs } from "./tab/Tabs";
 import { Cell } from "./table/Cell";
 import { HeaderCell } from "./table/HeaderCell";
 import { Row } from "./table/Row";
@@ -102,11 +106,30 @@ export const App = () => {
       {/* Temporary <Icon> fix */}
       <Box width="4" height="4" bg="primary.foreground" />
 
-      <Modal variant="compact" isOpen isDismissable>
+      <Tabs defaultSelectedKey="tab1">
+        <TabList aria-label="Tabs with Disabled Tab">
+          <Tab id="tab1">Tab 1</Tab>
+          <Tab id="tab2">Tab 2</Tab>
+          <Tab id="tab3" isDisabled>
+            Tab 3 (Disabled)
+          </Tab>
+        </TabList>
+        <TabPanel id="tab1">
+          <Paragraph>Content for Tab 1</Paragraph>
+        </TabPanel>
+        <TabPanel id="tab2">
+          <Paragraph>Content for Tab 2</Paragraph>
+        </TabPanel>
+        <TabPanel id="tab3">
+          <Paragraph>Content for Tab 3</Paragraph>
+        </TabPanel>
+      </Tabs>
+
+      {/* <Modal variant="compact" isOpen isDismissable>
         <Dialog variant="compact" title="Dialog Title">
           <Paragraph>This is a dialog.</Paragraph>
         </Dialog>
-      </Modal>
+      </Modal> */}
 
       <SearchField bordered />
       <Stack gap="0" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
