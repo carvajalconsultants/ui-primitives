@@ -1,5 +1,8 @@
 import { Paragraph } from "../typography/Paragraph";
-import { Tab, TabList, TabPanel, Tabs } from "./Tab";
+import { Tab } from "./Tab";
+import { TabList } from "./TabList";
+import { TabPanel } from "./TabPanel";
+import { Tabs } from "./Tabs";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
