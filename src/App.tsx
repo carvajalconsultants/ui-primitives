@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DialogTrigger, ListBoxItem } from "react-aria-components";
 
 import { css } from "../styled-system/css";
-import { HStack, Stack } from "../styled-system/jsx";
+import { Box, HStack, Stack } from "../styled-system/jsx";
 import { Avatar } from "./avatar/Avatar";
 import { Badge } from "./badge/Badge";
 import { Button } from "./button/Button";
@@ -99,6 +99,15 @@ export const App = () => {
         // minWidth: "[1068px]",
         maxWidth: "[1324px]",
       }}>
+      {/* Temporary <Icon> fix */}
+      <Box width="4" height="4" bg="primary.foreground" />
+
+      <Modal variant="compact" isOpen isDismissable>
+        <Dialog variant="compact" title="Dialog Title">
+          <Paragraph>This is a dialog.</Paragraph>
+        </Dialog>
+      </Modal>
+
       <SearchField bordered />
       <Stack gap="0" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
         <Paragraph weight="semibold" size="md" color="primary">
