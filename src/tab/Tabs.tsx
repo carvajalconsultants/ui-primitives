@@ -7,9 +7,9 @@ import type { FC } from "react";
 import type { TabsProps as AriaTabsProps } from "react-aria-components";
 import type { WithoutClassName } from "src/types";
 
-import type { TabVariant } from "../../styled-system/recipes";
+import type { TabVariantProps } from "../../styled-system/recipes";
 
-export type TabsProps = WithoutClassName<AriaTabsProps> & Partial<TabVariant>;
+export type TabsProps = WithoutClassName<AriaTabsProps> & Partial<TabVariantProps>;
 
 /**
  * ARIA compliant Tabs component that provides a tabbed interface.

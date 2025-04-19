@@ -14,6 +14,7 @@ export const tabRecipe = defineSlotRecipe({
       flexDirection: "column",
       fontFamily: "body",
       gap: "4",
+      width: "full",
     },
     list: {
       display: "flex",
@@ -66,6 +67,7 @@ export const tabRecipe = defineSlotRecipe({
       },
     },
     panel: {
+      width: "full",
       marginTop: "4",
     },
   },

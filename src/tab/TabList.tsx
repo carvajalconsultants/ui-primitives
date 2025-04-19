@@ -7,6 +7,10 @@ import type { ComponentProps, FC } from "react";
 import type { TabListProps as AriaTabListProps } from "react-aria-components";
 import type { WithoutClassName } from "src/types";
 
+import type { TabVariantProps } from "../../styled-system/recipes";
+
+export type TabListProps = WithoutClassName<AriaTabListProps<ComponentProps<"div">>> & Partial<TabVariantProps>;
+
 /**
  * ARIA compliant TabList component that provides a list of tabs.
  *
@@ -16,8 +20,8 @@ import type { WithoutClassName } from "src/types";
  *   <Tab id="tab3">Tab 3</Tab>
  * </TabList>
  */
-export const TabList: FC<WithoutClassName<AriaTabListProps<ComponentProps<"div">>>> = ({ children, ...props }) => {
-  const classes = tab();
+export const TabList: FC<TabListProps> = ({ size, variant, color, align, children, ...props }) => {
+  const classes = tab({ size, variant, color, align });
 
   return (
     <AriaTabList className={cx(classes.list)} {...props}>
