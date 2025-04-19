@@ -11,20 +11,21 @@ export const dialogRecipe = defineSlotRecipe({
     dialog: {
       display: "flex",
       flexDirection: "column",
+      borderRadius: "lg",
+      bg: "text.white",
+
+      /* Gives a glow to the dialog when it has focus. */
+      _focus: {
+        outline: "0",
+        boxShadow: "shadow.primary",
+      },
+
       paddingX: "8",
       paddingY: "10",
       minWidth: "100",
       maxWidth: "breakpoint-sm",
       maxHeight: "85vh",
-      borderRadius: "lg",
-      bg: "text.white", // Updated from body.bg based on token mapping
       gap: "6",
-
-      /* Gives a glow to the dialog when it has focus. */
-      _focus: {
-        outline: "0",
-        boxShadow: "shadow.primary", // Updated from glow.index based on token mapping
-      },
 
       /* Makes the dialog use the full screen space when on mobile. */
       smDown: {
@@ -43,7 +44,6 @@ export const dialogRecipe = defineSlotRecipe({
       alignItems: "start",
       justifyContent: "space-between",
     },
-
     content: {
       flex: "1",
       display: "flex",
@@ -51,7 +51,6 @@ export const dialogRecipe = defineSlotRecipe({
       gap: "5.5",
       overflow: "auto",
     },
-
     /* Actions buttons along the bottom. */
     buttons: {
       display: "flex",
@@ -65,5 +64,27 @@ export const dialogRecipe = defineSlotRecipe({
         alignItems: "stretch",
       },
     },
+  },
+  variants: {
+    variant: {
+      default: {},
+      compact: {
+        dialog: {
+          smDown: {
+            minWidth: "screen",
+            maxWidth: "auto",
+            maxHeight: "70dvh",
+            borderRadius: "none",
+            height: "70dvh",
+            overflowY: "auto",
+
+            roundedTop: "xl",
+          },
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "compact",
   },
 });

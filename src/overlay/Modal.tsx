@@ -13,8 +13,8 @@ export type ModalProps = WithoutClassName<AriaModalOverlayProps> & Partial<Modal
 /**
  * ARIA compliant modal which includes the overlay that blurs the background yet the modal contents are fully visible.
  */
-export const Modal: FC<ModalProps> = ({ children, ...props }) => {
-  const classes = modal();
+export const Modal: FC<ModalProps> = ({ children, variant, ...props }) => {
+  const classes = modal({ variant });
 
   return (
     <ModalOverlay className={classes.overlay} {...props}>

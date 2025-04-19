@@ -31,8 +31,8 @@ export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDial
 /**
  * ARIA compliant dialog with a title, close button and content.
  */
-export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, buttons, ...props }) => {
-  const classes = dialog();
+export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, buttons, variant, ...props }) => {
+  const classes = dialog({ variant });
 
   return (
     <AriaDialog className={classes.dialog} {...props}>

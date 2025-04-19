@@ -341,6 +341,8 @@ export const cciPreset = definePreset({
         fadeOut: { value: "fadeOut 0.3s" },
         scaleUp: { value: "scaleUp 0.3s" },
         scaleDown: { value: "scaleDown 0.3s" },
+        slideUp: { value: "slideUp 0.3s" },
+        slideDown: { value: "slideDown 0.3s" },
         spin: {
           value: "spin 1s linear infinite",
         },

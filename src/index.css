@@ -10,3 +10,15 @@ body {
   min-height: 100vh;
   font-family: "Inter", sans-serif;
 }
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+}

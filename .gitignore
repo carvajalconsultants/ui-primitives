@@ -26,7 +26,7 @@ yarn-error.log*
 
 .eslintcache
 
-
+.history
 
 #########################################
 # These are some examples of commonly ignored file patterns.
