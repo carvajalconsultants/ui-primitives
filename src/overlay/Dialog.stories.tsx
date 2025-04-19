@@ -181,3 +181,39 @@ export const NotCloseableMinimum: Story = {
     ),
   },
 };
+
+export const Compact: Story = {
+  render: (args) => (
+    <DialogTrigger>
+      <Button>Open Dialog</Button>
+
+      <Modal variant="compact" isDismissable>
+        <Dialog variant="compact" {...args} />
+      </Modal>
+    </DialogTrigger>
+  ),
+  args: {
+    title: "Compact Dialog",
+    closeable: true,
+    variant: "compact",
+    children: (
+      <>
+        <TextField autoFocus>
+          <Label>First Name</Label>
+          <Input />
+        </TextField>
+        <TextField>
+          <Label>Last Name</Label>
+          <Input />
+        </TextField>
+        <Paragraph>This is a compact dialog that takes up less vertical space on mobile devices. It has a max height of 70dvh and rounded top corners on mobile.</Paragraph>
+      </>
+    ),
+    buttons: (
+      <>
+        <Button>Save</Button>
+        <Button variant="secondary">Cancel</Button>
+      </>
+    ),
+  },
+};
