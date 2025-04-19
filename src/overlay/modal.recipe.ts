@@ -12,6 +12,8 @@ export const modalRecipe = defineSlotRecipe({
     /* Overlay that covers content below the Modal. */
     overlay: {
       display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       position: "fixed",
       inset: "0",
       backgroundColor: "overlay",
@@ -42,22 +44,21 @@ export const modalRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      default: {
-        overlay: {
-          alignItems: "center",
-          justifyContent: "center",
-        },
-      },
+      default: {},
       compact: {
         overlay: {
-          alignItems: "end",
+          smDown: {
+            alignItems: "end",
+          },
         },
         modal: {
-          "&[data-entering]": {
-            animation: "slideUp",
-          },
-          "&[data-exiting]": {
-            animation: "slideDown",
+          smDown: {
+            "&[data-entering]": {
+              animation: "slideUp",
+            },
+            "&[data-exiting]": {
+              animation: "slideDown",
+            },
           },
         },
       },
