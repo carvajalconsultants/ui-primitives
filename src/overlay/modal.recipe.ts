@@ -50,9 +50,7 @@ export const modalRecipe = defineSlotRecipe({
       },
       compact: {
         overlay: {
-          alignItems: "flex-start",
-          justifyContent: "center",
-          paddingTop: "4",
+          alignItems: "end",
         },
       },
     },

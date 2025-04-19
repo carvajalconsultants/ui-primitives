@@ -76,15 +76,10 @@ export const dialogRecipe = defineSlotRecipe({
             maxHeight: "70dvh",
             borderRadius: "none",
             height: "70dvh",
-          },
+            overflowY: "auto",
 
-          // smDown: {
-          //   minWidth: "screen",
-          //   maxWidth: "auto",
-          //   height: "70vh",
-          //   borderRadius: "none",
-          //   paddingBottom: "safe",
-          // },
+            roundedTop: "xl",
+          },
         },
       },
     },
