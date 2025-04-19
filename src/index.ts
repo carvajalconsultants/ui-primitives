@@ -41,6 +41,11 @@ export { Table } from "./table/Table";
 export { TableBody } from "./table/TableBody";
 export { TableHeader } from "./table/TableHeader";
 
+export { Tab } from "./tab/Tab";
+export { TabList } from "./tab/TabList";
+export { TabPanel } from "./tab/TabPanel";
+export { Tabs } from "./tab/Tabs";
+
 export { ListBoxItem } from "react-aria-components";
 export { DataGrid } from "./grid/DataGrid";
 export { DataGridBody } from "./grid/DataGridBody";
