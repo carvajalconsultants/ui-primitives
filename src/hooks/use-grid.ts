@@ -2,6 +2,7 @@
 import { Route, RouteApi, useNavigate, useRouter, useSearch } from "@tanstack/react-router";
 import { getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { useCallback } from "react";
+import { useDateFormatter } from "react-aria";
 
 import { snakeToCamel } from "../utils";
 
@@ -9,11 +10,19 @@ import type { AnyRouter, Expand, RegisteredRouter, RouteById } from "@tanstack/r
 import type { RowData, SortingState, Table, TableOptions } from "@tanstack/react-table";
 import type { AnyContext, AnyRoute, ResolveFullPath, ResolveId, ResolveParams, RouteConstraints, StrictOrFrom } from "@tanstack/router-core";
 import type { UIEvent } from "react";
+import type { DateFormatter } from "react-aria";
 
 // https://tanstack.com/table/latest/docs/api/core/column-def#meta
 declare module "@tanstack/react-table" {
   interface ColumnMeta<TData extends RowData, TValue> {
     sortKey: string;
+  }
+}
+
+// Add date formatter to meta object so we can call from column definitions
+declare module "@tanstack/table-core" {
+  interface TableMeta<TData extends RowData> {
+    dateFormatter: DateFormatter;
   }
 }
 
@@ -148,6 +157,7 @@ export const useGrid = <TData, TId, TRouter extends AnyRouter = RegisteredRouter
 ): GridOptions<TData> => {
   // This is needed because the route that useNavigate uses is different than the one from useSearch
   const router = useRouter();
+  const dateFormatter = useDateFormatter();
   const navigate = useNavigate({ from: router.routesById[searchOptions.from!].fullPath });
 
   /**
@@ -240,6 +250,12 @@ export const useGrid = <TData, TId, TRouter extends AnyRouter = RegisteredRouter
     manualFiltering: true,
     // Allow sorting by multiple columns
     enableMultiSort: true,
+
+    // Additional formatters or functions callable from column definitions
+    meta: {
+      ...gridOptions.meta,
+      dateFormatter,
+    },
 
     // Sync table state with current URL search parameters
     state: {
