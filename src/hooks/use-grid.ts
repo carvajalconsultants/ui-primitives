@@ -2,7 +2,6 @@
 import { Route, RouteApi, useNavigate, useRouter, useSearch } from "@tanstack/react-router";
 import { getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { useCallback } from "react";
-import { useDateFormatter } from "react-aria";
 
 import { snakeToCamel } from "../utils";
 
@@ -22,7 +21,17 @@ declare module "@tanstack/react-table" {
 // Add date formatter to meta object so we can call from column definitions
 declare module "@tanstack/table-core" {
   interface TableMeta<TData extends RowData> {
-    dateFormatter: DateFormatter;
+    /**
+     * Localized date formatter which can be used for a short date format for example.
+     * This must be set in the meta object of the table instance.
+     */
+    dateFormatter1?: DateFormatter;
+
+    /**
+     * Localized date formatter which can be used for a long date format for example.
+     * This must be set in the meta object of the table instance.
+     */
+    dateFormatter2?: DateFormatter;
   }
 }
 
@@ -157,7 +166,6 @@ export const useGrid = <TData, TId, TRouter extends AnyRouter = RegisteredRouter
 ): GridOptions<TData> => {
   // This is needed because the route that useNavigate uses is different than the one from useSearch
   const router = useRouter();
-  const dateFormatter = useDateFormatter();
   const navigate = useNavigate({ from: router.routesById[searchOptions.from!].fullPath });
 
   /**
@@ -250,12 +258,6 @@ export const useGrid = <TData, TId, TRouter extends AnyRouter = RegisteredRouter
     manualFiltering: true,
     // Allow sorting by multiple columns
     enableMultiSort: true,
-
-    // Additional formatters or functions callable from column definitions
-    meta: {
-      ...gridOptions.meta,
-      dateFormatter,
-    },
 
     // Sync table state with current URL search parameters
     state: {
