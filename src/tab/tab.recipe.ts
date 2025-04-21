@@ -101,6 +101,7 @@ export const tabRecipe = defineSlotRecipe({
     variant: {
       line: {
         tab: {
+          
           borderBottomWidth: "1",
           borderBottomStyle: "solid",
           borderBottomColor: "border.secondary",

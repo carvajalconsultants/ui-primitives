@@ -12,7 +12,7 @@ import type { SelectProps as AriaSelectProps } from "react-aria-components";
 import type { SelectVariant } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
-type SelectProps<T extends object> = WithoutClassName<AriaSelectProps<T>, "children"> &
+export type SelectProps<T extends object> = WithoutClassName<AriaSelectProps<T>, "children"> &
   Partial<SelectVariant> & {
     /**
      * Label of the field shown above the select field.
