@@ -46,23 +46,12 @@ export const QuerySelect = <QueryData extends SelectOption[], SelectOption exten
 }: QuerySelectProps<QueryData, SelectOption>) => {
   const [{ data, fetching, error }] = query;
 
-  /**
-   * Helper function to create a ListItem with custom content
-   * @param content - The content to render inside the ListItem
-   * @param key - Unique key for the ListItem
-   * @returns A ListItem component with the specified content
-   */
-  const getCustomListItem = (content: ReactNode, key: string) => (
-    <ListItem key={key} size={size}>
-      {content}
-    </ListItem>
-  );
-
   const EmptyState = () => (
     <ListItem key="no-data" size={size}>
       {emptyContent ?? "No data available"}
     </ListItem>
   );
+
   const AddNewItem = () => (
     <ListItem key="add-new" size={size}>
       <Button variant="ghost" size={size === "normal" ? "md" : size} onClick={onAddNewItem}>
@@ -74,7 +63,11 @@ export const QuerySelect = <QueryData extends SelectOption[], SelectOption exten
   const renderContent = () => {
     // Show loading spinner while data is being fetched
     if (fetching) {
-      return getCustomListItem(<Spinner />, "loading");
+      return (
+        <ListItem key="loading" size={size}>
+          <Spinner />
+        </ListItem>
+      );
     }
 
     // Show empty state when no data is available
