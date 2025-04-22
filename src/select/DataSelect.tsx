@@ -1,14 +1,16 @@
-import { ListItem } from "src/combobox/ListItem";
+import { Button } from "src/button/Button";
 
+import { ListItem } from "../../src/combobox/ListItem";
+import { Spinner } from "../../src/common/Spinner";
+import { ListBox } from "../../src/listbox/ListBox";
 import { Select } from "./Select";
 
 import type { ReactNode } from "react";
 import type { UseQueryResponse } from "urql";
 
 import type { SelectProps } from "./Select";
-import { Spinner } from "src/common/Spinner";
 
-interface QuerySelectProps<QueryData, SelectOption extends object> extends SelectProps<SelectOption> {
+interface QuerySelectProps<QueryData extends SelectOption[], SelectOption extends { value: string; label: string }> extends SelectProps<SelectOption> {
   /**
    * The query result to use for populating the select options
    */
@@ -18,38 +20,90 @@ interface QuerySelectProps<QueryData, SelectOption extends object> extends Selec
    * The content to display when the query has no data
    */
   emptyContent?: ReactNode;
+
+  /**
+   * Callback function when user wants to add a new item
+   */
+  onAddNewItem?: () => void;
+
+  /**
+   * Text to display for the "Add New" option
+   */
+  addNewText?: string;
 }
 
 /**
  * A select component that handles query results and loading states internally.
  * It takes a query result and automatically handles loading, error, and empty states.
  */
-//TODO We might have problems with these generics and the list item component I mention beloow
-export const QuerySelect = <QueryData, SelectOption extends object>({
+export const QuerySelect = <QueryData extends SelectOption[], SelectOption extends { value: string; label: string }>({
   label,
-  //TODO Fix sizing to be UntitledUI standard
   size = "normal",
   queryResponse: query,
-  children,
   emptyContent,
+  onAddNewItem,
+  addNewText = "Add New",
 }: QuerySelectProps<QueryData, SelectOption>) => {
   const [{ data, fetching, error }] = query;
 
-  //TODO Can we make a function to get the list item?
-  //TODO We should add 2 more components: one for when there is no data (empty) and one for when we want to ADD a new item to the list (should call mutation to create the item)
+  /**
+   * Helper function to create a ListItem with custom content
+   * @param content - The content to render inside the ListItem
+   * @param key - Unique key for the ListItem
+   * @returns A ListItem component with the specified content
+   */
+  const getCustomListItem = (content: ReactNode, key: string) => (
+    <ListItem key={key} size={size}>
+      {content}
+    </ListItem>
+  );
+
+  const EmptyState = () => (
+    <ListItem key="no-data" size={size}>
+      {emptyContent ?? "No data available"}
+    </ListItem>
+  );
+  const AddNewItem = () => (
+    <ListItem key="add-new" size={size}>
+      <Button variant="ghost" size={size === "normal" ? "md" : size} onClick={onAddNewItem}>
+        {addNewText}
+      </Button>
+    </ListItem>
+  );
+
+  const renderContent = () => {
+    // Show loading spinner while data is being fetched
+    if (fetching) {
+      return getCustomListItem(<Spinner />, "loading");
+    }
+
+    // Show empty state when no data is available
+    if (!data || data.length === 0) {
+      return (
+        <ListBox>
+          <EmptyState />
+          {onAddNewItem && <AddNewItem />}
+        </ListBox>
+      );
+    }
+
+    // Render list of items from data array
+    return (
+      <ListBox>
+        {data.map((item) => (
+          <ListItem key={item.value} size={size}>
+            {item.label}
+          </ListItem>
+        ))}
+
+        {onAddNewItem && <AddNewItem />}
+      </ListBox>
+    );
+  };
+
   return (
-    <Select label={label} size={size} placeholder={fetching ? "Loading..." : error ? "Error" : "Select an option"} errorMessage={error?.message}>
-      {fetching ? (
-        <ListItem key="loading" size={size}>
-          <Spinner />
-        </ListItem>
-      ) : !data || (Array.isArray(data) && data.length === 0) ? (
-        <ListItem key="no-data" size={size}>
-          {emptyContent ?? "No data available"}
-        </ListItem>
-      ) : (
-        children
-      )}
+    <Select label={label} size={size} placeholder={fetching ? "Loading..." : (error?.message ?? "Select an option")} errorMessage={error?.message}>
+      {renderContent()}
     </Select>
   );
 };
