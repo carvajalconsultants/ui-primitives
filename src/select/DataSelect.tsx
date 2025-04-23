@@ -1,4 +1,5 @@
 import { ListItem } from "src/combobox/ListItem";
+import { Spinner } from "src/common/Spinner";
 
 import { Select } from "./Select";
 
@@ -6,7 +7,6 @@ import type { ReactNode } from "react";
 import type { UseQueryResponse } from "urql";
 
 import type { SelectProps } from "./Select";
-import { Spinner } from "src/common/Spinner";
 
 interface QuerySelectProps<QueryData, SelectOption extends object> extends SelectProps<SelectOption> {
   /**
