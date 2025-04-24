@@ -9,11 +9,29 @@ import type { AnyRouter, Expand, RegisteredRouter, RouteById } from "@tanstack/r
 import type { RowData, SortingState, Table, TableOptions } from "@tanstack/react-table";
 import type { AnyContext, AnyRoute, ResolveFullPath, ResolveId, ResolveParams, RouteConstraints, StrictOrFrom } from "@tanstack/router-core";
 import type { UIEvent } from "react";
+import type { DateFormatter } from "react-aria";
 
 // https://tanstack.com/table/latest/docs/api/core/column-def#meta
 declare module "@tanstack/react-table" {
   interface ColumnMeta<TData extends RowData, TValue> {
     sortKey: string;
+  }
+}
+
+// Add date formatter to meta object so we can call from column definitions
+declare module "@tanstack/table-core" {
+  interface TableMeta<TData extends RowData> {
+    /**
+     * Localized date formatter which can be used for a short date format for example.
+     * This must be set in the meta object of the table instance.
+     */
+    dateFormatter1?: DateFormatter;
+
+    /**
+     * Localized date formatter which can be used for a long date format for example.
+     * This must be set in the meta object of the table instance.
+     */
+    dateFormatter2?: DateFormatter;
   }
 }
 

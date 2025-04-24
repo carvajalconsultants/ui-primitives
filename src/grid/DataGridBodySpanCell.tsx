@@ -33,5 +33,5 @@ export const DataGridBodySpanCell = <TData,>({ row, ...props }: DataGridBodySpan
   // Spread the remaining props to the Cell component
   // Calculate colSpan by getting the total number of cells in the row
   // This ensures the cell spans across all columns in the grid
-  <Cell {...props} colSpan={row.getAllCells().length} />
+  <Cell {...props} colSpan={row.getAllCells().length} width="100%" />
 );
