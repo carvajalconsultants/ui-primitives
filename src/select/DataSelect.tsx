@@ -1,25 +1,17 @@
+import { useCallback } from "react";
+
 import { Button } from "../button/Button";
 import { ListItem } from "../combobox/ListItem";
 import { Spinner } from "../common/Spinner";
 import { ListBox } from "../listbox/ListBox";
+import { m } from "../paraglide/messages.js";
 import { Select } from "./Select";
 
-import type { ReactNode } from "react";
 import type { UseQueryResponse } from "urql";
 
 import type { SelectProps } from "./Select";
 
-interface QuerySelectProps<QueryData extends SelectOption[], SelectOption extends { value: string; label: string }> extends SelectProps<SelectOption> {
-  /**
-   * The query result to use for populating the select options
-   */
-  queryResponse: UseQueryResponse<QueryData>;
-
-  /**
-   * The content to display when the query has no data
-   */
-  emptyContent?: ReactNode;
-
+interface AddNewListItemProps extends Pick<SelectProps<object>, "size"> {
   /**
    * Callback function when user wants to add a new item
    */
@@ -31,35 +23,62 @@ interface QuerySelectProps<QueryData extends SelectOption[], SelectOption extend
   addNewText?: string;
 }
 
+interface EmptyStateProps extends Pick<SelectProps<object>, "size"> {
+  /**
+   * Text to display for the when there is no data to show.
+   */
+  emptyText?: string;
+}
+
+interface QuerySelectProps<QueryData extends SelectOption[], SelectOption extends { value: string; label: string }>
+  extends Omit<SelectProps<SelectOption>, "errorMessage">,
+    AddNewListItemProps,
+    EmptyStateProps {
+  /**
+   * The query result to use for populating the select options
+   */
+  queryResponse: UseQueryResponse<QueryData>;
+}
+
 /**
+ * A component that displays an "Add New" button, shown in the lst of options.
+ */
+const AddNewListItem = ({ size, onAddNewItem, addNewText }: AddNewListItemProps) => (
+  <ListItem key="add-new" size={size}>
+    <Button variant="ghost" size={size} onPress={onAddNewItem}>
+      {addNewText}
+    </Button>
+  </ListItem>
+);
+
+/**
+ * A component that displays a message when there is no data to show.
+ */
+const EmptyState = ({ size, emptyText }: EmptyStateProps) => (
+  <ListItem key="no-data" size={size}>
+    {emptyText}
+  </ListItem>
+);
+
+/**I
  * A select component that handles query results and loading states internally.
  * It takes a query result and automatically handles loading, error, and empty states.
  */
 export const QuerySelect = <QueryData extends SelectOption[], SelectOption extends { value: string; label: string }>({
-  label,
-  size = "normal",
   queryResponse: query,
-  emptyContent,
+  placeholder = m.selectOne(),
+
+  emptyText = m.noDataFound(),
+
   onAddNewItem,
-  addNewText = "Add New",
+  addNewText = m.addNew(),
+
+  ...props
 }: QuerySelectProps<QueryData, SelectOption>) => {
   const [{ data, fetching, error }] = query;
+  const { size } = props;
 
-  const EmptyState = () => (
-    <ListItem key="no-data" size={size}>
-      {emptyContent ?? "No data available"}
-    </ListItem>
-  );
-
-  const AddNewItem = () => (
-    <ListItem key="add-new" size={size}>
-      <Button variant="ghost" size={size === "normal" ? "md" : size} onClick={onAddNewItem}>
-        {addNewText}
-      </Button>
-    </ListItem>
-  );
-
-  const renderContent = () => {
+  const renderContent = useCallback(() => {
     // Show loading spinner while data is being fetched
     if (fetching) {
       return (
@@ -69,32 +88,26 @@ export const QuerySelect = <QueryData extends SelectOption[], SelectOption exten
       );
     }
 
-    // Show empty state when no data is available
-    if (!data || data.length === 0) {
-      return (
-        <ListBox>
-          <EmptyState />
-          {onAddNewItem && <AddNewItem />}
-        </ListBox>
-      );
-    }
-
-    // Render list of items from data array
     return (
       <ListBox>
-        {data.map((item) => (
+        {/* Render list items from records (data) */}
+        {data?.map((item) => (
           <ListItem key={item.value} size={size}>
             {item.label}
           </ListItem>
         ))}
 
-        {onAddNewItem && <AddNewItem />}
+        {/* Show empty state when no data is available */}
+        {(!data || data.length === 0) && <EmptyState size={size} emptyText={emptyText} />}
+
+        {/* Show "Add New" button when onAddNewItem is provided */}
+        {onAddNewItem && <AddNewListItem size={size} onAddNewItem={onAddNewItem} addNewText={addNewText} />}
       </ListBox>
     );
-  };
+  }, [data, fetching, onAddNewItem, addNewText, size, emptyText]);
 
   return (
-    <Select label={label} size={size} placeholder={fetching ? "Loading..." : (error?.message ?? "Select an option")} errorMessage={error?.message}>
+    <Select {...props} placeholder={placeholder} errorMessage={error?.message}>
       {renderContent()}
     </Select>
   );
