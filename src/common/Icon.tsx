@@ -6,7 +6,7 @@ import type { SystemProperties } from "../../styled-system/types";
 /**
  * Supported icons in a map format so that it can be extended easily with augmentation.
  */
-interface IconMap {
+export interface IconMap {
   "chevron-down": true;
   calendar: true;
   search: true;

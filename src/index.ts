@@ -15,7 +15,7 @@ export { Checkbox } from "./checkbox/Checkbox";
 export { ComboBox } from "./combobox/ComboBox";
 export { ListItem } from "./combobox/ListItem";
 export { Icon } from "./common/Icon";
-export type { IconProps } from "./common/Icon";
+export type { IconMap, IconProps } from "./common/Icon";
 export { Label } from "./common/Label";
 export { ContentHeader } from "./contentheader/ContentHeader";
 export { SearchField } from "./form/SearchField";
