@@ -15,6 +15,7 @@ export const selectRecipe = defineSlotRecipe({
   // listBox: The container holding all selectable options
   // listBoxItem: Individual options in the dropdown
   slots: ["wrapper", "button", "value", "popover", "listBox", "listBoxItem"],
+
   base: {
     wrapper: {
       // Creates vertical spacing between the label and the select button
@@ -29,6 +30,7 @@ export const selectRecipe = defineSlotRecipe({
         color: "text.placeholder",
       },
     },
+
     // Styles for the main clickable button that triggers the dropdown
     button: {
       width: "full",
@@ -132,7 +134,7 @@ export const selectRecipe = defineSlotRecipe({
   variants: {
     size: {
       // Regular sized select with comfortable padding
-      normal: {
+      md: {
         button: {
           paddingY: "2.5",
           paddingX: "4",
@@ -175,6 +177,6 @@ export const selectRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    size: "normal",
+    size: "md",
   },
 });

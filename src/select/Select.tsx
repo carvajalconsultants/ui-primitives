@@ -12,7 +12,7 @@ import type { SelectProps as AriaSelectProps } from "react-aria-components";
 import type { SelectVariant } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
-type SelectProps<T extends object> = WithoutClassName<AriaSelectProps<T>, "children"> &
+export type SelectProps<T extends object> = WithoutClassName<AriaSelectProps<T>, "children"> &
   Partial<SelectVariant> & {
     /**
      * Label of the field shown above the select field.
@@ -28,6 +28,11 @@ type SelectProps<T extends object> = WithoutClassName<AriaSelectProps<T>, "child
      * Description of the field shown after the select field.
      */
     description?: string;
+
+    /**
+     * Specific error message to display when a problem occurred loading data, not a validation error.
+     */
+    errorMessage?: string;
 
     /**
      * The items to be displayed in the listbox.
@@ -48,7 +53,7 @@ type SelectProps<T extends object> = WithoutClassName<AriaSelectProps<T>, "child
  * @param {SelectVariant} props.variants - Style variants for customizing appearance
  * @returns {JSX.Element} A fully styled and accessible select dropdown component
  */
-export const Select = <T extends object>({ label, description, placeholder, children, size = "normal", ...props }: SelectProps<T>) => {
+export const Select = <T extends object>({ label, description, placeholder, errorMessage, children, size = "md", ...props }: SelectProps<T>) => {
   const classes = select({ size });
   const classesInput = input();
 
@@ -74,6 +79,7 @@ export const Select = <T extends object>({ label, description, placeholder, chil
 
           {/* Shows validation errors if any exist */}
           <FieldError className={classesInput.error} />
+          {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
 
           {/* Optional description text for additional context */}
           {description && <Text slot="description">{description}</Text>}

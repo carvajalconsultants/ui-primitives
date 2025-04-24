@@ -14,6 +14,7 @@ export const tabRecipe = defineSlotRecipe({
       flexDirection: "column",
       fontFamily: "body",
       gap: "4",
+      width: "full",
     },
     list: {
       display: "flex",
@@ -66,6 +67,7 @@ export const tabRecipe = defineSlotRecipe({
       },
     },
     panel: {
+      width: "full",
       marginTop: "4",
     },
   },
@@ -104,7 +106,7 @@ export const tabRecipe = defineSlotRecipe({
           borderBottomColor: "border.secondary",
           _selected: {
             borderBottomColor: "border.brand",
-            color: "text.brand",
+            color: "text.primary",
           },
         },
       },

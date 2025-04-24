@@ -1,3 +1,4 @@
+import { paraglideVitePlugin } from '@inlang/paraglide-js'
 import path from "path";
 import react from "@vitejs/plugin-react-swc";
 
@@ -21,7 +22,7 @@ export default defineConfig({
       },
     },
   },
-  plugins: [
+  plugins: [paraglideVitePlugin({ project: './project.inlang', outdir: './src/paraglide' }),
     react(),
     dts({
       insertTypesEntry: true,
