@@ -134,7 +134,7 @@ export const selectRecipe = defineSlotRecipe({
   variants: {
     size: {
       // Regular sized select with comfortable padding
-      normal: {
+      md: {
         button: {
           paddingY: "2.5",
           paddingX: "4",
@@ -177,6 +177,6 @@ export const selectRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    size: "normal",
+    size: "md",
   },
 });

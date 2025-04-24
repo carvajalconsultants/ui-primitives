@@ -133,7 +133,7 @@ export const comboBoxRecipe = defineSlotRecipe({
   variants: {
     size: {
       // Standard size suitable for most forms
-      normal: {
+      md: {
         input: {
           paddingY: "2.5",
           paddingX: "4",
@@ -161,6 +161,6 @@ export const comboBoxRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    size: "normal",
+    size: "md",
   },
 });

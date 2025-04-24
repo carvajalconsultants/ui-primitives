@@ -53,7 +53,7 @@ export type SelectProps<T extends object> = WithoutClassName<AriaSelectProps<T>,
  * @param {SelectVariant} props.variants - Style variants for customizing appearance
  * @returns {JSX.Element} A fully styled and accessible select dropdown component
  */
-export const Select = <T extends object>({ label, description, placeholder, errorMessage, children, size = "normal", ...props }: SelectProps<T>) => {
+export const Select = <T extends object>({ label, description, placeholder, errorMessage, children, size = "md", ...props }: SelectProps<T>) => {
   const classes = select({ size });
   const classesInput = input();
 

@@ -270,7 +270,7 @@ export const datePickerRecipe = defineSlotRecipe({
 
   variants: {
     size: {
-      normal: {
+      md: {
         dateInput: {
           paddingY: "2",
           paddingX: "4",
@@ -287,6 +287,6 @@ export const datePickerRecipe = defineSlotRecipe({
   },
 
   defaultVariants: {
-    size: "normal",
+    size: "md",
   },
 });
