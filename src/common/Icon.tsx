@@ -1,7 +1,6 @@
 import { styled } from "../../styled-system/jsx";
 
-import type { HTMLStyledProps } from "../../styled-system/jsx";
-import type { SystemProperties } from "../../styled-system/types";
+import type { HTMLStyledProps, CircleProps } from "../../styled-system/jsx";
 
 /**
  * Supported icons in a map format so that it can be extended easily with augmentation.
@@ -19,7 +18,7 @@ export interface IconProps extends Omit<HTMLStyledProps<"svg">, "className"> {
   id: keyof IconMap;
 
   // Size of the vector icon, we assume all icons are squared
-  size?: SystemProperties["width"];
+  size?: CircleProps["size"];
 }
 
 /**
