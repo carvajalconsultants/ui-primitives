@@ -42,6 +42,34 @@ export const cciPreset = definePreset({
     recipes: "*",
   },
 
+  patterns: {
+    extend: {
+      icon: {
+        description: "Applies size tokens to both width and height for icons",
+        properties: {
+          size: {
+            type: "token",
+            value: "sizes",
+          },
+        },
+        defaultValues: {
+          size: "5", // default to token "5"
+        },
+        transform: (props) => {
+          const { size, ...rest } = props as { size: string; [key: string]: unknown };
+
+          return {
+            width: size,
+            height: size,
+            display: "inline-block",
+            verticalAlign: "middle",
+            ...rest,
+          };
+        },
+      },
+    },
+  },
+
   // Useful for theme customization
   theme: {
     slotRecipes: {
@@ -75,6 +103,7 @@ export const cciPreset = definePreset({
       text: textRecipe,
       tab: tabRecipe,
     },
+
     // extend: {
     //   recipes: {
     //     badge: {
