@@ -14,8 +14,7 @@ export interface IconMap {
   x: true;
 }
 
-//TODO Ideally we don't allow style, but cannot get animation to work when specifying the transform prop
-export type IconProps = Omit<HTMLStyledProps<"svg">, "className" | "width" | "height"> &
+export type IconProps = Omit<HTMLStyledProps<"svg">, "width" | "height"> &
   IconProperties & {
     // Name of the tabler icon, from: https://tabler.io/icons
     id: keyof IconMap;
@@ -27,8 +26,8 @@ export type IconProps = Omit<HTMLStyledProps<"svg">, "className" | "width" | "he
  * If you need to an icon, add the SVG in public/icons from: https://tabler.io/icons
  * You can simply use the "Copy SVG" option and paste the content in the file.
  */
-export const Icon = ({ id, size = "5", ...props }: IconProps) => (
-  <styled.svg {...props} className={icon({ size })}>
-    <use xlinkHref={`/icons/sprite.svg#${id}`} />
+export const Icon = ({ id, size = "5", className = "", ...props }: IconProps) => (
+  <styled.svg {...props} className={`${icon({ size })} ${className}`}>
+    <use xlinkHref={`/__spritemap#${id}`} />
   </styled.svg>
 );

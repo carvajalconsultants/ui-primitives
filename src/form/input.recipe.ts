@@ -8,7 +8,8 @@ import { defineSlotRecipe } from "@pandacss/dev";
 export const inputRecipe = defineSlotRecipe({
   className: "input",
   description: "The styles for Input-based components including TextField and SearchField",
-  slots: ["wrapper", "input", "error", "searchIcon", "clearButton"],
+  slots: ["wrapper", "input", "error", "leftIcon", "clearButton"],
+
   base: {
     // Wrapper contains the label, input, error and description
     wrapper: {
@@ -28,41 +29,41 @@ export const inputRecipe = defineSlotRecipe({
       width: "full",
       border: "1",
       borderStyle: "solid",
-      borderColor: "bg.brand.primary", // Updated from primary.index
+      borderColor: "bg.brand.primary",
       fontFamily: "body",
 
       _placeholder: {
-        color: "text.placeholder", // Updated from body.text
+        color: "text.placeholder",
       },
 
       _focus: {
         outline: "0",
-        boxShadow: "shadow.primary", // Updated from glow.index
+        boxShadow: "shadow.primary",
       },
 
       _active: {
         outline: "0",
-        boxShadow: "shadow.primary", // Updated from glow.index
+        boxShadow: "shadow.primary",
       },
 
       _invalid: {
-        borderColor: "bg.danger.primary", // Updated from danger.index
+        borderColor: "bg.danger.primary",
 
         _focus: {
-          boxShadow: "shadow.primary", // Updated from glow.index
+          boxShadow: "shadow.primary",
         },
       },
 
       _disabled: {
         cursor: "not-allowed",
-        borderColor: "border.primary", // Updated from grey.2
-        bg: "border.primary", // Updated from grey.2
-        color: "text.secondary", // Updated from secondary.text
+        borderColor: "border.primary",
+        bg: "border.primary",
+        color: "text.secondary",
       },
     },
-    searchIcon: {
+    leftIcon: {
       position: "absolute",
-      border: "none",
+      // border: "none",
       cursor: "pointer",
     },
     clearButton: {
@@ -82,14 +83,9 @@ export const inputRecipe = defineSlotRecipe({
           paddingX: "3",
           fontSize: "sm",
         },
-        searchIcon: {
+        leftIcon: {
           left: "3.5",
           top: "2.5",
-
-          "& svg": {
-            width: "3.5",
-            height: "3.5",
-          },
         },
         clearButton: {
           right: "2",
@@ -102,13 +98,13 @@ export const inputRecipe = defineSlotRecipe({
           paddingX: "4",
           fontSize: "md",
         },
-        searchIcon: {
+        leftIcon: {
           left: "4",
           top: "3.5",
         },
         clearButton: {
-          right: "2.5",
-          top: "2.5",
+          right: "4",
+          top: "3.5",
         },
       },
     },

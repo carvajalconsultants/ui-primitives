@@ -4,7 +4,6 @@ import { SearchField as AriaSearchField, Button, Input } from "react-aria-compon
 import { useDebounceCallback } from "usehooks-ts";
 
 import { css, cx } from "../../styled-system/css";
-import { Box } from "../../styled-system/jsx";
 import { input } from "../../styled-system/recipes";
 import { Icon } from "../common/Icon";
 
@@ -54,10 +53,8 @@ export const SearchField = ({ onClear, size, debounceTime = 500, value: initialV
           },
         })
       )}>
-      <div className={classes.searchIcon}>
-        <Icon id="search" size="4" />
-      </div>
-      <Box>
+      <Icon id="search" size="4" className={classes.leftIcon} />
+
         <Input
           className={cx(
             classes.input,
@@ -67,7 +64,7 @@ export const SearchField = ({ onClear, size, debounceTime = 500, value: initialV
           )}
           {...props}
         />
-      </Box>
+
       <Button onPress={handleClear} aria-label="Clear search" className={classes.clearButton}>
         <Icon id="x" size="4" />
       </Button>

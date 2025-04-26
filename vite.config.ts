@@ -1,9 +1,9 @@
-import { paraglideVitePlugin } from '@inlang/paraglide-js'
+import { paraglideVitePlugin } from "@inlang/paraglide-js"
 import path from "path";
 import react from "@vitejs/plugin-react-swc";
+import VitePluginSVGSpritemap from "@spiriit/vite-plugin-svg-spritemap";
 
 import { defineConfig } from "vite";
-import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,12 +22,24 @@ export default defineConfig({
       },
     },
   },
-  plugins: [paraglideVitePlugin({ project: './project.inlang', outdir: './src/paraglide' }),
-    react(),
-    dts({
-      insertTypesEntry: true,
-      include: ["src"],
+  plugins: [
+    VitePluginSVGSpritemap(["./public/icons/*.svg"], {
+      prefix: false,
+      svgo: {
+        plugins: [
+          {
+            name: "removeAttrs",
+            params: {
+              attrs: ["class"],
+            }
+          },
+        ],
+      },
     }),
+
+    paraglideVitePlugin({ project: "./project.inlang", outdir: "./src/paraglide" }),
+
+    react(),
   ],
   resolve: {
     alias: {

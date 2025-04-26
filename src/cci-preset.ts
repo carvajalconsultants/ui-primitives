@@ -61,8 +61,6 @@ export const cciPreset = definePreset({
           return {
             width: size,
             height: size,
-            display: "inline-block",
-            verticalAlign: "middle",
             ...rest,
           };
         },
