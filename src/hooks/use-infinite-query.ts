@@ -87,7 +87,7 @@ const DEFAULT_CONNECTION: RelayConnection<unknown> = {
   totalCount: 0,
 };
 
-interface InfiniteQueryResult<TData, TVariables extends AnyVariables> {
+export interface InfiniteQueryResult<TNode, TData, TVariables extends AnyVariables> {
   /** Whether a request is in progress */
   fetching: boolean;
 
@@ -96,6 +96,8 @@ interface InfiniteQueryResult<TData, TVariables extends AnyVariables> {
 
   /** Indicates if the next page is being fetched, useful to show a loading indicator at the bottom of the list for example */
   fetchingMore: boolean;
+
+  nodes: TNode[];
 
   /** Whether there are more items to load */
   hasNextPage: boolean;
@@ -125,9 +127,7 @@ export function useInfiniteQuery<
 }: UseQueryArgs<TVariables, TData> & {
   /** The path to the connection in your GraphQL response */
   dataPath: readonly [TDataPath1];
-}): InfiniteQueryResult<TData, TVariables> & {
-  nodes: TConnection extends { nodes: (infer U)[] } ? U[] : never[];
-};
+}): InfiniteQueryResult<TConnection extends { nodes: (infer U)[] } ? U : never, TData, TVariables>;
 
 export function useInfiniteQuery<
   TData,
@@ -142,9 +142,7 @@ export function useInfiniteQuery<
 }: UseQueryArgs<TVariables, TData> & {
   /** The path to the connection in your GraphQL response */
   dataPath: readonly [TDataPath1, TDataPath2];
-}): InfiniteQueryResult<TData, TVariables> & {
-  nodes: TConnection extends { nodes: (infer U)[] } ? U[] : never[];
-};
+}): InfiniteQueryResult<TConnection extends { nodes: (infer U)[] } ? U : never, TData, TVariables>;
 
 /**
  * A hook for implementing infinite scroll with GraphQL queries.
