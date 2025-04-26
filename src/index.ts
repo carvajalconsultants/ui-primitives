@@ -3,6 +3,7 @@ export { DataGridLoadingMore } from "./grid/DataGridLoadingMore";
 export { Tag } from "./taggroup/Tag";
 export { TagGroup } from "./taggroup/TagGroup";
 
+export { DataSelect } from "./select/DataSelect";
 export { Select } from "./select/Select";
 
 export { DatePicker } from "./datepicker/DatePicker";

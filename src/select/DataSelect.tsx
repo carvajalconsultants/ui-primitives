@@ -30,7 +30,7 @@ interface EmptyStateProps extends Pick<SelectProps<object>, "size"> {
   emptyText?: string;
 }
 
-interface QuerySelectProps<QueryData extends SelectOption[], SelectOption extends { value: string; label: string }>
+interface DataSelectProps<QueryData extends SelectOption[], SelectOption extends { value: string; label: string }>
   extends Omit<SelectProps<SelectOption>, "errorMessage">,
     AddNewListItemProps,
     EmptyStateProps {
@@ -60,11 +60,7 @@ const EmptyState = ({ size, emptyText }: EmptyStateProps) => (
   </ListItem>
 );
 
-/**I
- * A select component that handles query results and loading states internally.
- * It takes a query result and automatically handles loading, error, and empty states.
- */
-export const QuerySelect = <QueryData extends SelectOption[], SelectOption extends { value: string; label: string }>({
+export const DataSelect = <QueryData extends SelectOption[], SelectOption extends { value: string; label: string }>({
   queryResponse: query,
   placeholder = m.selectOne(),
 
@@ -74,7 +70,7 @@ export const QuerySelect = <QueryData extends SelectOption[], SelectOption exten
   addNewText = m.addNew(),
 
   ...props
-}: QuerySelectProps<QueryData, SelectOption>) => {
+}: DataSelectProps<QueryData, SelectOption>) => {
   const [{ data, fetching, error }] = query;
   const { size } = props;
 
