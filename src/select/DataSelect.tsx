@@ -110,7 +110,7 @@ export const DataSelect = <TNode extends object, TNodeKey extends keyof TNode>({
     return (
       <ListBox renderEmptyState={() => emptyText} items={nodes}>
         {(node) => (
-          <ListBoxItem key={String(node[valuePath[0]])} size={size}>
+          <ListBoxItem key={String(node[valuePath[0]])} id={String(node[valuePath[0]])} size={size}>
             {String(node[labelPath[0]])}
           </ListBoxItem>
         )}
