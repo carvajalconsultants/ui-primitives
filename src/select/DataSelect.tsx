@@ -101,7 +101,7 @@ export const DataSelect = <TNode extends object, TNodeKey extends keyof TNode>({
       return (
         <ListBox>
           <ListBoxItem key="loading" size={size}>
-            <Spinner />
+            <Spinner borderColor="primary.foreground" borderTopColor="white" />
           </ListBoxItem>
         </ListBox>
       );
@@ -119,7 +119,7 @@ export const DataSelect = <TNode extends object, TNodeKey extends keyof TNode>({
   }, [fetching, size, nodes, emptyText, labelPath, valuePath]);
 
   return (
-    <Select {...props} placeholder={placeholder} errorMessage={error?.message}>
+    <Select {...props} placeholder={placeholder} errorMessage={error instanceof Error ? error.message : undefined}>
       {renderContent()}
     </Select>
   );
