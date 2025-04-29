@@ -1,23 +1,23 @@
-import { ListBox } from "../listbox/ListBox";
-import { ListItem } from "./ListItem";
+import { ListBoxItem } from "./ListBoxItem";
+import { VirtualizedListBox } from "./VirtualizedListBox";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof ListItem> = {
-  title: "Components/ComboBox/ListItem",
-  component: ListItem,
+const meta: Meta<typeof ListBoxItem> = {
+  title: "Components/ComboBox/ListBoxItem",
+  component: ListBoxItem,
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <ListBox aria-label="List box">
+      <VirtualizedListBox aria-label="List box">
         <Story />
-      </ListBox>
+      </VirtualizedListBox>
     ),
   ],
 };
 
 export default meta;
-type Story = StoryObj<typeof ListItem>;
+type Story = StoryObj<typeof ListBoxItem>;
 
 export const Default: Story = {
   args: {

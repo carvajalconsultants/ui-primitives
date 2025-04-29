@@ -10,6 +10,8 @@ import { datePickerRecipe } from "./datepicker/datePicker.recipe";
 import { inputRecipe } from "./form/input.recipe";
 import { sliderRecipe } from "./form/slider/slider.recipe";
 import { switchRecipe } from "./form/switch.recipe";
+import { listBoxRecipe } from "./listbox/listBox.recipe";
+import { listBoxItemRecipe } from "./listbox/listBoxItem.recipe";
 import { dialogRecipe } from "./overlay/dialog.recipe";
 import { modalRecipe } from "./overlay/modal.recipe";
 import { radioGroupRecipe } from "./radiogroup/radioGroup.recipe";
@@ -93,6 +95,8 @@ export const cciPreset = definePreset({
       cell: cellRecipe,
       headerCell: headerCellRecipe,
       label: labelRecipe,
+      listBox: listBoxRecipe,
+      listBoxItem: listBoxItemRecipe,
       row: rowRecipe,
       tableBody: tableBodyRecipe,
       tableFooter: tableFooterRecipe,

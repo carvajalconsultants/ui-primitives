@@ -12,9 +12,7 @@ export const selectRecipe = defineSlotRecipe({
   // button: The clickable trigger that opens the dropdown
   // value: The text showing the currently selected option
   // popover: The floating container that appears when opened
-  // listBox: The container holding all selectable options
-  // listBoxItem: Individual options in the dropdown
-  slots: ["wrapper", "button", "value", "popover", "listBox", "listBoxItem"],
+  slots: ["wrapper", "button", "value", "popover"],
 
   base: {
     wrapper: {
@@ -104,33 +102,8 @@ export const selectRecipe = defineSlotRecipe({
       // Makes the dropdown width match the button width
       width: "var(--trigger-width)",
     },
-    listBox: {
-      // Scrollable container for options with a max height
-      display: "block",
-      width: "full",
-      bg: "text.white",
-      maxHeight: "100",
-      borderRadius: "lg",
-      border: "1",
-      borderStyle: "solid",
-      borderColor: "border.secondary._alt",
-      overflow: "auto",
-    },
-    listBoxItem: {
-      // Styles for individual options in the dropdown
-      width: "full",
-      color: "text.primary",
-      fontWeight: "semiBold",
-
-      _focusVisible: {
-        outline: "none",
-      },
-
-      "&[data-selected]": { bg: "bg.brand.primary", color: "text.white" },
-      "&[data-pressed]": { bg: "bg.brand.primary", color: "text.white" },
-      "&[data-focused]": { bg: "bg.brand.primary", color: "text.white" },
-    },
   },
+
   variants: {
     size: {
       // Regular sized select with comfortable padding
@@ -138,25 +111,15 @@ export const selectRecipe = defineSlotRecipe({
         button: {
           paddingY: "2.5",
           paddingX: "4",
-
-          // Adjusts icon position for better vertical alignment
-          // "& > svg": {
-          //   transform: "translateY(12px)",
-          // },
-        },
-
-        // Asymmetric padding creates visual hierarchy and space for selection indicators
-        listBoxItem: {
-          paddingBlock: "2",
-          paddingInlineStart: "6",
-          paddingInlineEnd: "2",
         },
       },
+
       // Compact version for space-constrained layouts
       sm: {
         value: {
           fontSize: "sm",
         },
+
         button: {
           paddingY: "1.5",
           paddingX: "2",
@@ -167,15 +130,10 @@ export const selectRecipe = defineSlotRecipe({
             height: "5!important",
           },
         },
-        listBoxItem: {
-          paddingBlock: "1.5",
-          paddingInlineStart: "4",
-          paddingInlineEnd: "1.5",
-          fontSize: "sm",
-        },
       },
     },
   },
+
   defaultVariants: {
     size: "md",
   },

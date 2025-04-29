@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DialogTrigger, ListBoxItem } from "react-aria-components";
+import { DialogTrigger } from "react-aria-components";
 
 import { css } from "../styled-system/css";
 import { Box, HStack, Stack } from "../styled-system/jsx";
@@ -8,7 +8,6 @@ import { Badge } from "./badge/Badge";
 import { Button } from "./button/Button";
 import { Checkbox } from "./checkbox/Checkbox";
 import { ComboBox } from "./combobox/ComboBox";
-import { ListItem } from "./combobox/ListItem";
 import { Label } from "./common/Label";
 import { ContentHeader } from "./contentheader/ContentHeader";
 import { DatePicker } from "./datepicker/DatePicker";
@@ -19,6 +18,8 @@ import { TextField } from "./form/TextField";
 import { ToggleSectionField } from "./form/ToggleSectionField";
 import { Link } from "./link/Link";
 import { ListBox } from "./listbox/ListBox";
+import { ListBoxItem } from "./listbox/ListBoxItem";
+import { VirtualizedListBox } from "./listbox/VirtualizedListBox";
 import { Dialog } from "./overlay/Dialog";
 import { Modal } from "./overlay/Modal";
 import { Radio } from "./radiogroup/Radio";
@@ -176,12 +177,14 @@ export const App = () => {
         <p className={css({ fontSize: "sm" })}>Current selection (controlled): {selected === "all" ? "all" : [...selected].join(", ")}</p>
       </Stack>
 
-      <Select size="sm">
-        {animals.map((item) => (
-          <ListItem key={item.id} size="sm">
-            {item.name}
-          </ListItem>
-        ))}
+      <Select label="Select an animal" size="sm">
+        <ListBox items={animals}>
+          {(item) => (
+            <ListBoxItem key={item.id} size="sm">
+              {item.name}
+            </ListBoxItem>
+          )}
+        </ListBox>
       </Select>
 
       <Stack>
@@ -243,7 +246,7 @@ export const App = () => {
       </HStack>
 
       <ComboBox placeholder="Search defaultItems..." label="Animal Names" defaultItems={items} description="Please select an animal for your pet.">
-        {(item) => <ListItem>{item.name}</ListItem>}
+        {(item) => <ListBoxItem>{item.name}</ListBoxItem>}
       </ComboBox>
 
       {isLoading ? (
@@ -252,17 +255,17 @@ export const App = () => {
         <Paragraph>Error: {error.message}</Paragraph>
       ) : (
         <ComboBox placeholder="Search Todos..." label="Todo Titles" items={todos} description="Please select a todo item.">
-          {(item) => <ListItem>{item.title}</ListItem>}
+          {(item) => <ListBoxItem>{item.title}</ListBoxItem>}
         </ComboBox>
       )}
 
-      <ListBox aria-label="Virtualized listbox example" style={{ border: "1px solid red", height: "100%", width: "100%", maxHeight: "400px", overflow: "auto" }}>
+      <VirtualizedListBox aria-label="Virtualized listbox example" style={{ border: "1px solid red", height: "100%", width: "100%", maxHeight: "400px", overflow: "auto" }}>
         {listItems.map(({ key, textValue, content }) => (
-          <ListBoxItem key={`${key}-${textValue}-${Math.random()}`} textValue={textValue} className={css({ background: "fg.brand.primary.index", padding: "4" })}>
+          <ListBoxItem key={`${key}-${textValue}-${Math.random()}`} textValue={textValue}>
             {content}
           </ListBoxItem>
         ))}
-      </ListBox>
+      </VirtualizedListBox>
 
       <Checkbox>Subscribe to newsletter</Checkbox>
 

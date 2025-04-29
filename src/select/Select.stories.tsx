@@ -1,4 +1,4 @@
-import { ListItem } from "../combobox/ListItem";
+import { ListBoxItem } from "../listbox/ListBoxItem";
 import { useMockFetchTodos } from "../test/use-mock-fetch-todos";
 import { Select } from "./Select";
 
@@ -33,7 +33,7 @@ const Template: Story = {
   render: (args) => (
     <Select {...args}>
       {items.map((item) => (
-        <ListItem key={item.id}>{item.name}</ListItem>
+        <ListBoxItem key={item.id}>{item.name}</ListBoxItem>
       ))}
     </Select>
   ),
@@ -80,9 +80,9 @@ export const WithDefaultValue: Story = {
   render: (args) => (
     <Select {...args} selectedKey={1}>
       {items.map((item) => (
-        <ListItem key={item.id} textValue={item.name}>
+        <ListBoxItem key={item.id} textValue={item.name}>
           {item.name} - {item.id}
-        </ListItem>
+        </ListBoxItem>
       ))}
     </Select>
   ),
@@ -100,7 +100,7 @@ export const WithManyItems: Story = {
   render: (args) => (
     <Select {...args}>
       {Array.from({ length: 100 }, (_, i) => (
-        <ListItem key={i}>{`Item ${i + 1}`}</ListItem>
+        <ListBoxItem key={i}>{`Item ${i + 1}`}</ListBoxItem>
       ))}
     </Select>
   ),
@@ -120,9 +120,9 @@ export const WithCustomRender: Story = {
   render: (args) => (
     <Select {...args}>
       {items.map((item) => (
-        <ListItem key={item.id} textValue={item.name}>
+        <ListBoxItem key={item.id} textValue={item.name}>
           {item.name} - {item.id}
-        </ListItem>
+        </ListBoxItem>
       ))}
     </Select>
   ),
@@ -158,7 +158,7 @@ const FetchTodos = () => {
   return (
     <Select style={{ width: "450px" }} label="Todo Titles" placeholder="Select a Todo" description="Please select a todo item.">
       {todos.map((item) => (
-        <ListItem key={item.id}>{item.title}</ListItem>
+        <ListBoxItem key={item.id}>{item.title}</ListBoxItem>
       ))}
     </Select>
   );

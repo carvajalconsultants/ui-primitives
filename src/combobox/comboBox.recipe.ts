@@ -8,7 +8,7 @@ import { defineSlotRecipe } from "@pandacss/dev";
 export const comboBoxRecipe = defineSlotRecipe({
   className: "comboBox",
   description: "The styles for the ComboBox component",
-  slots: ["wrapper", "input", "button", "popover", "listBox", "listBoxItem"],
+  slots: ["wrapper", "input", "button", "popover"],
   base: {
     // Container that holds both the input and dropdown - ensures proper spacing and alignment
     wrapper: {
@@ -97,53 +97,11 @@ export const comboBoxRecipe = defineSlotRecipe({
       // Ensures the dropdown width matches the input field width for clean alignment
       width: "var(--trigger-width)",
     },
-
-    // The scrollable container for dropdown options
-    listBox: {
-      display: "block",
-      width: "full",
-      bg: "text.white",
-      maxHeight: "100", // Prevents extremely long lists from taking up too much screen space
-      borderRadius: "lg",
-      border: "none",
-      overflow: "auto",
-    },
-
-    // Individual option items in the dropdown
-    listBoxItem: {
-      paddingBlock: "2",
-      paddingInlineStart: "6",
-      paddingInlineEnd: "2",
-      width: "full",
-      color: "text.primary",
-      fontWeight: "semiBold",
-
-      _focusVisible: {
-        outline: "none",
-      },
-
-      // Highlights the currently selected/focused option for clear user feedback
-      "&[data-selected]": { bg: "bg.brand.primary", color: "text.white" },
-      "&[data-pressed]": { bg: "bg.brand.primary", color: "text.white" },
-      "&[data-focused]": { bg: "bg.brand.primary", color: "text.white" },
-    },
   },
 
   // Provides size variations for different use cases
   variants: {
     size: {
-      // Standard size suitable for most forms
-      md: {
-        input: {
-          paddingY: "2.5",
-          paddingX: "4",
-        },
-        listBoxItem: {
-          paddingBlock: "2",
-          paddingInlineStart: "6",
-          paddingInlineEnd: "2",
-        },
-      },
       // Compact size for space-constrained interfaces or dense forms
       sm: {
         input: {
@@ -151,11 +109,13 @@ export const comboBoxRecipe = defineSlotRecipe({
           paddingX: "2",
           fontSize: "sm",
         },
-        listBoxItem: {
-          paddingBlock: "1.5",
-          paddingInlineStart: "4",
-          paddingInlineEnd: "1.5",
-          fontSize: "sm",
+      },
+
+      // Standard size suitable for most forms
+      md: {
+        input: {
+          paddingY: "2.5",
+          paddingX: "4",
         },
       },
     },

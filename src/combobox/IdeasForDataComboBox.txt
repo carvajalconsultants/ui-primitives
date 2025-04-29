@@ -1,8 +1,10 @@
 import { useCallback } from "react";
 
+import { Button } from "../button/Button";
+import { ListBoxItem } from "../listbox/ListBoxItem.js";
 import { Spinner } from "../common/Spinner";
 import { ListBox } from "../listbox/ListBox";
-import { ListBoxItem } from "../listbox/ListBoxItem.js";
+import { VirtualizedListBox } from "../listbox/VirtualizedListBox";
 import { m } from "../paraglide/messages.js";
 import { Select } from "./Select";
 
@@ -12,6 +14,24 @@ import type { AnyVariables } from "urql";
 import type { SelectProps } from "./Select";
 
 /**
+ * Props for the "Add New" item functionality in dropdown lists
+ * Enables users to create new entries directly from the dropdown interface
+ */
+interface AddNewListItemProps extends Pick<SelectProps<object>, "size"> {
+  /**
+   * Callback triggered when users want to create a new entry
+   * Opens a creation form or modal based on implementation
+   */
+  onAddNewItem?: () => void;
+
+  /**
+   * Custom text for the "Add New" button
+   * Useful for different contexts like "Add New Customer", "Create Product", etc.
+   */
+  addNewText?: string;
+}
+
+/**
  * Configuration for a data-driven select component that handles async data loading, pagination,
  * empty states, and new item creation. Perfect for scenarios like customer selection, product picking,
  * or any form field that needs to load options from an API.
@@ -19,7 +39,9 @@ import type { SelectProps } from "./Select";
  * @template TNode - The type of data objects being displayed (e.g., Product, Customer)
  * @template TNodeKey - The propert key used as the option value or label (e.g., 'id', 'code')
  */
-interface DataSelectProps<TNode extends object, TNodeKey extends keyof TNode> extends Omit<SelectProps<{ value: string; label: string }>, "children" | "errorMessage"> {
+interface DataSelectProps<TNode extends object, TNodeKey extends keyof TNode>
+  extends Omit<SelectProps<{ value: string; label: string }>, "children" | "errorMessage">,
+    AddNewListItemProps {
   /**
    * Query result containing the data to populate the dropdown
    * Handles pagination, loading states, and error handling automatically
@@ -48,6 +70,27 @@ interface DataSelectProps<TNode extends object, TNodeKey extends keyof TNode> ex
   //TODO In future, use Pathable from use-infinite-query to make this support nested keys using pathOr
   labelPath: [TNodeKey];
 }
+
+/**
+ * Renders a list item that allows users to create new entries directly from a dropdown list.
+ * This is particularly useful in forms where users frequently need to add new options,
+ * like creating a new category while filling out a product form.
+ *
+ * @example
+ * // Adding new customer option in a customer selector
+ * <AddNewListItem
+ *   size="medium"
+ *   onAddNewItem={() => openCustomerForm()}
+ *   addNewText="Add New Customer"
+ * />
+ */
+const AddNewListItem = ({ size, onAddNewItem, addNewText }: AddNewListItemProps) => (
+  <ListBoxItem key="add-new" size={size}>
+    <Button variant="ghost" size={size} onPress={onAddNewItem}>
+      {addNewText}
+    </Button>
+  </ListBoxItem>
+);
 
 /**
  * A smart dropdown component that handles data fetching, loading states, error handling, and option creation.
@@ -79,6 +122,9 @@ export const DataSelect = <TNode extends object, TNodeKey extends keyof TNode>({
   placeholder = m.selectOne(),
   emptyText = m.noDataFound(),
 
+  onAddNewItem,
+  addNewText = m.addNew(),
+
   valuePath,
   labelPath,
   ...props
@@ -88,35 +134,55 @@ export const DataSelect = <TNode extends object, TNodeKey extends keyof TNode>({
 
   /**
    * Generates the dropdown content based on current state
-   * Handles all possible states: loading, empty, and data display
+   * Handles all possible states: loading, error, empty, and data display
    *
    * The function follows this logic:
    * 1. Shows loading spinner during data fetch
    * 2. Maps data to dropdown options when available
    * 3. Shows empty state when no data exists
+   * 4. Optionally shows "Add New" button if creation is allowed
    */
   const renderContent = useCallback(() => {
     // Display loading indicator while fetching data
     if (fetching) {
       return (
         <ListBox>
-          <ListBoxItem key="loading" size={size}>
-            <Spinner />
-          </ListBoxItem>
+        <ListBoxItem key="loading" size={size}>
+          <Spinner />
+        </ListBoxItem>
         </ListBox>
       );
     }
 
     return (
-      <ListBox renderEmptyState={() => emptyText} items={nodes}>
+      <VirtualizedListBox renderEmptyState={() => emptyText} items={nodes}>
         {(node) => (
           <ListBoxItem key={String(node[valuePath[0]])} size={size}>
             {String(node[labelPath[0]])}
           </ListBoxItem>
         )}
-      </ListBox>
+
+        {/* Provide option to create new entries if allowed */}
+        {/* TODO As per https://react-spectrum.adobe.com/react-aria/ListBox.html#text-slots NOTTE, we should not have interactive content in the listbox. We should switch to GridList */}
+        {/* {onAddNewItem && <AddNewListItem size={size} onAddNewItem={onAddNewItem} addNewText={addNewText} />} */}
+      </VirtualizedListBox>
     );
-  }, [fetching, size, nodes, emptyText, labelPath, valuePath]);
+
+    return (
+      <VirtualizedListBox renderEmptyState={() => emptyText}>
+        {/* Convert each data item into a selectable dropdown option */}
+        {nodes.map((node: TNode) => (
+          <ListBoxItem key={String(node[valuePath[0]])} size={size}>
+            {String(node[labelPath[0]])}
+          </ListBoxItem>
+        ))}
+
+        {/* Provide option to create new entries if allowed */}
+        {/* TODO As per https://react-spectrum.adobe.com/react-aria/ListBox.html#text-slots NOTTE, we should not have interactive content in the listbox. We should switch to GridList */}
+        {onAddNewItem && <AddNewListItem size={size} onAddNewItem={onAddNewItem} addNewText={addNewText} />}
+      </VirtualizedListBox>
+    );
+  }, [nodes, fetching, onAddNewItem, addNewText, size, emptyText, labelPath, valuePath]);
 
   return (
     <Select {...props} placeholder={placeholder} errorMessage={error?.message}>

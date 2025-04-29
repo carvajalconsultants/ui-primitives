@@ -1,50 +1,54 @@
-import { useMemo } from "react";
-import { ListBox as AriaListBox, ListLayout, Virtualizer } from "react-aria-components";
+import { ListBox as AriaListBox } from "react-aria-components";
+
+import { listBox } from "../../styled-system/recipes";
 
 import type { ListBoxProps as AriaListBoxProps } from "react-aria-components";
 
-export type ListBoxProps<T> = AriaListBoxProps<T>;
+import type { WithoutClassName } from "../types";
 
 /**
- * A high-performance, accessible listbox component that efficiently handles large datasets
- * by only rendering items that are currently visible in the viewport. This prevents
- * performance issues when dealing with extensive lists like search results, dropdown menus,
- * or data tables.
+ * Represents the props for the ListBox component, excluding the className prop.
+ * @template T - The type of data items the ListBox will contain
+ */
+export type ListBoxProps<T> = WithoutClassName<AriaListBoxProps<T>>;
+
+/**
+ * A fully accessible listbox component that provides a scrollable list of options for users to select from.
+ * Perfect for dropdown menus, selection lists, and any UI that requires users to choose from a set of options.
  *
- * @template T - The type of data items in the list. Must be an object type.
+ * Key features:
+ * - Full keyboard navigation (up/down arrows, home/end, type-ahead)
+ * - Screen reader announcements for selection changes
+ * - Support for single and multiple selection modes
+ * - Automatic ARIA attribute management
  *
- * @param {ListBoxProps<T>} props - Component properties including:
- *   @param {T[]} [props.items] - The data items to display in the list
- *   @param {Function} [props.children] - Render function for list items
- *   @param {string} [props.aria-label] - Accessible label for screen readers
- *   @param {Function} [props.onSelectionChange] - Handler for selection changes
- *   @param {boolean} [props.disallowEmptySelection] - Whether empty selection is allowed
- *   @param {('single' | 'multiple')} [props.selectionMode] - Single or multiple selection mode
+ * @template T - The type of data items the ListBox will contain
+ * @param {ListBoxProps<T>} props - Configuration options for the ListBox
+ * @param {T[]} props.items - The items to display in the list
+ * @param {(item: T) => ReactNode} props.children - Render function for each item
+ * @param {boolean} [props.disallowEmptySelection] - If true, prevents the user from deselecting the last selected item
+ * @param {SelectionMode} [props.selectionMode] - Determines if users can select 'single' or 'multiple' items
+ * @param {Selection} [props.selectedKeys] - The currently selected keys in controlled mode
+ * @param {Selection} [props.defaultSelectedKeys] - The default selected keys in uncontrolled mode
+ * @param {(keys: Selection) => void} [props.onSelectionChange] - Callback fired when selection changes
  *
- * @returns {JSX.Element} A virtualized, accessible listbox component
+ * @returns {JSX.Element} A fully styled and accessible listbox component
  *
  * @example
  * ```tsx
  * <ListBox
- *   items={users}
- *   aria-label="Select a user"
- *   onSelectionChange={handleSelection}
+ *   items={['Apple', 'Banana', 'Orange']}
+ *   onSelectionChange={selected => console.log('Selected:', selected)}
  * >
- *   {(item) => <Item>{item.name}</Item>}
+ *   {item => <ListBoxItem>{item}</ListBoxItem>}
  * </ListBox>
  * ```
  */
-export const ListBox = <T extends object>(props: ListBoxProps<T>) => {
-  // Create a memoized layout manager that estimates each row to be 40px high
-  // This optimization prevents unnecessary recalculations during scrolling
-  const layout = useMemo(() => new ListLayout({ estimatedRowHeight: 40 }), []);
-
-  return (
-    // Virtualizer handles the efficient rendering of only visible items,
-    // dramatically improving performance for long lists
-    <Virtualizer layout={layout}>
-      {/* AriaListBox provides the core accessibility features and keyboard navigation */}
-      <AriaListBox {...props} />
-    </Virtualizer>
-  );
-};
+export const ListBox = <T extends object>(props: ListBoxProps<T>) => (
+  // AriaListBox handles all accessibility features including:
+  // - Keyboard navigation (up/down arrows, home/end)
+  // - ARIA attributes (role="listbox", aria-selected, etc.)
+  // - Selection management
+  // - Focus handling
+  <AriaListBox {...props} className={listBox()} />
+);

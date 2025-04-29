@@ -4,16 +4,16 @@ import { css } from "../../styled-system/css";
 import { input, select } from "../../styled-system/recipes";
 import { Icon } from "../common/Icon";
 import { Label } from "../common/Label";
-import { ListBox } from "../listbox/ListBox";
 import { Text } from "../typography/Text";
 
-import type { SelectProps as AriaSelectProps } from "react-aria-components";
+import type { SelectProps as AriaSelectProps, PopoverProps } from "react-aria-components";
 
 import type { SelectVariant } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type SelectProps<T extends object> = WithoutClassName<AriaSelectProps<T>, "children"> &
-  Partial<SelectVariant> & {
+  Partial<SelectVariant> &
+  Pick<PopoverProps, "children"> & {
     /**
      * Label of the field shown above the select field.
      */
@@ -33,11 +33,6 @@ export type SelectProps<T extends object> = WithoutClassName<AriaSelectProps<T>,
      * Specific error message to display when a problem occurred loading data, not a validation error.
      */
     errorMessage?: string;
-
-    /**
-     * The items to be displayed in the listbox.
-     */
-    children: React.ReactNode | ((item: T) => React.ReactNode);
   };
 
 /**
@@ -87,7 +82,7 @@ export const Select = <T extends object>({ label, description, placeholder, erro
           {/* Floating dropdown container that appears when triggered */}
           <Popover className={classes.popover}>
             {/* Scrollable list of selectable options */}
-            <ListBox className={classes.listBox}>{children}</ListBox>
+            {children}
           </Popover>
         </>
       )}

@@ -1,13 +1,13 @@
 import { ListBoxItem } from "react-aria-components";
 
-import { ListBox } from "./ListBox";
+import { VirtualizedListBox } from "./VirtualizedListBox";
 
 import type { Meta, StoryObj } from "@storybook/react";
 import type { CSSProperties } from "react";
 
-const meta: Meta<typeof ListBox> = {
-  title: "Components/ListBox",
-  component: ListBox,
+const meta: Meta<typeof VirtualizedListBox> = {
+  title: "Components/VirtualizedListBox",
+  component: VirtualizedListBox,
   parameters: {
     layout: "centered",
   },
@@ -15,7 +15,7 @@ const meta: Meta<typeof ListBox> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ListBox>;
+type Story = StoryObj<typeof VirtualizedListBox>;
 
 const listItems = Array.from({ length: 1000 }, (_, i) => ({
   id: i,
@@ -32,8 +32,8 @@ const style: CSSProperties = {
 };
 
 const ListBoxTemplate: Story = {
-  render: (args: React.ComponentProps<typeof ListBox>) => (
-    <ListBox {...args} style={style}>
+  render: (args: React.ComponentProps<typeof VirtualizedListBox>) => (
+    <VirtualizedListBox {...args} style={style}>
       {listItems.map((item) => (
         <ListBoxItem
           key={item.id}
@@ -48,7 +48,7 @@ const ListBoxTemplate: Story = {
           <div style={{ fontSize: "0.8em", color: "#888" }}>{item.description}</div>
         </ListBoxItem>
       ))}
-    </ListBox>
+    </VirtualizedListBox>
   ),
 };
 
@@ -97,8 +97,8 @@ export const CustomHeight = {
 export const CustomItemStyling: Story = {
   ...ListBoxTemplate,
   render: (args) => (
-    <ListBox {...args} style={style}>
-      {listItems.map((item) => (
+    <VirtualizedListBox {...args} style={style} items={listItems}>
+      {(item) => (
         <ListBoxItem
           key={item.id}
           id={item.id.toString()}
@@ -112,8 +112,8 @@ export const CustomItemStyling: Story = {
           <div style={{ fontWeight: "bold", color: "#333" }}>{item.name}</div>
           <div style={{ fontSize: "0.8em", color: "#666" }}>{item.description}</div>
         </ListBoxItem>
-      ))}
-    </ListBox>
+      )}
+    </VirtualizedListBox>
   ),
   args: {
     "aria-label": "ListBox with Custom Item Styling",

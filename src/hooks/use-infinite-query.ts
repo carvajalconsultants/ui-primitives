@@ -207,7 +207,7 @@ export function useInfiniteQuery({ variables = { orderBy: [] }, dataPath, ...que
   const connection = pathOr(data, dataPath, DEFAULT_CONNECTION);
 
   const { nodes, pageInfo, totalCount } = connection;
-  const { hasNextPage, endCursor } = pageInfo;
+  const { hasNextPage, endCursor } = pageInfo ?? { hasNextPage: false, endCursor: null };
 
   // Load next page only if:
   // 1. Not currently loading

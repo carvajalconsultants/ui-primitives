@@ -3,16 +3,20 @@ import { ComboBox as AriaComboBox, Button, FieldError, Input, Popover } from "re
 import { comboBox, input } from "../../styled-system/recipes";
 import { Icon } from "../common/Icon";
 import { Label } from "../common/Label";
-import { ListBox } from "../listbox/ListBox";
+import { VirtualizedListBox } from "../listbox/VirtualizedListBox";
 import { Text } from "../typography/Text";
 
 import type { ComboBoxProps as AriaComboBoxProps } from "react-aria-components";
 
 import type { ComboBoxVariantProps } from "../../styled-system/recipes";
+import type { VirtualizedListBoxProps } from "../listbox/VirtualizedListBox";
 import type { WithoutClassName } from "../types";
 
-type ComboBoxProps<T extends object> = WithoutClassName<AriaComboBoxProps<T>, "children"> &
-  Partial<ComboBoxVariantProps> & {
+//TODO Add the onAddNewItem and addNewText to DataComboBox (get all this from IdeasForDataComboBox)
+
+type BaseComboBoxProps<T extends object> = WithoutClassName<AriaComboBoxProps<T>, "children" | "items" | "defaultItems"> &
+  Partial<ComboBoxVariantProps> &
+  Pick<VirtualizedListBoxProps<T>, "children"> & {
     /**
      * Label of the field shown above the input field.
      */
@@ -27,12 +31,32 @@ type ComboBoxProps<T extends object> = WithoutClassName<AriaComboBoxProps<T>, "c
      * Description of the field shown after the input field.
      */
     description?: string;
-
-    /**
-     * The items to be displayed in the listbox.
-     */
-    children: React.ReactNode | ((item: T) => React.ReactNode);
   };
+
+type ComboBoxPropsWithItems<T extends object> = BaseComboBoxProps<T> & {
+  /**
+   * The list of ComboBox items (controlled).
+   */
+  items: Iterable<T>;
+
+  defaultItems?: never;
+};
+
+type ComboBoxPropsWithDefaultItems<T extends object> = BaseComboBoxProps<T> & {
+  items?: never;
+
+  /**
+   * The list of ComboBox items (uncontrolled).
+   */
+  defaultItems: Iterable<T>;
+};
+
+type ComboBoxPropsWithoutItems<T extends object> = BaseComboBoxProps<T> & {
+  items?: never;
+  defaultItems?: never;
+};
+
+type ComboBoxProps<T extends object> = ComboBoxPropsWithItems<T> | ComboBoxPropsWithDefaultItems<T> | ComboBoxPropsWithoutItems<T>;
 
 /**
  * ARIA compliant ComboBox component combining a text input with a listbox dropdown.
@@ -49,6 +73,7 @@ export const ComboBox = <T extends object>({ label, description, placeholder, ch
 
           <div>
             <Input placeholder={placeholder} className={classes.input} />
+
             <Button data-rotate={isOpen} className={classes.button}>
               <Icon id="chevron-down" />
             </Button>
@@ -58,7 +83,7 @@ export const ComboBox = <T extends object>({ label, description, placeholder, ch
           {description && <Text slot="description">{description}</Text>}
 
           <Popover className={classes.popover}>
-            <ListBox className={classes.listBox}>{children}</ListBox>
+            <VirtualizedListBox>{children}</VirtualizedListBox>
           </Popover>
         </>
       )}
