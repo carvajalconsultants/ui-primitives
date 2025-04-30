@@ -17,7 +17,7 @@ import type { TagGroupVariant } from "../../styled-system/recipes";
  * @property {Function} [children] - Custom renderer for individual tag appearances
  * @property {Function} [renderEmptyState] - Custom content displayed when items array is empty
  */
-interface TagGroupProps<T extends object> extends Omit<AriaTagGroupProps, "children">, Pick<TagListProps<T>, "items" | "children" | "renderEmptyState">, TagGroupVariant {
+export interface TagGroupProps<T extends object> extends Omit<AriaTagGroupProps, "children">, Pick<TagListProps<T>, "items" | "children" | "renderEmptyState">, TagGroupVariant {
   /** Human-readable identifier for the group (e.g., "Product Categories") */
   label?: string;
 
