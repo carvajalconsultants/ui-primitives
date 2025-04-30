@@ -1,8 +1,17 @@
 import { Box } from "../../styled-system/jsx";
+import { icon } from "../../styled-system/patterns";
+
+import type { SystemProperties } from "styled-system/types";
 
 import type { BoxProps } from "../../styled-system/jsx";
 
-export type SpinnerProps = BoxProps;
+export interface SpinnerProps extends Omit<BoxProps, "width" | "height"> {
+  /**
+   * The width/height of the spinner.
+   */
+  size?: SystemProperties["width"];
+}
+
 /**
  * A loading spinner component that provides visual feedback during asynchronous operations.
  *
@@ -22,8 +31,19 @@ export type SpinnerProps = BoxProps;
  * // Custom size and colors
  * <Spinner size="6" borderColor="blue.500" />
  */
-export const Spinner = (props: SpinnerProps) => (
+export const Spinner = ({ size, className, ...props }: SpinnerProps) => (
   // Creates a circular spinning animation using border properties
   // The transparent top border creates the illusion of a rotating segment
-  <Box width="5" height="5" animation="spin" borderRadius="full" border="2" borderStyle="solid" borderColor="white" borderTopColor="transparent" {...props} />
+  <Box
+    width="5"
+    height="5"
+    className={`${icon({ size })} ${className}`}
+    animation="spin"
+    borderRadius="full"
+    border="2"
+    borderStyle="solid"
+    borderColor="white"
+    borderTopColor="transparent"
+    {...props}
+  />
 );

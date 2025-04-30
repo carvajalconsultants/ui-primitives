@@ -52,6 +52,7 @@ export const cciPreset = definePreset({
           size: {
             type: "token",
             value: "sizes",
+            property: "width",
           },
         },
         defaultValues: {
