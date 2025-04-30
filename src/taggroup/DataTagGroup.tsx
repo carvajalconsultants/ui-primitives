@@ -94,8 +94,8 @@ export const DataTagGroup = <TNode extends object, TNodeKey extends keyof TNode>
     }
 
     return (
-      <TagGroup {...props} errorMessage={errorMessage} renderEmptyState={() => emptyText}>
-        {nodes.map((node) => {
+      <TagGroup {...props} errorMessage={errorMessage} renderEmptyState={() => emptyText} items={nodes}>
+        {(node) => {
           const value = String(node[valuePath[0]]);
           const label = String(node[labelPath[0]]);
 
@@ -104,7 +104,7 @@ export const DataTagGroup = <TNode extends object, TNodeKey extends keyof TNode>
               {label}
             </Tag>
           );
-        })}
+        }}
       </TagGroup>
     );
   }, [fetching, error, props, nodes, valuePath, labelPath, emptyText]);
