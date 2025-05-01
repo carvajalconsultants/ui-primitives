@@ -84,7 +84,7 @@ export const DataTagGroup = <TNode extends object, TNodeKey extends keyof TNode>
   const renderContent = useCallback(() => {
     // Display loading indicator while fetching
     if (fetching) {
-      return <Spinner borderColor="primary.foreground" borderTopColor="white" />;
+      return <Spinner />;
     }
 
     // Handle error message safely

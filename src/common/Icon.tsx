@@ -1,8 +1,8 @@
 import { styled } from "../../styled-system/jsx";
-import { icon } from "../../styled-system/patterns";
+import { square } from "../../styled-system/patterns";
 
 import type { HTMLStyledProps } from "../../styled-system/jsx";
-import type { IconProperties } from "../../styled-system/patterns";
+import type { SquareProperties } from "../../styled-system/patterns";
 
 /**
  * Supported icons in a map format so that it can be extended easily with augmentation.
@@ -15,7 +15,7 @@ export interface IconMap {
 }
 
 export type IconProps = Omit<HTMLStyledProps<"svg">, "width" | "height"> &
-  IconProperties & {
+  SquareProperties & {
     // Name of the tabler icon, from: https://tabler.io/icons
     id: keyof IconMap;
   };
@@ -27,7 +27,7 @@ export type IconProps = Omit<HTMLStyledProps<"svg">, "width" | "height"> &
  * You can simply use the "Copy SVG" option and paste the content in the file.
  */
 export const Icon = ({ id, size = "5", className = "", ...props }: IconProps) => (
-  <styled.svg {...props} className={`${icon({ size })} ${className}`}>
+  <styled.svg {...props} className={`${square({ size })} ${className}`}>
     <use xlinkHref={`/__spritemap#${id}`} />
   </styled.svg>
 );

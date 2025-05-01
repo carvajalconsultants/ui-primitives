@@ -1,5 +1,5 @@
 import { Box } from "../../styled-system/jsx";
-import { icon } from "../../styled-system/patterns";
+import { square } from "../../styled-system/patterns";
 
 import type { SystemProperties } from "styled-system/types";
 
@@ -37,13 +37,13 @@ export const Spinner = ({ size, className, ...props }: SpinnerProps) => (
   <Box
     width="5"
     height="5"
-    className={`${icon({ size })} ${className}`}
+    className={`${square({ size })} ${className}`}
     animation="spin"
     borderRadius="full"
     border="2"
     borderStyle="solid"
-    borderColor="white"
-    borderTopColor="transparent"
+    borderColor="primary.foreground"
+    borderTopColor="white"
     {...props}
   />
 );

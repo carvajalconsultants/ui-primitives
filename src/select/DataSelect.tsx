@@ -101,7 +101,7 @@ export const DataSelect = <TNode extends object, TNodeKey extends keyof TNode>({
       return (
         <ListBox>
           <ListBoxItem key="loading" size={size}>
-            <Spinner borderColor="primary.foreground" borderTopColor="white" />
+            <Spinner />
           </ListBoxItem>
         </ListBox>
       );
