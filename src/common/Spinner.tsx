@@ -1,10 +1,11 @@
 import { Box } from "../../styled-system/jsx";
+import { square } from "../../styled-system/patterns";
 
 import type { SystemProperties } from "styled-system/types";
 
 import type { BoxProps } from "../../styled-system/jsx";
 
-export interface SpinnerProps extends Omit<BoxProps, "width" | "height" | "borderTopColor"> {
+export interface SpinnerProps extends Omit<BoxProps, "width" | "height"> {
   /**
    * The width/height of the spinner.
    */
@@ -30,8 +31,19 @@ export interface SpinnerProps extends Omit<BoxProps, "width" | "height" | "borde
  * // Custom size and colors
  * <Spinner size="6" borderColor="blue.500" />
  */
-export const Spinner = ({ size, ...props }: SpinnerProps) => (
+export const Spinner = ({ size, className, ...props }: SpinnerProps) => (
   // Creates a circular spinning animation using border properties
   // The transparent top border creates the illusion of a rotating segment
-  <Box width={size} height={size} animation="spin" borderRadius="full" border="2" borderStyle="solid" borderColor="white" borderTopColor="transparent" {...props} />
+  <Box
+    width="5"
+    height="5"
+    className={`${square({ size })} ${className}`}
+    animation="spin"
+    borderRadius="full"
+    border="2"
+    borderStyle="solid"
+    borderColor="primary.foreground"
+    borderTopColor="white"
+    {...props}
+  />
 );

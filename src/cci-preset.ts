@@ -46,12 +46,13 @@ export const cciPreset = definePreset({
 
   patterns: {
     extend: {
-      icon: {
-        description: "Applies size tokens to both width and height for icons",
+      square: {
+        description: "Applies size to both width and height for square things like icons, spinner, etc.",
         properties: {
           size: {
             type: "token",
             value: "sizes",
+            property: "width",
           },
         },
         defaultValues: {
