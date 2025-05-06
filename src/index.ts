@@ -21,6 +21,7 @@ export { ListBoxItem } from "./listbox/ListBoxItem";
 export { Icon } from "./common/Icon";
 export type { IconMap, IconProps } from "./common/Icon";
 export { Label } from "./common/Label";
+export { Spinner } from "./common/Spinner";
 export { ContentHeader } from "./contentheader/ContentHeader";
 export { SearchField } from "./form/SearchField";
 export { SliderField } from "./form/slider/SliderField";
