@@ -167,7 +167,10 @@ export const cciPreset = definePreset({
 
           success: { primary: { value: { _light: "#069024", _dark: "#4EBB84" } } },
           warning: { primary: { value: { _light: "#E4A500", _dark: "#B54708" } } },
-          danger: { primary: { value: { _light: "#EA3731", _dark: "#EF6C63" } } },
+          danger: {
+            primary: { value: { _light: "#EA3731", _dark: "#EF6C63" } },
+            secondary: { value: { _light: "#FEE4E2", _dark: "#FEE4E2" } },
+          },
         },
         bg: {
           primary: {
