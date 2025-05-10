@@ -121,7 +121,7 @@ const VISUAL_SIZE_MULTIPLIER = 14;
 
 type EmptyProps = EmptyStyleProps & {
   // The icon to display in the empty state, using the Icon component's props interface
-  icon: IconProps;
+  icon: IconProps["id"];
 
   // The main heading text that appears below the icon
   title: string;
@@ -170,7 +170,7 @@ export const Empty: React.FC<EmptyProps> = ({ icon, title, description, variant 
 
         {/* Icon */}
         <div className={classes.iconWrapper}>
-          <Icon {...icon} className={classes.icon} />
+          <Icon id={icon} className={classes.icon} />
         </div>
       </div>
 
