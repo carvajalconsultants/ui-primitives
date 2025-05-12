@@ -76,6 +76,11 @@ export const buttonRecipe = defineRecipe({
           cursor: "not-allowed",
           outlineWidth: "0",
         },
+
+        "& [data-spinner]": {
+          borderColor: "colors.white",
+          borderTopColor: "colors.white",
+        },
       },
       secondary: {
         // Less prominent button style for secondary actions
@@ -107,6 +112,11 @@ export const buttonRecipe = defineRecipe({
           cursor: "not-allowed",
           outlineWidth: "0",
         },
+
+        "& [data-spinner]": {
+          borderColor: "colors.black",
+          borderTopColor: "colors.black",
+        },
       },
       ghost: {
         // Minimal style for actions that shouldn't draw attention
@@ -136,6 +146,11 @@ export const buttonRecipe = defineRecipe({
           opacity: "50",
           cursor: "not-allowed",
           outlineWidth: "0",
+        },
+
+        "& [data-spinner]": {
+          borderColor: "colors.white",
+          borderTopColor: "colors.white",
         },
       },
       link: {
@@ -169,6 +184,11 @@ export const buttonRecipe = defineRecipe({
         "&:disabled": {
           opacity: "50",
           cursor: "not-allowed",
+        },
+
+        "& [data-spinner]": {
+          borderColor: "bg.brand.primary",
+          borderTopColor: "bg.brand.primary",
         },
       },
       icon: {
