@@ -87,7 +87,7 @@ export const Empty: FC<EmptyProps> = ({ variant, icon, title, description, iconS
         })}
 
         {/* Icon */}
-        <div data-variant={variant} className={styles.iconWrapper}>
+        <div className={styles.iconWrapper}>
           <Icon id={icon} className={styles.icon} />
         </div>
       </div>
