@@ -8,26 +8,7 @@ import type { FC } from "react";
 import type { EmptyVariantProps } from "../../styled-system/recipes";
 import type { IconProps } from "../common/Icon";
 
-/**
- * Defines the styles for the Empty component using the sva (styled variant API) pattern.
- * This creates a multi-slot component with different visual states and variants.
- *
- * Slots:
- * - root: Main container with centered content
- * - iconContainer: Wrapper for the icon and its decorative rings
- * - ringContainer: Individual decorative rings around the icon
- * - iconWrapper: Container for the icon with background
- * - icon: The actual icon with color manipulation
- * - content: Container for text content
- * - title: Heading text
- * - description: Supporting text
- *
- * Variants:
- * - normal: Default state with brand colors
- * - danger: Error state with danger colors
- */
-
-type EmptyProps = Partial<EmptyVariantProps> & {
+type EmptyProps = EmptyVariantProps & {
   // The icon to display in the empty state, using the Icon component's props interface
   icon: IconProps["id"];
 

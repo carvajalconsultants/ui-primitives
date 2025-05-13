@@ -1,5 +1,25 @@
 import { defineSlotRecipe } from "@pandacss/dev";
 
+/**
+ * Defines the styles for the Empty component using the sva (styled variant API) pattern.
+ * This creates a multi-slot component with different visual states and variants.
+ *
+ * Slots:
+ * - root: Main container with centered content
+ * - iconContainer: Wrapper for the icon and its decorative rings
+ * - ringContainer: Individual decorative rings around the icon
+ * - iconWrapper: Container for the icon with background
+ * - icon: The actual icon with color manipulation
+ * - content: Container for text content
+ * - title: Heading text
+ * - description: Supporting text
+ *
+ *
+ * Variants:
+ * - normal: Default state with brand colors
+ * - danger: Error state with danger colors
+ */
+
 export const emptyRecipe = defineSlotRecipe({
   className: "empty",
   description: "Style variants for empty state component with icon and text content",
