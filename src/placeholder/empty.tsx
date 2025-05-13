@@ -1,12 +1,11 @@
-import { sva } from "../../styled-system/css";
-import { Box } from "../../styled-system/jsx";
+import { empty } from "../../styled-system/recipes";
 import { Icon } from "../common/Icon";
 import { Heading } from "../typography/Heading";
 import { Paragraph } from "../typography/Paragraph";
 
-import type * as React from "react";
+import type { FC } from "react";
 
-import type { RecipeVariantProps } from "../../styled-system/css";
+import type { EmptyVariantProps } from "../../styled-system/recipes";
 import type { IconProps } from "../common/Icon";
 
 /**
@@ -27,99 +26,8 @@ import type { IconProps } from "../common/Icon";
  * - normal: Default state with brand colors
  * - danger: Error state with danger colors
  */
-const emptyStyles = sva({
-  slots: ["root", "iconContainer", "ringContainer", "iconWrapper", "icon", "content", "title", "description"],
-  base: {
-    root: {
-      position: "relative",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      minHeight: "80",
-      width: "full",
-      height: "full",
-      textAlign: "center",
-      overflow: "hidden",
-    },
-    iconContainer: {
-      position: "relative",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      mb: "4",
-    },
-    ringContainer: {
-      position: "absolute",
-      borderRadius: "full",
-      borderWidth: "1",
-      borderColor: "border.primary",
-      pointerEvents: "none",
-      zIndex: "0",
-    },
-    iconWrapper: {
-      padding: "3",
-      borderRadius: "full",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    icon: {
-      zIndex: "1",
-      boxShadow: "1",
-      objectFit: "contain",
-      position: "relative",
-      flexShrink: "0",
-      display: "block",
-    },
-    content: {
-      transform: "translateY(-150px)",
-      paddingX: "6",
-    },
-    title: {},
-    description: {
-      mt: "1",
-      maxWidth: "80",
-      textWrap: "balance",
-      mx: "auto",
-    },
-  },
-  variants: {
-    variant: {
-      normal: {
-        iconWrapper: {
-          bg: "bg.secondary._alt",
-        },
-        icon: {
-          filter: "[brightness(0) saturate(100%) drop-shadow(0px 1000px 0 var(--colors-bg-brand-primary))]",
-          transform: "translateY(-1000px)",
-        },
-      },
-      danger: {
-        iconWrapper: {
-          borderColor: "fg.danger.primary",
-        },
-        icon: {
-          filter: "[brightness(0) saturate(100%) drop-shadow(0px 1000px 0 var(--colors-fg-danger-primary))]",
-          transform: "translateY(-1000px)",
-        },
-      },
-    },
-  },
-  defaultVariants: {
-    variant: "normal",
-  },
-});
 
-type EmptyStyleProps = RecipeVariantProps<typeof emptyStyles>;
-
-// CONFIG
-const ICON_SIZE = 28;
-const RING_COUNT = 5;
-const RING_BASE_OPACITY = 0.08;
-const VISUAL_SIZE_MULTIPLIER = 14;
-
-type EmptyProps = EmptyStyleProps & {
+type EmptyProps = Partial<EmptyVariantProps> & {
   // The icon to display in the empty state, using the Icon component's props interface
   icon: IconProps["id"];
 
@@ -128,59 +36,69 @@ type EmptyProps = EmptyStyleProps & {
 
   // Additional descriptive text that provides context or guidance to the user
   description: string;
+
+  // These are the sizes of the icon
+  iconSize?: number;
+
+  // This is the number of rings
+  ringCount?: number;
+
+  // This is the base opacity of the rings
+  ringBaseOpacity?: number;
+
+  // This is the multiplier for the visual size
+  visualSizeMultiplier?: number;
 };
 
-export const Empty: React.FC<EmptyProps> = ({ icon, title, description, variant = "normal" }) => {
+export const Empty: FC<EmptyProps> = ({ variant, icon, title, description, iconSize = 28, ringCount = 5, ringBaseOpacity = 0.08, visualSizeMultiplier = 14 }) => {
   // The visual area for icon + rings
-  const iconSize = ICON_SIZE;
-  const visualSize = iconSize * VISUAL_SIZE_MULTIPLIER;
+  const visualSize = iconSize * visualSizeMultiplier;
 
-  // Get all the classes from our recipe using the variant
-  const classes = emptyStyles({ variant });
+  // Get the classes from our recipe using the variant
+  const styles = empty({ variant });
 
   return (
-    <div className={classes.root}>
+    <div className={styles.root}>
       {/* Centered visual area for icon + rings */}
       <div
-        className={classes.iconContainer}
+        className={styles.iconContainer}
         style={{
           width: `${visualSize}px`,
           height: `${visualSize}px`,
         }}>
         {/* Background Rings */}
-        {Array.from({ length: RING_COUNT }, (_, idx) => {
+        {Array.from({ length: ringCount }, (_, idx) => {
           const i = idx + 1;
 
           return (
             <div
               key={i}
-              className={classes.ringContainer}
+              className={styles.ringContainer}
               style={{
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-                width: `${iconSize + (i * (visualSize - iconSize)) / RING_COUNT}px`,
-                height: `${iconSize + (i * (visualSize - iconSize)) / RING_COUNT}px`,
-                opacity: RING_BASE_OPACITY * (RING_COUNT + 1 - i),
-                borderStyle: "solid",
+                width: `${iconSize + (i * (visualSize - iconSize)) / ringCount}px`,
+                height: `${iconSize + (i * (visualSize - iconSize)) / ringCount}px`,
+                opacity: ringBaseOpacity * (ringCount + 1 - i),
               }}
             />
           );
         })}
 
         {/* Icon */}
-        <div className={classes.iconWrapper}>
-          <Icon id={icon} className={classes.icon} />
+        <div data-variant={variant} className={styles.iconWrapper}>
+          <Icon id={icon} className={styles.icon} />
         </div>
       </div>
 
-      <div className={classes.content}>
+      <div className={styles.content}>
         <Heading level={1} size="md" weight="semiBold" textWrap="balance">
           {title}
         </Heading>
-        <Box className={classes.description}>
+        <div className={styles.description}>
           <Paragraph>{description}</Paragraph>
-        </Box>
+        </div>
       </div>
     </div>
   );
