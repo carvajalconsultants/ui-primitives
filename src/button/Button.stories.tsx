@@ -105,6 +105,17 @@ export const PrimaryFullDisabled = {
   },
 };
 
+// Variant: primary, Width: fit, Loading
+export const PrimaryLoading = {
+  ...SingleButton,
+  args: {
+    variant: "primary",
+    width: "fit",
+    isLoading: true,
+    children: "Signing In...",
+  },
+};
+
 // Variant: secondary, Width: fit
 export const SecondaryFit = {
   ...SingleButton,
@@ -170,6 +181,17 @@ export const SecondaryFullDisabled = {
   args: {
     variant: "secondary",
     isDisabled: true,
+  },
+};
+
+// Variant: secondary, Width: fit, Loading
+export const SecondaryLoading = {
+  ...SingleButton,
+  args: {
+    variant: "secondary",
+    width: "fit",
+    isLoading: true,
+    children: "Loading...",
   },
 };
 
@@ -241,6 +263,17 @@ export const GhostFullDisabled = {
   },
 };
 
+// Variant: ghost, Width: fit, Loading
+export const GhostLoading = {
+  ...SingleButton,
+  args: {
+    variant: "ghost",
+    width: "fit",
+    isLoading: true,
+    children: "Loading...",
+  },
+};
+
 // Variant: link, Width: fit
 export const LinkFit = {
   ...SingleButton,
@@ -306,5 +339,16 @@ export const LinkFullDisabled = {
   args: {
     variant: "link",
     isDisabled: true,
+  },
+};
+
+// Variant: link, Width: fit, Loading
+export const LinkLoading = {
+  ...SingleButton,
+  args: {
+    variant: "link",
+    width: "fit",
+    isLoading: true,
+    children: "Loading...",
   },
 };
