@@ -4,9 +4,9 @@ import { SwitchField } from "./SwitchField";
 import type { ElementType, FC, PropsWithChildren } from "react";
 
 import type { WithoutClassName } from "../types";
-import type { SwitchProps } from "./SwitchField";
+import type { SwitchFieldProps } from "./SwitchField";
 
-export interface ToggleSectionFieldProps extends PropsWithChildren<WithoutClassName<SwitchProps>> {
+export interface ToggleSectionFieldProps extends PropsWithChildren<WithoutClassName<SwitchFieldProps>> {
   /**
    * Switch field component to use, which can be a vanilla Switch or the FormSwitch for instance.
    */

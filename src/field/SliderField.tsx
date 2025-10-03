@@ -1,14 +1,14 @@
 import { Slider, SliderOutput, SliderThumb, SliderTrack } from "react-aria-components";
 
-import { cx } from "../../../styled-system/css";
-import { slider } from "../../../styled-system/recipes";
-import { Label } from "../../common/Label";
+import { cx } from "../../styled-system/css";
+import { slider } from "../../styled-system/recipes";
+import { Label } from "../common/Label";
 
 import type { FC } from "react";
 import type { SliderProps as AriaSliderProps } from "react-aria-components";
 
-import type { SliderVariantProps } from "../../../styled-system/recipes";
-import type { WithoutClassName } from "../../types";
+import type { SliderVariantProps } from "../../styled-system/recipes";
+import type { WithoutClassName } from "../types";
 
 export interface SliderFieldProps extends WithoutClassName<AriaSliderProps>, SliderVariantProps {
   /**
