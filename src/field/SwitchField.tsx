@@ -10,7 +10,7 @@ import type { SwitchProps as AriaSwitchProps } from "react-aria-components";
 import type { SwitchhVariant } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
-export interface SwitchProps extends WithoutClassName<AriaSwitchProps>, Partial<SwitchhVariant> {
+export interface SwitchFieldProps extends WithoutClassName<AriaSwitchProps>, Partial<SwitchhVariant> {
   /**
    * Text to display above the switch
    */
@@ -25,7 +25,7 @@ export interface SwitchProps extends WithoutClassName<AriaSwitchProps>, Partial<
 /**
  * Aria compliant switch field with a label and a description.
  */
-export const SwitchField: FC<SwitchProps> = ({ label, description, ...props }) => {
+export const SwitchField: FC<SwitchFieldProps> = ({ label, description, ...props }) => {
   // For some reason, the `switch` is not working.
   const classes = switchh();
 

@@ -11,11 +11,12 @@ import { ComboBox } from "./combobox/ComboBox";
 import { Label } from "./common/Label";
 import { ContentHeader } from "./contentheader/ContentHeader";
 import { DatePicker } from "./datepicker/DatePicker";
-import { SearchField } from "./form/SearchField";
-import { SliderField } from "./form/slider/SliderField";
-import { SwitchField } from "./form/SwitchField";
-import { TextField } from "./form/TextField";
-import { ToggleSectionField } from "./form/ToggleSectionField";
+import { SearchField } from "./field/SearchField";
+import { SliderField } from "./field/SliderField";
+import { SwitchField } from "./field/SwitchField";
+import { TextField } from "./field/TextField";
+import { ToggleSectionField } from "./field/ToggleSectionField";
+import { useAppForm } from "./form";
 import { Link } from "./link/Link";
 import { ListBox } from "./listbox/ListBox";
 import { ListBoxItem } from "./listbox/ListBoxItem";
@@ -89,6 +90,13 @@ export const App = () => {
 
   const [selected, setSelected] = useState<Selection>(new Set(["parking"]));
 
+  const form = useAppForm({
+    defaultValues: {
+      firstName: "John",
+      lastName: "Doe",
+    },
+  });
+
   return (
     <Stack
       gap="4"
@@ -106,6 +114,7 @@ export const App = () => {
       }}>
       {/* Temporary <Icon> fix */}
       <Box width="4" height="4" bg="primary.foreground" />
+      <form.AppField name="firstName">{(field) => <field.TextField label="First Name" />}</form.AppField>
 
       <Tabs defaultSelectedKey="tab1">
         <TabList aria-label="Tabs with Disabled Tab">
