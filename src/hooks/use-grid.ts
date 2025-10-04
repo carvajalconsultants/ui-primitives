@@ -82,6 +82,7 @@ declare module "@tanstack/react-router" {
 
   // This is needed to be able to use "Route.prototype.useGrid" below
   interface Route<
+    in out TRegister = unknown,
     in out TParentRoute extends RouteConstraints["TParentRoute"] = AnyRoute,
     in out TPath extends RouteConstraints["TPath"] = "/",
     in out TFullPath extends RouteConstraints["TFullPath"] = ResolveFullPath<TParentRoute, TPath>,
@@ -96,6 +97,9 @@ declare module "@tanstack/react-router" {
     in out TLoaderFn = undefined,
     in out TChildren = unknown,
     in out TFileRouteTypes = unknown,
+    in out TSSR = unknown,
+    in out TServerMiddlewares = unknown,
+    in out THandlers = undefined,
   > {
     useGrid<TData, TRouter extends AnyRouter = RegisteredRouter>(options: GridHookOptions<TData, TId, TRouter>): Table<TData>;
   }

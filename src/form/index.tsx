@@ -11,7 +11,7 @@ import { FormTextField } from "./field/FormTextField";
  * @property {React.Context} fieldContext - Context for individual form field state and behaviors
  * @property {React.Context} formContext - Context for overall form state management
  * @property {Function} useFieldContext - Hook to access field context within custom form components
- * 
+ *
  * These contexts enable:
  * - Consistent form state management across complex forms
  * - Field-level validation and error handling
@@ -22,11 +22,11 @@ export const { fieldContext, formContext, useFieldContext } = createFormHookCont
 
 /**
  * Custom form hook and HOC creator configured with our form field components.
- * 
+ *
  * @typedef {Object} FormHookExports
  * @property {Function} useAppForm - Hook for creating and managing forms with built-in validation and state management
  * @property {Function} withForm - HOC to wrap components with form functionality
- * 
+ *
  * The form hook provides:
  * - Type-safe form state management
  * - Built-in validation
@@ -34,7 +34,7 @@ export const { fieldContext, formContext, useFieldContext } = createFormHookCont
  * - Form submission handling
  * - Dirty state tracking
  * - Form reset capabilities
- * 
+ *
  * Available field components:
  * - TextField: Standard text input with validation
  * - SearchField: Text input optimized for search with debouncing
