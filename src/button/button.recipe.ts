@@ -6,7 +6,7 @@ export const buttonRecipe = defineRecipe({
   base: {
     // Creates a horizontal layout for icons and text within the button
     display: "inline-flex",
-    gap: "0.5",
+    gap: "2",
     alignItems: "center",
     justifyContent: "center",
 

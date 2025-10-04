@@ -1,10 +1,9 @@
+import { useState } from "react";
+
+import { Spinner } from "../common/Spinner";
 import { Button } from "./Button";
 
 import type { Meta, StoryObj } from "@storybook/react";
-
-const mockAsyncAction = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-};
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
@@ -111,11 +110,27 @@ export const PrimaryFullDisabled = {
 
 // Variant: primary, Width: fit, Loading
 export const PrimaryLoading: Story = {
-  render: (args) => (
-    <Button {...args} loadingChildren="Signing In..." onPress={mockAsyncAction}>
-      Sign In
-    </Button>
-  ),
+  render: (args) => {
+    const [isPending, setPending] = useState(false);
+
+    const handlePress = () => {
+      setPending(true);
+      setTimeout(() => {
+        setPending(false);
+      }, 20000);
+    };
+
+    return (
+      <Button {...args} isPending={isPending} onPress={handlePress}>
+        {({ isPending }) => (
+          <>
+            {isPending && <Spinner size="4" />}
+            {isPending ? "Signing In..." : "Sign In"}
+          </>
+        )}
+      </Button>
+    );
+  },
   args: {
     variant: "primary",
     width: "fit",
@@ -192,11 +207,27 @@ export const SecondaryFullDisabled = {
 
 // Variant: secondary, Width: fit, Loading
 export const SecondaryLoading: Story = {
-  render: (args) => (
-    <Button {...args} loadingChildren="Loading..." onPress={mockAsyncAction}>
-      Load Data
-    </Button>
-  ),
+  render: (args) => {
+    const [isPending, setPending] = useState(false);
+
+    const handlePress = () => {
+      setPending(true);
+      setTimeout(() => {
+        setPending(false);
+      }, 2000);
+    };
+
+    return (
+      <Button {...args} isPending={isPending} onPress={handlePress}>
+        {({ isPending }) => (
+          <>
+            {isPending && <Spinner size="4" />}
+            {isPending ? "Loading..." : "Load Data"}
+          </>
+        )}
+      </Button>
+    );
+  },
   args: {
     variant: "secondary",
     width: "fit",
@@ -273,11 +304,27 @@ export const GhostFullDisabled = {
 
 // Variant: ghost, Width: fit, Loading
 export const GhostLoading: Story = {
-  render: (args) => (
-    <Button {...args} loadingChildren="Refreshing..." onPress={mockAsyncAction}>
-      Refresh
-    </Button>
-  ),
+  render: (args) => {
+    const [isPending, setPending] = useState(false);
+
+    const handlePress = () => {
+      setPending(true);
+      setTimeout(() => {
+        setPending(false);
+      }, 2000);
+    };
+
+    return (
+      <Button {...args} isPending={isPending} onPress={handlePress}>
+        {({ isPending }) => (
+          <>
+            {isPending && <Spinner size="4" />}
+            {isPending ? "Refreshing..." : "Refresh"}
+          </>
+        )}
+      </Button>
+    );
+  },
   args: {
     variant: "ghost",
     width: "fit",
@@ -354,11 +401,27 @@ export const LinkFullDisabled = {
 
 // Variant: link, Width: fit, Loading
 export const LinkLoading: Story = {
-  render: (args) => (
-    <Button {...args} loadingChildren="Loading..." onPress={mockAsyncAction}>
-      View More
-    </Button>
-  ),
+  render: (args) => {
+    const [isPending, setPending] = useState(false);
+
+    const handlePress = () => {
+      setPending(true);
+      setTimeout(() => {
+        setPending(false);
+      }, 2000);
+    };
+
+    return (
+      <Button {...args} isPending={isPending} onPress={handlePress}>
+        {({ isPending }) => (
+          <>
+            {isPending && <Spinner size="4" />}
+            {isPending ? "Loading..." : "View More"}
+          </>
+        )}
+      </Button>
+    );
+  },
   args: {
     variant: "link",
     width: "fit",
