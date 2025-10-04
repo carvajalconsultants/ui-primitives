@@ -1,4 +1,4 @@
-/* eslint-disable func-style, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-argument, @typescript-eslint/prefer-nullish-coalescing */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-argument, @typescript-eslint/prefer-nullish-coalescing */
 import { useCallback, useEffect, useState } from "react";
 
 import { pathOr } from "remeda";
