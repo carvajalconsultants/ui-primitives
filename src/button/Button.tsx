@@ -11,7 +11,6 @@ import type { WithoutClassName } from "../types";
 export type ButtonProps = WithoutClassName<AriaButtonProps> & Partial<ButtonVariantProps>;
 
 /**
- * ARIA compliant button that calls onPress function when clicked.
- * Supports pending state via isPending prop and render props for dynamic content.
+ * ARIA compliant button component that provides consistent styling, accessibility, variants, sizes, and width configurations.
  */
 export const Button: FC<ButtonProps> = ({ variant = "primary", width, size, ...props }) => <AriaButton className={button({ variant, width, size })} {...props} />;

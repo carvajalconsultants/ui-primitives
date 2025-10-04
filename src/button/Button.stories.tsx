@@ -111,6 +111,7 @@ export const PrimaryFullDisabled = {
 // Variant: primary, Width: fit, Loading
 export const PrimaryLoading: Story = {
   render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [isPending, setPending] = useState(false);
 
     const handlePress = () => {
@@ -208,6 +209,7 @@ export const SecondaryFullDisabled = {
 // Variant: secondary, Width: fit, Loading
 export const SecondaryLoading: Story = {
   render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [isPending, setPending] = useState(false);
 
     const handlePress = () => {
@@ -305,6 +307,7 @@ export const GhostFullDisabled = {
 // Variant: ghost, Width: fit, Loading
 export const GhostLoading: Story = {
   render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [isPending, setPending] = useState(false);
 
     const handlePress = () => {
@@ -402,6 +405,7 @@ export const LinkFullDisabled = {
 // Variant: link, Width: fit, Loading
 export const LinkLoading: Story = {
   render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [isPending, setPending] = useState(false);
 
     const handlePress = () => {
