@@ -2,6 +2,10 @@ import { Button } from "./Button";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
+const mockAsyncAction = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+};
+
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
@@ -106,13 +110,15 @@ export const PrimaryFullDisabled = {
 };
 
 // Variant: primary, Width: fit, Loading
-export const PrimaryLoading = {
-  ...SingleButton,
+export const PrimaryLoading: Story = {
+  render: (args) => (
+    <Button {...args} loadingChildren="Signing In..." onPress={mockAsyncAction}>
+      Sign In
+    </Button>
+  ),
   args: {
     variant: "primary",
     width: "fit",
-    isLoading: true,
-    children: "Signing In...",
   },
 };
 
@@ -185,13 +191,15 @@ export const SecondaryFullDisabled = {
 };
 
 // Variant: secondary, Width: fit, Loading
-export const SecondaryLoading = {
-  ...SingleButton,
+export const SecondaryLoading: Story = {
+  render: (args) => (
+    <Button {...args} loadingChildren="Loading..." onPress={mockAsyncAction}>
+      Load Data
+    </Button>
+  ),
   args: {
     variant: "secondary",
     width: "fit",
-    isLoading: true,
-    children: "Loading...",
   },
 };
 
@@ -264,13 +272,15 @@ export const GhostFullDisabled = {
 };
 
 // Variant: ghost, Width: fit, Loading
-export const GhostLoading = {
-  ...SingleButton,
+export const GhostLoading: Story = {
+  render: (args) => (
+    <Button {...args} loadingChildren="Refreshing..." onPress={mockAsyncAction}>
+      Refresh
+    </Button>
+  ),
   args: {
     variant: "ghost",
     width: "fit",
-    isLoading: true,
-    children: "Loading...",
   },
 };
 
@@ -343,12 +353,14 @@ export const LinkFullDisabled = {
 };
 
 // Variant: link, Width: fit, Loading
-export const LinkLoading = {
-  ...SingleButton,
+export const LinkLoading: Story = {
+  render: (args) => (
+    <Button {...args} loadingChildren="Loading..." onPress={mockAsyncAction}>
+      View More
+    </Button>
+  ),
   args: {
     variant: "link",
     width: "fit",
-    isLoading: true,
-    children: "Loading...",
   },
 };
