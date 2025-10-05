@@ -1,6 +1,3 @@
-import { useState } from "react";
-
-import { Spinner } from "../common/Spinner";
 import { Button } from "./Button";
 
 import type { Meta, StoryObj } from "@storybook/react";
@@ -108,36 +105,6 @@ export const PrimaryFullDisabled = {
   },
 };
 
-// Variant: primary, Width: fit, Loading
-export const PrimaryLoading: Story = {
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [isPending, setPending] = useState(false);
-
-    const handlePress = () => {
-      setPending(true);
-      setTimeout(() => {
-        setPending(false);
-      }, 20000);
-    };
-
-    return (
-      <Button {...args} isPending={isPending} onPress={handlePress}>
-        {({ isPending }) => (
-          <>
-            {isPending && <Spinner size="4" />}
-            {isPending ? "Signing In..." : "Sign In"}
-          </>
-        )}
-      </Button>
-    );
-  },
-  args: {
-    variant: "primary",
-    width: "fit",
-  },
-};
-
 // Variant: secondary, Width: fit
 export const SecondaryFit = {
   ...SingleButton,
@@ -203,36 +170,6 @@ export const SecondaryFullDisabled = {
   args: {
     variant: "secondary",
     isDisabled: true,
-  },
-};
-
-// Variant: secondary, Width: fit, Loading
-export const SecondaryLoading: Story = {
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [isPending, setPending] = useState(false);
-
-    const handlePress = () => {
-      setPending(true);
-      setTimeout(() => {
-        setPending(false);
-      }, 2000);
-    };
-
-    return (
-      <Button {...args} isPending={isPending} onPress={handlePress}>
-        {({ isPending }) => (
-          <>
-            {isPending && <Spinner size="4" />}
-            {isPending ? "Loading..." : "Load Data"}
-          </>
-        )}
-      </Button>
-    );
-  },
-  args: {
-    variant: "secondary",
-    width: "fit",
   },
 };
 
@@ -304,36 +241,6 @@ export const GhostFullDisabled = {
   },
 };
 
-// Variant: ghost, Width: fit, Loading
-export const GhostLoading: Story = {
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [isPending, setPending] = useState(false);
-
-    const handlePress = () => {
-      setPending(true);
-      setTimeout(() => {
-        setPending(false);
-      }, 2000);
-    };
-
-    return (
-      <Button {...args} isPending={isPending} onPress={handlePress}>
-        {({ isPending }) => (
-          <>
-            {isPending && <Spinner size="4" />}
-            {isPending ? "Refreshing..." : "Refresh"}
-          </>
-        )}
-      </Button>
-    );
-  },
-  args: {
-    variant: "ghost",
-    width: "fit",
-  },
-};
-
 // Variant: link, Width: fit
 export const LinkFit = {
   ...SingleButton,
@@ -399,35 +306,5 @@ export const LinkFullDisabled = {
   args: {
     variant: "link",
     isDisabled: true,
-  },
-};
-
-// Variant: link, Width: fit, Loading
-export const LinkLoading: Story = {
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [isPending, setPending] = useState(false);
-
-    const handlePress = () => {
-      setPending(true);
-      setTimeout(() => {
-        setPending(false);
-      }, 2000);
-    };
-
-    return (
-      <Button {...args} isPending={isPending} onPress={handlePress}>
-        {({ isPending }) => (
-          <>
-            {isPending && <Spinner size="4" />}
-            {isPending ? "Loading..." : "View More"}
-          </>
-        )}
-      </Button>
-    );
-  },
-  args: {
-    variant: "link",
-    width: "fit",
   },
 };

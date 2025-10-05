@@ -13,6 +13,7 @@ export { DateRangePicker } from "./daterangepicker/DateRangePicker";
 
 export { Avatar } from "./avatar/Avatar";
 export { Badge } from "./badge/Badge";
+export { AsyncButton } from "./button/AsyncButton";
 export { Button } from "./button/Button";
 export { Checkbox } from "./checkbox/Checkbox";
 export { ComboBox } from "./combobox/ComboBox";
