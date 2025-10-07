@@ -16,26 +16,42 @@ export interface AsyncButtonProps extends Omit<WithoutClassName<AriaButtonProps>
 }
 
 /**
- * Async button component that extends Button with automatic loading state handling.
- * Automatically handles loading states when onPress returns a Promise.
+ * Async Button that manages pending state for async onPress handlers.
+ * - If onPress returns a Promise, it toggles an internal isPending flag until it settles.
+ * - While pending, it shows a Spinner with optional loadingText, or you can render via
+ *   function-as-children to receive { isPending } for custom UI.
+ * Use this when you want automatic loading UX without wiring state manually; otherwise use Button.
  */
 export const AsyncButton: FC<AsyncButtonProps> = ({ variant = "primary", children, loadingText, onPress, ...props }) => {
   const [isPending, setIsPending] = useState(false);
 
-  const handlePress = (...args: Parameters<NonNullable<typeof onPress>>) => {
-    if (!onPress) return;
+  const handlePress: NonNullable<AriaButtonProps["onPress"]> = (...args) => {
+    if (isPending || !onPress) return;
 
-    const result = onPress(...args);
+    try {
+      const maybePromise = onPress(...args);
 
-    if (result && typeof result === "object" && "then" in result) {
-      setIsPending(true);
+      if (maybePromise instanceof Promise) {
+        setIsPending(true);
 
-      void result.finally(() => {
-        setIsPending(false);
-      });
+        // Explicitly ignore the promise but handle errors
+        void maybePromise
+          .catch((err) => {
+            console.error("AsyncButton onPress error:", err);
+          })
+          .finally(() => setIsPending(false));
+      }
+    } catch (err) {
+      console.error("AsyncButton sync error:", err);
     }
   };
 
+  /**
+   * Resolves what to render inside the button based on pending state and children type.
+   * - If children is a function, it receives { isPending } to render custom content.
+   * - If pending and children is not a function, shows Spinner and optional loadingText.
+   * - Otherwise returns children as-is.
+   */
   const renderChildren = () => {
     if (typeof children === "function") {
       return children({ isPending });
