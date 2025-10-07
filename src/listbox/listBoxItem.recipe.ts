@@ -8,6 +8,7 @@ export const listBoxItemRecipe = defineRecipe({
     // Ensures the option takes up the full width of its container, preventing awkward partial-width selections
     width: "full",
 
+    // Sets the background color to the primary index color
     background: "bg.primary.index",
 
     // Uses the primary text color to maintain readability and consistency with the rest of the application
