@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Spinner } from "../common/Spinner";
 import { Button } from "./Button";
 
+import type { PressEvent } from "@react-types/shared";
 import type { FC, ReactNode } from "react";
 import type { ButtonProps as AriaButtonProps } from "react-aria-components";
 
@@ -12,7 +13,7 @@ import type { WithoutClassName } from "../types";
 export interface AsyncButtonProps extends Omit<WithoutClassName<AriaButtonProps>, "onPress">, Partial<ButtonVariantProps> {
   children?: ReactNode | ((renderProps: { isPending: boolean }) => ReactNode);
   loadingText?: string;
-  onPress?: (e: Parameters<NonNullable<AriaButtonProps["onPress"]>>[0]) => void | Promise<void>;
+  onPress?: (e: PressEvent) => void | Promise<void>;
 }
 
 /**
