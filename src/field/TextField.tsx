@@ -29,13 +29,13 @@ export type TextFieldProps = WithoutClassName<AriaTextFieldProps> &
  * TextField component that provides a complete form input with label, validation, and description.
  * Uses forwardRef to expose the underlying HTMLInputElement for imperative operations and form libraries.
  */
-export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({ size, label, placeholder, description, bordered = true, ...props }, ref) => {
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({ size, label, placeholder, description, bordered = true, ...props }, inputRef) => {
   const classes = input({ size, bordered });
 
   return (
     <AriaTextField className={classes.wrapper} {...props}>
       <Label color="primary">{label}</Label>
-      <Input ref={ref} className={classes.input} placeholder={placeholder} />
+      <Input ref={inputRef} className={classes.input} placeholder={placeholder} />
 
       <FieldError className={classes.error} />
       {description && <Text slot="description">{description}</Text>}
