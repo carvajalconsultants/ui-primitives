@@ -77,6 +77,7 @@ export const buttonRecipe = defineRecipe({
           outlineWidth: "0",
         },
 
+        // If an icon is present, it applies the text color to the spinner
         "& [data-spinner]": {
           borderColor: "colors.white",
           borderTopColor: "colors.white",
@@ -113,6 +114,7 @@ export const buttonRecipe = defineRecipe({
           outlineWidth: "0",
         },
 
+        // If an icon is present, it applies the text color to the spinner
         "& [data-spinner]": {
           borderColor: "text.black/30 !important",
           borderTopColor: "text.black !important",
@@ -148,6 +150,7 @@ export const buttonRecipe = defineRecipe({
           outlineWidth: "0",
         },
 
+        // If an icon is present, it applies the text color to the spinner
         "& [data-spinner]": {
           borderColor: "text.black/30 !important",
           borderTopColor: "text.black !important",
@@ -186,6 +189,7 @@ export const buttonRecipe = defineRecipe({
           cursor: "not-allowed",
         },
 
+        // If an icon is present, it applies the text color to the spinner
         "& [data-spinner]": {
           borderColor: "bg.brand.primary",
           borderTopColor: "bg.brand.primary",
