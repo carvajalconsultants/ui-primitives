@@ -71,6 +71,7 @@ export const selectRecipe = defineSlotRecipe({
         outline: "0",
         borderColor: "border.brand",
       },
+
       _active: {
         outline: "0",
         borderColor: "border.brand",

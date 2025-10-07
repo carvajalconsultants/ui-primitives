@@ -14,6 +14,7 @@ import { listBoxRecipe } from "./listbox/listBox.recipe";
 import { listBoxItemRecipe } from "./listbox/listBoxItem.recipe";
 import { dialogRecipe } from "./overlay/dialog.recipe";
 import { modalRecipe } from "./overlay/modal.recipe";
+import { emptyRecipe } from "./placeholder/empty.recipe";
 import { radioGroupRecipe } from "./radiogroup/radioGroup.recipe";
 import { selectRecipe } from "./select/select.recipe";
 import { tabRecipe } from "./tab/tab.recipe";
@@ -85,6 +86,7 @@ export const cciPreset = definePreset({
       select: selectRecipe,
       table: tableRecipe,
       tagGroup: tagGroupRecipe,
+      empty: emptyRecipe,
 
       // For some reason, the `switch` is not working. (maybe it's reserved word)
       switchh: switchRecipe,
@@ -167,7 +169,10 @@ export const cciPreset = definePreset({
 
           success: { primary: { value: { _light: "#069024", _dark: "#4EBB84" } } },
           warning: { primary: { value: { _light: "#E4A500", _dark: "#B54708" } } },
-          danger: { primary: { value: { _light: "#EA3731", _dark: "#EF6C63" } } },
+          danger: {
+            primary: { value: { _light: "#EA3731", _dark: "#EF6C63" } },
+            secondary: { value: { _light: "#FEE4E2", _dark: "#FEE4E2" } },
+          },
         },
         bg: {
           primary: {
