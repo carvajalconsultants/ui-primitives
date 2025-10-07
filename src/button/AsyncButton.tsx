@@ -43,12 +43,12 @@ export const AsyncButton: FC<AsyncButtonProps> = ({ variant = "primary", childre
   const handlePress: NonNullable<AriaButtonProps["onPress"]> = (...args) => {
     if (isPending || !onPress) return;
 
+    setIsPending(true);
+
     try {
       const maybePromise = onPress(...args);
 
       if (maybePromise instanceof Promise) {
-        setIsPending(true);
-
         // Explicitly ignore the promise but handle errors
         void maybePromise
           .catch((err) => {
@@ -58,6 +58,7 @@ export const AsyncButton: FC<AsyncButtonProps> = ({ variant = "primary", childre
       }
     } catch (err) {
       console.error("AsyncButton sync error:", err);
+      setIsPending(false);
     }
   };
 
