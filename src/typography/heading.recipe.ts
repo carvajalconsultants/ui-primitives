@@ -36,6 +36,7 @@ export const headingRecipe = defineRecipe({
     textWrap: {
       nowrap: { textWrap: "nowrap" },
       wrap: { textWrap: "wrap" },
+      balance: { textWrap: "balance" },
     },
   },
   // Default styling when no variants are specified

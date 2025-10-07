@@ -13,6 +13,7 @@ export const datePickerRecipe = defineSlotRecipe({
     group: {
       display: "flex",
       alignItems: "center",
+      justifyContent: "space-between",
       width: "full",
       minWidth: "36",
       maxWidth: "full",
