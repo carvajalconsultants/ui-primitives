@@ -114,8 +114,8 @@ export const buttonRecipe = defineRecipe({
         },
 
         "& [data-spinner]": {
-          borderColor: "colors.black",
-          borderTopColor: "colors.black",
+          borderColor: "text.black/30 !important",
+          borderTopColor: "text.black !important",
         },
       },
       ghost: {
@@ -149,8 +149,8 @@ export const buttonRecipe = defineRecipe({
         },
 
         "& [data-spinner]": {
-          borderColor: "colors.white",
-          borderTopColor: "colors.white",
+          borderColor: "text.black/30 !important",
+          borderTopColor: "text.black !important",
         },
       },
       link: {

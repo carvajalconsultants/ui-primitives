@@ -61,7 +61,7 @@ export const AsyncButton: FC<AsyncButtonProps> = ({ variant = "primary", childre
     if (isPending) {
       return (
         <>
-          <Spinner size="4" />
+          <Spinner data-spinner size="4" />
           {loadingText ?? children}
         </>
       );
