@@ -6,7 +6,7 @@ export const buttonRecipe = defineRecipe({
   base: {
     // Creates a horizontal layout for icons and text within the button
     display: "inline-flex",
-    gap: "0.5",
+    gap: "2",
     alignItems: "center",
     justifyContent: "center",
 
@@ -76,6 +76,12 @@ export const buttonRecipe = defineRecipe({
           cursor: "not-allowed",
           outlineWidth: "0",
         },
+
+        // If an icon is present, it applies the text color to the spinner
+        "& [data-spinner]": {
+          borderColor: "colors.white",
+          borderTopColor: "colors.white",
+        },
       },
       secondary: {
         // Less prominent button style for secondary actions
@@ -107,6 +113,12 @@ export const buttonRecipe = defineRecipe({
           cursor: "not-allowed",
           outlineWidth: "0",
         },
+
+        // If an icon is present, it applies the text color to the spinner
+        "& [data-spinner]": {
+          borderColor: "text.black/30 !important",
+          borderTopColor: "text.black !important",
+        },
       },
       ghost: {
         // Minimal style for actions that shouldn't draw attention
@@ -136,6 +148,12 @@ export const buttonRecipe = defineRecipe({
           opacity: "50",
           cursor: "not-allowed",
           outlineWidth: "0",
+        },
+
+        // If an icon is present, it applies the text color to the spinner
+        "& [data-spinner]": {
+          borderColor: "text.black/30 !important",
+          borderTopColor: "text.black !important",
         },
       },
       link: {
@@ -169,6 +187,12 @@ export const buttonRecipe = defineRecipe({
         "&:disabled": {
           opacity: "50",
           cursor: "not-allowed",
+        },
+
+        // If an icon is present, it applies the text color to the spinner
+        "& [data-spinner]": {
+          borderColor: "bg.brand.primary",
+          borderTopColor: "bg.brand.primary",
         },
       },
       icon: {
