@@ -26,19 +26,19 @@ export type TextFieldProps = WithoutClassName<AriaTextFieldProps> &
     /**
      * Ref to the underlying input element
      */
-    ref?: React.Ref<HTMLInputElement>;
+    inputRef?: React.Ref<HTMLInputElement>;
   };
 
 /**
  * TextField component that provides a complete form input with label, validation, and description.
  */
-export const TextField = ({ size, label, placeholder, description, bordered = true, ref, ...props }: TextFieldProps) => {
+export const TextField = ({ size, label, placeholder, description, bordered = true, inputRef, ...props }: TextFieldProps) => {
   const classes = input({ size, bordered });
 
   return (
     <AriaTextField className={classes.wrapper} {...props}>
       <Label color="primary">{label}</Label>
-      <Input ref={ref} className={classes.input} placeholder={placeholder} />
+      <Input ref={inputRef} className={classes.input} placeholder={placeholder} />
 
       <FieldError className={classes.error} />
       {description && <Text slot="description">{description}</Text>}
