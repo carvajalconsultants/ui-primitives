@@ -7,8 +7,12 @@ export const listBoxItemRecipe = defineRecipe({
   base: {
     // Ensures the option takes up the full width of its container, preventing awkward partial-width selections
     width: "full",
+
+    background: "bg.primary.index",
+
     // Uses the primary text color to maintain readability and consistency with the rest of the application
     color: "text.primary",
+
     // Makes options easily scannable by slightly emphasizing their text
     fontWeight: "semiBold",
 
