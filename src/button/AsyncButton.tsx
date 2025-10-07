@@ -10,7 +10,7 @@ import type { ButtonProps as AriaButtonProps } from "react-aria-components";
 import type { ButtonVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
-export interface AsyncButtonProps extends Omit<WithoutClassName<AriaButtonProps>, "onPress">, Partial<ButtonVariantProps> {
+export interface AsyncButtonProps extends Omit<WithoutClassName<AriaButtonProps>, "onPress" | "isPending">, Partial<ButtonVariantProps> {
   children?: ReactNode | ((renderProps: { isPending: boolean }) => ReactNode);
   loadingText?: string;
   onPress?: (e: PressEvent) => void | Promise<void>;
