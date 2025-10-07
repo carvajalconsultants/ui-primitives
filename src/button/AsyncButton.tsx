@@ -11,8 +11,22 @@ import type { ButtonVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export interface AsyncButtonProps extends Omit<WithoutClassName<AriaButtonProps>, "onPress" | "isPending">, Partial<ButtonVariantProps> {
+  /**
+   * The content to display inside the button. Can be static content or a function that receives
+   * render props with the current pending state for custom loading UI.
+   */
   children?: ReactNode | ((renderProps: { isPending: boolean }) => ReactNode);
+
+  /**
+   * Optional text to display while the button is in a pending state. If not provided,
+   * the original children content will be shown alongside the spinner.
+   */
   loadingText?: string;
+
+  /**
+   * Handler function called when the button is pressed. Can be synchronous or return a Promise.
+   * If it returns a Promise, the button will automatically manage its pending state.
+   */
   onPress?: (e: PressEvent) => void | Promise<void>;
 }
 
