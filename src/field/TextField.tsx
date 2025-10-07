@@ -1,4 +1,3 @@
-import { forwardRef } from "react";
 import { TextField as AriaTextField, FieldError, Input } from "react-aria-components";
 
 import { input } from "../../styled-system/recipes";
@@ -23,24 +22,26 @@ export type TextFieldProps = WithoutClassName<AriaTextFieldProps> &
      * Description of the field shown after the input field.
      */
     description?: string;
+
+    /**
+     * Ref to the underlying input element
+     */
+    ref?: React.Ref<HTMLInputElement>;
   };
 
 /**
  * TextField component that provides a complete form input with label, validation, and description.
- * Uses forwardRef to expose the underlying HTMLInputElement for imperative operations and form libraries.
  */
-export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({ size, label, placeholder, description, bordered = true, ...props }, inputRef) => {
+export const TextField = ({ size, label, placeholder, description, bordered = true, ref, ...props }: TextFieldProps) => {
   const classes = input({ size, bordered });
 
   return (
     <AriaTextField className={classes.wrapper} {...props}>
       <Label color="primary">{label}</Label>
-      <Input ref={inputRef} className={classes.input} placeholder={placeholder} />
+      <Input ref={ref} className={classes.input} placeholder={placeholder} />
 
       <FieldError className={classes.error} />
       {description && <Text slot="description">{description}</Text>}
     </AriaTextField>
   );
-});
-
-TextField.displayName = "TextField";
+};
