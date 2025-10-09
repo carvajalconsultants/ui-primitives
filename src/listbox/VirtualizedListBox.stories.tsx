@@ -2,7 +2,7 @@ import { ListBoxItem } from "react-aria-components";
 
 import { VirtualizedListBox } from "./VirtualizedListBox";
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 import type { CSSProperties } from "react";
 
 const meta: Meta<typeof VirtualizedListBox> = {

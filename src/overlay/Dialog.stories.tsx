@@ -6,7 +6,7 @@ import { Paragraph } from "../typography/Paragraph";
 import { Dialog } from "./Dialog";
 import { Modal } from "./Modal";
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components/Dialog",

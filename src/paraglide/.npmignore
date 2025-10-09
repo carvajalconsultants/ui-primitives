@@ -1,0 +1,3 @@
+# We don't need NPM to ignore the JS files in this folder
+
+.prettierignore

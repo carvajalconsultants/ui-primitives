@@ -6,7 +6,7 @@ import { TableBody } from "./TableBody";
 import { TableFooter } from "./TableFooter";
 import { TableHeader } from "./TableHeader";
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Table> = {
   title: "Components/Table/Simple",

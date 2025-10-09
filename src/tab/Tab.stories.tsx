@@ -4,7 +4,7 @@ import { TabList } from "./TabList";
 import { TabPanel } from "./TabPanel";
 import { Tabs } from "./Tabs";
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Tabs> = {
   title: "Components/Tabs",

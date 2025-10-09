@@ -1,6 +1,6 @@
 {
   "name": "@carvajalconsultants/ui-primitives",
-  "version": "0.0.23",
+  "version": "0.0.25",
   "repository": "git@github.com:carvajalconsultants/ui-primitives.git",
   "author": "Carvajal Consultants, Inc. <support@carvajalonline.com>",
   "license": "MIT",
@@ -9,6 +9,7 @@
   "main": "src/index.ts",
   "files": [
     "src",
+    "src/paraglide",
     "public",
     "styled-system",
     "panda.config.ts",
@@ -50,10 +51,10 @@
     "@spiriit/vite-plugin-svg-spritemap": "^5.0.0",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/addon-interactions": "^8.6.14",
-    "@storybook/addon-links": "^9.1.10",
+    "@storybook/addon-links": "^8.6.14",
     "@storybook/blocks": "^8.6.14",
-    "@storybook/react": "^9.1.10",
-    "@storybook/react-vite": "^9.1.10",
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
     "@storybook/test": "^8.6.14",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
@@ -69,13 +70,13 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.0",
     "eslint-plugin-react-refresh": "^0.4.23",
-    "eslint-plugin-storybook": "^9.1.10",
+    "eslint-plugin-storybook": "^0.11.1",
     "globals": "^16.4.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.3",
     "prettier": "3.6.2",
-    "storybook": "^9.1.10",
-    "storybook-addon-data-theme-switcher": "^2.0.0",
+    "storybook": "^8.6.14",
+    "storybook-addon-data-theme-switcher": "^1.0.1",
     "svgo": "^4.0.0",
     "terser": "^5.44.0",
     "typescript": "^5.9.3",
@@ -84,7 +85,7 @@
   },
   "lint-staged": {
     "src/**": [
-      "yarn run lint"
+      "bun run lint"
     ]
   }
 }

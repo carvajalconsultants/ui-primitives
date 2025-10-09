@@ -1,6 +1,6 @@
 import { AsyncButton } from "./AsyncButton";
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof AsyncButton> = {
   title: "Components/AsyncButton",

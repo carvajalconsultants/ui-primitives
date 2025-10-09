@@ -1,6 +1,6 @@
 import { SearchField } from "./SearchField";
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof SearchField> = {
   title: "Components/SearchField",

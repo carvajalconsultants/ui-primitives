@@ -1,6 +1,6 @@
 import { Empty } from "./empty";
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Empty> = {
   title: "Components/Empty",

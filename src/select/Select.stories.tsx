@@ -2,7 +2,7 @@ import { ListBoxItem } from "../listbox/ListBoxItem";
 import { useMockFetchTodos } from "../test/use-mock-fetch-todos";
 import { Select } from "./Select";
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Select> = {
   title: "Components/Select",

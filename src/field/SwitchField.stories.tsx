@@ -1,6 +1,6 @@
 import { SwitchField } from "./SwitchField";
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof SwitchField> = {
   title: "Components/SwitchField",

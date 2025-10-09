@@ -12,7 +12,7 @@ import { DataGridHeaderRow } from "./DataGridHeaderRow";
 import { DataGridSortableHeaderCell } from "./DataGridSortableHeaderCell";
 import { TableTitle } from "./mock-data/TableTitle";
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table";
 
 import type { Person } from "./mock-data/data";
