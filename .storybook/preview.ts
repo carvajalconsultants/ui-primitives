@@ -37,7 +37,7 @@ export const globalTypes = {
 const preview: Preview = {
   parameters: {
     // We have a dark mode toggler, so we don't need this
-    backgrounds: { disabled: true },
+    backgrounds: { disable: true },
 
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
