@@ -1,7 +1,7 @@
 import { Paragraph } from "../typography/Paragraph";
 import { Text } from "../typography/Text";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof Text> = {
   title: "Components/Typography/Text",

@@ -1,6 +1,6 @@
 import { SliderField } from "./SliderField";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof SliderField> = {
   title: "Components/SliderField",

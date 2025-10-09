@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Tag } from "./Tag";
 import { TagGroup } from "./TagGroup";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { Selection } from "react-aria-components";
 
 const meta: Meta<typeof TagGroup> = {
