@@ -1,7 +1,7 @@
 import { Paragraph } from "../typography/Paragraph";
 import { ToggleSectionField } from "./ToggleSectionField";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof ToggleSectionField> = {
   title: "Components/ToggleSectionField",
