@@ -9,7 +9,7 @@ These components form the building blocks for the entire application.
 Install the package using your preferred package manager:
 
 ```bash
-yarn add @carvajalconsultants/ui-primitives
+bun add @carvajalconsultants/ui-primitives
 ```
 
 ## Panda CSS Setup
@@ -17,7 +17,7 @@ yarn add @carvajalconsultants/ui-primitives
 1. Install Panda CSS:
 
 ```bash
-yarn add -D @pandacss/dev
+bun add -D @pandacss/dev
 ```
 
 2. Add prepare script to `package.json`:
