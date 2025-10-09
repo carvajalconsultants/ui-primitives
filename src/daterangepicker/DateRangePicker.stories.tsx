@@ -4,7 +4,7 @@ import { getLocalTimeZone, today } from "@internationalized/date";
 
 import { DateRangePicker } from "./DateRangePicker";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { DateValue } from "react-aria-components";
 
 const meta: Meta<typeof DateRangePicker> = {

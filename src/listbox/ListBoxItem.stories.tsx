@@ -1,7 +1,7 @@
 import { ListBoxItem } from "./ListBoxItem";
 import { VirtualizedListBox } from "./VirtualizedListBox";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof ListBoxItem> = {
   title: "Components/ComboBox/ListBoxItem",
