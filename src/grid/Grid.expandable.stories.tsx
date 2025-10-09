@@ -18,7 +18,7 @@ import { DataGridSortableHeaderCell } from "./DataGridSortableHeaderCell";
 import { DataGridVirtualizedBody } from "./DataGridVirtualizedBody";
 import { TableTitle } from "./mock-data/TableTitle";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ColumnDef, SortingState } from "@tanstack/react-table";
 import type { UIEvent } from "react";
 

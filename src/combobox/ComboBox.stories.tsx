@@ -2,7 +2,7 @@ import { ListBoxItem } from "../listbox/ListBoxItem";
 import { useMockFetchTodos } from "../test/use-mock-fetch-todos";
 import { ComboBox } from "./ComboBox";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof ComboBox> = {
   title: "Components/ComboBox",
