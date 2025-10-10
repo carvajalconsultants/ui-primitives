@@ -1,19 +1,18 @@
-import type { Preview } from "@storybook/react";
-
 import "@fontsource/inter/latin-400.css";
 import "../src/index.css";
 
-import React from 'react';
+import { Preview } from "@storybook/react-vite";
+import React from "react";
 
 import type { ThemeConfig } from "storybook-addon-data-theme-switcher";
 
 // Enables the why-did-you-render plugin which identifies unnecessary re-renders
-if (process.env.NODE_ENV === 'development') {
-    import('@welldone-software/why-did-you-render').then((whyDidYouRender) => {
-      whyDidYouRender.default(React, {
-        // trackAllPureComponents: true,
-        include: [/^DataGrid/],
-      });
+if (process.env.NODE_ENV === "development") {
+  import("@welldone-software/why-did-you-render").then((whyDidYouRender) => {
+    whyDidYouRender.default(React, {
+      // trackAllPureComponents: true,
+      include: [/^DataGrid/],
+    });
   });
 }
 

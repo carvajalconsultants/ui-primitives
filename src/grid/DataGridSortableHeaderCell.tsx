@@ -52,7 +52,7 @@ export const DataGridSortableHeaderCell = <TData,>({ header, ...props }: DataGri
         // Rotate the icon based on the sorting direction
         style={{ transform: `rotate(${header.column.getIsSorted() === "asc" ? "-180deg" : "0deg"})` }}
         // Add smooth animation for the rotation
-        transitionProperty="transform"
+        transition="transform"
         transitionDuration="regular"
         transitionTimingFunction="ease-in-out"
       />

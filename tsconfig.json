@@ -25,6 +25,6 @@
     "declaration": true,
     "declarationDir": "./dist"
   },
-  "include": ["src", "styled-system", "panda.config.ts", "vite.config.ts"],
+  "include": ["src", "styled-system", "panda.config.ts", "vite.config.ts", ".storybook"],
   "exclude": ["node_modules", "dist"]
 }
