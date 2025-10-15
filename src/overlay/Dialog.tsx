@@ -44,7 +44,7 @@ export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, but
 
             {/* X close button on top-right */}
             {closeable === true && (
-              <Button variant="icon" width="fit" onPress={close}>
+              <Button variant="ghost" size="icon" width="fit" onPress={close}>
                 <Icon id="x" size="4" stroke="text.primary" />
               </Button>
             )}
