@@ -27,6 +27,7 @@ export { ContentHeader } from "./contentheader/ContentHeader";
 export { SearchField } from "./field/SearchField";
 export { SliderField } from "./field/SliderField";
 export { SwitchField } from "./field/SwitchField";
+export { TextArea } from "./field/TextArea";
 export { TextField } from "./field/TextField";
 export { ToggleSectionField } from "./field/ToggleSectionField";
 export * from "./form";
