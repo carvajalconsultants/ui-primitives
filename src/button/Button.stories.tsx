@@ -1,3 +1,4 @@
+import { Icon } from "../common/Icon";
 import { Button } from "./Button";
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
@@ -36,6 +37,15 @@ type Story = StoryObj<typeof Button>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 const SingleButton: Story = {
   render: (args) => <Button {...args}>Click Me</Button>,
+};
+
+const SingleButtonWithIcon: Story = {
+  render: (args) => (
+    <Button {...args}>
+      <Icon id="search" size="4" />
+      Search
+    </Button>
+  ),
 };
 
 export const PrimaryFit = {
@@ -105,6 +115,13 @@ export const PrimaryFullDisabled = {
   },
 };
 
+export const PrimaryFullWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "primary",
+  },
+};
+
 // Variant: secondary, Width: fit
 export const SecondaryFit = {
   ...SingleButton,
@@ -141,6 +158,14 @@ export const SecondaryFitDisabled = {
   },
 };
 
+export const SecondaryFitWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "secondary",
+    width: "fit",
+  },
+};
+
 // Variant: secondary, Width: full
 export const SecondaryFull = {
   ...SingleButton,
@@ -170,6 +195,13 @@ export const SecondaryFullDisabled = {
   args: {
     variant: "secondary",
     isDisabled: true,
+  },
+};
+
+export const SecondaryFullWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "secondary",
   },
 };
 
@@ -209,6 +241,14 @@ export const GhostFitDisabled = {
   },
 };
 
+export const GhostFitWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "ghost",
+    width: "fit",
+  },
+};
+
 // Variant: ghost, Width: full
 export const GhostFull = {
   ...SingleButton,
@@ -238,6 +278,13 @@ export const GhostFullDisabled = {
   args: {
     variant: "ghost",
     isDisabled: true,
+  },
+};
+
+export const GhostFullWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "ghost",
   },
 };
 
@@ -274,6 +321,14 @@ export const LinkFitDisabled = {
     variant: "link",
     width: "fit",
     isDisabled: true,
+  },
+};
+
+export const LinkFitWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "link",
+    width: "fit",
   },
 };
 

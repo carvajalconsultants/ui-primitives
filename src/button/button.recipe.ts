@@ -239,6 +239,6 @@ export const buttonRecipe = defineRecipe({
   defaultVariants: {
     variant: "primary",
     size: "md",
-    width: "full",
+    width: "fit",
   },
 });
