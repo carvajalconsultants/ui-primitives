@@ -20,6 +20,11 @@ export const buttonRecipe = defineRecipe({
     // Provides visual feedback that the element is interactive
     cursor: "pointer",
 
+    // Ensures the icon does not shrink
+    "& svg": {
+      flexShrink: "0",
+    },
+
     // Makes state changes (hover, click) feel smooth and intentional
     transition: "all",
     transitionTimingFunction: "ease-in-out",
@@ -156,6 +161,49 @@ export const buttonRecipe = defineRecipe({
           borderTopColor: "text.black !important",
         },
       },
+      outline: {
+        // Outlined button style with transparent background and colored border
+        background: "transparent",
+        color: "bg.brand.primary",
+        borderWidth: "1",
+        borderColor: "bg.brand.primary",
+        borderStyle: "solid",
+
+        stroke: "bg.brand.primary",
+
+        _hover: {
+          background: "bg.brand.primary",
+          color: "text.white",
+          stroke: "text.white",
+        },
+
+        _focusVisible: {
+          outlineWidth: "3",
+          outlineColor: "text.white",
+          outlineStyle: "solid",
+          background: "bg.brand.primary",
+          color: "text.white",
+          stroke: "text.white",
+        },
+
+        _active: {
+          background: "bg.brand.primary",
+          color: "text.white",
+          stroke: "text.white",
+        },
+
+        _disabled: {
+          opacity: "50",
+          cursor: "not-allowed",
+          outlineWidth: "0",
+        },
+
+        // If an icon is present, it applies the text color to the spinner
+        "& [data-spinner]": {
+          borderColor: "bg.brand.primary/30 !important",
+          borderTopColor: "bg.brand.primary !important",
+        },
+      },
       link: {
         // Makes buttons appear and behave like hyperlinks
         color: "bg.brand.primary",
@@ -195,13 +243,6 @@ export const buttonRecipe = defineRecipe({
           borderTopColor: "bg.brand.primary",
         },
       },
-      icon: {
-        // Specialized style for icon-only buttons
-        padding: "0",
-        height: "6",
-        fill: "transparent",
-        stroke: "text.white",
-      },
     },
 
     size: {
@@ -227,18 +268,25 @@ export const buttonRecipe = defineRecipe({
         fontSize: "lg",
         lineHeight: "6",
       },
+      icon: {
+        // Specialized style for icon-only buttons
+        width: "8 !important",
+        height: "8",
+        fill: "transparent",
+        stroke: "text.white",
+      },
     },
 
     width: {
       // Width options for different layout needs
       full: { width: "full" }, // Takes full width of container
-      fit: { width: "fit !important" }, // Only as wide as its content
+      fit: { width: "fit" }, // Only as wide as its content
     },
   },
   // Default configuration for most common use case
   defaultVariants: {
     variant: "primary",
-    size: "md",
     width: "fit",
+    size: "md",
   },
 });

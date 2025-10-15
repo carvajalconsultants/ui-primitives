@@ -1,4 +1,4 @@
-import { TextField as AriaTextField, FieldError, TextArea as AriaTextArea } from "react-aria-components";
+import { TextArea as AriaTextArea, TextField as AriaTextField, FieldError } from "react-aria-components";
 
 import { input } from "../../styled-system/recipes";
 import { Label } from "../common/Label";

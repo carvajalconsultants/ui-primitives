@@ -14,7 +14,7 @@ const meta: Meta<typeof Button> = {
 
   argTypes: {
     variant: {
-      options: ["primary", "secondary", "ghost", "link"],
+      options: ["primary", "secondary", "ghost", "outline", "link"],
       control: {
         type: "select",
       },
@@ -43,6 +43,15 @@ const SingleButtonWithIcon: Story = {
   render: (args) => (
     <Button {...args}>
       <Icon id="search" size="4" />
+      Search
+    </Button>
+  ),
+};
+
+const SingleButtonWithLargeIcon: Story = {
+  render: (args) => (
+    <Button {...args}>
+      <Icon id="search" size="5" />
       Search
     </Button>
   ),
@@ -122,6 +131,13 @@ export const PrimaryFullWithIcon = {
   },
 };
 
+export const PrimaryFullWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
+  args: {
+    variant: "primary",
+  },
+};
+
 // Variant: secondary, Width: fit
 export const SecondaryFit = {
   ...SingleButton,
@@ -166,6 +182,14 @@ export const SecondaryFitWithIcon = {
   },
 };
 
+export const SecondaryFitWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
+  args: {
+    variant: "secondary",
+    width: "fit",
+  },
+};
+
 // Variant: secondary, Width: full
 export const SecondaryFull = {
   ...SingleButton,
@@ -200,6 +224,13 @@ export const SecondaryFullDisabled = {
 
 export const SecondaryFullWithIcon = {
   ...SingleButtonWithIcon,
+  args: {
+    variant: "secondary",
+  },
+};
+
+export const SecondaryFullWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
   args: {
     variant: "secondary",
   },
@@ -249,6 +280,14 @@ export const GhostFitWithIcon = {
   },
 };
 
+export const GhostFitWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
+  args: {
+    variant: "ghost",
+    width: "fit",
+  },
+};
+
 // Variant: ghost, Width: full
 export const GhostFull = {
   ...SingleButton,
@@ -285,6 +324,111 @@ export const GhostFullWithIcon = {
   ...SingleButtonWithIcon,
   args: {
     variant: "ghost",
+  },
+};
+
+export const GhostFullWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
+  args: {
+    variant: "ghost",
+  },
+};
+
+// Variant: outline, Width: fit
+export const OutlineFit = {
+  ...SingleButton,
+  args: {
+    variant: "outline",
+    width: "fit",
+  },
+};
+
+export const OutlineFitFocused = {
+  ...SingleButton,
+  args: {
+    variant: "outline",
+    width: "fit",
+    isFocused: true,
+  },
+};
+
+export const OutlineFitActive = {
+  ...SingleButton,
+  args: {
+    variant: "outline",
+    width: "fit",
+    isActive: true,
+  },
+};
+
+export const OutlineFitDisabled = {
+  ...SingleButton,
+  args: {
+    variant: "outline",
+    width: "fit",
+    isDisabled: true,
+  },
+};
+
+export const OutlineFitWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "outline",
+    width: "fit",
+  },
+};
+
+export const OutlineFitWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
+  args: {
+    variant: "outline",
+    width: "fit",
+  },
+};
+
+// Variant: outline, Width: full
+export const OutlineFull = {
+  ...SingleButton,
+  args: {
+    variant: "outline",
+  },
+};
+
+export const OutlineFullFocused = {
+  ...SingleButton,
+  args: {
+    variant: "outline",
+    isFocused: true,
+  },
+};
+
+export const OutlineFullActive = {
+  ...SingleButton,
+  args: {
+    variant: "outline",
+    isActive: true,
+  },
+};
+
+export const OutlineFullDisabled = {
+  ...SingleButton,
+  args: {
+    variant: "outline",
+    isDisabled: true,
+  },
+};
+
+export const OutlineFullWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "outline",
+  },
+};
+
+export const OutlineFullWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
+  args: {
+    variant: "outline",
   },
 };
 
@@ -332,6 +476,14 @@ export const LinkFitWithIcon = {
   },
 };
 
+export const LinkFitWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
+  args: {
+    variant: "link",
+    width: "fit",
+  },
+};
+
 // Variant: link, Width: full
 export const LinkFull = {
   ...SingleButton,
@@ -361,5 +513,19 @@ export const LinkFullDisabled = {
   args: {
     variant: "link",
     isDisabled: true,
+  },
+};
+
+export const LinkFullWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "link",
+  },
+};
+
+export const LinkFullWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
+  args: {
+    variant: "link",
   },
 };
