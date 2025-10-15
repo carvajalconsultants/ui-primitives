@@ -34,7 +34,7 @@ export type TextareaProps = WithoutClassName<AriaTextFieldProps> & {
   /**
    * Ref to the underlying textarea element
    */
-  textareaRef?: React.Ref<HTMLTextAreaElement>;
+  textAreaRef?: React.Ref<HTMLTextAreaElement>;
 
   /**
    * Minimum number of rows to display
@@ -45,7 +45,7 @@ export type TextareaProps = WithoutClassName<AriaTextFieldProps> & {
 /**
  * TextArea component for collecting multi-line text input from users in forms, such as comments, descriptions, or feedback.
  */
-export const TextArea = ({ size = "md", label, placeholder, description, bordered = true, textareaRef, rows = 3, ...props }: TextareaProps) => {
+export const TextArea = ({ size = "md", label, placeholder, description, bordered = true, textAreaRef: textareaRef, rows = 3, ...props }: TextareaProps) => {
   const classes = input({ size, bordered });
 
   return (
