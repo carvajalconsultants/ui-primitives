@@ -1,14 +1,14 @@
 import { defineSlotRecipe } from "@pandacss/dev";
 
 /**
- * Style variants for <Input> and <ComboBox> components.
+ * Style variants for <Input>, <TextArea>, and <ComboBox> components.
  * Styles the wrapper <div> of the input field
  * Styles the error <FieldError> component below the input field
  */
 export const inputRecipe = defineSlotRecipe({
   className: "input",
-  description: "The styles for Input-based components including TextField and SearchField",
-  slots: ["wrapper", "input", "error", "leftIcon", "clearButton"],
+  description: "The styles for Input-based components including TextField, Textarea, and SearchField",
+  slots: ["wrapper", "input", "textarea", "error", "leftIcon", "clearButton"],
 
   base: {
     // Wrapper contains the label, input, error and description
@@ -57,7 +57,51 @@ export const inputRecipe = defineSlotRecipe({
       _disabled: {
         cursor: "not-allowed",
         borderColor: "border.primary",
-        bg: "border.primary",
+        bg: "border.primary/20",
+        color: "text.secondary",
+      },
+    },
+    // Textarea field that user types into (extends input styles)
+    textarea: {
+      paddingY: "2.5",
+      paddingX: "4",
+      bg: "text.white",
+      color: "text.primary",
+      borderRadius: "lg",
+      width: "full",
+      border: "1",
+      borderStyle: "solid",
+      borderColor: "bg.brand.primary",
+      fontFamily: "body",
+      resize: "vertical",
+      minHeight: "100px",
+
+      _placeholder: {
+        color: "text.placeholder",
+      },
+
+      _focus: {
+        outline: "0",
+        boxShadow: "shadow.primary",
+      },
+
+      _active: {
+        outline: "0",
+        boxShadow: "shadow.primary",
+      },
+
+      _invalid: {
+        borderColor: "bg.danger.primary",
+
+        _focus: {
+          boxShadow: "shadow.primary",
+        },
+      },
+
+      _disabled: {
+        cursor: "not-allowed",
+        borderColor: "border.primary",
+        bg: "border.primary/20",
         color: "text.secondary",
       },
     },
@@ -83,6 +127,12 @@ export const inputRecipe = defineSlotRecipe({
           paddingX: "3",
           fontSize: "sm",
         },
+        textarea: {
+          paddingY: "2",
+          paddingX: "3",
+          fontSize: "sm",
+          minHeight: "80px",
+        },
         leftIcon: {
           left: "3.5",
           top: "2.5",
@@ -98,6 +148,12 @@ export const inputRecipe = defineSlotRecipe({
           paddingX: "4",
           fontSize: "md",
         },
+        textarea: {
+          paddingY: "2.5",
+          paddingX: "4",
+          fontSize: "md",
+          minHeight: "100px",
+        },
         leftIcon: {
           left: "4",
           top: "3.5",
@@ -107,11 +163,46 @@ export const inputRecipe = defineSlotRecipe({
           top: "3.5",
         },
       },
+      lg: {
+        input: {
+          paddingY: "3",
+          paddingX: "5",
+          fontSize: "lg",
+        },
+        textarea: {
+          paddingY: "3",
+          paddingX: "5",
+          fontSize: "lg",
+          minHeight: "120px",
+        },
+        leftIcon: {
+          left: "5",
+          top: "4",
+        },
+        clearButton: {
+          right: "5",
+          top: "4",
+        },
+      },
     },
     bordered: {
       true: {},
       false: {
         input: {
+          border: "0",
+          borderColor: "transparent",
+
+          _focus: {
+            borderColor: "transparent",
+            boxShadow: "0",
+          },
+
+          _active: {
+            borderColor: "transparent",
+            boxShadow: "0",
+          },
+        },
+        textarea: {
           border: "0",
           borderColor: "transparent",
 
