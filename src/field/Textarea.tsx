@@ -39,24 +39,19 @@ export type TextareaProps = WithoutClassName<AriaTextFieldProps> & {
   /**
    * Minimum number of rows to display
    */
-  minRows?: number;
-
-  /**
-   * Maximum number of rows to display
-   */
-  maxRows?: number;
+  rows?: number;
 };
 
 /**
- * Textarea component that provides a complete form textarea with label, validation, and description.
+ * TextArea component for collecting multi-line text input from users in forms, such as comments, descriptions, or feedback.
  */
-export const TextArea = ({ size = "md", label, placeholder, description, bordered = true, textareaRef, minRows = 3, maxRows, ...props }: TextareaProps) => {
+export const TextArea = ({ size = "md", label, placeholder, description, bordered = true, textareaRef, rows = 3, ...props }: TextareaProps) => {
   const classes = input({ size, bordered });
 
   return (
     <AriaTextField className={classes.wrapper} {...props}>
       <Label color="primary">{label}</Label>
-      <AriaTextArea ref={textareaRef} className={classes.textarea} placeholder={placeholder} rows={minRows} {...(maxRows && { maxRows })} />
+      <AriaTextArea ref={textareaRef} className={classes.textarea} placeholder={placeholder} rows={rows} />
 
       <FieldError className={classes.error} />
       {description && <Text slot="description">{description}</Text>}

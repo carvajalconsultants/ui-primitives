@@ -50,7 +50,9 @@ export const buttonRecipe = defineRecipe({
         outlineStyle: "solid",
 
         // Stroke here and below is to have the same color in icons as we do the text
-        stroke: "text.white",
+        "& svg": {
+          stroke: "text.white",
+        },
 
         "&:hover": {
           // Creates a subtle highlight effect to show interactivity
@@ -84,8 +86,8 @@ export const buttonRecipe = defineRecipe({
 
         // If an icon is present, it applies the text color to the spinner
         "& [data-spinner]": {
-          borderColor: "colors.white",
-          borderTopColor: "colors.white",
+          borderColor: "white",
+          borderTopColor: "white",
         },
       },
       secondary: {
@@ -93,14 +95,18 @@ export const buttonRecipe = defineRecipe({
         background: "text.white",
         color: "text.black",
 
-        stroke: "text.black",
+        "& svg": {
+          stroke: "text.black",
+        },
 
         "&:hover": {
           outlineWidth: "0",
           color: "text.black",
           background: "text.white",
 
-          stroke: "text.white",
+          "& svg": {
+            stroke: "text.black",
+          },
         },
         "&:focus-visible": {
           outlineWidth: "3",
@@ -108,10 +114,18 @@ export const buttonRecipe = defineRecipe({
           outlineStyle: "solid",
           color: "text.black",
           background: "text.white",
+
+          "& svg": {
+            stroke: "text.black",
+          },
         },
         "&:active": {
           color: "text.black",
           background: "text.white",
+
+          "& svg": {
+            stroke: "text.black",
+          },
         },
         "&:disabled": {
           opacity: "50",
@@ -130,13 +144,17 @@ export const buttonRecipe = defineRecipe({
         color: "text.black",
         border: "none",
 
-        stroke: "text.black",
+        "& svg": {
+          stroke: "text.black",
+        },
 
         "&:hover": {
           color: "text.black",
           background: "bg.brand.secondary",
 
-          stroke: "text.black",
+          "& svg": {
+            stroke: "text.black",
+          },
         },
         "&:focus-visible": {
           outlineWidth: "3",
@@ -144,10 +162,18 @@ export const buttonRecipe = defineRecipe({
           outlineStyle: "solid",
           color: "text.white",
           background: "bg.brand.secondary",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
         "&:active": {
           color: "text.white",
           background: "bg.brand.secondary",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
         "&:disabled": {
           opacity: "50",
@@ -169,12 +195,17 @@ export const buttonRecipe = defineRecipe({
         borderColor: "bg.brand.primary",
         borderStyle: "solid",
 
-        stroke: "bg.brand.primary",
+        "& svg": {
+          stroke: "bg.brand.primary",
+        },
 
         _hover: {
           background: "bg.brand.primary",
           color: "text.white",
-          stroke: "text.white",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
 
         _focusVisible: {
@@ -183,13 +214,19 @@ export const buttonRecipe = defineRecipe({
           outlineStyle: "solid",
           background: "bg.brand.primary",
           color: "text.white",
-          stroke: "text.white",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
 
         _active: {
           background: "bg.brand.primary",
           color: "text.white",
-          stroke: "text.white",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
 
         _disabled: {
@@ -210,7 +247,9 @@ export const buttonRecipe = defineRecipe({
         borderWidth: "0",
         width: "fit",
 
-        stroke: "bg.brand.primary",
+        "& svg": {
+          stroke: "bg.brand.primary",
+        },
 
         "&:hover": {
           // Traditional underline feedback for link-style interactions
@@ -222,17 +261,21 @@ export const buttonRecipe = defineRecipe({
           outlineWidth: "3",
           outlineColor: "text.white",
           outlineStyle: "solid",
-          textDecoration: "underline",
-          textUnderlineOffset: "1px",
-          textUnderlinePosition: "under",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
-        "&:active": {
+
+        _active: {
           outlineWidth: "0",
-          textDecoration: "underline",
-          textUnderlineOffset: "1px",
-          textUnderlinePosition: "under",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
-        "&:disabled": {
+
+        _disabled: {
           opacity: "50",
           cursor: "not-allowed",
         },
@@ -272,8 +315,6 @@ export const buttonRecipe = defineRecipe({
         // Specialized style for icon-only buttons
         width: "8 !important",
         height: "8",
-        fill: "transparent",
-        stroke: "text.white",
       },
     },
 
