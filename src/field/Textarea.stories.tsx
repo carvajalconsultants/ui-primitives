@@ -1,10 +1,10 @@
-import { Textarea } from "./Textarea";
+import { TextArea } from "./TextArea";
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-const meta: Meta<typeof Textarea> = {
-  title: "Components/Textarea",
-  component: Textarea,
+const meta: Meta<typeof TextArea> = {
+  title: "Components/TextArea",
+  component: TextArea,
 
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -30,11 +30,11 @@ const meta: Meta<typeof Textarea> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Textarea>;
+type Story = StoryObj<typeof TextArea>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 const SingleTextarea: Story = {
-  render: (args) => <Textarea {...args} />,
+  render: (args) => <TextArea {...args} />,
 };
 
 // Size: sm

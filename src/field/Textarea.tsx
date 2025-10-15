@@ -1,4 +1,4 @@
-import { TextField as AriaTextField, FieldError, TextArea } from "react-aria-components";
+import { TextField as AriaTextField, FieldError, TextArea as AriaTextArea } from "react-aria-components";
 
 import { input } from "../../styled-system/recipes";
 import { Label } from "../common/Label";
@@ -50,13 +50,13 @@ export type TextareaProps = WithoutClassName<AriaTextFieldProps> & {
 /**
  * Textarea component that provides a complete form textarea with label, validation, and description.
  */
-export const Textarea = ({ size = "md", label, placeholder, description, bordered = true, textareaRef, minRows = 3, maxRows, ...props }: TextareaProps) => {
+export const TextArea = ({ size = "md", label, placeholder, description, bordered = true, textareaRef, minRows = 3, maxRows, ...props }: TextareaProps) => {
   const classes = input({ size, bordered });
 
   return (
     <AriaTextField className={classes.wrapper} {...props}>
       <Label color="primary">{label}</Label>
-      <TextArea ref={textareaRef} className={classes.textarea} placeholder={placeholder} rows={minRows} {...(maxRows && { maxRows })} />
+      <AriaTextArea ref={textareaRef} className={classes.textarea} placeholder={placeholder} rows={minRows} {...(maxRows && { maxRows })} />
 
       <FieldError className={classes.error} />
       {description && <Text slot="description">{description}</Text>}
