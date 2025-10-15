@@ -20,6 +20,11 @@ export const buttonRecipe = defineRecipe({
     // Provides visual feedback that the element is interactive
     cursor: "pointer",
 
+    // Ensures the icon does not shrink
+    "& svg": {
+      flexShrink: "0",
+    },
+
     // Makes state changes (hover, click) feel smooth and intentional
     transition: "all",
     transitionTimingFunction: "ease-in-out",
@@ -45,7 +50,9 @@ export const buttonRecipe = defineRecipe({
         outlineStyle: "solid",
 
         // Stroke here and below is to have the same color in icons as we do the text
-        stroke: "text.white",
+        "& svg": {
+          stroke: "text.white",
+        },
 
         "&:hover": {
           // Creates a subtle highlight effect to show interactivity
@@ -79,8 +86,8 @@ export const buttonRecipe = defineRecipe({
 
         // If an icon is present, it applies the text color to the spinner
         "& [data-spinner]": {
-          borderColor: "colors.white",
-          borderTopColor: "colors.white",
+          borderColor: "white",
+          borderTopColor: "white",
         },
       },
       secondary: {
@@ -88,14 +95,18 @@ export const buttonRecipe = defineRecipe({
         background: "text.white",
         color: "text.black",
 
-        stroke: "text.black",
+        "& svg": {
+          stroke: "text.black",
+        },
 
         "&:hover": {
           outlineWidth: "0",
           color: "text.black",
           background: "text.white",
 
-          stroke: "text.white",
+          "& svg": {
+            stroke: "text.black",
+          },
         },
         "&:focus-visible": {
           outlineWidth: "3",
@@ -103,10 +114,18 @@ export const buttonRecipe = defineRecipe({
           outlineStyle: "solid",
           color: "text.black",
           background: "text.white",
+
+          "& svg": {
+            stroke: "text.black",
+          },
         },
         "&:active": {
           color: "text.black",
           background: "text.white",
+
+          "& svg": {
+            stroke: "text.black",
+          },
         },
         "&:disabled": {
           opacity: "50",
@@ -125,13 +144,17 @@ export const buttonRecipe = defineRecipe({
         color: "text.black",
         border: "none",
 
-        stroke: "text.black",
+        "& svg": {
+          stroke: "text.black",
+        },
 
         "&:hover": {
           color: "text.black",
           background: "bg.brand.secondary",
 
-          stroke: "text.black",
+          "& svg": {
+            stroke: "text.black",
+          },
         },
         "&:focus-visible": {
           outlineWidth: "3",
@@ -139,10 +162,18 @@ export const buttonRecipe = defineRecipe({
           outlineStyle: "solid",
           color: "text.white",
           background: "bg.brand.secondary",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
         "&:active": {
           color: "text.white",
           background: "bg.brand.secondary",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
         "&:disabled": {
           opacity: "50",
@@ -156,13 +187,69 @@ export const buttonRecipe = defineRecipe({
           borderTopColor: "text.black !important",
         },
       },
+      outline: {
+        // Outlined button style with transparent background and colored border
+        background: "transparent",
+        color: "bg.brand.primary",
+        borderWidth: "1",
+        borderColor: "bg.brand.primary",
+        borderStyle: "solid",
+
+        "& svg": {
+          stroke: "bg.brand.primary",
+        },
+
+        _hover: {
+          background: "bg.brand.primary",
+          color: "text.white",
+
+          "& svg": {
+            stroke: "text.white",
+          },
+        },
+
+        _focusVisible: {
+          outlineWidth: "3",
+          outlineColor: "text.white",
+          outlineStyle: "solid",
+          background: "bg.brand.primary",
+          color: "text.white",
+
+          "& svg": {
+            stroke: "text.white",
+          },
+        },
+
+        _active: {
+          background: "bg.brand.primary",
+          color: "text.white",
+
+          "& svg": {
+            stroke: "text.white",
+          },
+        },
+
+        _disabled: {
+          opacity: "50",
+          cursor: "not-allowed",
+          outlineWidth: "0",
+        },
+
+        // If an icon is present, it applies the text color to the spinner
+        "& [data-spinner]": {
+          borderColor: "bg.brand.primary/30 !important",
+          borderTopColor: "bg.brand.primary !important",
+        },
+      },
       link: {
         // Makes buttons appear and behave like hyperlinks
         color: "bg.brand.primary",
         borderWidth: "0",
         width: "fit",
 
-        stroke: "bg.brand.primary",
+        "& svg": {
+          stroke: "bg.brand.primary",
+        },
 
         "&:hover": {
           // Traditional underline feedback for link-style interactions
@@ -174,17 +261,21 @@ export const buttonRecipe = defineRecipe({
           outlineWidth: "3",
           outlineColor: "text.white",
           outlineStyle: "solid",
-          textDecoration: "underline",
-          textUnderlineOffset: "1px",
-          textUnderlinePosition: "under",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
-        "&:active": {
+
+        _active: {
           outlineWidth: "0",
-          textDecoration: "underline",
-          textUnderlineOffset: "1px",
-          textUnderlinePosition: "under",
+
+          "& svg": {
+            stroke: "text.white",
+          },
         },
-        "&:disabled": {
+
+        _disabled: {
           opacity: "50",
           cursor: "not-allowed",
         },
@@ -194,13 +285,6 @@ export const buttonRecipe = defineRecipe({
           borderColor: "bg.brand.primary",
           borderTopColor: "bg.brand.primary",
         },
-      },
-      icon: {
-        // Specialized style for icon-only buttons
-        padding: "0",
-        height: "6",
-        fill: "transparent",
-        stroke: "text.white",
       },
     },
 
@@ -227,18 +311,23 @@ export const buttonRecipe = defineRecipe({
         fontSize: "lg",
         lineHeight: "6",
       },
+      icon: {
+        // Specialized style for icon-only buttons
+        width: "8 !important",
+        height: "8",
+      },
     },
 
     width: {
       // Width options for different layout needs
       full: { width: "full" }, // Takes full width of container
-      fit: { width: "fit !important" }, // Only as wide as its content
+      fit: { width: "fit" }, // Only as wide as its content
     },
   },
   // Default configuration for most common use case
   defaultVariants: {
     variant: "primary",
-    size: "md",
     width: "fit",
+    size: "md",
   },
 });

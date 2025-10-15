@@ -8,6 +8,7 @@ import { Badge } from "./badge/Badge";
 import { Button } from "./button/Button";
 import { Checkbox } from "./checkbox/Checkbox";
 import { ComboBox } from "./combobox/ComboBox";
+import { Icon } from "./common/Icon";
 import { Label } from "./common/Label";
 import { ContentHeader } from "./contentheader/ContentHeader";
 import { DatePicker } from "./datepicker/DatePicker";
@@ -209,7 +210,14 @@ export const App = () => {
       <DatePicker label="Date Picker" />
       {/* <DateRangePicker label="Date Range Picker" /> */}
 
+      <Button variant="outline" size="icon">
+        <Icon id="search" size="4" />
+      </Button>
       <Button>Get Started</Button>
+      <Button>
+        <Icon id="search" size="4" />
+        Get Started
+      </Button>
       <Button variant="secondary">Get Started</Button>
       <Button variant="ghost">Get Started</Button>
 
