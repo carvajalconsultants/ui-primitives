@@ -211,7 +211,19 @@ export const App = () => {
       {/* <DateRangePicker label="Date Range Picker" /> */}
 
       <Button variant="outline" size="icon">
+        <Icon id="search" size="2" />
+      </Button>
+      <Button variant="outline" size="icon">
+        <Icon id="search" size="3" />
+      </Button>
+      <Button variant="outline" size="icon">
         <Icon id="search" size="4" />
+      </Button>
+      <Button variant="outline" size="icon">
+        <Icon id="search" size="5" />
+      </Button>
+      <Button variant="outline" size="icon">
+        <Icon id="search" size="6" />
       </Button>
       <Button>Get Started</Button>
       <Button>

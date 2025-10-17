@@ -43,6 +43,14 @@ export const cciPreset = definePreset({
   // We're generating all the recipes
   staticCss: {
     recipes: "*",
+    css: [
+      {
+        properties: {
+          width: ["2", "3", "4", "5", "6", "7", "8"], // Icon sizes for square pattern
+          height: ["2", "3", "4", "5", "6", "7", "8"], // Ensure height matches width for squares
+        },
+      },
+    ],
   },
 
   patterns: {
