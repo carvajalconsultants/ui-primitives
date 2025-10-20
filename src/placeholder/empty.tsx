@@ -24,7 +24,7 @@ type EmptyProps = EmptyVariantProps & {
   // This is the number of rings
   ringCount?: number;
 
-  // This is the base opacity of the rings
+// This is the base opacity of the rings
   ringBaseOpacity?: number;
 
   // This is the multiplier for the visual size
