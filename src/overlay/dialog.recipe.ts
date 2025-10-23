@@ -37,6 +37,7 @@ export const dialogRecipe = defineSlotRecipe({
         height: "svh",
       },
     },
+    /* Main dialog content */
     content: {
       flex: "1",
       display: "flex",
@@ -44,6 +45,7 @@ export const dialogRecipe = defineSlotRecipe({
       gap: "5.5",
       overflow: "auto",
     },
+    /* Close button on top-right */
     closeable: {
       position: "absolute",
       top: "3",

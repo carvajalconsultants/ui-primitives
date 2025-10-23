@@ -54,10 +54,10 @@ export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, but
           {typeof title === "string" ? <Heading slot="title">{title}</Heading> : title}
 
           {/* Main dialog content */}
-          <div className={classes.content}>{children}</div>
+          <Box className={classes.content}>{children}</Box>
 
           {/* Action buttons along the bottom-right */}
-          {buttons && <div className={classes.buttons}>{buttons}</div>}
+          {buttons && <Box className={classes.buttons}>{buttons}</Box>}
         </>
       )}
     </AriaDialog>
