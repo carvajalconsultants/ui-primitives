@@ -1,5 +1,8 @@
 import { Dialog as AriaDialog } from "react-aria-components";
 
+import { cx } from "../../styled-system/css";
+import { Box } from "../../styled-system/jsx";
+
 import { dialog } from "../../styled-system/recipes";
 import { Button } from "../button/Button";
 import { Icon } from "../common/Icon";
@@ -15,7 +18,7 @@ export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDial
   /**
    * Title that will be shown along the top of the dialog.
    */
-  title: string;
+  title: ReactNode | string;
 
   /**
    * Hides/shows the X button along the top-right, defaults to true.
@@ -26,29 +29,30 @@ export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDial
    * Actions buttons along the bottom, below the content.
    */
   buttons?: ReactNode;
+
+  closeableClassName?: string;
 }
 
 /**
  * ARIA compliant dialog with a title, close button and content.
  */
-export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, buttons, variant, ...props }) => {
+export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, buttons, variant, closeableClassName, ...props }) => {
   const classes = dialog({ variant });
 
   return (
     <AriaDialog className={classes.dialog} {...props}>
       {({ close }) => (
         <>
-          <div className={classes.heading}>
-            {/* Heading title */}
-            <Heading slot="title">{title}</Heading>
-
-            {/* X close button on top-right */}
-            {closeable === true && (
+          {/* X close button on top-right */}
+          {closeable === true && (
+            <Box className={cx(classes.closeable, closeableClassName)}>
               <Button variant="ghost" size="icon" onPress={close}>
                 <Icon id="x" size="4" stroke="text.primary" />
               </Button>
-            )}
-          </div>
+            </Box>
+          )}
+
+          {typeof title === "string" ? <Heading slot="title">{title}</Heading> : title}
 
           {/* Main dialog content */}
           <div className={classes.content}>{children}</div>
