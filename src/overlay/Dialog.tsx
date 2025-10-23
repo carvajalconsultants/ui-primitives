@@ -51,7 +51,7 @@ export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, but
             </Box>
           )}
 
-          {typeof title === "string" ? <Heading slot="title">{title}</Heading> : title}
+          {typeof title === "string" ? <Heading slot="title">{title}</Heading> : <Box slot="title">{title}</Box>}
 
           {/* Main dialog content */}
           <Box className={classes.content}>{children}</Box>
