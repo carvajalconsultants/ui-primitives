@@ -2,7 +2,6 @@ import { Dialog as AriaDialog } from "react-aria-components";
 
 import { cx } from "../../styled-system/css";
 import { Box } from "../../styled-system/jsx";
-
 import { dialog } from "../../styled-system/recipes";
 import { Button } from "../button/Button";
 import { Icon } from "../common/Icon";
