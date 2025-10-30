@@ -29,6 +29,9 @@ export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDial
    */
   buttons?: ReactNode;
 
+  /**
+   * Additional CSS class name(s) to apply to the closeable button container.
+   */
   closeableClassName?: string;
 }
 
