@@ -6,7 +6,7 @@ import { defineSlotRecipe } from "@pandacss/dev";
 export const dialogRecipe = defineSlotRecipe({
   className: "dialog",
   description: "The styles for the Dialog component",
-  slots: ["dialog", "content", "buttons", "closeable"],
+  slots: ["dialog", "content", "footer", "closeable"],
   base: {
     dialog: {
       position: "relative",
@@ -52,7 +52,7 @@ export const dialogRecipe = defineSlotRecipe({
       right: "3",
     },
     /* Actions buttons along the bottom. */
-    buttons: {
+    footer: {
       display: "flex",
       alignItems: "center",
       justifyContent: "end",

@@ -5,7 +5,6 @@ import { Box } from "../../styled-system/jsx";
 import { dialog } from "../../styled-system/recipes";
 import { Button } from "../button/Button";
 import { Icon } from "../common/Icon";
-import { Heading } from "../typography/Heading";
 
 import type { FC, PropsWithChildren, ReactNode } from "react";
 import type { DialogProps as AriaDialogProps } from "react-aria-components";
@@ -15,9 +14,9 @@ import type { WithoutClassName } from "../types";
 
 export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDialogProps>>, Partial<DialogVariantProps> {
   /**
-   * Title that will be shown along the top of the dialog.
+   * Header component with title and optional description.
    */
-  title?: ReactNode | string;
+  header?: ReactNode;
 
   /**
    * Hides/shows the X button along the top-right, defaults to true.
@@ -27,13 +26,13 @@ export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDial
   /**
    * Actions buttons along the bottom, below the content.
    */
-  buttons?: ReactNode;
+  footer?: ReactNode;
 }
 
 /**
  * ARIA compliant dialog with a title, close button and content.
  */
-export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, buttons, variant, ...props }) => {
+export const Dialog: FC<DialogProps> = ({ header, closeable = true, children, footer, variant, ...props }) => {
   const classes = dialog({ variant });
 
   return (
@@ -49,14 +48,14 @@ export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, but
             </Box>
           )}
 
-          {/* If we've got a title, we render a <Heading> with the title, otherwise we render the title as is. */}
-          {title && (typeof title === "string" ? <Heading slot="title">{title}</Heading> : <Box slot="title">{title}</Box>)}
+          {/* Render header if provided */}
+          {header}
 
           {/* Main dialog content */}
           <Box className={classes.content}>{children}</Box>
 
-          {/* Action buttons along the bottom-right */}
-          {buttons && <Box className={classes.buttons}>{buttons}</Box>}
+          {/* Action buttons along the bottom */}
+          {footer && <Box className={classes.footer}>{footer}</Box>}
         </>
       )}
     </AriaDialog>
