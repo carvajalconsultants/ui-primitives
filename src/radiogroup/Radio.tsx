@@ -1,12 +1,11 @@
 import { Radio as AriaRadio } from "react-aria-components";
 
-import { WithoutClassName } from "src/types";
-
 import { cx } from "../../styled-system/css";
 import { radioGroup } from "../../styled-system/recipes";
 
 import type { FC } from "react";
 import type { RadioProps as AriaRadioProps } from "react-aria-components";
+import type { WithoutClassName } from "src/types";
 
 import type { RadioGroupVariantProps } from "../../styled-system/recipes";
 
