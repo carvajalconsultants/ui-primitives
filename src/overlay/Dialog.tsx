@@ -28,17 +28,12 @@ export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDial
    * Actions buttons along the bottom, below the content.
    */
   buttons?: ReactNode;
-
-  /**
-   * Additional CSS class name(s) to apply to the closeable button container.
-   */
-  closeableClassName?: string;
 }
 
 /**
  * ARIA compliant dialog with a title, close button and content.
  */
-export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, buttons, variant, closeableClassName, ...props }) => {
+export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, buttons, variant, ...props }) => {
   const classes = dialog({ variant });
 
   return (
@@ -47,7 +42,7 @@ export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, but
         <>
           {/* X close button on top-right */}
           {closeable === true && (
-            <Box className={cx(classes.closeable, closeableClassName)}>
+            <Box className={cx(classes.closeable)}>
               <Button variant="ghost" size="icon" onPress={close}>
                 <Icon id="x" size="4" stroke="text.primary" />
               </Button>
