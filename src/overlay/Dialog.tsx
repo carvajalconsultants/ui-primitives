@@ -55,7 +55,7 @@ export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, but
           )}
 
           {/* If we've got a title, we render a <Heading> with the title, otherwise we render the title as is. */}
-          {title && (typeof title === "string" ? <Heading slot="title">{title}</Heading> : title)}
+          {title && (typeof title === "string" ? <Heading slot="title">{title}</Heading> : <Box slot="title">{title}</Box>)}
 
           {/* Main dialog content */}
           <Box className={classes.content}>{children}</Box>

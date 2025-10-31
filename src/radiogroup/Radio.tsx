@@ -1,5 +1,7 @@
 import { Radio as AriaRadio } from "react-aria-components";
 
+import { WithoutClassName } from "src/types";
+
 import { cx } from "../../styled-system/css";
 import { radioGroup } from "../../styled-system/recipes";
 
@@ -11,14 +13,13 @@ import type { RadioGroupVariantProps } from "../../styled-system/recipes";
 /**
  * ARIA compliant Radio component that renders a radio button.
  */
-// export type RadioProps = Omit<AriaRadioProps, "children"> &
-export type RadioProps = AriaRadioProps & Partial<RadioGroupVariantProps> & { className?: string };
+export type RadioProps = WithoutClassName<AriaRadioProps> & Partial<RadioGroupVariantProps>;
 
-export const Radio: FC<RadioProps> = ({ children, className, ...props }) => {
+export const Radio: FC<RadioProps> = ({ children, ...props }) => {
   const classes = radioGroup();
 
   return (
-    <AriaRadio className={cx(classes.radio, className)} {...props}>
+    <AriaRadio className={cx(classes.radio)} {...props}>
       {(props) => (
         <>
           <div className={cx(classes.control)}>
