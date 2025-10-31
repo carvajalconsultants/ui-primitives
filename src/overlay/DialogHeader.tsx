@@ -1,8 +1,10 @@
-import { Box, BoxProps } from "../../styled-system/jsx";
+import { Box } from "../../styled-system/jsx";
 import { Heading } from "../typography/Heading";
 import { Paragraph } from "../typography/Paragraph";
 
 import type { FC, ReactNode } from "react";
+
+import type { BoxProps } from "../../styled-system/jsx";
 
 export interface DialogHeaderProps extends Omit<BoxProps, "title"> {
   /**
