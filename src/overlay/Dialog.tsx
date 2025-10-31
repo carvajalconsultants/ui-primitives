@@ -17,7 +17,7 @@ export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDial
   /**
    * Title that will be shown along the top of the dialog.
    */
-  title: ReactNode | string;
+  title?: ReactNode | string;
 
   /**
    * Hides/shows the X button along the top-right, defaults to true.
@@ -54,7 +54,8 @@ export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, but
             </Box>
           )}
 
-          {typeof title === "string" ? <Heading slot="title">{title}</Heading> : <Box slot="title">{title}</Box>}
+          {/* If we've got a title, we render a <Heading> with the title, otherwise we render the title as is. */}
+          {title && (typeof title === "string" ? <Heading slot="title">{title}</Heading> : title)}
 
           {/* Main dialog content */}
           <Box className={classes.content}>{children}</Box>
