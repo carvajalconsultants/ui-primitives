@@ -37,6 +37,8 @@ export { ListBox } from "./listbox/ListBox";
 export { ListBoxItem } from "./listbox/ListBoxItem";
 export { VirtualizedListBox } from "./listbox/VirtualizedListBox";
 export { Dialog } from "./overlay/Dialog";
+export { DialogDescription } from "./overlay/DialogDescription";
+export { DialogTitle } from "./overlay/DialogTitle";
 export { Modal } from "./overlay/Modal";
 export { Radio } from "./radiogroup/Radio";
 export { RadioGroup } from "./radiogroup/RadioGroup";
