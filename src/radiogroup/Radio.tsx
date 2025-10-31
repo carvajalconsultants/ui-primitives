@@ -5,14 +5,14 @@ import { radioGroup } from "../../styled-system/recipes";
 
 import type { FC } from "react";
 import type { RadioProps as AriaRadioProps } from "react-aria-components";
+import type { WithoutClassName } from "src/types";
 
 import type { RadioGroupVariantProps } from "../../styled-system/recipes";
 
 /**
  * ARIA compliant Radio component that renders a radio button.
  */
-// export type RadioProps = Omit<AriaRadioProps, "children"> &
-export type RadioProps = AriaRadioProps & Partial<RadioGroupVariantProps>;
+export type RadioProps = WithoutClassName<AriaRadioProps> & Partial<RadioGroupVariantProps>;
 
 export const Radio: FC<RadioProps> = ({ children, ...props }) => {
   const classes = radioGroup();

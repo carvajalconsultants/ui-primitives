@@ -4,6 +4,8 @@ import { Button } from "../button/Button";
 import { Heading } from "../typography/Heading";
 import { Paragraph } from "../typography/Paragraph";
 import { Dialog } from "./Dialog";
+import { DialogDescription } from "./DialogDescription";
+import { DialogTitle } from "./DialogTitle";
 import { Modal } from "./Modal";
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
@@ -57,7 +59,7 @@ const TestDialog: Story = {
 export const CloseableOverflow: Story = {
   ...TestDialog,
   args: {
-    title: "This is a very long title to see how the overflow of the title performs while the content is also overflowing",
+    header: <DialogTitle title="This is a very long title to see how the overflow of the title performs while the content is also overflowing" />,
     closeable: true,
     children: (
       <>
@@ -95,7 +97,7 @@ export const CloseableOverflow: Story = {
         </Paragraph>
       </>
     ),
-    buttons: (
+    footer: (
       <>
         <Button>Button 1</Button>
         <Button>Button 2</Button>
@@ -108,7 +110,7 @@ export const CloseableOverflow: Story = {
 export const NotCloseableOverflow: Story = {
   ...TestDialog,
   args: {
-    title: "This is a very long title to see how the overflow of the title performs while the content is also overflowing",
+    header: <DialogTitle title="This is a very long title to see how the overflow of the title performs while the content is also overflowing" />,
     closeable: false,
     children: (
       <>
@@ -146,7 +148,7 @@ export const NotCloseableOverflow: Story = {
         </Paragraph>
       </>
     ),
-    buttons: (
+    footer: (
       <>
         <Button>Button 1</Button>
         <Button>Button 2</Button>
@@ -159,7 +161,7 @@ export const NotCloseableOverflow: Story = {
 export const CloseableMinimum: Story = {
   ...TestDialog,
   args: {
-    title: "Small",
+    header: <DialogTitle title="Small" />,
     closeable: true,
     children: (
       <>
@@ -172,7 +174,7 @@ export const CloseableMinimum: Story = {
 export const NotCloseableMinimum: Story = {
   ...TestDialog,
   args: {
-    title: "Small",
+    header: <DialogTitle title="Small" />,
     closeable: false,
     children: (
       <>
@@ -193,7 +195,7 @@ export const Compact: Story = {
     </DialogTrigger>
   ),
   args: {
-    title: "Compact Dialog",
+    header: <DialogTitle title="Compact Dialog" />,
     closeable: true,
     variant: "compact",
     children: (
@@ -209,9 +211,33 @@ export const Compact: Story = {
         <Paragraph>This is a compact dialog that takes up less vertical space on mobile devices. It has a max height of 70dvh and rounded top corners on mobile.</Paragraph>
       </>
     ),
-    buttons: (
+    footer: (
       <>
         <Button>Save</Button>
+        <Button variant="secondary">Cancel</Button>
+      </>
+    ),
+  },
+};
+
+export const WithHeader: Story = {
+  ...TestDialog,
+  args: {
+    header: (
+      <>
+        <DialogTitle title="Confirm Action" />
+        <DialogDescription description="This action cannot be undone. Are you sure you want to proceed?" />
+      </>
+    ),
+    closeable: true,
+    children: (
+      <>
+        <Paragraph>Please review the details before confirming.</Paragraph>
+      </>
+    ),
+    footer: (
+      <>
+        <Button>Confirm</Button>
         <Button variant="secondary">Cancel</Button>
       </>
     ),

@@ -6,9 +6,10 @@ import { defineSlotRecipe } from "@pandacss/dev";
 export const dialogRecipe = defineSlotRecipe({
   className: "dialog",
   description: "The styles for the Dialog component",
-  slots: ["dialog", "heading", "content", "buttons"],
+  slots: ["dialog", "content", "footer", "closeable"],
   base: {
     dialog: {
+      position: "relative",
       display: "flex",
       flexDirection: "column",
       borderRadius: "lg",
@@ -36,14 +37,7 @@ export const dialogRecipe = defineSlotRecipe({
         height: "svh",
       },
     },
-
-    /* Title and close button */
-    heading: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "start",
-      justifyContent: "space-between",
-    },
+    /* Main dialog content */
     content: {
       flex: "1",
       display: "flex",
@@ -51,8 +45,14 @@ export const dialogRecipe = defineSlotRecipe({
       gap: "5.5",
       overflow: "auto",
     },
+    /* Close button on top-right */
+    closeable: {
+      position: "absolute",
+      top: "3",
+      right: "3",
+    },
     /* Actions buttons along the bottom. */
-    buttons: {
+    footer: {
       display: "flex",
       alignItems: "center",
       justifyContent: "end",

@@ -40,11 +40,6 @@ export const cciPreset = definePreset({
     dark: "[data-theme=dark] &",
   },
 
-  // We're generating all the recipes
-  staticCss: {
-    recipes: "*",
-  },
-
   patterns: {
     extend: {
       square: {
