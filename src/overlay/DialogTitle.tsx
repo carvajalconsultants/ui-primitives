@@ -17,4 +17,3 @@ export const DialogTitle: FC<DialogTitleProps> = ({ title }) => (
     {title}
   </Heading>
 );
-

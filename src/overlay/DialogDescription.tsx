@@ -13,4 +13,3 @@ export interface DialogDescriptionProps {
  * Dialog description component displayed below the title in the dialog header.
  */
 export const DialogDescription: FC<DialogDescriptionProps> = ({ description }) => <Paragraph>{description}</Paragraph>;
-
