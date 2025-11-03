@@ -14,6 +14,7 @@ export const dialogRecipe = defineSlotRecipe({
       flexDirection: "column",
       borderRadius: "lg",
       bg: "text.white",
+      overflow: "hidden",
 
       /* Gives a glow to the dialog when it has focus. */
       _focus: {
@@ -44,6 +45,10 @@ export const dialogRecipe = defineSlotRecipe({
       flexDirection: "column",
       gap: "5.5",
       overflow: "auto",
+
+      "&:empty": {
+        display: "none",
+      },
     },
     /* Close button on top-right */
     closeable: {
