@@ -286,6 +286,68 @@ export const buttonRecipe = defineRecipe({
           borderTopColor: "bg.brand.primary",
         },
       },
+      danger: {
+        // Destructive action button style
+        background: "bg.danger.primary",
+        color: "body.text",
+        borderWidth: "0",
+        borderColor: "transparent",
+        outlineWidth: "0",
+        outlineColor: "transparent",
+        outlineStyle: "solid",
+
+        "& svg": {
+          stroke: "body.text",
+        },
+
+        "&:hover": {
+          outlineWidth: "3",
+          outlineColor: "body.text",
+          outlineStyle: "solid",
+          background: "bg.danger._hover",
+          color: "body.text",
+
+          "& svg": {
+            stroke: "body.text",
+          },
+        },
+
+        "&:focus-visible": {
+          outlineWidth: "3",
+          outlineColor: "body.text",
+          outlineStyle: "solid",
+          background: "bg.danger._hover",
+          color: "body.text",
+
+          "& svg": {
+            stroke: "body.text",
+          },
+        },
+
+        "&:active": {
+          outlineWidth: "3",
+          outlineColor: "body.text",
+          outlineStyle: "solid",
+          background: "bg.danger._hover",
+          color: "body.text",
+
+          "& svg": {
+            stroke: "body.text",
+          },
+        },
+
+        "&:disabled": {
+          opacity: "50",
+          cursor: "not-allowed",
+          outlineWidth: "0",
+        },
+
+        // If an icon is present, it applies the text color to the spinner
+        "& [data-spinner]": {
+          borderColor: "body.text/30",
+          borderTopColor: "body.text",
+        },
+      },
     },
 
     size: {

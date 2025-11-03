@@ -52,6 +52,7 @@ export { Row } from "./table/Row";
 export { Table } from "./table/Table";
 export { TableBody } from "./table/TableBody";
 export { TableHeader } from "./table/TableHeader";
+export { TableFooter } from "./table/TableFooter";
 
 export { Tab } from "./tab/Tab";
 export { TabList } from "./tab/TabList";
