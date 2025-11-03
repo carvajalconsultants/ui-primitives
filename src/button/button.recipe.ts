@@ -347,46 +347,6 @@ export const buttonRecipe = defineRecipe({
           borderColor: "body.text/30",
           borderTopColor: "body.text",
         },
-
-        // _dark: {
-        //   color: "text.white",
-
-        //   "& svg": {
-        //     stroke: "text.white",
-        //   },
-
-        //   "&:hover": {
-        //     outlineColor: "text.white",
-        //     color: "text.white",
-
-        //     "& svg": {
-        //       stroke: "text.white",
-        //     },
-        //   },
-
-        //   "&:focus-visible": {
-        //     outlineColor: "text.white",
-        //     color: "text.white",
-
-        //     "& svg": {
-        //       stroke: "text.white",
-        //     },
-        //   },
-
-        //   "&:active": {
-        //     outlineColor: "text.white",
-        //     color: "text.white",
-
-        //     "& svg": {
-        //       stroke: "text.white",
-        //     },
-        //   },
-
-        //   "& [data-spinner]": {
-        //     borderColor: "white",
-        //     borderTopColor: "white",
-        //   },
-        // },
       },
     },
 
