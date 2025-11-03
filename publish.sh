@@ -1,3 +1,5 @@
+bun run prepare
+
 bun run paraglide
 
 # Makes NPM publish not ignore the directory (because it uses the .gitignore when .npmignore does not exist)
