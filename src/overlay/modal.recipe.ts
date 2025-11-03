@@ -17,6 +17,7 @@ export const modalRecipe = defineSlotRecipe({
       position: "fixed",
       inset: "0",
       backgroundColor: "overlay",
+      zIndex: "100",
 
       /* Gives the blur to the content below the overlay */
       backdropFilter: "auto",
