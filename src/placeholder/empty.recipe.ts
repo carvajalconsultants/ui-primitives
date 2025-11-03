@@ -108,7 +108,7 @@ export const emptyRecipe = defineSlotRecipe({
           bg: "bg.danger.primary",
         },
         icon: {
-          filter: "[brightness(0) saturate(100%) drop-shadow(0px 1000px 0 var(--colors-fg-danger-primary))]",
+          filter: "[brightness(0) saturate(100%) drop-shadow(0px 1000px 0 var(--colors-danger-secondary))]",
           transform: "translateY(-1000px)",
         },
       },
