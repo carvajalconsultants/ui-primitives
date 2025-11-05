@@ -51,8 +51,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "paraglide": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide",
-    "machine-translate": "inlang machine translate --project project.inlang",
-    "cssgen": "panda cssgen -o dist/lib.css"
+    "machine-translate": "inlang machine translate --project project.inlang"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
