@@ -27,7 +27,7 @@ export default defineConfig({
   strictPropertyValues: true,
 
   // Instead of mjs to not have issues importing files
-  outExtension: "js",
+  outExtension: "mjs",
 
   // Files to exclude
   exclude: [],
