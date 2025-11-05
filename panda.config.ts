@@ -31,4 +31,7 @@ export default defineConfig({
 
   // Files to exclude
   exclude: [],
+
+  // The output directory for your css system
+  outdir: 'styled-system',
 });
