@@ -19,7 +19,7 @@ export const labelRecipe = defineRecipe({
     color: {
       primary: { color: "text.primary" },
       secondary: { color: "text.secondary" },
-      index: { color: "text.brand" },
+      tertiary: { color: "text.tertiary" },
     },
     weight: {
       regular: { fontWeight: "regular" },
@@ -29,7 +29,7 @@ export const labelRecipe = defineRecipe({
   },
   defaultVariants: {
     size: "md",
-    color: "index",
+    color: "tertiary",
     weight: "regular",
   },
 });
