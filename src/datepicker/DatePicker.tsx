@@ -58,7 +58,7 @@ export const DatePicker = <T extends DateValue>({ label, description, errorMessa
 
   return (
     <AriaDatePicker {...props}>
-      {label && <Label>{label}</Label>}
+      {label && <Label color="primary">{label}</Label>}
       <Group className={classes.group}>
         <DateInput className={classes.dateInput}>{(segment) => <DateSegment segment={segment} />}</DateInput>
         <Button className={classes.button}>
