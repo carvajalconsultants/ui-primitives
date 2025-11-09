@@ -23,6 +23,7 @@ import { ListBox } from "./listbox/ListBox";
 import { ListBoxItem } from "./listbox/ListBoxItem";
 import { VirtualizedListBox } from "./listbox/VirtualizedListBox";
 import { Dialog } from "./overlay/Dialog";
+import { DialogTitle } from "./overlay/DialogTitle";
 import { Modal } from "./overlay/Modal";
 import { Radio } from "./radiogroup/Radio";
 import { RadioGroup } from "./radiogroup/RadioGroup";
@@ -243,7 +244,8 @@ export const App = () => {
         <Button>Open Dialog</Button>
 
         <Modal isDismissable>
-          <Dialog title="Dialog Title">
+          <Dialog>
+            <DialogTitle>Dialog Title</DialogTitle>
             <Paragraph>This is a dialog.</Paragraph>
           </Dialog>
         </Modal>
