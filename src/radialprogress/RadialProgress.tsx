@@ -43,7 +43,10 @@ const calculateCircleMetrics = (size: number, strokeWidth: number, percentage: n
 };
 
 /**
- * RadialProgress renders a radial progress indicator as a donut chart.
+ * RadialProgress provides a compact, visually engaging way to display completion status, task progress, or metrics.
+ * Unlike linear progress bars, radial progress indicators efficiently use circular space and allow for additional
+ * information (like percentages, labels, or counts) to be displayed in the center, making them ideal for dashboards,
+ * file uploads, data visualizations, and status displays where space is at a premium.
  * Always renders a full 360-degree circle with customizable size and stroke width.
  */
 export const RadialProgress = ({ percentage, size = 100, strokeWidth = 8, variant = "primary", children, ...props }: RadialProgressProps) => {
