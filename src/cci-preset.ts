@@ -4,6 +4,7 @@ import { avatarRecipe } from "./avatar/avatar.recipe";
 import { badgeRecipe } from "./badge/badge.recipe";
 import { buttonRecipe } from "./button/button.recipe";
 import { checkboxRecipe } from "./checkbox/checkbox.recipe";
+import { radialProgressRecipe } from "./radialprogress/RadialProgress.recipe";
 import { comboBoxRecipe } from "./combobox/comboBox.recipe";
 import { labelRecipe } from "./common/label.recipe";
 import { datePickerRecipe } from "./datepicker/datePicker.recipe";
@@ -76,6 +77,7 @@ export const cciPreset = definePreset({
   theme: {
     slotRecipes: {
       checkbox: checkboxRecipe,
+      radialProgress: radialProgressRecipe,
       comboBox: comboBoxRecipe,
       datePicker: datePickerRecipe,
       input: inputRecipe,

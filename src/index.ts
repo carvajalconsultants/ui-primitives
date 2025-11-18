@@ -18,6 +18,7 @@ export { Badge } from "./badge/Badge";
 export { AsyncButton } from "./button/AsyncButton";
 export { Button } from "./button/Button";
 export { Checkbox } from "./checkbox/Checkbox";
+export { RadialProgress } from "./radialprogress/RadialProgress";
 export { ComboBox } from "./combobox/ComboBox";
 export { Icon } from "./common/Icon";
 export type { IconMap, IconProps } from "./common/Icon";
@@ -51,8 +52,8 @@ export { HeaderCell } from "./table/HeaderCell";
 export { Row } from "./table/Row";
 export { Table } from "./table/Table";
 export { TableBody } from "./table/TableBody";
-export { TableHeader } from "./table/TableHeader";
 export { TableFooter } from "./table/TableFooter";
+export { TableHeader } from "./table/TableHeader";
 
 export { Tab } from "./tab/Tab";
 export { TabList } from "./tab/TabList";
