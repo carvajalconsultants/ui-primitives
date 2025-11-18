@@ -15,32 +15,6 @@
     "panda.config.ts",
     "postcss.config.cjs"
   ],
-  "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    },
-    "/css": {
-      "types": "./styled-system/css/index.d.ts",
-      "require": "./styled-system/css/index.mjs",
-      "import": "./styled-system/css/index.mjs"
-    },
-    "/recipes": {
-      "types": "./styled-system/recipes/index.d.ts",
-      "require": "./styled-system/recipes/index.mjs",
-      "import": "./styled-system/recipes/index.mjs"
-    },
-    "/patterns": {
-      "types": "./styled-system/patterns/index.d.ts",
-      "require": "./styled-system/patterns/index.mjs",
-      "import": "./styled-system/patterns/index.mjs"
-    },
-    "/jsx": {
-      "types": "./styled-system/jsx/index.d.ts",
-      "require": "./styled-system/jsx/index.mjs",
-      "import": "./styled-system/jsx/index.mjs"
-    }
-  },
   "scripts": {
     "prepare": "panda codegen && husky",
     "postinstall": "panda codegen",
@@ -51,7 +25,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "paraglide": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide",
-    "machine-translate": "inlang machine translate --project project.inlang"
+    "machine-translate": "inlang machine translate --project project.inlang",
+    "cssgen": "panda cssgen -o dist/lib.css"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",

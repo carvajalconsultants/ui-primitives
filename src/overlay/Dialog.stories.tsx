@@ -59,7 +59,7 @@ const TestDialog: Story = {
 export const CloseableOverflow: Story = {
   ...TestDialog,
   args: {
-    header: <DialogTitle title="This is a very long title to see how the overflow of the title performs while the content is also overflowing" />,
+    header: <DialogTitle>This is a very long title to see how the overflow of the title performs while the content is also overflowing</DialogTitle>,
     closeable: true,
     children: (
       <>
@@ -110,7 +110,7 @@ export const CloseableOverflow: Story = {
 export const NotCloseableOverflow: Story = {
   ...TestDialog,
   args: {
-    header: <DialogTitle title="This is a very long title to see how the overflow of the title performs while the content is also overflowing" />,
+    header: <DialogTitle>This is a very long title to see how the overflow of the title performs while the content is also overflowing</DialogTitle>,
     closeable: false,
     children: (
       <>
@@ -161,7 +161,7 @@ export const NotCloseableOverflow: Story = {
 export const CloseableMinimum: Story = {
   ...TestDialog,
   args: {
-    header: <DialogTitle title="Small" />,
+    header: <DialogTitle>Small</DialogTitle>,
     closeable: true,
     children: (
       <>
@@ -174,7 +174,7 @@ export const CloseableMinimum: Story = {
 export const NotCloseableMinimum: Story = {
   ...TestDialog,
   args: {
-    header: <DialogTitle title="Small" />,
+    header: <DialogTitle>Small</DialogTitle>,
     closeable: false,
     children: (
       <>
@@ -195,7 +195,7 @@ export const Compact: Story = {
     </DialogTrigger>
   ),
   args: {
-    header: <DialogTitle title="Compact Dialog" />,
+    header: <DialogTitle>Compact Dialog</DialogTitle>,
     closeable: true,
     variant: "compact",
     children: (
@@ -225,8 +225,8 @@ export const WithHeader: Story = {
   args: {
     header: (
       <>
-        <DialogTitle title="Confirm Action" />
-        <DialogDescription description="This action cannot be undone. Are you sure you want to proceed?" />
+        <DialogTitle>Confirm Action</DialogTitle>
+        <DialogDescription>This action cannot be undone. Are you sure you want to proceed?</DialogDescription>
       </>
     ),
     closeable: true,

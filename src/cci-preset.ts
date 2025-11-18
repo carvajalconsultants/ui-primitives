@@ -15,6 +15,7 @@ import { listBoxItemRecipe } from "./listbox/listBoxItem.recipe";
 import { dialogRecipe } from "./overlay/dialog.recipe";
 import { modalRecipe } from "./overlay/modal.recipe";
 import { emptyRecipe } from "./placeholder/empty.recipe";
+import { radialProgressRecipe } from "./radialprogress/RadialProgress.recipe";
 import { radioGroupRecipe } from "./radiogroup/radioGroup.recipe";
 import { selectRecipe } from "./select/select.recipe";
 import { tabRecipe } from "./tab/tab.recipe";
@@ -76,6 +77,7 @@ export const cciPreset = definePreset({
   theme: {
     slotRecipes: {
       checkbox: checkboxRecipe,
+      radialProgress: radialProgressRecipe,
       comboBox: comboBoxRecipe,
       datePicker: datePickerRecipe,
       input: inputRecipe,

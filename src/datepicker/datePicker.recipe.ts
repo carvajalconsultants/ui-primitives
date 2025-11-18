@@ -7,8 +7,14 @@ import { defineSlotRecipe } from "@pandacss/dev";
 export const datePickerRecipe = defineSlotRecipe({
   className: "datePicker",
   description: "The styles for the DatePicker component",
-  slots: ["group", "dateInput", "button", "popover", "calendar", "calendarHeader", "calendarHeaderBtn", "calendarGrid", "calendarCell"],
+  slots: ["root", "group", "dateInput", "button", "popover", "calendar", "calendarHeader", "calendarHeaderBtn", "calendarGrid", "calendarCell"],
   base: {
+    root: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "1.5",
+      width: "full",
+    },
     // Creates a contained input that looks like a single cohesive control
     group: {
       display: "flex",
@@ -115,6 +121,7 @@ export const datePickerRecipe = defineSlotRecipe({
       borderColor: "border.secondary._alt",
       borderRadius: "lg",
       shadow: "popover",
+      overflow: "hidden",
 
       // Handles different corner rounding for single date vs range selection
       "&[data-trigger='DatePicker'] td div": {

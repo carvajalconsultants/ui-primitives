@@ -23,7 +23,9 @@ import { ListBox } from "./listbox/ListBox";
 import { ListBoxItem } from "./listbox/ListBoxItem";
 import { VirtualizedListBox } from "./listbox/VirtualizedListBox";
 import { Dialog } from "./overlay/Dialog";
+import { DialogTitle } from "./overlay/DialogTitle";
 import { Modal } from "./overlay/Modal";
+import { RadialProgress } from "./radialprogress/RadialProgress";
 import { Radio } from "./radiogroup/Radio";
 import { RadioGroup } from "./radiogroup/RadioGroup";
 import { Select } from "./select/Select";
@@ -243,7 +245,8 @@ export const App = () => {
         <Button>Open Dialog</Button>
 
         <Modal isDismissable>
-          <Dialog title="Dialog Title">
+          <Dialog>
+            <DialogTitle>Dialog Title</DialogTitle>
             <Paragraph>This is a dialog.</Paragraph>
           </Dialog>
         </Modal>
@@ -306,6 +309,81 @@ export const App = () => {
           Vertical Option 4 (disabled)
         </Radio>
       </RadioGroup>
+
+      <Stack gap="4">
+        <Heading size="lg" weight="medium">
+          RadialProgress Examples
+        </Heading>
+
+        <HStack gap="8" alignItems="center">
+          <RadialProgress percentage={65} size={120} strokeWidth={10}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                65
+              </Heading>
+              <Paragraph size="xs">Visitors</Paragraph>
+            </Box>
+          </RadialProgress>
+
+          <RadialProgress percentage={75} size={100} strokeWidth={8}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                75
+              </Heading>
+              <Paragraph size="xs">Complete</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={50} size={50} strokeWidth={4}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                50
+              </Heading>
+              <Paragraph size="xs">In Progress</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={90} size={100} strokeWidth={8} variant="success">
+            <Box>
+              <Heading size="lg" weight="bold">
+                90
+              </Heading>
+              <Paragraph size="xs">Success</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={25} size={100} strokeWidth={8} variant="danger" />
+          <RadialProgress percentage={60} size={100} strokeWidth={8} variant="warning">
+            <Box>
+              <Heading size="lg" weight="bold">
+                60
+              </Heading>
+              <Paragraph size="xs">Warning</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={70} size={200} strokeWidth={16}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                70
+              </Heading>
+              <Paragraph size="xs">Complete</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={80} size={100} strokeWidth={4}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                80
+              </Heading>
+              <Paragraph size="xs">Complete</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={75} size={120} strokeWidth={12}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                75%
+              </Heading>
+              <Paragraph size="xs">Complete</Paragraph>
+            </Box>
+          </RadialProgress>
+        </HStack>
+      </Stack>
     </Stack>
   );
 };
