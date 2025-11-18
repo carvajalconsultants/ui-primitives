@@ -12,6 +12,7 @@ export const radialProgressRecipe = defineSlotRecipe({
       position: "relative",
     },
     svg: {
+      // Rotates circle start from 3 o'clock to 12 o'clock (top) to match standard progress UX.
       transform: "rotate(-90deg)",
     },
     centerContent: {
@@ -25,11 +26,15 @@ export const radialProgressRecipe = defineSlotRecipe({
       justifyContent: "center",
       width: "100%",
       textAlign: "center",
+
+      // Allows events to pass through to underlying elements when RadialProgress overlays clickable content.
       pointerEvents: "none",
     },
     backgroundCircle: {
       stroke: "bg.brand.primary",
       fill: "none",
+
+      // Subtle background opacity for visual contrast with progress stroke.
       opacity: "0.3",
     },
     progressCircle: {

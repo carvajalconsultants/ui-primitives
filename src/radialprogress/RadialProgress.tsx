@@ -23,10 +23,20 @@ interface CircleMetrics {
   offset: number;
 }
 
+/**
+ * Converts percentage to SVG circle metrics for progress visualization.
+ * Calculates radius accounting for stroke width, and inverts percentage for stroke-dashoffset.
+ * Example: percentage 75% → offset hides 25% of circumference, showing 75% progress.
+ * Example: size=100, strokeWidth=8, percentage=75 → { center: 50, radius: 46, circumference: 289, offset: 72 }
+ */
 const calculateCircleMetrics = (size: number, strokeWidth: number, percentage: number): CircleMetrics => {
   const center = size / 2;
+
+  // Subtracting strokeWidth keeps the stroke within bounds since SVG strokes are centered on the path.
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
+
+  // Inverts percentage: offset = circumference hides stroke (0%), offset = 0 shows full stroke (100%).
   const offset = circumference * (1 - percentage / 100);
 
   return { center, radius, circumference, offset };
@@ -43,14 +53,16 @@ export const RadialProgress = ({ percentage, size = 100, strokeWidth = 8, varian
 
   return (
     <Box className={classes.container} style={{ width: size, height: size }} {...props}>
+      {/* Rotation applied in recipe file: SVG circles start at 3 o'clock, -90deg moves start to top (12 o'clock). */}
       <svg className={classes.svg} width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ width: size, height: size }}>
         {/* Background circle */}
         <circle className={classes.backgroundCircle} cx={center} cy={center} r={radius} strokeWidth={strokeWidth} />
 
-        {/* Progress circle */}
+        {/* Progress circle - Rounded ends for better visual appearance. */}
         <circle className={classes.progressCircle} cx={center} cy={center} r={radius} strokeWidth={strokeWidth} strokeDasharray={circumference} strokeDashoffset={offset} strokeLinecap="round" />
       </svg>
 
+      {/* Center content - Allows for custom content to be displayed in the center of the progress indicator. */}
       {children && <Box className={classes.centerContent}>{children}</Box>}
     </Box>
   );
