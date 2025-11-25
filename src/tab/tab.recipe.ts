@@ -101,6 +101,10 @@ export const tabRecipe = defineSlotRecipe({
     variant: {
       line: {
         tab: {
+          borderTopWidth: "0",
+          borderLeftWidth: "0",
+          borderRightWidth: "0",
+          borderRadius: "none",
           borderBottomWidth: "1",
           borderBottomStyle: "solid",
           borderBottomColor: "border.secondary",
@@ -126,8 +130,10 @@ export const tabRecipe = defineSlotRecipe({
       unstyled: {
         tab: {
           border: "none",
+          borderWidth: "0",
+          borderRadius: "none",
           _selected: {
-            color: "text.brand",
+            color: "bg.brand.primary",
           },
         },
       },
@@ -139,7 +145,7 @@ export const tabRecipe = defineSlotRecipe({
         tab: {
           color: "text.primary",
           _selected: {
-            color: "text.brand",
+            color: "bg.brand.primary",
           },
         },
       },
@@ -147,7 +153,7 @@ export const tabRecipe = defineSlotRecipe({
         tab: {
           color: "text.secondary",
           _selected: {
-            color: "text.brand",
+            color: "bg.brand.primary",
           },
         },
       },

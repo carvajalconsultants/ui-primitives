@@ -87,6 +87,7 @@ export const cciPreset = definePreset({
       radioGroup: radioGroupRecipe,
       select: selectRecipe,
       table: tableRecipe,
+      tab: tabRecipe,
       tagGroup: tagGroupRecipe,
       empty: emptyRecipe,
 
@@ -108,7 +109,6 @@ export const cciPreset = definePreset({
       tableHeader: tableHeaderRecipe,
       heading: headingRecipe,
       text: textRecipe,
-      tab: tabRecipe,
     },
 
     // extend: {
