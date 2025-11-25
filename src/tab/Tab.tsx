@@ -2,10 +2,10 @@ import { Tab as AriaTab } from "react-aria-components";
 
 import { cx } from "../../styled-system/css";
 import { tab } from "../../styled-system/recipes/tab";
+import { WithoutClassName } from "../types";
 
 import type { FC } from "react";
 import type { TabProps as AriaTabProps } from "react-aria-components";
-import type { WithoutClassName } from "src/types";
 
 import type { TabVariantProps } from "../../styled-system/recipes";
 
