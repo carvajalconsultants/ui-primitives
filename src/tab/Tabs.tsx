@@ -5,9 +5,9 @@ import { tab } from "../../styled-system/recipes/tab";
 
 import type { FC } from "react";
 import type { TabsProps as AriaTabsProps } from "react-aria-components";
-import type { WithoutClassName } from "../types";
 
 import type { TabVariantProps } from "../../styled-system/recipes";
+import type { WithoutClassName } from "../types";
 
 export type TabsProps = WithoutClassName<AriaTabsProps> & Partial<TabVariantProps>;
 
