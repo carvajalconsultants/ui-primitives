@@ -18,6 +18,7 @@ import { emptyRecipe } from "./placeholder/empty.recipe";
 import { radialProgressRecipe } from "./radialprogress/RadialProgress.recipe";
 import { radioGroupRecipe } from "./radiogroup/radioGroup.recipe";
 import { selectRecipe } from "./select/select.recipe";
+import { accordionRecipe } from "./accordion/accordion.recipe";
 import { tabRecipe } from "./tab/tab.recipe";
 import { cellRecipe } from "./table/cell.recipe";
 import { headerCellRecipe } from "./table/headerCell.recipe";
@@ -76,6 +77,7 @@ export const cciPreset = definePreset({
   // Useful for theme customization
   theme: {
     slotRecipes: {
+      accordion: accordionRecipe,
       checkbox: checkboxRecipe,
       radialProgress: radialProgressRecipe,
       comboBox: comboBoxRecipe,

@@ -60,6 +60,15 @@ export { TabList } from "./tab/TabList";
 export { TabPanel } from "./tab/TabPanel";
 export { Tabs } from "./tab/Tabs";
 
+export { Accordion } from "./accordion/Accordion";
+export type { AccordionProps } from "./accordion/Accordion";
+export { AccordionHeader } from "./accordion/AccordionHeader";
+export type { AccordionHeaderProps } from "./accordion/AccordionHeader";
+export { AccordionItem } from "./accordion/AccordionItem";
+export type { AccordionItemProps } from "./accordion/AccordionItem";
+export { AccordionPanel } from "./accordion/AccordionPanel";
+export type { AccordionPanelProps } from "./accordion/AccordionPanel";
+
 export { DataGrid } from "./grid/DataGrid";
 export { DataGridBody } from "./grid/DataGridBody";
 export { DataGridBodyCell } from "./grid/DataGridBodyCell";

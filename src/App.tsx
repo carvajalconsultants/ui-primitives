@@ -3,6 +3,10 @@ import { DialogTrigger } from "react-aria-components";
 
 import { css } from "../styled-system/css";
 import { Box, HStack, Stack } from "../styled-system/jsx";
+import { Accordion } from "./accordion/Accordion";
+import { AccordionHeader } from "./accordion/AccordionHeader";
+import { AccordionItem } from "./accordion/AccordionItem";
+import { AccordionPanel } from "./accordion/AccordionPanel";
 import { Avatar } from "./avatar/Avatar";
 import { Badge } from "./badge/Badge";
 import { Button } from "./button/Button";
@@ -87,6 +91,34 @@ const listItems = Array.from({ length: 100 }).map((_, i) => ({
   textValue: i.toString(),
   content: `Item ${i}`,
 }));
+
+const courseSections = [
+  {
+    id: "personal",
+    title: "Personal Information",
+    chapterCount: 3,
+    chapters: [
+      { id: "ch1", title: "Chapter 1: Introduction", iconId: "calendar" as const },
+      { id: "ch2", title: "Chapter 2: Basics", iconId: "search" as const },
+      { id: "ch3", title: "Chapter 3: Advanced", iconId: "x" as const },
+    ],
+  },
+  {
+    id: "billing",
+    title: "Billing Address",
+    chapterCount: 2,
+    chapters: [
+      { id: "ch4", title: "Chapter 4: Payment", iconId: "calendar" as const },
+      { id: "ch5", title: "Chapter 5: Confirmation", iconId: "search" as const },
+    ],
+  },
+  {
+    id: "payment",
+    title: "Payment Method",
+    chapterCount: 1,
+    chapters: [],
+  },
+];
 
 export const App = () => {
   const { todos, isLoading, error } = useMockFetchTodos();
@@ -260,6 +292,46 @@ export const App = () => {
       <ToggleSectionField label="Toggle section field">
         <Paragraph>This section is hidden until the field is toggled ON.</Paragraph>
       </ToggleSectionField>
+
+      <Stack gap="4" width="full" maxWidth="[600px]">
+        <Heading size="lg" weight="bold" color="primary">
+          Course Content
+        </Heading>
+        <Accordion defaultExpandedKeys={["personal"]}>
+          {courseSections.map((section) => (
+            <AccordionItem key={section.id} id={section.id}>
+              <AccordionHeader>
+                <HStack gap="3">
+                  <Heading level={3} size="sm" weight="medium">
+                    {section.title}
+                  </Heading>
+
+                  <span className={css({ fontSize: "sm", color: "text.secondary" })}>
+                    {section.chapterCount} {section.chapterCount === 1 ? "chapter" : "chapters"}
+                  </span>
+                </HStack>
+              </AccordionHeader>
+
+              <AccordionPanel>
+                {section.chapters.length > 0 ? (
+                  <Stack gap="5">
+                    {section.chapters.map((chapter) => (
+                      <HStack key={chapter.id} gap="3" alignItems="center">
+                        <Icon id={chapter.iconId} size="4" className={css({ color: "text.secondary" })} />
+                        <Paragraph size="sm" color="secondary">
+                          {chapter.title}
+                        </Paragraph>
+                      </HStack>
+                    ))}
+                  </Stack>
+                ) : (
+                  <Paragraph>Payment method form here.</Paragraph>
+                )}
+              </AccordionPanel>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </Stack>
 
       <Link href="/" variant="link">
         Learn More
