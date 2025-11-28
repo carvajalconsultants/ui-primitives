@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { DialogTrigger } from "react-aria-components";
 
+import * as v from "valibot";
+
 import { css } from "../styled-system/css";
 import { Box, HStack, Stack } from "../styled-system/jsx";
 import { Avatar } from "./avatar/Avatar";
@@ -96,7 +98,16 @@ export const App = () => {
   const form = useAppForm({
     defaultValues: {
       firstName: "John",
-      lastName: "Doe",
+      emailAddress: "john@doecom",
+    },
+    validators: {
+      onSubmit: v.object({
+        firstName: v.pipe(v.string(), v.nonEmpty("Please enter your name.")),
+        emailAddress: v.pipe(v.string(), v.email("Please enter a valid e-mail address.")),
+      }),
+    },
+    onSubmit: ({ value: { firstName, emailAddress } }) => {
+      alert(`Sending to ${firstName} at ${emailAddress}`);
     },
   });
 
@@ -117,7 +128,14 @@ export const App = () => {
       }}>
       {/* Temporary <Icon> fix */}
       <Box width="4" height="4" bg="primary.foreground" />
-      <form.AppField name="firstName">{(field) => <field.TextField label="First Name" />}</form.AppField>
+      <Heading>Form Test</Heading>
+      <form.AppForm>
+        <form.Element>
+          <form.AppField name="firstName">{(field) => <field.TextField name={field.name} label="First Name" />}</form.AppField>
+          <form.AppField name="emailAddress">{(field) => <field.TextField name={field.name} label="E-mail" />}</form.AppField>
+          <Button type="submit">Test it</Button>
+        </form.Element>
+      </form.AppForm>
 
       <Tabs defaultSelectedKey="tab1">
         <TabList aria-label="Tabs with Disabled Tab">
