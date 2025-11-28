@@ -133,39 +133,41 @@ export const MultipleExpanded: Story = {
   ),
 };
 
+const ControlledExpansionComponent = () => {
+  const [expandedKeys, setExpandedKeys] = useState<Set<Key>>(new Set(["item1"]));
+
+  return (
+    <>
+      <Accordion expandedKeys={expandedKeys} onExpandedChange={setExpandedKeys}>
+        <AccordionItem id="item1">
+          <AccordionHeader>
+            <Heading level={3} size="sm" weight="medium">
+              Personal Information
+            </Heading>
+          </AccordionHeader>
+          <AccordionPanel>
+            <Paragraph>Personal information form here.</Paragraph>
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem id="item2">
+          <AccordionHeader>
+            <Heading level={3} size="sm" weight="medium">
+              Billing Address
+            </Heading>
+          </AccordionHeader>
+          <AccordionPanel>
+            <Paragraph>Billing address form here.</Paragraph>
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+
+      <Paragraph>Expanded: {Array.from(expandedKeys).join(", ")}</Paragraph>
+    </>
+  );
+};
+
 export const ControlledExpansion: Story = {
-  render: () => {
-    const [expandedKeys, setExpandedKeys] = useState<Set<Key>>(new Set(["item1"]));
-
-    return (
-      <>
-        <Accordion expandedKeys={expandedKeys} onExpandedChange={setExpandedKeys}>
-          <AccordionItem id="item1">
-            <AccordionHeader>
-              <Heading level={3} size="sm" weight="medium">
-                Personal Information
-              </Heading>
-            </AccordionHeader>
-            <AccordionPanel>
-              <Paragraph>Personal information form here.</Paragraph>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem id="item2">
-            <AccordionHeader>
-              <Heading level={3} size="sm" weight="medium">
-                Billing Address
-              </Heading>
-            </AccordionHeader>
-            <AccordionPanel>
-              <Paragraph>Billing address form here.</Paragraph>
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
-
-        <Paragraph>Expanded: {Array.from(expandedKeys).join(", ")}</Paragraph>
-      </>
-    );
-  },
+  render: () => <ControlledExpansionComponent />,
 };
 
 export const Disabled: Story = {

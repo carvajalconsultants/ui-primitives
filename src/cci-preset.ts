@@ -1,5 +1,6 @@
 import { definePreset } from "@pandacss/dev";
 
+import { accordionRecipe } from "./accordion/accordion.recipe";
 import { avatarRecipe } from "./avatar/avatar.recipe";
 import { badgeRecipe } from "./badge/badge.recipe";
 import { buttonRecipe } from "./button/button.recipe";
@@ -18,7 +19,6 @@ import { emptyRecipe } from "./placeholder/empty.recipe";
 import { radialProgressRecipe } from "./radialprogress/RadialProgress.recipe";
 import { radioGroupRecipe } from "./radiogroup/radioGroup.recipe";
 import { selectRecipe } from "./select/select.recipe";
-import { accordionRecipe } from "./accordion/accordion.recipe";
 import { tabRecipe } from "./tab/tab.recipe";
 import { cellRecipe } from "./table/cell.recipe";
 import { headerCellRecipe } from "./table/headerCell.recipe";

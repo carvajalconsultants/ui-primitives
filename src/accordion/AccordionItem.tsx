@@ -28,4 +28,3 @@ export const AccordionItem: FC<AccordionItemProps> = ({ children, variant, ...pr
     </AriaDisclosure>
   );
 };
-
