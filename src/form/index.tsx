@@ -1,5 +1,6 @@
 import { createFormHook } from "@tanstack/react-form";
 
+import { FormNumberField } from "./field/FormNumberField";
 import { fieldContext, formContext } from "./context";
 import { FormSearchField } from "./field/FormSearchField";
 import { FormSliderField } from "./field/FormSliderField";
@@ -26,6 +27,7 @@ export { fieldContext, formContext, useFieldContext, useFormContext } from "./co
  *
  * Available field components:
  * - TextField: Standard text input with validation
+ * - NumberField: Number input with optional stepper buttons
  * - SearchField: Text input optimized for search with debouncing
  * - SliderField: Numeric input with visual slider control
  * - SwitchField: Toggle input for boolean values
@@ -35,6 +37,7 @@ export const { useAppForm, withForm, withFieldGroup } = createFormHook({
   formContext,
   fieldComponents: {
     TextField: FormTextField,
+    NumberField: FormNumberField,
     SearchField: FormSearchField,
     SliderField: FormSliderField,
     SwitchField: FormSwitchField,

@@ -6,47 +6,39 @@ import { Text } from "../typography/Text";
 
 import type { TextFieldProps as AriaTextFieldProps } from "react-aria-components";
 
+import type { InputVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
-export type TextareaProps = WithoutClassName<AriaTextFieldProps> & {
-  label?: string;
+export type TextareaProps = WithoutClassName<AriaTextFieldProps> &
+  Partial<InputVariantProps> & {
+    label?: string;
 
-  /**
-   * Text shown in the textarea field before it has a value
-   */
-  placeholder?: string;
+    /**
+     * Text shown in the textarea field before it has a value
+     */
+    placeholder?: string;
 
-  /**
-   * Description of the field shown after the textarea field.
-   */
-  description?: string;
+    /**
+     * Description of the field shown after the textarea field.
+     */
+    description?: string;
 
-  /**
-   * Size variant of the textarea
-   */
-  size?: "sm" | "md" | "lg";
+    /**
+     * Ref to the underlying textarea element
+     */
+    ref?: React.Ref<HTMLTextAreaElement>;
 
-  /**
-   * Whether the textarea has a border
-   */
-  bordered?: boolean;
-
-  /**
-   * Ref to the underlying textarea element
-   */
-  ref?: React.Ref<HTMLTextAreaElement>;
-
-  /**
-   * Minimum number of rows to display
-   */
-  rows?: number;
-};
+    /**
+     * Minimum number of rows to display
+     */
+    rows?: number;
+  };
 
 /**
  * TextArea component for collecting multi-line text input from users in forms, such as comments, descriptions, or feedback.
  */
-export const TextArea = ({ size = "md", label, placeholder, description, bordered = true, ref, rows = 3, ...props }: TextareaProps) => {
-  const classes = input({ size, bordered });
+export const TextArea = ({ size, bordered, variant, label, placeholder, description, ref, rows = 3, ...props }: TextareaProps) => {
+  const classes = input({ variant, size, bordered });
 
   return (
     <AriaTextField className={classes.wrapper} {...props}>

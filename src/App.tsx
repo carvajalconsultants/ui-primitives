@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DialogTrigger } from "react-aria-components";
+import { Button as AriaButton, DialogTrigger, Group, Input } from "react-aria-components";
 
 import * as v from "valibot";
 
@@ -18,6 +18,7 @@ import { Icon } from "./common/Icon";
 import { Label } from "./common/Label";
 import { ContentHeader } from "./contentheader/ContentHeader";
 import { DatePicker } from "./datepicker/DatePicker";
+import { NumberField } from "./field/NumberField";
 import { SearchField } from "./field/SearchField";
 import { SliderField } from "./field/SliderField";
 import { SwitchField } from "./field/SwitchField";
@@ -131,11 +132,15 @@ export const App = () => {
     defaultValues: {
       firstName: "John",
       emailAddress: "john@doecom",
+      width: 1024,
+      height: 768,
     },
     validators: {
       onSubmit: v.object({
         firstName: v.pipe(v.string(), v.nonEmpty("Please enter your name.")),
         emailAddress: v.pipe(v.string(), v.email("Please enter a valid e-mail address.")),
+        width: v.pipe(v.number(), v.minValue(0, "Please enter a valid width.")),
+        height: v.pipe(v.number(), v.minValue(0, "Please enter a valid height.")),
       }),
     },
     onSubmit: ({ value: { firstName, emailAddress } }) => {
@@ -165,6 +170,8 @@ export const App = () => {
         <form.Element>
           <form.AppField name="firstName">{(field) => <field.TextField name={field.name} label="First Name" />}</form.AppField>
           <form.AppField name="emailAddress">{(field) => <field.TextField name={field.name} label="E-mail" />}</form.AppField>
+          <form.AppField name="width">{(field) => <field.NumberField label="Width" minValue={0} />}</form.AppField>
+          <form.AppField name="height">{(field) => <field.NumberField label="Height" minValue={0} maxValue={2000} step={10} />}</form.AppField>
           <Button type="submit">Test it</Button>
         </form.Element>
       </form.AppForm>
@@ -356,6 +363,21 @@ export const App = () => {
       </Link>
 
       <TextField placeholder="Some placeholder text" label="Text field" />
+
+      <NumberField label="Width" minValue={0} defaultValue={1024} placeholder="Enter width" />
+      <NumberField label="Height" minValue={0} maxValue={2000} step={10} defaultValue={768} placeholder="Enter height" description="Maximum height is 2000px" />
+
+      <NumberField label="Width with Steppers" minValue={0} defaultValue={1024}>
+        <Group style={{ display: "flex", borderRadius: "4px", border: "1px solid #ccc" }}>
+          <AriaButton slot="decrement" style={{ padding: "8px 12px", border: "none", background: "#f0f0f0", cursor: "pointer", borderTopLeftRadius: "4px", borderBottomLeftRadius: "4px" }}>
+            -
+          </AriaButton>
+          <Input style={{ flex: 1, padding: "8px", border: "none", outline: "none", textAlign: "center" }} />
+          <AriaButton slot="increment" style={{ padding: "8px 12px", border: "none", background: "#f0f0f0", cursor: "pointer", borderTopRightRadius: "4px", borderBottomRightRadius: "4px" }}>
+            +
+          </AriaButton>
+        </Group>
+      </NumberField>
 
       <ContentHeader title="Page Header" description="This is a description" />
 
