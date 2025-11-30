@@ -1,7 +1,7 @@
 import { createFormHook } from "@tanstack/react-form";
 
-import { FormNumberField } from "./field/FormNumberField";
 import { fieldContext, formContext } from "./context";
+import { FormNumberField } from "./field/FormNumberField";
 import { FormSearchField } from "./field/FormSearchField";
 import { FormSliderField } from "./field/FormSliderField";
 import { FormSwitchField } from "./field/FormSwitchField";
