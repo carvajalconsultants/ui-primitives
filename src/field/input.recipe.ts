@@ -120,6 +120,9 @@ export const inputRecipe = defineSlotRecipe({
     },
   },
   variants: {
+    variant: {
+      default: {},
+    },
     size: {
       sm: {
         input: {
@@ -220,6 +223,7 @@ export const inputRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
+    variant: "default",
     size: "md",
     bordered: true,
   },

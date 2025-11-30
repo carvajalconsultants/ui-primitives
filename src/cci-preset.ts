@@ -1,5 +1,6 @@
 import { definePreset } from "@pandacss/dev";
 
+import { accordionRecipe } from "./accordion/accordion.recipe";
 import { avatarRecipe } from "./avatar/avatar.recipe";
 import { badgeRecipe } from "./badge/badge.recipe";
 import { buttonRecipe } from "./button/button.recipe";
@@ -76,6 +77,7 @@ export const cciPreset = definePreset({
   // Useful for theme customization
   theme: {
     slotRecipes: {
+      accordion: accordionRecipe,
       checkbox: checkboxRecipe,
       radialProgress: radialProgressRecipe,
       comboBox: comboBoxRecipe,
