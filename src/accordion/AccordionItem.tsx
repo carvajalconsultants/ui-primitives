@@ -12,7 +12,9 @@ import type { WithoutClassName } from "../types";
 export type AccordionItemProps = WithoutClassName<AriaDisclosureProps> & Partial<AccordionVariantProps>;
 
 /**
- * ARIA compliant AccordionItem component that represents a single collapsible section.
+ * Represents a single collapsible section within an accordion, allowing users to expand or collapse
+ * individual pieces of content independently. This enables users to focus on one section at a time
+ * without being distracted by other sections' content.
  *
  * <AccordionItem id="item1">
  *   <AccordionHeader>Section Title</AccordionHeader>

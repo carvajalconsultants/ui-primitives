@@ -31,8 +31,11 @@ export type NumberFieldProps = WithoutClassName<AriaNumberFieldProps> &
   };
 
 /**
- * NumberField component that provides a complete number input with label, validation, and description.
- * Supports optional stepper buttons via children props.
+ * Helps users input numeric values accurately with validation, preventing errors in forms where
+ * precise numbers are required. Essential for quantities, measurements, prices, dimensions, and
+ * any scenario where numeric input must be validated and constrained to valid ranges. The optional
+ * stepper buttons provide an intuitive way to adjust values incrementally, reducing typing errors
+ * and improving user experience for numeric data entry.
  *
  * @example
  * ```tsx

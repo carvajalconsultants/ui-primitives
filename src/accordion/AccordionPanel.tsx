@@ -13,7 +13,9 @@ import type { WithoutClassName } from "../types";
 export type AccordionPanelProps = WithoutClassName<AriaDisclosurePanelProps> & Partial<AccordionVariantProps>;
 
 /**
- * ARIA compliant AccordionPanel component that contains the collapsible content.
+ * Contains the collapsible content that users reveal when they need more information, keeping the
+ * interface clean while providing access to detailed information on demand. This helps prevent
+ * information overload by hiding content until users explicitly request it.
  *
  * <AccordionPanel>Content goes here</AccordionPanel>
  */

@@ -12,7 +12,10 @@ import type { WithoutClassName } from "../types";
 export type AccordionProps = WithoutClassName<AriaDisclosureGroupProps> & Partial<AccordionVariantProps>;
 
 /**
- * ARIA compliant Accordion component that provides a group of collapsible sections.
+ * Helps users organize large amounts of content into collapsible sections to reduce cognitive load
+ * and make information easier to scan and navigate. Ideal for FAQs, settings panels, course content,
+ * and any scenario where you need to present multiple sections without overwhelming users with all
+ * content visible at once.
  *
  * <Accordion>
  *   <AccordionItem id="item1">

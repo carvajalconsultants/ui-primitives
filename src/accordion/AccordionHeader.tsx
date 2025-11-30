@@ -25,8 +25,10 @@ export interface AccordionHeaderProps extends WithoutClassName<AriaButtonProps, 
 }
 
 /**
- * ARIA compliant AccordionHeader component that acts as the trigger button for an accordion item.
- * Supports custom content and configurable icons.
+ * Provides a clickable trigger that clearly indicates what content is hidden and allows users to
+ * expand or collapse sections, improving discoverability and interaction. The visual indicator
+ * (typically a chevron icon) helps users understand which sections are expanded and which can be
+ * explored, reducing confusion and improving navigation efficiency.
  *
  * <AccordionHeader>Section Title</AccordionHeader>
  *
