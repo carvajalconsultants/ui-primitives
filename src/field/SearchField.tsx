@@ -61,9 +61,9 @@ export type SearchFieldProps = Omit<InputProps, "size" | "onChange"> &
  * @param props.onChange - Handler for search value changes
  * @param props.bordered - Whether to show a border around the field
  */
-export const SearchField = ({ size, debounceTime = 500, onChange, bordered = false, ...props }: SearchFieldProps) => {
+export const SearchField = ({ size, variant, debounceTime = 500, onChange, bordered = false, ...props }: SearchFieldProps) => {
   // Apply styling classes based on size and border preferences
-  const classes = input({ size, bordered });
+  const classes = input({ variant, size, bordered });
 
   /**
    * Creates a debounced version of the onChange handler to prevent rapid-fire API calls.
