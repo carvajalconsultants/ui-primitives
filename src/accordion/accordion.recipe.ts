@@ -50,6 +50,7 @@ export const accordionRecipe = defineSlotRecipe({
       outline: "none",
       transition: "background-color",
       transitionDuration: "fast",
+      gap: "4",
 
       _hover: {
         backgroundColor: "bg.primary.active/70",
