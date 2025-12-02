@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { DialogTrigger } from "react-aria-components";
+import { Button as AriaButton, DialogTrigger, Group, Input } from "react-aria-components";
+
+import * as v from "valibot";
 
 import { css } from "../styled-system/css";
 import { Box, HStack, Stack } from "../styled-system/jsx";
+import { Accordion } from "./accordion/Accordion";
+import { AccordionHeader } from "./accordion/AccordionHeader";
+import { AccordionItem } from "./accordion/AccordionItem";
+import { AccordionPanel } from "./accordion/AccordionPanel";
 import { Avatar } from "./avatar/Avatar";
 import { Badge } from "./badge/Badge";
 import { Button } from "./button/Button";
@@ -12,6 +18,7 @@ import { Icon } from "./common/Icon";
 import { Label } from "./common/Label";
 import { ContentHeader } from "./contentheader/ContentHeader";
 import { DatePicker } from "./datepicker/DatePicker";
+import { NumberField } from "./field/NumberField";
 import { SearchField } from "./field/SearchField";
 import { SliderField } from "./field/SliderField";
 import { SwitchField } from "./field/SwitchField";
@@ -23,7 +30,9 @@ import { ListBox } from "./listbox/ListBox";
 import { ListBoxItem } from "./listbox/ListBoxItem";
 import { VirtualizedListBox } from "./listbox/VirtualizedListBox";
 import { Dialog } from "./overlay/Dialog";
+import { DialogTitle } from "./overlay/DialogTitle";
 import { Modal } from "./overlay/Modal";
+import { RadialProgress } from "./radialprogress/RadialProgress";
 import { Radio } from "./radiogroup/Radio";
 import { RadioGroup } from "./radiogroup/RadioGroup";
 import { Select } from "./select/Select";
@@ -87,6 +96,34 @@ const listItems = Array.from({ length: 100 }).map((_, i) => ({
   content: `Item ${i}`,
 }));
 
+const courseSections = [
+  {
+    id: "personal",
+    title: "Personal Information",
+    chapterCount: 3,
+    chapters: [
+      { id: "ch1", title: "Chapter 1: Introduction", iconId: "calendar" as const },
+      { id: "ch2", title: "Chapter 2: Basics", iconId: "search" as const },
+      { id: "ch3", title: "Chapter 3: Advanced", iconId: "x" as const },
+    ],
+  },
+  {
+    id: "billing",
+    title: "Billing Address",
+    chapterCount: 2,
+    chapters: [
+      { id: "ch4", title: "Chapter 4: Payment", iconId: "calendar" as const },
+      { id: "ch5", title: "Chapter 5: Confirmation", iconId: "search" as const },
+    ],
+  },
+  {
+    id: "payment",
+    title: "Payment Method",
+    chapterCount: 1,
+    chapters: [],
+  },
+];
+
 export const App = () => {
   const { todos, isLoading, error } = useMockFetchTodos();
 
@@ -95,7 +132,20 @@ export const App = () => {
   const form = useAppForm({
     defaultValues: {
       firstName: "John",
-      lastName: "Doe",
+      emailAddress: "john@doecom",
+      width: 1024,
+      height: 768,
+    },
+    validators: {
+      onSubmit: v.object({
+        firstName: v.pipe(v.string(), v.nonEmpty("Please enter your name.")),
+        emailAddress: v.pipe(v.string(), v.email("Please enter a valid e-mail address.")),
+        width: v.pipe(v.number(), v.minValue(0, "Please enter a valid width.")),
+        height: v.pipe(v.number(), v.minValue(0, "Please enter a valid height.")),
+      }),
+    },
+    onSubmit: ({ value: { firstName, emailAddress } }) => {
+      alert(`Sending to ${firstName} at ${emailAddress}`);
     },
   });
 
@@ -134,7 +184,16 @@ export const App = () => {
 
       {/* Temporary <Icon> fix */}
       <Box width="4" height="4" bg="primary.foreground" />
-      <form.AppField name="firstName">{(field) => <field.TextField label="First Name" />}</form.AppField>
+      <Heading>Form Test</Heading>
+      <form.AppForm>
+        <form.Element>
+          <form.AppField name="firstName">{(field) => <field.TextField name={field.name} label="First Name" />}</form.AppField>
+          <form.AppField name="emailAddress">{(field) => <field.TextField name={field.name} label="E-mail" />}</form.AppField>
+          <form.AppField name="width">{(field) => <field.NumberField label="Width" minValue={0} />}</form.AppField>
+          <form.AppField name="height">{(field) => <field.NumberField label="Height" minValue={0} maxValue={2000} step={10} />}</form.AppField>
+          <Button type="submit">Test it</Button>
+        </form.Element>
+      </form.AppForm>
 
       <Tabs defaultSelectedKey="tab1">
         <TabList aria-label="Tabs with Disabled Tab">
@@ -220,7 +279,19 @@ export const App = () => {
       {/* <DateRangePicker label="Date Range Picker" /> */}
 
       <Button variant="outline" size="icon">
+        <Icon id="search" size="2" />
+      </Button>
+      <Button variant="outline" size="icon">
+        <Icon id="search" size="3" />
+      </Button>
+      <Button variant="outline" size="icon">
         <Icon id="search" size="4" />
+      </Button>
+      <Button variant="outline" size="icon">
+        <Icon id="search" size="5" />
+      </Button>
+      <Button variant="outline" size="icon">
+        <Icon id="search" size="6" />
       </Button>
       <Button>Get Started</Button>
       <Button>
@@ -240,7 +311,8 @@ export const App = () => {
         <Button>Open Dialog</Button>
 
         <Modal isDismissable>
-          <Dialog title="Dialog Title">
+          <Dialog>
+            <DialogTitle>Dialog Title</DialogTitle>
             <Paragraph>This is a dialog.</Paragraph>
           </Dialog>
         </Modal>
@@ -255,11 +327,66 @@ export const App = () => {
         <Paragraph>This section is hidden until the field is toggled ON.</Paragraph>
       </ToggleSectionField>
 
+      <Stack gap="4" width="full" maxWidth="[600px]">
+        <Heading size="lg" weight="bold" color="primary">
+          Course Content
+        </Heading>
+        <Accordion defaultExpandedKeys={["personal"]}>
+          {courseSections.map((section) => (
+            <AccordionItem key={section.id} id={section.id}>
+              <AccordionHeader>
+                <HStack gap="3">
+                  <Heading level={3} size="sm" weight="medium">
+                    {section.title}
+                  </Heading>
+
+                  <span className={css({ fontSize: "sm", color: "text.secondary" })}>
+                    {section.chapterCount} {section.chapterCount === 1 ? "chapter" : "chapters"}
+                  </span>
+                </HStack>
+              </AccordionHeader>
+
+              <AccordionPanel>
+                {section.chapters.length > 0 ? (
+                  <Stack gap="5">
+                    {section.chapters.map((chapter) => (
+                      <HStack key={chapter.id} gap="3" alignItems="center">
+                        <Icon id={chapter.iconId} size="4" className={css({ color: "text.secondary" })} />
+                        <Paragraph size="sm" color="secondary">
+                          {chapter.title}
+                        </Paragraph>
+                      </HStack>
+                    ))}
+                  </Stack>
+                ) : (
+                  <Paragraph>Payment method form here.</Paragraph>
+                )}
+              </AccordionPanel>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </Stack>
+
       <Link href="/" variant="link">
         Learn More
       </Link>
 
       <TextField placeholder="Some placeholder text" label="Text field" />
+
+      <NumberField label="Width" minValue={0} defaultValue={1024} placeholder="Enter width" />
+      <NumberField label="Height" minValue={0} maxValue={2000} step={10} defaultValue={768} placeholder="Enter height" description="Maximum height is 2000px" />
+
+      <NumberField label="Width with Steppers" minValue={0} defaultValue={1024}>
+        <Group style={{ display: "flex", borderRadius: "4px", border: "1px solid #ccc" }}>
+          <AriaButton slot="decrement" style={{ padding: "8px 12px", border: "none", background: "#f0f0f0", cursor: "pointer", borderTopLeftRadius: "4px", borderBottomLeftRadius: "4px" }}>
+            -
+          </AriaButton>
+          <Input style={{ flex: 1, padding: "8px", border: "none", outline: "none", textAlign: "center" }} />
+          <AriaButton slot="increment" style={{ padding: "8px 12px", border: "none", background: "#f0f0f0", cursor: "pointer", borderTopRightRadius: "4px", borderBottomRightRadius: "4px" }}>
+            +
+          </AriaButton>
+        </Group>
+      </NumberField>
 
       <ContentHeader title="Page Header" description="This is a description" />
 
@@ -303,6 +430,81 @@ export const App = () => {
           Vertical Option 4 (disabled)
         </Radio>
       </RadioGroup>
+
+      <Stack gap="4">
+        <Heading size="lg" weight="medium">
+          RadialProgress Examples
+        </Heading>
+
+        <HStack gap="8" alignItems="center">
+          <RadialProgress percentage={65} size={120} strokeWidth={10}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                65
+              </Heading>
+              <Paragraph size="xs">Visitors</Paragraph>
+            </Box>
+          </RadialProgress>
+
+          <RadialProgress percentage={75} size={100} strokeWidth={8}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                75
+              </Heading>
+              <Paragraph size="xs">Complete</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={50} size={50} strokeWidth={4}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                50
+              </Heading>
+              <Paragraph size="xs">In Progress</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={90} size={100} strokeWidth={8} variant="success">
+            <Box>
+              <Heading size="lg" weight="bold">
+                90
+              </Heading>
+              <Paragraph size="xs">Success</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={25} size={100} strokeWidth={8} variant="danger" />
+          <RadialProgress percentage={60} size={100} strokeWidth={8} variant="warning">
+            <Box>
+              <Heading size="lg" weight="bold">
+                60
+              </Heading>
+              <Paragraph size="xs">Warning</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={70} size={200} strokeWidth={16}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                70
+              </Heading>
+              <Paragraph size="xs">Complete</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={80} size={100} strokeWidth={4}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                80
+              </Heading>
+              <Paragraph size="xs">Complete</Paragraph>
+            </Box>
+          </RadialProgress>
+          <RadialProgress percentage={75} size={120} strokeWidth={12}>
+            <Box>
+              <Heading size="lg" weight="bold">
+                75%
+              </Heading>
+              <Paragraph size="xs">Complete</Paragraph>
+            </Box>
+          </RadialProgress>
+        </HStack>
+      </Stack>
     </Stack>
   );
 };

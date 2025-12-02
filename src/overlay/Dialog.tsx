@@ -1,9 +1,10 @@
 import { Dialog as AriaDialog } from "react-aria-components";
 
+import { cx } from "../../styled-system/css";
+import { Box } from "../../styled-system/jsx";
 import { dialog } from "../../styled-system/recipes";
 import { Button } from "../button/Button";
 import { Icon } from "../common/Icon";
-import { Heading } from "../typography/Heading";
 
 import type { FC, PropsWithChildren, ReactNode } from "react";
 import type { DialogProps as AriaDialogProps } from "react-aria-components";
@@ -13,9 +14,9 @@ import type { WithoutClassName } from "../types";
 
 export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDialogProps>>, Partial<DialogVariantProps> {
   /**
-   * Title that will be shown along the top of the dialog.
+   * Header component with title and optional description.
    */
-  title: string;
+  header?: ReactNode;
 
   /**
    * Hides/shows the X button along the top-right, defaults to true.
@@ -25,36 +26,36 @@ export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDial
   /**
    * Actions buttons along the bottom, below the content.
    */
-  buttons?: ReactNode;
+  footer?: ReactNode;
 }
 
 /**
  * ARIA compliant dialog with a title, close button and content.
  */
-export const Dialog: FC<DialogProps> = ({ title, closeable = true, children, buttons, variant, ...props }) => {
+export const Dialog: FC<DialogProps> = ({ header, closeable = true, children, footer, variant, ...props }) => {
   const classes = dialog({ variant });
 
   return (
     <AriaDialog className={classes.dialog} {...props}>
       {({ close }) => (
         <>
-          <div className={classes.heading}>
-            {/* Heading title */}
-            <Heading slot="title">{title}</Heading>
-
-            {/* X close button on top-right */}
-            {closeable === true && (
-              <Button variant="ghost" size="icon" width="fit" onPress={close}>
+          {/* X close button on top-right */}
+          {closeable === true && (
+            <Box className={cx(classes.closeable)}>
+              <Button variant="ghost" size="icon" onPress={close}>
                 <Icon id="x" size="4" stroke="text.primary" />
               </Button>
-            )}
-          </div>
+            </Box>
+          )}
+
+          {/* Render header if provided */}
+          {header}
 
           {/* Main dialog content */}
-          <div className={classes.content}>{children}</div>
+          <Box className={classes.content}>{children}</Box>
 
-          {/* Action buttons along the bottom-right */}
-          {buttons && <div className={classes.buttons}>{buttons}</div>}
+          {/* Action buttons along the bottom */}
+          {footer && <Box className={classes.footer}>{footer}</Box>}
         </>
       )}
     </AriaDialog>

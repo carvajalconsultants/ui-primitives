@@ -1,5 +1,6 @@
 import { definePreset } from "@pandacss/dev";
 
+import { accordionRecipe } from "./accordion/accordion.recipe";
 import { avatarRecipe } from "./avatar/avatar.recipe";
 import { badgeRecipe } from "./badge/badge.recipe";
 import { buttonRecipe } from "./button/button.recipe";
@@ -17,6 +18,7 @@ import { listBoxItemRecipe } from "./listbox/listBoxItem.recipe";
 import { dialogRecipe } from "./overlay/dialog.recipe";
 import { modalRecipe } from "./overlay/modal.recipe";
 import { emptyRecipe } from "./placeholder/empty.recipe";
+import { radialProgressRecipe } from "./radialprogress/RadialProgress.recipe";
 import { radioGroupRecipe } from "./radiogroup/radioGroup.recipe";
 import { selectRecipe } from "./select/select.recipe";
 import { selectWithTagGroupRecipe } from "./select/selectWithTagGroup.recipe";
@@ -78,7 +80,9 @@ export const cciPreset = definePreset({
   // Useful for theme customization
   theme: {
     slotRecipes: {
+      accordion: accordionRecipe,
       checkbox: checkboxRecipe,
+      radialProgress: radialProgressRecipe,
       comboBox: comboBoxRecipe,
       datePicker: datePickerRecipe,
       input: inputRecipe,
@@ -90,6 +94,7 @@ export const cciPreset = definePreset({
       select: selectRecipe,
       selectWithTagGroup: selectWithTagGroupRecipe,
       table: tableRecipe,
+      tab: tabRecipe,
       tagGroup: tagGroupRecipe,
       empty: emptyRecipe,
 
@@ -112,7 +117,6 @@ export const cciPreset = definePreset({
       tableHeader: tableHeaderRecipe,
       heading: headingRecipe,
       text: textRecipe,
-      tab: tabRecipe,
     },
 
     // extend: {

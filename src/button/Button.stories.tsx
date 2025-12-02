@@ -14,7 +14,7 @@ const meta: Meta<typeof Button> = {
 
   argTypes: {
     variant: {
-      options: ["primary", "secondary", "ghost", "outline", "link"],
+      options: ["primary", "secondary", "ghost", "outline", "link", "danger"],
       control: {
         type: "select",
       },
@@ -527,5 +527,103 @@ export const LinkFullWithLargeIcon = {
   ...SingleButtonWithLargeIcon,
   args: {
     variant: "link",
+  },
+};
+
+// Variant: danger, Width: fit
+export const DangerFit = {
+  ...SingleButton,
+  args: {
+    variant: "danger",
+    width: "fit",
+  },
+};
+
+export const DangerFitFocused = {
+  ...SingleButton,
+  args: {
+    variant: "danger",
+    width: "fit",
+    isFocused: true,
+  },
+};
+
+export const DangerFitActive = {
+  ...SingleButton,
+  args: {
+    variant: "danger",
+    width: "fit",
+    isActive: true,
+  },
+};
+
+export const DangerFitDisabled = {
+  ...SingleButton,
+  args: {
+    variant: "danger",
+    width: "fit",
+    isDisabled: true,
+  },
+};
+
+export const DangerFitWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "danger",
+    width: "fit",
+  },
+};
+
+export const DangerFitWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
+  args: {
+    variant: "danger",
+    width: "fit",
+  },
+};
+
+// Variant: danger, Width: full
+export const DangerFull = {
+  ...SingleButton,
+  args: {
+    variant: "danger",
+  },
+};
+
+export const DangerFullFocused = {
+  ...SingleButton,
+  args: {
+    variant: "danger",
+    isFocused: true,
+  },
+};
+
+export const DangerFullActive = {
+  ...SingleButton,
+  args: {
+    variant: "danger",
+    isActive: true,
+  },
+};
+
+export const DangerFullDisabled = {
+  ...SingleButton,
+  args: {
+    variant: "danger",
+    isDisabled: true,
+  },
+};
+
+export const DangerFullWithIcon = {
+  ...SingleButtonWithIcon,
+  args: {
+    variant: "danger",
+  },
+};
+
+export const DangerFullWithLargeIcon = {
+  ...SingleButtonWithLargeIcon,
+  args: {
+    variant: "danger",
   },
 };

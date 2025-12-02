@@ -16,7 +16,7 @@ const meta: Meta<typeof Label> = {
     },
     color: {
       control: "select",
-      options: ["primary", "secondary", "index"],
+      options: ["primary", "secondary", "tertiary"],
     },
     weight: {
       control: "select",
@@ -83,11 +83,11 @@ export const SecondaryColor = {
   },
 };
 
-export const IndexColor = {
+export const TertiaryColor = {
   ...Template,
   args: {
-    children: "Index Color Label",
-    color: "index",
+    children: "Tertiary Color Label",
+    color: "tertiary",
   },
 };
 

@@ -32,8 +32,8 @@ export type TextFieldProps = WithoutClassName<AriaTextFieldProps> &
 /**
  * TextField component that provides a complete form input with label, validation, and description.
  */
-export const TextField = ({ size, label, placeholder, description, bordered = true, inputRef, ...props }: TextFieldProps) => {
-  const classes = input({ size, bordered });
+export const TextField = ({ size, bordered, variant, label, placeholder, description, inputRef, ...props }: TextFieldProps) => {
+  const classes = input({ variant, size, bordered });
 
   return (
     <AriaTextField className={classes.wrapper} {...props}>

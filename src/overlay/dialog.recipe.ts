@@ -6,13 +6,15 @@ import { defineSlotRecipe } from "@pandacss/dev";
 export const dialogRecipe = defineSlotRecipe({
   className: "dialog",
   description: "The styles for the Dialog component",
-  slots: ["dialog", "heading", "content", "buttons"],
+  slots: ["dialog", "content", "footer", "closeable"],
   base: {
     dialog: {
+      position: "relative",
       display: "flex",
       flexDirection: "column",
       borderRadius: "lg",
       bg: "text.white",
+      overflow: "hidden",
 
       /* Gives a glow to the dialog when it has focus. */
       _focus: {
@@ -36,23 +38,26 @@ export const dialogRecipe = defineSlotRecipe({
         height: "svh",
       },
     },
-
-    /* Title and close button */
-    heading: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "start",
-      justifyContent: "space-between",
-    },
+    /* Main dialog content */
     content: {
       flex: "1",
       display: "flex",
       flexDirection: "column",
       gap: "5.5",
       overflow: "auto",
+
+      "&:empty": {
+        display: "none",
+      },
+    },
+    /* Close button on top-right */
+    closeable: {
+      position: "absolute",
+      top: "3",
+      right: "3",
     },
     /* Actions buttons along the bottom. */
-    buttons: {
+    footer: {
       display: "flex",
       alignItems: "center",
       justifyContent: "end",

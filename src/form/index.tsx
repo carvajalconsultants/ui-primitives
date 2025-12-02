@@ -1,24 +1,14 @@
-import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
+import { createFormHook } from "@tanstack/react-form";
 
+import { fieldContext, formContext } from "./context";
+import { FormNumberField } from "./field/FormNumberField";
 import { FormSearchField } from "./field/FormSearchField";
 import { FormSliderField } from "./field/FormSliderField";
 import { FormSwitchField } from "./field/FormSwitchField";
 import { FormTextField } from "./field/FormTextField";
+import { Form } from "./Form";
 
-/**
- * Form context objects used for managing form state and field interactions.
- * @typedef {Object} FormContexts
- * @property {React.Context} fieldContext - Context for individual form field state and behaviors
- * @property {React.Context} formContext - Context for overall form state management
- * @property {Function} useFieldContext - Hook to access field context within custom form components
- *
- * These contexts enable:
- * - Consistent form state management across complex forms
- * - Field-level validation and error handling
- * - Custom form field component creation
- * - Form-wide operations like reset, submit, and validation
- */
-export const { fieldContext, formContext, useFieldContext } = createFormHookContexts();
+export { fieldContext, formContext, useFieldContext, useFormContext } from "./context";
 
 /**
  * Custom form hook and HOC creator configured with our form field components.
@@ -37,18 +27,22 @@ export const { fieldContext, formContext, useFieldContext } = createFormHookCont
  *
  * Available field components:
  * - TextField: Standard text input with validation
+ * - NumberField: Number input with optional stepper buttons
  * - SearchField: Text input optimized for search with debouncing
  * - SliderField: Numeric input with visual slider control
  * - SwitchField: Toggle input for boolean values
  */
-export const { useAppForm, withForm } = createFormHook({
+export const { useAppForm, withForm, withFieldGroup } = createFormHook({
   fieldContext,
   formContext,
   fieldComponents: {
     TextField: FormTextField,
+    NumberField: FormNumberField,
     SearchField: FormSearchField,
     SliderField: FormSliderField,
     SwitchField: FormSwitchField,
   },
-  formComponents: {},
+  formComponents: {
+    Element: Form,
+  },
 });
