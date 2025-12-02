@@ -1,6 +1,7 @@
 import { Tag as AriaTag, Button } from "react-aria-components";
 
 import { tagGroup } from "../../styled-system/recipes";
+import { Icon } from "../common/Icon";
 
 import type { TagProps } from "react-aria-components";
 
@@ -39,7 +40,11 @@ export const Tag = ({ children, ...props }: TagProps) => {
           {typeof children === "function" ? children(values) : children}
 
           {/* Add a remove button (ⓧ) when the tag is configured to be removable */}
-          {values.allowsRemoving && <Button slot="remove">ⓧ</Button>}
+          {values.allowsRemoving && (
+            <Button slot="remove">
+              <Icon id="x" size="4" />
+            </Button>
+          )}
         </>
       )}
     </AriaTag>

@@ -12,6 +12,8 @@ export interface IconMap {
   calendar: true;
   search: true;
   x: true;
+  plus: true;
+  check: true;
 }
 
 export type IconProps = Omit<HTMLStyledProps<"svg">, "width" | "height"> &

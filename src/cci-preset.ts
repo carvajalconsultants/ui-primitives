@@ -13,11 +13,13 @@ import { sliderRecipe } from "./field/slider.recipe";
 import { switchRecipe } from "./field/switch.recipe";
 import { listBoxRecipe } from "./listbox/listBox.recipe";
 import { listBoxItemRecipe } from "./listbox/listBoxItem.recipe";
+import { dropdownItemRecipe } from "./listbox/dropdownItem.recipe";
 import { dialogRecipe } from "./overlay/dialog.recipe";
 import { modalRecipe } from "./overlay/modal.recipe";
 import { emptyRecipe } from "./placeholder/empty.recipe";
 import { radioGroupRecipe } from "./radiogroup/radioGroup.recipe";
 import { selectRecipe } from "./select/select.recipe";
+import { selectWithTagGroupRecipe } from "./select/selectWithTagGroup.recipe";
 import { tabRecipe } from "./tab/tab.recipe";
 import { cellRecipe } from "./table/cell.recipe";
 import { headerCellRecipe } from "./table/headerCell.recipe";
@@ -86,6 +88,7 @@ export const cciPreset = definePreset({
       modal: modalRecipe,
       radioGroup: radioGroupRecipe,
       select: selectRecipe,
+      selectWithTagGroup: selectWithTagGroupRecipe,
       table: tableRecipe,
       tagGroup: tagGroupRecipe,
       empty: emptyRecipe,
@@ -102,6 +105,7 @@ export const cciPreset = definePreset({
       label: labelRecipe,
       listBox: listBoxRecipe,
       listBoxItem: listBoxItemRecipe,
+      dropdownItem: dropdownItemRecipe,
       row: rowRecipe,
       tableBody: tableBodyRecipe,
       tableFooter: tableFooterRecipe,

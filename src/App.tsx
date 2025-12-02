@@ -27,6 +27,7 @@ import { Modal } from "./overlay/Modal";
 import { Radio } from "./radiogroup/Radio";
 import { RadioGroup } from "./radiogroup/RadioGroup";
 import { Select } from "./select/Select";
+import { SelectWithTagGroup } from "./select/SelectWithTagGroup";
 import { Tab } from "./tab/Tab";
 import { TabList } from "./tab/TabList";
 import { TabPanel } from "./tab/TabPanel";
@@ -113,6 +114,24 @@ export const App = () => {
         // minWidth: "[1068px]",
         maxWidth: "[1324px]",
       }}>
+      <SelectWithTagGroup label="Select animals" placeholder="No animals selected" items={animals} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
+        {(item) => (
+          <ListBoxItem variant="search" key={item.id} id={String(item.id)} textValue={item.name}>
+            {item.name}
+          </ListBoxItem>
+        )}
+      </SelectWithTagGroup>
+
+      <Select label="Select an animal" size="sm">
+        <ListBox items={animals}>
+          {(item) => (
+            <ListBoxItem key={item.id} size="sm">
+              {item.name}
+            </ListBoxItem>
+          )}
+        </ListBox>
+      </Select>
+
       {/* Temporary <Icon> fix */}
       <Box width="4" height="4" bg="primary.foreground" />
       <form.AppField name="firstName">{(field) => <field.TextField label="First Name" />}</form.AppField>
@@ -186,16 +205,6 @@ export const App = () => {
         </TagGroup>
         <p className={css({ fontSize: "sm" })}>Current selection (controlled): {selected === "all" ? "all" : [...selected].join(", ")}</p>
       </Stack>
-
-      <Select label="Select an animal" size="sm">
-        <ListBox items={animals}>
-          {(item) => (
-            <ListBoxItem key={item.id} size="sm">
-              {item.name}
-            </ListBoxItem>
-          )}
-        </ListBox>
-      </Select>
 
       <Stack>
         <Label size="lg" weight="medium">
