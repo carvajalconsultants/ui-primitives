@@ -8,6 +8,7 @@ import { comboBoxRecipe } from "./combobox/comboBox.recipe";
 import { labelRecipe } from "./common/label.recipe";
 import { datePickerRecipe } from "./datepicker/datePicker.recipe";
 import { inputRecipe } from "./field/input.recipe";
+import { otpTextFieldRecipe } from "./field/otpTextField.recipe";
 import { sliderRecipe } from "./field/slider.recipe";
 import { switchRecipe } from "./field/switch.recipe";
 import { listBoxRecipe } from "./listbox/listBox.recipe";
@@ -79,6 +80,7 @@ export const cciPreset = definePreset({
       comboBox: comboBoxRecipe,
       datePicker: datePickerRecipe,
       input: inputRecipe,
+      otpTextField: otpTextFieldRecipe,
       slider: sliderRecipe,
       dialog: dialogRecipe,
       modal: modalRecipe,
