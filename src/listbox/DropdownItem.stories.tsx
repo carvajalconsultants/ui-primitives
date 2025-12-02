@@ -132,4 +132,3 @@ export const ControlledSelection: Story = {
     return <ControlledComponent />;
   },
 };
-

@@ -89,4 +89,3 @@ export const DropdownSection = <T extends object>({ title, items, children, ...p
     {items ? <Collection items={items}>{children}</Collection> : children}
   </ListBoxSection>
 );
-
