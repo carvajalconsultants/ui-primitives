@@ -24,9 +24,12 @@ export const otpTextFieldRecipe = defineSlotRecipe({
       gap: "2",
       position: "relative",
       cursor: "text",
+
       userSelect: "none",
       pointerEvents: "none",
+
       height: "[36px]",
+
       _disabled: {
         opacity: "50",
       },
@@ -43,23 +46,35 @@ export const otpTextFieldRecipe = defineSlotRecipe({
     input: {
       position: "absolute",
       inset: "0",
+
+      // Extra width compensates for negative letter spacing
       width: "[calc(100% + 40px)]",
       height: "full",
       display: "flex",
       textAlign: "left",
       opacity: "1",
+
+      // Transparent text so user doesn't see the actual input value
       color: "transparent",
       pointerEvents: "all",
       background: "transparent",
+
+      // Hide caret since we show visual focus on the digit boxes instead
       caretColor: "transparent",
       border: "[0px solid transparent]",
       outline: "[transparent solid 0px]",
       boxShadow: "[none]",
       lineHeight: "[1]",
+
+      // Negative letter spacing compresses characters so each digit aligns with its visual box
       letterSpacing: "[-0.5em]",
+
+      // Large font size matches the visual box height for proper alignment
       fontSize: "[36px]",
       fontFamily: "[monospace]",
       fontVariantNumeric: "tabular-nums",
+
+      // Clip the right side to hide overflow characters beyond the 6th digit
       clipPath: "[inset(0px 40px 0px 0px)]",
     },
 
@@ -91,6 +106,7 @@ export const otpTextFieldRecipe = defineSlotRecipe({
       _last: {
         roundedRight: "lg",
       },
+
       "&[data-active]": {
         zIndex: 10,
         boxShadow: "[0 0 0 2px var(--colors-border-brand), 0 0 0 4px var(--colors-bg-primary-index)]",
