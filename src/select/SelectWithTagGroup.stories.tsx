@@ -154,35 +154,37 @@ export const WithCustomWidth: Story = {
   },
 };
 
-export const ControlledSelection: Story = {
-  render: () => {
-    const [selectedKeys, setSelectedKeys] = useState<React.Key[]>(["CA", "NY"]);
+const ControlledSelectionComponent = () => {
+  const [selectedKeys, setSelectedKeys] = useState<React.Key[]>(["CA", "NY"]);
 
-    return (
-      <SelectWithTagGroup<{ id: string; name: string }>
-        label="Controlled Selection"
-        placeholder="No selected items"
-        items={usStateOptions}
-        {...({ selectedKeys: new Set(selectedKeys) } as any)}
-        onChange={(value) => {
-          if (value === null) {
-            setSelectedKeys([]);
-          } else if (Array.isArray(value)) {
-            setSelectedKeys(value);
-          } else {
-            setSelectedKeys([value]);
-          }
-        }}
-        getItemKey={(item) => item.id}
-        getItemText={(item) => item.name}>
-        {(item) => (
-          <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
-            {item.name}
-          </DropdownItem>
-        )}
-      </SelectWithTagGroup>
-    );
-  },
+  return (
+    <SelectWithTagGroup<{ id: string; name: string }>
+      label="Controlled Selection"
+      placeholder="No selected items"
+      items={usStateOptions}
+      {...({ selectedKeys: new Set(selectedKeys) } as { selectedKeys: Set<React.Key> })}
+      onChange={(value) => {
+        if (value === null) {
+          setSelectedKeys([]);
+        } else if (Array.isArray(value)) {
+          setSelectedKeys(value);
+        } else {
+          setSelectedKeys([value]);
+        }
+      }}
+      getItemKey={(item) => item.id}
+      getItemText={(item) => item.name}>
+      {(item) => (
+        <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+          {item.name}
+        </DropdownItem>
+      )}
+    </SelectWithTagGroup>
+  );
+};
+
+export const ControlledSelection: Story = {
+  render: () => <ControlledSelectionComponent />,
 };
 export const WithManyItems: Story = {
   render: (args) => (
