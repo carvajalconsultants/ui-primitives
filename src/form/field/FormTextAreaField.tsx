@@ -40,4 +40,3 @@ export const FormTextAreaField = (props: TextareaProps) => {
   // while the value and onChange are managed by the form
   return <TextArea {...props} value={field.state.value} onChange={field.handleChange} />;
 };
-
