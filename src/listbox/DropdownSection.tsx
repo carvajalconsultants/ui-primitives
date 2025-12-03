@@ -1,7 +1,9 @@
 import { Collection, Header, ListBoxSection } from "react-aria-components";
 
-import { css } from "../../styled-system/css";
+import { cx } from "../../styled-system/css";
+import { dropdownSection } from "../../styled-system/recipes";
 
+import type * as React from "react";
 import type { SectionProps } from "react-aria-components";
 
 import type { WithoutClassName } from "../types";
@@ -19,6 +21,11 @@ export interface DropdownSectionProps<T extends object> extends WithoutClassName
    * Items to display in this section.
    */
   items?: T[];
+
+  /**
+   * Optional custom className for the section root element.
+   */
+  className?: string;
 }
 
 /**
@@ -44,48 +51,14 @@ export interface DropdownSectionProps<T extends object> extends WithoutClassName
  * @param {T[]} [props.items] - Items to display in this section
  * @returns {JSX.Element} A styled section with header for grouping dropdown items
  */
-export const DropdownSection = <T extends object>({ title, items, children, ...props }: DropdownSectionProps<T>) => (
-  <ListBoxSection
-    {...props}
-    className={css({
-      "&:first-child": {
-        marginTop: "-5px",
-      },
-      "&::after": {
-        content: '""',
-        display: "block",
-        height: "5px",
-      },
-    })}>
-    {title && (
-      <Header
-        className={css({
-          fontSize: "sm",
-          fontWeight: "semiBold",
-          color: "text.secondary",
-          paddingX: "4",
-          paddingY: "1",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-          position: "sticky",
-          top: "-5px",
-          marginTop: "-1px",
-          marginX: "-1px",
-          zIndex: "10",
-          bg: "bg.secondary.index",
-          backdropFilter: "blur(8px)",
-          borderTopWidth: "1px",
-          borderBottomWidth: "1px",
-          borderColor: "border.secondary._alt",
-          "& + *": {
-            marginTop: "1",
-          },
-        })}>
-        {title}
-      </Header>
-    )}
+export const DropdownSection = <T extends object>({ title, items, children, className, ...props }: DropdownSectionProps<T>) => {
+  const classes = dropdownSection();
 
-    {items ? <Collection items={items}>{children}</Collection> : children}
-  </ListBoxSection>
-);
+  return (
+    <ListBoxSection {...props} className={cx(classes.root, className)}>
+      {title && <Header className={classes.header}>{title}</Header>}
+
+      {items ? <Collection items={items}>{children as unknown as (item: T) => React.ReactElement}</Collection> : (children as React.ReactNode)}
+    </ListBoxSection>
+  );
+};

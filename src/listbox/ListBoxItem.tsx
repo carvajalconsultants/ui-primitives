@@ -43,4 +43,4 @@ type ListBoxItemProps = AriaListBoxItemProps & Partial<ListBoxItemVariantProps> 
  * @param {ListBoxItemProps} props - The component properties
  * @returns {JSX.Element} A styled and accessible list box item component
  */
-export const ListBoxItem: FC<ListBoxItemProps> = ({ size, variant, ...props }) => <AriaListBoxItem {...props} className={cx(listBoxItem({ size, variant }))} />;
+export const ListBoxItem: FC<ListBoxItemProps> = ({ size, variant, className, ...props }) => <AriaListBoxItem {...props} className={cx(listBoxItem({ size, variant }), className)} />;

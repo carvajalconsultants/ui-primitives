@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 import { DropdownItem } from "../listbox/DropdownItem";
+import { DropdownSection } from "../listbox/DropdownSection";
+import { ListBox } from "../listbox/ListBox";
+import { Select } from "./Select";
 import { SelectWithTagGroup } from "./SelectWithTagGroup";
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
@@ -195,5 +198,84 @@ export const WithManyItems: Story = {
   args: {
     ...Default.args,
     label: "Many Items",
+  },
+};
+
+export const WithDropdownItems: Story = {
+  render: (args) => {
+    const items = [
+      { id: "1", name: "Apple" },
+      { id: "2", name: "Banana" },
+      { id: "3", name: "Cherry" },
+      { id: "4", name: "Date" },
+      { id: "5", name: "Elderberry" },
+    ];
+
+    return (
+      <SelectWithTagGroup {...args} items={items} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
+        {(item) => (
+          <DropdownItem key={item.id} id={item.id} textValue={item.name}>
+            {item.name}
+          </DropdownItem>
+        )}
+      </SelectWithTagGroup>
+    );
+  },
+  args: {
+    ...Default.args,
+    label: "Fruits",
+    placeholder: "No fruits selected",
+  },
+};
+
+export const WithDropdownSections: Story = {
+  render: () => {
+    const fruits = [
+      { id: "apple", name: "Apple" },
+      { id: "banana", name: "Banana" },
+      { id: "cherry", name: "Cherry" },
+    ];
+
+    const vegetables = [
+      { id: "carrot", name: "Carrot" },
+      { id: "broccoli", name: "Broccoli" },
+      { id: "spinach", name: "Spinach" },
+    ];
+
+    const allItems = [...fruits, ...vegetables];
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <SelectWithTagGroup label="Food Items" placeholder="No items selected" items={allItems} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
+          {(item) => (
+            <DropdownItem key={item.id} id={item.id} textValue={item.name}>
+              {item.name}
+            </DropdownItem>
+          )}
+        </SelectWithTagGroup>
+
+        <div style={{ borderTop: "1px solid #e0e0e0", paddingTop: "16px" }}>
+          <p style={{ fontSize: "14px", marginBottom: "8px", color: "#666" }}>Example: DropdownSection with Select</p>
+          <Select label="Select with sections" size="sm">
+            <ListBox>
+              <DropdownSection title="Fruits" items={fruits}>
+                {(item) => (
+                  <DropdownItem key={item.id} id={item.id} textValue={item.name}>
+                    {item.name}
+                  </DropdownItem>
+                )}
+              </DropdownSection>
+              <DropdownSection title="Vegetables" items={vegetables}>
+                {(item) => (
+                  <DropdownItem key={item.id} id={item.id} textValue={item.name}>
+                    {item.name}
+                  </DropdownItem>
+                )}
+              </DropdownSection>
+            </ListBox>
+          </Select>
+        </div>
+      </div>
+    );
   },
 };
