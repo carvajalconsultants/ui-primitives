@@ -97,6 +97,7 @@ export const cciPreset = definePreset({
       tab: tabRecipe,
       tagGroup: tagGroupRecipe,
       empty: emptyRecipe,
+      dropdownItem: dropdownItemRecipe,
 
       // For some reason, the `switch` is not working. (maybe it's reserved word)
       switchh: switchRecipe,
@@ -110,7 +111,6 @@ export const cciPreset = definePreset({
       label: labelRecipe,
       listBox: listBoxRecipe,
       listBoxItem: listBoxItemRecipe,
-      dropdownItem: dropdownItemRecipe,
       row: rowRecipe,
       tableBody: tableBodyRecipe,
       tableFooter: tableFooterRecipe,

@@ -30,6 +30,7 @@ export const listBoxRecipe = defineRecipe({
       search: {
         outline: "0",
         flex: "1",
+        spaceY: "0.5",
 
         paddingTop: "2",
         borderTopWidth: "1",
