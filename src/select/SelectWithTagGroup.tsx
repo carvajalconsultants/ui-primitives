@@ -7,6 +7,7 @@ import { Icon } from "../common/Icon";
 import { Label } from "../common/Label";
 import { SearchField } from "../field/SearchField";
 import { ListBox } from "../listbox/ListBox";
+import { m } from "../paraglide/messages.js";
 import { Tag } from "../taggroup/Tag";
 import { TagGroup } from "../taggroup/TagGroup";
 import { Text } from "../typography/Text";
@@ -96,74 +97,67 @@ export const SelectWithTagGroup = <T extends object>({
   placement = "bottom end",
   ...props
 }: SelectWithTagGroupProps<T>) => {
-  const triggerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
   const filter = useFilter({ sensitivity: "base" });
   const filterFn = useCallback((text: string, filterText: string) => filter.contains(text, filterText), [filter]);
   const classes = selectWithTagGroup({ size });
 
   return (
     <AriaSelect className={classes.wrapper} selectionMode="multiple" {...props}>
-      {() => (
-        <>
-          {label && <Label color="primary">{label}</Label>}
+      {label && <Label color="primary">{label}</Label>}
 
-          <div ref={triggerRef} className={css({ display: "flex" })}>
-            <AriaButton className={classes.trigger}>
-              <SelectValue className={css({ flex: "1", display: "flex", alignItems: "center" })}>
-                {({ selectedItems, state }) => {
-                  const selectedItemsArray = Array.from(selectedItems).filter((item) => item != null) as T[];
+      <AriaButton ref={triggerRef} className={classes.trigger}>
+        <SelectValue className={css({ flex: "1", display: "flex", alignItems: "center" })}>
+          {({ selectedItems, state }) => {
+            const selectedItemsArray = Array.from(selectedItems).filter((item) => item != null) as T[];
+
+            return (
+              <TagGroup
+                aria-label={m.selectedItems()}
+                items={selectedItemsArray}
+                renderEmptyState={() => <span className={classes.emptyState}>{placeholder ?? m.noSelectedItems()}</span>}
+                onRemove={(keys) => {
+                  const currentValue = state.value;
+                  if (currentValue instanceof Set) {
+                    const newSet = new Set(currentValue);
+                    keys.forEach((key) => newSet.delete(key));
+                    state.setValue(Array.from(newSet));
+                  } else if (Array.isArray(currentValue)) {
+                    state.setValue(currentValue.filter((k) => !keys.has(k)));
+                  }
+                }}>
+                {(item) => {
+                  const key = getItemKey ? getItemKey(item) : ((item as { id?: React.Key }).id ?? m.unknown());
+                  const displayText = getItemText ? getItemText(item) : ((item as { name?: string }).name ?? m.Unknown());
 
                   return (
-                    <TagGroup
-                      aria-label="Selected items"
-                      items={selectedItemsArray}
-                      renderEmptyState={() => <span className={classes.emptyState}>{placeholder ?? "No selected items"}</span>}
-                      onRemove={(keys) => {
-                        const currentValue = state.value;
-                        if (currentValue instanceof Set) {
-                          const newSet = new Set(currentValue);
-                          keys.forEach((key) => newSet.delete(key));
-                          state.setValue(Array.from(newSet));
-                        } else if (Array.isArray(currentValue)) {
-                          state.setValue(currentValue.filter((k) => !keys.has(k)));
-                        }
-                      }}>
-                      {(item) => {
-                        const key = getItemKey ? getItemKey(item) : ((item as { id?: React.Key }).id ?? "unknown");
-                        const displayText = getItemText ? getItemText(item) : ((item as { name?: string }).name ?? "Unknown");
-                        return (
-                          <Tag key={key} id={String(key)} {...({ allowsRemoving: true } as { allowsRemoving: boolean })}>
-                            {displayText}
-                          </Tag>
-                        );
-                      }}
-                    </TagGroup>
+                    <Tag key={key} id={String(key)} {...({ allowsRemoving: true } as { allowsRemoving: boolean })}>
+                      {displayText}
+                    </Tag>
                   );
                 }}
-              </SelectValue>
+              </TagGroup>
+            );
+          }}
+        </SelectValue>
 
-              <div className={classes.iconContainer}>
-                <Icon id="plus" size="4" />
-              </div>
-            </AriaButton>
-          </div>
+        <div slot="trailingIcon" className={classes.iconContainer}>
+          <Icon id="plus" size="4" />
+        </div>
+      </AriaButton>
 
-          {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
-          {description && <Text slot="description">{description}</Text>}
+      {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+      {description && <Text slot="description">{description}</Text>}
 
-          <Popover triggerRef={triggerRef} placement={placement} className={classes.popover}>
-            <div className={css({ display: "flex", flexDirection: "column", width: "full" })}>
-              <Autocomplete filter={filterFn}>
-                <SearchField autoFocus variant="search" />
+      <Popover triggerRef={triggerRef} placement={placement} className={classes.popover}>
+        <Autocomplete filter={filterFn}>
+          <SearchField autoFocus variant="search" />
 
-                <ListBox items={items} variant="search">
-                  {children}
-                </ListBox>
-              </Autocomplete>
-            </div>
-          </Popover>
-        </>
-      )}
+          <ListBox items={items} variant="search">
+            {children}
+          </ListBox>
+        </Autocomplete>
+      </Popover>
     </AriaSelect>
   );
 };

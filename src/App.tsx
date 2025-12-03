@@ -26,6 +26,7 @@ import { TextField } from "./field/TextField";
 import { ToggleSectionField } from "./field/ToggleSectionField";
 import { useAppForm } from "./form";
 import { Link } from "./link/Link";
+import { DropdownItem } from "./listbox/DropdownItem";
 import { ListBox } from "./listbox/ListBox";
 import { ListBoxItem } from "./listbox/ListBoxItem";
 import { VirtualizedListBox } from "./listbox/VirtualizedListBox";
@@ -166,9 +167,9 @@ export const App = () => {
       }}>
       <SelectWithTagGroup label="Select animals" placeholder="No animals selected" items={animals} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
         {(item) => (
-          <ListBoxItem variant="search" key={item.id} id={String(item.id)} textValue={item.name}>
+          <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
             {item.name}
-          </ListBoxItem>
+          </DropdownItem>
         )}
       </SelectWithTagGroup>
 

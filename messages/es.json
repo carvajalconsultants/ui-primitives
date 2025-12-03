@@ -2,5 +2,9 @@
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"addNew": "Añadir nuevo",
 	"noDataFound": "No se encontraron datos",
-	"selectOne": "Seleccione uno"
+	"selectOne": "Seleccione uno",
+	"selectedItems": "Elementos seleccionados",
+	"noSelectedItems": "No hay elementos seleccionados",
+	"unknown": "desconocido",
+	"Unknown": "Desconocido"
 }

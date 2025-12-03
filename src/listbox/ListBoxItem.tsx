@@ -12,7 +12,7 @@ import type { ListBoxItemVariantProps } from "../../styled-system/recipes";
  * Represents the properties for a ListBox item component.
  * @typedef {Object} ListBoxItemProps
  * @property {ListBoxItemVariantProps['size']} [size] - Controls the visual size of the list item, affecting padding and text size
- * @property {ListBoxItemVariantProps['variant']} [variant] - Controls the visual variant of the list item (default or search)
+ * @property {ListBoxItemVariantProps['variant']} [variant] - Controls the visual variant of the list item
  * @property {string} [id] - Unique identifier for the list item
  * @property {string} [textValue] - The text representation of the item, used for type-to-select functionality
  * @property {boolean} [shouldSelectOnPressUp] - Whether the item should be selected when the user releases the pointer, rather than on press down
@@ -43,4 +43,4 @@ type ListBoxItemProps = AriaListBoxItemProps & Partial<ListBoxItemVariantProps> 
  * @param {ListBoxItemProps} props - The component properties
  * @returns {JSX.Element} A styled and accessible list box item component
  */
-export const ListBoxItem: FC<ListBoxItemProps> = ({ size, variant, className, ...props }) => <AriaListBoxItem {...props} className={cx(listBoxItem({ size, variant }), className)} />;
+export const ListBoxItem: FC<ListBoxItemProps> = ({ size, variant, ...props }) => <AriaListBoxItem {...props} className={cx(listBoxItem({ size, variant }))} />;

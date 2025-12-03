@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-import { ListBoxItem } from "../listbox/ListBoxItem";
+import { DropdownItem } from "../listbox/DropdownItem";
 import { SelectWithTagGroup } from "./SelectWithTagGroup";
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { Selection } from "react-aria-components";
 
 const meta: Meta<typeof SelectWithTagGroup> = {
   title: "Components/SelectWithTagGroup",
@@ -89,7 +88,11 @@ const usStateOptions = [
 const Template: Story = {
   render: (args) => (
     <SelectWithTagGroup {...args} items={usStateOptions} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
-      {(state) => <ListBoxItem key={state.id} id={state.id} textValue={state.name} variant="search" />}
+      {(state) => (
+        <DropdownItem key={state.id} id={state.id} textValue={state.name}>
+          {state.name}
+        </DropdownItem>
+      )}
     </SelectWithTagGroup>
   ),
 };
@@ -114,7 +117,7 @@ export const WithSelectedItems: Story = {
   ...Template,
   args: {
     ...Default.args,
-    defaultSelectedKeys: ["CA", "NY", "TX"],
+    defaultSelectedKey: "CA",
   },
 };
 
@@ -139,7 +142,7 @@ export const SmallSize: Story = {
   ...Template,
   args: {
     ...Default.args,
-    size: "sm",
+    size: "default",
   },
 };
 
@@ -152,33 +155,41 @@ export const WithCustomWidth: Story = {
 };
 
 const ControlledSelectionComponent = () => {
-  const [selected, setSelected] = useState<Selection>(new Set(["CA", "NY"]));
+  const [selectedKeys, setSelectedKeys] = useState<React.Key[]>(["CA", "NY"]);
 
   return (
-    <div>
-      <SelectWithTagGroup
-        label="Controlled Selection"
-        placeholder="No selected items"
-        items={usStateOptions}
-        selectedKeys={selected}
-        onSelectionChange={setSelected}
-        getItemKey={(item) => item.id}
-        getItemText={(item) => item.name}>
-        {(state) => <ListBoxItem key={state.id} id={state.id} textValue={state.name} variant="search" />}
-      </SelectWithTagGroup>
-      <p style={{ fontSize: "sm", marginTop: "8px" }}>Current selection: {[...selected].join(", ")}</p>
-    </div>
+    <SelectWithTagGroup<{ id: string; name: string }>
+      label="Controlled Selection"
+      placeholder="No selected items"
+      items={usStateOptions}
+      {...({ selectedKeys: new Set(selectedKeys) } as { selectedKeys: Set<React.Key> })}
+      onChange={(value) => {
+        if (value === null) {
+          setSelectedKeys([]);
+        } else if (Array.isArray(value)) {
+          setSelectedKeys(value);
+        } else {
+          setSelectedKeys([value]);
+        }
+      }}
+      getItemKey={(item) => item.id}
+      getItemText={(item) => item.name}>
+      {(item) => (
+        <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+          {item.name}
+        </DropdownItem>
+      )}
+    </SelectWithTagGroup>
   );
 };
 
 export const ControlledSelection: Story = {
   render: () => <ControlledSelectionComponent />,
 };
-
 export const WithManyItems: Story = {
   render: (args) => (
     <SelectWithTagGroup {...args} items={Array.from({ length: 100 }, (_, i) => ({ id: `item-${i}`, name: `Item ${i + 1}` }))} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
-      {(item) => <ListBoxItem key={item.id} id={item.id} textValue={item.name} variant="search" />}
+      {(item) => <DropdownItem key={item.id} id={item.id} textValue={item.name} />}
     </SelectWithTagGroup>
   ),
   args: {

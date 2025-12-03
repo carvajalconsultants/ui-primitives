@@ -35,37 +35,6 @@ export const listBoxItemRecipe = defineRecipe({
         "&[data-pressed]": { bg: "bg.brand.primary", color: "text.white" },
         "&[data-focused]": { bg: "bg.brand.primary", color: "text.white" },
       },
-      search: {
-        display: "flex",
-        alignItems: "center",
-        cursor: "default",
-        userSelect: "none",
-        borderRadius: "lg",
-        outline: "0",
-        fontSize: "sm",
-        color: "text.primary",
-        fontWeight: "normal",
-        paddingInlineStart: "2",
-        paddingInlineEnd: "1.5",
-
-        "&[data-focused]": {
-          bg: "bg.brand.primary",
-          color: "text.white",
-        },
-        "&[data-disabled]": {
-          color: "text.disabled",
-          cursor: "not-allowed",
-          opacity: "60",
-        },
-        "&:not([data-focused]):hover": {
-          bg: "bg.secondary.index",
-        },
-        "&[data-selected]": {
-          color: "text.primary",
-          bg: "bg.secondary.index",
-          fontWeight: "semiBold",
-        },
-      },
     },
     size: {
       // Compact size variant ideal for dense UIs like sidebars or when vertical space is limited

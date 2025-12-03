@@ -124,9 +124,6 @@ export const inputRecipe = defineSlotRecipe({
     },
   },
   variants: {
-    variant: {
-      default: {},
-    },
     size: {
       sm: {
         input: {
@@ -135,7 +132,7 @@ export const inputRecipe = defineSlotRecipe({
           fontSize: "sm",
 
           "&[data-search-field='true']": {
-            paddingInlineStart: "9",
+            paddingInlineStart: "8",
           },
         },
         textarea: {

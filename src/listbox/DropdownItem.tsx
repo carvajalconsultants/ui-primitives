@@ -1,6 +1,5 @@
 import { ListBoxItem as AriaListBoxItem, composeRenderProps } from "react-aria-components";
 
-import { css, cx } from "../../styled-system/css";
 import { dropdownItem } from "../../styled-system/recipes";
 import { Icon } from "../common/Icon";
 
@@ -41,54 +40,11 @@ export const DropdownItem: FC<DropdownItemProps> = (props) => {
   const classes = dropdownItem();
 
   return (
-    <AriaListBoxItem
-      {...props}
-      textValue={textValue}
-      className={cx(
-        classes,
-        css({
-          "&[data-focused]": {
-            bg: "bg.brand.primary",
-            color: "text.white",
-          },
-          "&[data-disabled]": {
-            color: "text.disabled",
-            cursor: "not-allowed",
-            opacity: "60",
-          },
-          "&:not([data-focused]):hover": {
-            bg: "bg.secondary.index",
-          },
-        })
-      )}>
+    <AriaListBoxItem {...props} textValue={textValue} className={classes.root}>
       {composeRenderProps(props.children, (children, { isSelected }) => (
         <>
-          <span
-            className={css({
-              display: "flex",
-              alignItems: "center",
-              flex: "1",
-              gap: "2",
-              fontWeight: "normal",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-              "[data-selected] &": {
-                fontWeight: "semiBold",
-              },
-            })}>
-            {children}
-          </span>
-          <span
-            className={css({
-              display: "flex",
-              alignItems: "center",
-              width: "5",
-              justifyContent: "center",
-              flexShrink: "0",
-            })}>
-            {isSelected && <Icon id="check" size="4" />}
-          </span>
+          <span className={classes.content}>{children}</span>
+          <span className={classes.icon}>{isSelected && <Icon id="check" size="4" />}</span>
         </>
       ))}
     </AriaListBoxItem>
