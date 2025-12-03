@@ -51,4 +51,3 @@ export const dropdownSectionRecipe = defineSlotRecipe({
   variants: {},
   defaultVariants: {},
 });
-
