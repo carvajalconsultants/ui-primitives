@@ -7,6 +7,7 @@ import { Icon } from "../common/Icon";
 import { Label } from "../common/Label";
 import { SearchField } from "../field/SearchField";
 import { ListBox } from "../listbox/ListBox";
+import { m } from "../paraglide/messages.js";
 import { Tag } from "../taggroup/Tag";
 import { TagGroup } from "../taggroup/TagGroup";
 import { Text } from "../typography/Text";
@@ -112,9 +113,9 @@ export const SelectWithTagGroup = <T extends object>({
 
             return (
               <TagGroup
-                aria-label="Selected items"
+                aria-label={m.selectedItems()}
                 items={selectedItemsArray}
-                renderEmptyState={() => <span className={classes.emptyState}>{placeholder ?? "No selected items"}</span>}
+                renderEmptyState={() => <span className={classes.emptyState}>{placeholder ?? m.noSelectedItems()}</span>}
                 onRemove={(keys) => {
                   const currentValue = state.value;
                   if (currentValue instanceof Set) {
@@ -126,8 +127,9 @@ export const SelectWithTagGroup = <T extends object>({
                   }
                 }}>
                 {(item) => {
-                  const key = getItemKey ? getItemKey(item) : ((item as { id?: React.Key }).id ?? "unknown");
-                  const displayText = getItemText ? getItemText(item) : ((item as { name?: string }).name ?? "Unknown");
+                  const key = getItemKey ? getItemKey(item) : ((item as { id?: React.Key }).id ?? m.unknown());
+                  const displayText = getItemText ? getItemText(item) : ((item as { name?: string }).name ?? m.Unknown());
+
                   return (
                     <Tag key={key} id={String(key)} {...({ allowsRemoving: true } as { allowsRemoving: boolean })}>
                       {displayText}
