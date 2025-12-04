@@ -134,7 +134,7 @@ export const SelectWithTagGroup = <T extends object>({
                 }}>
                 {(item) => {
                   const key = getItemKey ? getItemKey(item) : ((item as { id?: React.Key }).id ?? m.unknown());
-                  const displayText = getItemText ? getItemText(item) : ((item as { name?: string }).name ?? m.Unknown());
+                  const displayText = getItemText ? getItemText(item) : ((item as { name?: string }).name ?? m.unknown());
 
                   return (
                     <Tag key={key} id={String(key)} {...({ allowsRemoving: true } as { allowsRemoving: boolean })}>
