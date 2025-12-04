@@ -124,6 +124,12 @@ export const SelectWithTagGroup = <T extends object>({
                     state.setValue(Array.from(newSet));
                   } else if (Array.isArray(currentValue)) {
                     state.setValue(currentValue.filter((k) => !keys.has(k)));
+                  } else if (currentValue != null) {
+                    // Handle single key value (unexpected in multiple selection mode, but handle gracefully)
+                    // Convert to Set format for consistent handling, remove keys, then set as array
+                    const newSet = new Set([currentValue]);
+                    keys.forEach((key) => newSet.delete(key));
+                    state.setValue(Array.from(newSet));
                   }
                 }}>
                 {(item) => {

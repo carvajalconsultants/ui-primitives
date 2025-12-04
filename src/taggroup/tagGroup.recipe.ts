@@ -11,7 +11,7 @@ import { defineSlotRecipe } from "@pandacss/dev";
 export const tagGroupRecipe = defineSlotRecipe({
   className: "tagGroup",
   description: "A component that manages and displays a collection of related tags with optional labeling and error states",
-  slots: ["group", "tagList", "tag"],
+  slots: ["group", "tagList", "tag", "button"],
   base: {
     // Container layout for the entire tag selection component
     group: {
@@ -59,6 +59,11 @@ export const tagGroupRecipe = defineSlotRecipe({
         color: "text.white",
         backgroundColor: "bg.brand.primary",
       },
+    },
+
+    // Remove button styling for tags that allow removal
+    button: {
+      cursor: "pointer",
     },
   },
 });

@@ -192,7 +192,11 @@ export const ControlledSelection: Story = {
 export const WithManyItems: Story = {
   render: (args) => (
     <SelectWithTagGroup {...args} items={Array.from({ length: 100 }, (_, i) => ({ id: `item-${i}`, name: `Item ${i + 1}` }))} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
-      {(item) => <DropdownItem key={item.id} id={item.id} textValue={item.name} />}
+      {(item) => (
+        <DropdownItem key={item.id} id={item.id} textValue={item.name}>
+          {item.name}
+        </DropdownItem>
+      )}
     </SelectWithTagGroup>
   ),
   args: {
