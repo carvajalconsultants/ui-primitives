@@ -120,7 +120,7 @@ export const otpTextFieldRecipe = defineSlotRecipe({
       justifyContent: "center",
 
       "& svg": {
-        stroke: "text.white",
+        stroke: "border.primary",
       },
     },
   },

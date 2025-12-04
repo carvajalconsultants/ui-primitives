@@ -19,6 +19,7 @@ import { Label } from "./common/Label";
 import { ContentHeader } from "./contentheader/ContentHeader";
 import { DatePicker } from "./datepicker/DatePicker";
 import { NumberField } from "./field/NumberField";
+import { OTPTextField } from "./field/OTPTextField";
 import { SearchField } from "./field/SearchField";
 import { SliderField } from "./field/SliderField";
 import { SwitchField } from "./field/SwitchField";
@@ -130,6 +131,7 @@ export const App = () => {
   const { todos, isLoading, error } = useMockFetchTodos();
 
   const [selected, setSelected] = useState<Selection>(new Set(["parking"]));
+  const [otpValue, setOtpValue] = useState("");
 
   const form = useAppForm({
     defaultValues: {
@@ -154,18 +156,18 @@ export const App = () => {
   return (
     <Stack
       gap="4"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "4",
-        alignItems: "start",
-        justifyContent: "center",
-        minHeight: "screen",
-      }}
+      display="flex"
+      flexDirection="column"
+      alignItems="start"
+      justifyContent="center"
+      minHeight="screen"
+      py="10"
       md={{
         // minWidth: "[1068px]",
         maxWidth: "[1324px]",
       }}>
+      <OTPTextField name="otpCode" value={otpValue} onChange={setOtpValue} pattern="^\\d+$" />
+
       <SelectWithTagGroup label="Select animals" placeholder="No animals selected" items={animals} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
         {(item) => (
           <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>

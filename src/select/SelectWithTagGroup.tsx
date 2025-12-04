@@ -153,7 +153,7 @@ export const SelectWithTagGroup = <T extends object>({
         <Autocomplete filter={filterFn}>
           <SearchField autoFocus variant="search" />
 
-          <ListBox items={items} variant="search">
+          <ListBox items={items} variant="search" selectionMode="multiple">
             {children}
           </ListBox>
         </Autocomplete>
