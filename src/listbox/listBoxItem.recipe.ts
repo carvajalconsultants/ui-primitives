@@ -8,31 +8,34 @@ export const listBoxItemRecipe = defineRecipe({
     // Ensures the option takes up the full width of its container, preventing awkward partial-width selections
     width: "full",
 
-    // Sets the background color to the primary index color
-    background: "bg.primary.index",
-
-    // Uses the primary text color to maintain readability and consistency with the rest of the application
-    color: "text.primary",
-
-    // Makes options easily scannable by slightly emphasizing their text
-    fontWeight: "semiBold",
-
     // Removes the default browser focus outline in favor of our custom styling
     _focusVisible: {
       outline: "none",
     },
-
-    // These three states work together to provide clear visual feedback when users interact with options:
-    // - Selected: When an option is currently chosen
-    // - Pressed: When an option is being clicked
-    // - Focused: When an option is highlighted via keyboard navigation
-    // All three states use the same styling to maintain consistency and reduce user confusion
-    "&[data-selected]": { bg: "bg.brand.primary", color: "text.white" },
-    "&[data-pressed]": { bg: "bg.brand.primary", color: "text.white" },
-    "&[data-focused]": { bg: "bg.brand.primary", color: "text.white" },
   },
 
   variants: {
+    variant: {
+      default: {
+        // Sets the background color to the primary index color
+        background: "bg.primary.index",
+
+        // Uses the primary text color to maintain readability and consistency with the rest of the application
+        color: "text.primary",
+
+        // Makes options easily scannable by slightly emphasizing their text
+        fontWeight: "semiBold",
+
+        // These three states work together to provide clear visual feedback when users interact with options:
+        // - Selected: When an option is currently chosen
+        // - Pressed: When an option is being clicked
+        // - Focused: When an option is highlighted via keyboard navigation
+        // All three states use the same styling to maintain consistency and reduce user confusion
+        "&[data-selected]": { bg: "bg.brand.primary", color: "text.white" },
+        "&[data-pressed]": { bg: "bg.brand.primary", color: "text.white" },
+        "&[data-focused]": { bg: "bg.brand.primary", color: "text.white" },
+      },
+    },
     size: {
       // Compact size variant ideal for dense UIs like sidebars or when vertical space is limited
       sm: {
@@ -51,8 +54,9 @@ export const listBoxItemRecipe = defineRecipe({
     },
   },
 
-  // Sets medium size as default to ensure good touch targets out of the box
+  // Sets medium size and default variant as defaults to ensure good touch targets out of the box
   defaultVariants: {
+    variant: "default",
     size: "md",
   },
 });

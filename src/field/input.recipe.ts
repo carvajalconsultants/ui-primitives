@@ -32,6 +32,10 @@ export const inputRecipe = defineSlotRecipe({
       borderColor: "bg.brand.primary",
       fontFamily: "body",
 
+      "&[data-search-field='true']": {
+        paddingLeft: "10",
+      },
+
       _placeholder: {
         color: "text.placeholder",
       },
@@ -120,15 +124,16 @@ export const inputRecipe = defineSlotRecipe({
     },
   },
   variants: {
-    variant: {
-      default: {},
-    },
     size: {
       sm: {
         input: {
           paddingY: "2",
           paddingX: "3",
           fontSize: "sm",
+
+          "&[data-search-field='true']": {
+            paddingInlineStart: "8",
+          },
         },
         textarea: {
           paddingY: "2",
@@ -150,6 +155,10 @@ export const inputRecipe = defineSlotRecipe({
           paddingY: "2.5",
           paddingX: "4",
           fontSize: "md",
+
+          "&[data-search-field='true']": {
+            paddingInlineStart: "8",
+          },
         },
         textarea: {
           paddingY: "2.5",
@@ -171,6 +180,10 @@ export const inputRecipe = defineSlotRecipe({
           paddingY: "3",
           paddingX: "5",
           fontSize: "lg",
+
+          "&[data-search-field='true']": {
+            paddingInlineStart: "10",
+          },
         },
         textarea: {
           paddingY: "3",
@@ -218,6 +231,26 @@ export const inputRecipe = defineSlotRecipe({
             borderColor: "transparent",
             boxShadow: "0",
           },
+        },
+      },
+    },
+    variant: {
+      default: {},
+      search: {
+        input: {
+          // bg: '#333',
+          paddingY: "2.5",
+          paddingX: "1",
+          fontSize: "md",
+          borderRadius: "0",
+        },
+        leftIcon: {
+          left: "2",
+          top: "3",
+        },
+        clearButton: {
+          right: "2",
+          top: "3",
         },
       },
     },

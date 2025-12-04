@@ -9,6 +9,7 @@ export { TagGroup } from "./taggroup/TagGroup";
 
 export { DataSelect } from "./select/DataSelect";
 export { Select } from "./select/Select";
+export { SelectWithTagGroup } from "./select/SelectWithTagGroup";
 
 export { DatePicker } from "./datepicker/DatePicker";
 export { DateRangePicker } from "./daterangepicker/DateRangePicker";
@@ -37,6 +38,8 @@ export { DataGridMessageBox } from "./grid/DataGridMessageBox";
 export { Link } from "./link/Link";
 export { ListBox } from "./listbox/ListBox";
 export { ListBoxItem } from "./listbox/ListBoxItem";
+export { SelectItem } from "./listbox/SelectItem";
+export { SelectSection } from "./listbox/SelectSection";
 export { VirtualizedListBox } from "./listbox/VirtualizedListBox";
 export { Dialog } from "./overlay/Dialog";
 export { DialogDescription } from "./overlay/DialogDescription";

@@ -14,12 +14,15 @@ import { sliderRecipe } from "./field/slider.recipe";
 import { switchRecipe } from "./field/switch.recipe";
 import { listBoxRecipe } from "./listbox/listBox.recipe";
 import { listBoxItemRecipe } from "./listbox/listBoxItem.recipe";
+import { selectItemRecipe } from "./listbox/selectItem.recipe";
+import { selectSectionRecipe } from "./listbox/selectSection.recipe";
 import { dialogRecipe } from "./overlay/dialog.recipe";
 import { modalRecipe } from "./overlay/modal.recipe";
 import { emptyRecipe } from "./placeholder/empty.recipe";
 import { radialProgressRecipe } from "./radialprogress/RadialProgress.recipe";
 import { radioGroupRecipe } from "./radiogroup/radioGroup.recipe";
 import { selectRecipe } from "./select/select.recipe";
+import { selectWithTagGroupRecipe } from "./select/selectWithTagGroup.recipe";
 import { tabRecipe } from "./tab/tab.recipe";
 import { cellRecipe } from "./table/cell.recipe";
 import { headerCellRecipe } from "./table/headerCell.recipe";
@@ -90,10 +93,13 @@ export const cciPreset = definePreset({
       modal: modalRecipe,
       radioGroup: radioGroupRecipe,
       select: selectRecipe,
+      selectWithTagGroup: selectWithTagGroupRecipe,
       table: tableRecipe,
       tab: tabRecipe,
       tagGroup: tagGroupRecipe,
       empty: emptyRecipe,
+      selectItem: selectItemRecipe,
+      selectSection: selectSectionRecipe,
 
       // For some reason, the `switch` is not working. (maybe it's reserved word)
       switchh: switchRecipe,

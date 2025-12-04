@@ -113,15 +113,7 @@ export const SearchField = ({ size, variant, debounceTime = 500, onChange, borde
       )}>
       <Icon id="search" size="4" className={classes.leftIcon} />
 
-      <Input
-        className={cx(
-          classes.input,
-          css({
-            paddingLeft: size === "sm" ? "9" : "10",
-          })
-        )}
-        {...props}
-      />
+      <Input data-search-field="true" className={classes.input} {...props} />
 
       <Button onPress={clearHandler} aria-label="Clear search" className={classes.clearButton}>
         <Icon id="x" size="4" />

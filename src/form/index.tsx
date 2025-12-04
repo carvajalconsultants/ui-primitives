@@ -5,6 +5,7 @@ import { FormNumberField } from "./field/FormNumberField";
 import { FormSearchField } from "./field/FormSearchField";
 import { FormSliderField } from "./field/FormSliderField";
 import { FormSwitchField } from "./field/FormSwitchField";
+import { FormTextAreaField } from "./field/FormTextAreaField";
 import { FormTextField } from "./field/FormTextField";
 import { Form } from "./Form";
 
@@ -27,6 +28,7 @@ export { fieldContext, formContext, useFieldContext, useFormContext } from "./co
  *
  * Available field components:
  * - TextField: Standard text input with validation
+ * - TextAreaField: Multi-line text input for longer content
  * - NumberField: Number input with optional stepper buttons
  * - SearchField: Text input optimized for search with debouncing
  * - SliderField: Numeric input with visual slider control
@@ -37,6 +39,7 @@ export const { useAppForm, withForm, withFieldGroup } = createFormHook({
   formContext,
   fieldComponents: {
     TextField: FormTextField,
+    TextAreaField: FormTextAreaField,
     NumberField: FormNumberField,
     SearchField: FormSearchField,
     SliderField: FormSliderField,
