@@ -25,7 +25,7 @@ type Story = StoryObj<typeof RadioGroup>;
 
 export const Default: Story = {
   render: () => (
-    <RadioGroup>
+    <RadioGroup aria-label="Options">
       <Radio value="option1">Option 1</Radio>
       <Radio value="option2">Option 2</Radio>
       <Radio value="option3">Option 3</Radio>
@@ -35,7 +35,7 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   render: () => (
-    <RadioGroup isDisabled>
+    <RadioGroup isDisabled aria-label="Disabled options">
       <Radio value="option1">Disabled Option 1</Radio>
       <Radio value="option2">Disabled Option 2</Radio>
       <Radio value="option3">Disabled Option 3</Radio>
@@ -45,7 +45,7 @@ export const Disabled: Story = {
 
 export const Invalid: Story = {
   render: () => (
-    <RadioGroup isInvalid>
+    <RadioGroup isInvalid aria-label="Invalid options">
       <Radio value="option1">Invalid Option 1</Radio>
       <Radio value="option2">Invalid Option 2</Radio>
       <Radio value="option3">Invalid Option 3</Radio>
@@ -55,7 +55,7 @@ export const Invalid: Story = {
 
 export const Required: Story = {
   render: () => (
-    <RadioGroup isRequired>
+    <RadioGroup isRequired aria-label="Required options">
       <Radio value="option1">Required Option 1</Radio>
       <Radio value="option2">Required Option 2</Radio>
       <Radio value="option3">Required Option 3</Radio>
@@ -65,7 +65,7 @@ export const Required: Story = {
 
 export const WithDefaultValue: Story = {
   render: () => (
-    <RadioGroup defaultValue="option2">
+    <RadioGroup defaultValue="option2" aria-label="Options with default value">
       <Radio value="option1">Option 1</Radio>
       <Radio value="option2">Option 2 (Default)</Radio>
       <Radio value="option3">Option 3</Radio>
