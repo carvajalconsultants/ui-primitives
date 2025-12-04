@@ -1,6 +1,5 @@
 import { Collection, Header, ListBoxSection } from "react-aria-components";
 
-import { cx } from "../../styled-system/css";
 import { selectSection } from "../../styled-system/recipes";
 
 import type * as React from "react";
@@ -21,11 +20,6 @@ export interface SelectSectionProps<T extends object> extends WithoutClassName<S
    * Items to display in this section.
    */
   items?: T[];
-
-  /**
-   * Optional custom className for the section root element.
-   */
-  className?: string;
 }
 
 /**
@@ -51,11 +45,11 @@ export interface SelectSectionProps<T extends object> extends WithoutClassName<S
  * @param {T[]} [props.items] - Items to display in this section
  * @returns {JSX.Element} A styled section with header for grouping select items
  */
-export const SelectSection = <T extends object>({ title, items, children, className, ...props }: SelectSectionProps<T>) => {
+export const SelectSection = <T extends object>({ title, items, children, ...props }: SelectSectionProps<T>) => {
   const classes = selectSection();
 
   return (
-    <ListBoxSection {...props} className={cx(classes.root, className)}>
+    <ListBoxSection {...props} className={classes.root}>
       {title && <Header className={classes.header}>{title}</Header>}
 
       {items ? <Collection items={items}>{children as unknown as (item: T) => React.ReactElement}</Collection> : (children as React.ReactNode)}
