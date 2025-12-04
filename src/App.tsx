@@ -452,7 +452,7 @@ export const App = () => {
 
       <Checkbox>Subscribe to newsletter</Checkbox>
 
-      <RadioGroup>
+      <RadioGroup aria-label="Vertical options">
         <Radio value="option1">Vertical Option 1</Radio>
         <Radio value="option2">Vertical Option 2</Radio>
         <Radio value="option3">Vertical Option 3</Radio>
