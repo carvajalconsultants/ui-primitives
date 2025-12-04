@@ -1,6 +1,5 @@
 import { ListBox as AriaListBox } from "react-aria-components";
 
-import { cx } from "../../styled-system/css";
 import { listBox } from "../../styled-system/recipes";
 
 import type { ListBoxProps as AriaListBoxProps } from "react-aria-components";
@@ -12,10 +11,7 @@ import type { WithoutClassName } from "../types";
  * Represents the props for the ListBox component, excluding the className prop.
  * @template T - The type of data items the ListBox will contain
  */
-export type ListBoxProps<T> = WithoutClassName<AriaListBoxProps<T>> &
-  Partial<ListBoxVariantProps> & {
-    className?: string;
-  };
+export type ListBoxProps<T> = WithoutClassName<AriaListBoxProps<T>> & Partial<ListBoxVariantProps>;
 
 /**
  * A fully accessible listbox component that provides a scrollable list of options for users to select from.
@@ -49,7 +45,7 @@ export type ListBoxProps<T> = WithoutClassName<AriaListBoxProps<T>> &
  * </ListBox>
  * ```
  */
-export const ListBox = <T extends object>({ className, variant, ...props }: ListBoxProps<T>) => {
+export const ListBox = <T extends object>({ variant, ...props }: ListBoxProps<T>) => {
   const classes = listBox({ variant });
   return (
     // AriaListBox handles all accessibility features including:
@@ -57,6 +53,6 @@ export const ListBox = <T extends object>({ className, variant, ...props }: List
     // - ARIA attributes (role="listbox", aria-selected, etc.)
     // - Selection management
     // - Focus handling
-    <AriaListBox {...props} className={cx(classes, className)} />
+    <AriaListBox {...props} className={classes} />
   );
 };
