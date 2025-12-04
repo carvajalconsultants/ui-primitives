@@ -27,10 +27,10 @@ import { TextField } from "./field/TextField";
 import { ToggleSectionField } from "./field/ToggleSectionField";
 import { useAppForm } from "./form";
 import { Link } from "./link/Link";
-import { DropdownItem } from "./listbox/DropdownItem";
-import { DropdownSection } from "./listbox/DropdownSection";
 import { ListBox } from "./listbox/ListBox";
 import { ListBoxItem } from "./listbox/ListBoxItem";
+import { SelectItem } from "./listbox/SelectItem";
+import { SelectSection } from "./listbox/SelectSection";
 import { VirtualizedListBox } from "./listbox/VirtualizedListBox";
 import { Dialog } from "./overlay/Dialog";
 import { DialogTitle } from "./overlay/DialogTitle";
@@ -170,35 +170,35 @@ export const App = () => {
 
       <SelectWithTagGroup label="Select animals" placeholder="No animals selected" items={animals} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
         {(item) => (
-          <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+          <SelectItem key={item.id} id={String(item.id)} textValue={item.name}>
             {item.name}
-          </DropdownItem>
+          </SelectItem>
         )}
       </SelectWithTagGroup>
 
       <Select label="Select an animal with sections" size="sm">
         <ListBox>
-          <DropdownSection title="Mammals" items={animals.filter((_, i) => i < 10)}>
+          <SelectSection title="Mammals" items={animals.filter((_, i) => i < 10)}>
             {(item) => (
-              <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+              <SelectItem key={item.id} id={String(item.id)} textValue={item.name}>
                 {item.name}
-              </DropdownItem>
+              </SelectItem>
             )}
-          </DropdownSection>
-          <DropdownSection title="Birds" items={animals.filter((_, i) => i >= 10 && i < 15)}>
+          </SelectSection>
+          <SelectSection title="Birds" items={animals.filter((_, i) => i >= 10 && i < 15)}>
             {(item) => (
-              <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+              <SelectItem key={item.id} id={String(item.id)} textValue={item.name}>
                 {item.name}
-              </DropdownItem>
+              </SelectItem>
             )}
-          </DropdownSection>
-          <DropdownSection title="Other Animals" items={animals.filter((_, i) => i >= 15)}>
+          </SelectSection>
+          <SelectSection title="Other Animals" items={animals.filter((_, i) => i >= 15)}>
             {(item) => (
-              <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+              <SelectItem key={item.id} id={String(item.id)} textValue={item.name}>
                 {item.name}
-              </DropdownItem>
+              </SelectItem>
             )}
-          </DropdownSection>
+          </SelectSection>
         </ListBox>
       </Select>
 

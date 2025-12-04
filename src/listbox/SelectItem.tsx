@@ -1,6 +1,6 @@
 import { ListBoxItem as AriaListBoxItem, composeRenderProps } from "react-aria-components";
 
-import { dropdownItem } from "../../styled-system/recipes";
+import { selectItem } from "../../styled-system/recipes";
 import { Icon } from "../common/Icon";
 
 import type { FC } from "react";
@@ -9,12 +9,12 @@ import type { ListBoxItemProps as AriaListBoxItemProps } from "react-aria-compon
 import type { WithoutClassName } from "../types";
 
 /**
- * Represents the properties for a DropdownItem component.
+ * Represents the properties for a SelectItem component.
  */
-type DropdownItemProps = WithoutClassName<AriaListBoxItemProps>;
+type SelectItemProps = WithoutClassName<AriaListBoxItemProps>;
 
 /**
- * An enhanced dropdown item component with checkmark icons for selected items.
+ * An enhanced select item component with checkmark icons for selected items.
  * Provides improved visual feedback with hover, focus, and selection states.
  *
  * Features:
@@ -26,18 +26,18 @@ type DropdownItemProps = WithoutClassName<AriaListBoxItemProps>;
  * @example
  * ```tsx
  * <ListBox>
- *   <DropdownItem id="1">Option 1</DropdownItem>
- *   <DropdownItem id="2" isDisabled>Option 2</DropdownItem>
- *   <DropdownItem id="3">Option 3</DropdownItem>
+ *   <SelectItem id="1">Option 1</SelectItem>
+ *   <SelectItem id="2" isDisabled>Option 2</SelectItem>
+ *   <SelectItem id="3">Option 3</SelectItem>
  * </ListBox>
  * ```
  *
- * @param {DropdownItemProps} props - The component properties
- * @returns {JSX.Element} A styled and accessible dropdown item component with checkmark indicators
+ * @param {SelectItemProps} props - The component properties
+ * @returns {JSX.Element} A styled and accessible select item component with checkmark indicators
  */
-export const DropdownItem: FC<DropdownItemProps> = (props) => {
+export const SelectItem: FC<SelectItemProps> = (props) => {
   const textValue = props.textValue ?? (typeof props.children === "string" ? props.children : undefined);
-  const classes = dropdownItem();
+  const classes = selectItem();
 
   return (
     <AriaListBoxItem {...props} textValue={textValue} className={classes.root}>

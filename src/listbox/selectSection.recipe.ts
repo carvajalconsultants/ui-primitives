@@ -1,16 +1,16 @@
 import { defineSlotRecipe } from "@pandacss/dev";
 
 /**
- * Style recipe for dropdown sections with styled headers.
- * Provides visual grouping and organization for dropdown items.
+ * Style recipe for select sections with styled headers.
+ * Provides visual grouping and organization for select items.
  *
  * Slots:
- * - root: Main container for the dropdown section
+ * - root: Main container for the select section
  * - header: Styled header text for the section
  */
-export const dropdownSectionRecipe = defineSlotRecipe({
-  className: "dropdownSection",
-  description: "A section component for grouping dropdown items with a styled header",
+export const selectSectionRecipe = defineSlotRecipe({
+  className: "selectSection",
+  description: "A section component for grouping select items with a styled header",
   slots: ["root", "header"],
   base: {
     root: {

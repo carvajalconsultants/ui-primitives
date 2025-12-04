@@ -1,17 +1,17 @@
 import { defineSlotRecipe } from "@pandacss/dev";
 
 /**
- * Style recipe for dropdown items with enhanced visual feedback.
+ * Style recipe for select items with enhanced visual feedback.
  * Features checkmark indicators for selected items and improved hover/focus states.
  *
  * Slots:
- * - root: Main container for the dropdown item
+ * - root: Main container for the select item
  * - content: Container for the item text content
  * - icon: Container for the checkmark icon
  */
-export const dropdownItemRecipe = defineSlotRecipe({
-  className: "dropdownItem",
-  description: "An enhanced dropdown item with checkmark icons for selected items and improved visual states",
+export const selectItemRecipe = defineSlotRecipe({
+  className: "selectItem",
+  description: "An enhanced select item with checkmark icons for selected items and improved visual states",
   slots: ["root", "content", "icon"],
   base: {
     root: {
@@ -54,7 +54,7 @@ export const dropdownItemRecipe = defineSlotRecipe({
         color: "text.white",
       },
 
-      "&[data-selected] .dropdownItem__content": {
+      "&[data-selected] .selectItem__content": {
         fontWeight: "semiBold",
       },
     },

@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { DropdownItem } from "../listbox/DropdownItem";
-import { DropdownSection } from "../listbox/DropdownSection";
 import { ListBox } from "../listbox/ListBox";
+import { SelectItem } from "../listbox/SelectItem";
+import { SelectSection } from "../listbox/SelectSection";
 import { Select } from "./Select";
 import { SelectWithTagGroup } from "./SelectWithTagGroup";
 
@@ -92,9 +92,9 @@ const Template: Story = {
   render: (args) => (
     <SelectWithTagGroup {...args} items={usStateOptions} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
       {(state) => (
-        <DropdownItem key={state.id} id={state.id} textValue={state.name}>
+        <SelectItem key={state.id} id={state.id} textValue={state.name}>
           {state.name}
-        </DropdownItem>
+        </SelectItem>
       )}
     </SelectWithTagGroup>
   ),
@@ -178,9 +178,9 @@ const ControlledSelectionComponent = () => {
       getItemKey={(item) => item.id}
       getItemText={(item) => item.name}>
       {(item) => (
-        <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+        <SelectItem key={item.id} id={String(item.id)} textValue={item.name}>
           {item.name}
-        </DropdownItem>
+        </SelectItem>
       )}
     </SelectWithTagGroup>
   );
@@ -193,9 +193,9 @@ export const WithManyItems: Story = {
   render: (args) => (
     <SelectWithTagGroup {...args} items={Array.from({ length: 100 }, (_, i) => ({ id: `item-${i}`, name: `Item ${i + 1}` }))} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
       {(item) => (
-        <DropdownItem key={item.id} id={item.id} textValue={item.name}>
+        <SelectItem key={item.id} id={item.id} textValue={item.name}>
           {item.name}
-        </DropdownItem>
+        </SelectItem>
       )}
     </SelectWithTagGroup>
   ),
@@ -205,7 +205,7 @@ export const WithManyItems: Story = {
   },
 };
 
-export const WithDropdownItems: Story = {
+export const WithSelectItems: Story = {
   render: (args) => {
     const items = [
       { id: "1", name: "Apple" },
@@ -218,9 +218,9 @@ export const WithDropdownItems: Story = {
     return (
       <SelectWithTagGroup {...args} items={items} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
         {(item) => (
-          <DropdownItem key={item.id} id={item.id} textValue={item.name}>
+          <SelectItem key={item.id} id={item.id} textValue={item.name}>
             {item.name}
-          </DropdownItem>
+          </SelectItem>
         )}
       </SelectWithTagGroup>
     );
@@ -232,7 +232,7 @@ export const WithDropdownItems: Story = {
   },
 };
 
-export const WithDropdownSections: Story = {
+export const WithSelectSections: Story = {
   render: () => {
     const fruits = [
       { id: "apple", name: "Apple" },
@@ -252,30 +252,30 @@ export const WithDropdownSections: Story = {
       <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
         <SelectWithTagGroup label="Food Items" placeholder="No items selected" items={allItems} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
           {(item) => (
-            <DropdownItem key={item.id} id={item.id} textValue={item.name}>
+            <SelectItem key={item.id} id={item.id} textValue={item.name}>
               {item.name}
-            </DropdownItem>
+            </SelectItem>
           )}
         </SelectWithTagGroup>
 
         <div style={{ borderTop: "1px solid #e0e0e0", paddingTop: "16px" }}>
-          <p style={{ fontSize: "14px", marginBottom: "8px", color: "#666" }}>Example: DropdownSection with Select</p>
+          <p style={{ fontSize: "14px", marginBottom: "8px", color: "#666" }}>Example: SelectSection with Select</p>
           <Select label="Select with sections" size="sm">
             <ListBox>
-              <DropdownSection title="Fruits" items={fruits}>
+              <SelectSection title="Fruits" items={fruits}>
                 {(item) => (
-                  <DropdownItem key={item.id} id={item.id} textValue={item.name}>
+                  <SelectItem key={item.id} id={item.id} textValue={item.name}>
                     {item.name}
-                  </DropdownItem>
+                  </SelectItem>
                 )}
-              </DropdownSection>
-              <DropdownSection title="Vegetables" items={vegetables}>
+              </SelectSection>
+              <SelectSection title="Vegetables" items={vegetables}>
                 {(item) => (
-                  <DropdownItem key={item.id} id={item.id} textValue={item.name}>
+                  <SelectItem key={item.id} id={item.id} textValue={item.name}>
                     {item.name}
-                  </DropdownItem>
+                  </SelectItem>
                 )}
-              </DropdownSection>
+              </SelectSection>
             </ListBox>
           </Select>
         </div>

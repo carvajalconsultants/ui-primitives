@@ -1,7 +1,7 @@
 import { Collection, Header, ListBoxSection } from "react-aria-components";
 
 import { cx } from "../../styled-system/css";
-import { dropdownSection } from "../../styled-system/recipes";
+import { selectSection } from "../../styled-system/recipes";
 
 import type * as React from "react";
 import type { SectionProps } from "react-aria-components";
@@ -9,9 +9,9 @@ import type { SectionProps } from "react-aria-components";
 import type { WithoutClassName } from "../types";
 
 /**
- * Props for the DropdownSection component.
+ * Props for the SelectSection component.
  */
-export interface DropdownSectionProps<T extends object> extends WithoutClassName<SectionProps<T>> {
+export interface SelectSectionProps<T extends object> extends WithoutClassName<SectionProps<T>> {
   /**
    * Title text displayed in the section header.
    */
@@ -29,30 +29,30 @@ export interface DropdownSectionProps<T extends object> extends WithoutClassName
 }
 
 /**
- * A section component for grouping dropdown items with a styled header.
- * Useful for organizing related items in dropdown menus.
+ * A section component for grouping select items with a styled header.
+ * Useful for organizing related items in select menus.
  *
  * @template T - The type of data items in the section
  *
  * @example
  * ```tsx
  * <ListBox>
- *   <DropdownSection title="Fruits" items={fruits}>
- *     {(item) => <DropdownItem>{item.name}</DropdownItem>}
- *   </DropdownSection>
- *   <DropdownSection title="Vegetables" items={vegetables}>
- *     {(item) => <DropdownItem>{item.name}</DropdownItem>}
- *   </DropdownSection>
+ *   <SelectSection title="Fruits" items={fruits}>
+ *     {(item) => <SelectItem>{item.name}</SelectItem>}
+ *   </SelectSection>
+ *   <SelectSection title="Vegetables" items={vegetables}>
+ *     {(item) => <SelectItem>{item.name}</SelectItem>}
+ *   </SelectSection>
  * </ListBox>
  * ```
  *
- * @param {DropdownSectionProps<T>} props - Component properties
+ * @param {SelectSectionProps<T>} props - Component properties
  * @param {string} [props.title] - Title text for the section header
  * @param {T[]} [props.items] - Items to display in this section
- * @returns {JSX.Element} A styled section with header for grouping dropdown items
+ * @returns {JSX.Element} A styled section with header for grouping select items
  */
-export const DropdownSection = <T extends object>({ title, items, children, className, ...props }: DropdownSectionProps<T>) => {
-  const classes = dropdownSection();
+export const SelectSection = <T extends object>({ title, items, children, className, ...props }: SelectSectionProps<T>) => {
+  const classes = selectSection();
 
   return (
     <ListBoxSection {...props} className={cx(classes.root, className)}>
