@@ -1,14 +1,14 @@
 import { Label as AriaLabel } from "react-aria-components";
 
 import { label } from "../../styled-system/recipes";
+import { cx } from "../../styled-system/css";
 
 import type { FC, PropsWithChildren } from "react";
 import type { LabelProps as AriaLabelProps } from "react-aria-components";
 
 import type { LabelVariantProps } from "../../styled-system/recipes";
-import type { WithoutClassName } from "../types";
 
-type LabelProps = PropsWithChildren<Partial<LabelVariantProps>> & WithoutClassName<AriaLabelProps>;
+type LabelProps = PropsWithChildren<Partial<LabelVariantProps>> & AriaLabelProps;
 
 /**
  * A fully accessible label component for form fields that provides consistent styling and behavior.
@@ -43,8 +43,8 @@ type LabelProps = PropsWithChildren<Partial<LabelVariantProps>> & WithoutClassNa
  * // Enhanced visibility for important fields
  * <Label size="lg" weight="bold" color="primary">Password Requirements</Label>
  */
-export const Label: FC<LabelProps> = ({ size, color, weight, children, ...props }) => (
-  <AriaLabel className={label({ size, color, weight })} {...props}>
+export const Label: FC<LabelProps> = ({ size, color, weight, children,  className, ...props }) => (
+  <AriaLabel className={cx(label({ size, color, weight }), className)} {...props}>
     {children}
   </AriaLabel>
 );

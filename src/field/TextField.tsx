@@ -1,5 +1,6 @@
 import { TextField as AriaTextField, FieldError, Input } from "react-aria-components";
 
+import { css } from "../../styled-system/css";
 import { input } from "../../styled-system/recipes";
 import { Label } from "../common/Label";
 import { Text } from "../typography/Text";
@@ -37,7 +38,9 @@ export const TextField = ({ size, bordered, variant, label, placeholder, descrip
 
   return (
     <AriaTextField className={classes.wrapper} {...props}>
-      <Label color="primary">{label}</Label>
+      <Label color="primary" className={css({ _empty: { display: "none" } })}>
+        {label}
+      </Label>
       <Input ref={inputRef} className={classes.input} placeholder={placeholder} />
 
       <FieldError className={classes.error} />
