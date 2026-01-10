@@ -31,6 +31,8 @@ type LabelProps = PropsWithChildren<Partial<LabelVariantProps>> & AriaLabelProps
  *    - medium: Slightly enhanced visibility
  *    - bold: Strong emphasis or headers
  *
+ * @param {string} [props.className] - Additional CSS class names to merge with the component styles
+ *
  * @param {ReactNode} props.children - The label text or nested elements
  *
  * @returns {JSX.Element} A styled, accessible label component that integrates with form controls
