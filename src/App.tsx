@@ -166,6 +166,8 @@ export const App = () => {
         // minWidth: "[1068px]",
         maxWidth: "[1324px]",
       }}>
+      <TextField />
+
       <OTPTextField name="otpCode" value={otpValue} onChange={setOtpValue} pattern="^\\d+$" />
 
       <SelectWithTagGroup label="Select animals" placeholder="No animals selected" items={animals} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
