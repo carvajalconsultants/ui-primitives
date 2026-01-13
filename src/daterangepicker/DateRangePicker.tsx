@@ -121,7 +121,13 @@ export const DateRangePicker = <T extends Presets>({
       {...props}
       // Use draftSelection when open, otherwise use the value prop
       value={open ? draftSelection : value}
-      onChange={setDraftSelection}>
+      onChange={setDraftSelection}
+      onOpenChange={(open) => {
+        setOpen(open);
+        if (!open)setDraftSelection(value);
+      }}
+      shouldCloseOnSelect={false}
+      >
       {label && <Label>{label}</Label>}
 
       <Group onClick={() => setOpen(true)} className={classes.group}>
