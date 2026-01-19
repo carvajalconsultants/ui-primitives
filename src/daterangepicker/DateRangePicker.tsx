@@ -66,7 +66,7 @@ export const DateRangePicker = <T extends Presets>({
     empty: "Select date range",
   } as Record<keyof T, string> & { empty: string },
   size = "md",
-  hideChevronDown = true,
+  hideChevronDown = false,
   ...props
 }: DateRangePickerProps<T>) => {
   const classes = datePicker({ size });
