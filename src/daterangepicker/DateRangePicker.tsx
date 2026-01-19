@@ -40,6 +40,9 @@ type DateRangePickerProps<T extends Presets> = Omit<AriaDateRangePickerProps<Dat
 
     /** Custom labels for the preset ranges */
     presetLabels?: Record<keyof T, string> & { empty: string };
+    
+    /** Hides the chevron down icon */
+    hideChevronDown?: boolean;
   };
 
 /**
@@ -63,6 +66,7 @@ export const DateRangePicker = <T extends Presets>({
     empty: "Select date range",
   } as Record<keyof T, string> & { empty: string },
   size = "md",
+  hideChevronDown = false,
   ...props
 }: DateRangePickerProps<T>) => {
   const classes = datePicker({ size });
@@ -117,16 +121,24 @@ export const DateRangePicker = <T extends Presets>({
       {...props}
       // Use draftSelection when open, otherwise use the value prop
       value={open ? draftSelection : value}
-      onChange={setDraftSelection}>
+      onChange={setDraftSelection}
+      onOpenChange={(open) => {
+        setOpen(open);
+        if (!open)setDraftSelection(value);
+      }}
+      shouldCloseOnSelect={false}
+      >
       {label && <Label>{label}</Label>}
 
       <Group onClick={() => setOpen(true)} className={classes.group}>
         <Icon id="calendar" size="4" fill="transparent" stroke="body.bg" />
 
         <span className={classes.dateInput}>{getSelectedRangeText(formatter, presets, presetLabels, value)}</span>
-        <AriaButton className={classes.button}>
-          <Icon id="chevron-down" />
-        </AriaButton>
+        {!hideChevronDown && (
+          <AriaButton className={classes.button}>
+            <Icon id="chevron-down" />
+          </AriaButton>
+        )}
       </Group>
 
       {description && <Text slot="description">{description}</Text>}
