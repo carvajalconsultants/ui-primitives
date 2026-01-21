@@ -54,7 +54,7 @@ export const inputRecipe = defineSlotRecipe({
         borderColor: "bg.danger.primary",
 
         _focus: {
-          boxShadow: "shadow.primary",
+          boxShadow: "shadow.danger",
         },
       },
 
@@ -98,7 +98,7 @@ export const inputRecipe = defineSlotRecipe({
         borderColor: "bg.danger.primary",
 
         _focus: {
-          boxShadow: "shadow.primary",
+          boxShadow: "shadow.danger",
         },
       },
 
