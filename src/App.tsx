@@ -19,6 +19,7 @@ import { Label } from "./common/Label";
 import { ContentHeader } from "./contentheader/ContentHeader";
 import { DatePicker } from "./datepicker/DatePicker";
 import { NumberField } from "./field/NumberField";
+import { OTPTextField } from "./field/OTPTextField";
 import { SearchField } from "./field/SearchField";
 import { SliderField } from "./field/SliderField";
 import { SwitchField } from "./field/SwitchField";
@@ -26,10 +27,10 @@ import { TextField } from "./field/TextField";
 import { ToggleSectionField } from "./field/ToggleSectionField";
 import { useAppForm } from "./form";
 import { Link } from "./link/Link";
-import { DropdownItem } from "./listbox/DropdownItem";
-import { DropdownSection } from "./listbox/DropdownSection";
 import { ListBox } from "./listbox/ListBox";
 import { ListBoxItem } from "./listbox/ListBoxItem";
+import { SelectItem } from "./listbox/SelectItem";
+import { SelectSection } from "./listbox/SelectSection";
 import { VirtualizedListBox } from "./listbox/VirtualizedListBox";
 import { Dialog } from "./overlay/Dialog";
 import { DialogTitle } from "./overlay/DialogTitle";
@@ -130,6 +131,7 @@ export const App = () => {
   const { todos, isLoading, error } = useMockFetchTodos();
 
   const [selected, setSelected] = useState<Selection>(new Set(["parking"]));
+  const [otpValue, setOtpValue] = useState("");
 
   const form = useAppForm({
     defaultValues: {
@@ -154,49 +156,51 @@ export const App = () => {
   return (
     <Stack
       gap="4"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "4",
-        alignItems: "start",
-        justifyContent: "center",
-        minHeight: "screen",
-      }}
+      display="flex"
+      flexDirection="column"
+      alignItems="start"
+      justifyContent="center"
+      minHeight="screen"
+      py="10"
       md={{
         // minWidth: "[1068px]",
         maxWidth: "[1324px]",
       }}>
+      <TextField />
+
+      <OTPTextField name="otpCode" value={otpValue} onChange={setOtpValue} pattern="^\\d+$" />
+
       <SelectWithTagGroup label="Select animals" placeholder="No animals selected" items={animals} getItemKey={(item) => item.id} getItemText={(item) => item.name}>
         {(item) => (
-          <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+          <SelectItem key={item.id} id={String(item.id)} textValue={item.name}>
             {item.name}
-          </DropdownItem>
+          </SelectItem>
         )}
       </SelectWithTagGroup>
 
       <Select label="Select an animal with sections" size="sm">
         <ListBox>
-          <DropdownSection title="Mammals" items={animals.filter((_, i) => i < 10)}>
+          <SelectSection title="Mammals" items={animals.filter((_, i) => i < 10)}>
             {(item) => (
-              <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+              <SelectItem key={item.id} id={String(item.id)} textValue={item.name}>
                 {item.name}
-              </DropdownItem>
+              </SelectItem>
             )}
-          </DropdownSection>
-          <DropdownSection title="Birds" items={animals.filter((_, i) => i >= 10 && i < 15)}>
+          </SelectSection>
+          <SelectSection title="Birds" items={animals.filter((_, i) => i >= 10 && i < 15)}>
             {(item) => (
-              <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+              <SelectItem key={item.id} id={String(item.id)} textValue={item.name}>
                 {item.name}
-              </DropdownItem>
+              </SelectItem>
             )}
-          </DropdownSection>
-          <DropdownSection title="Other Animals" items={animals.filter((_, i) => i >= 15)}>
+          </SelectSection>
+          <SelectSection title="Other Animals" items={animals.filter((_, i) => i >= 15)}>
             {(item) => (
-              <DropdownItem key={item.id} id={String(item.id)} textValue={item.name}>
+              <SelectItem key={item.id} id={String(item.id)} textValue={item.name}>
                 {item.name}
-              </DropdownItem>
+              </SelectItem>
             )}
-          </DropdownSection>
+          </SelectSection>
         </ListBox>
       </Select>
 
@@ -450,7 +454,7 @@ export const App = () => {
 
       <Checkbox>Subscribe to newsletter</Checkbox>
 
-      <RadioGroup>
+      <RadioGroup aria-label="Vertical options">
         <Radio value="option1">Vertical Option 1</Radio>
         <Radio value="option2">Vertical Option 2</Radio>
         <Radio value="option3">Vertical Option 3</Radio>

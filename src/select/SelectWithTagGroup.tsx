@@ -124,11 +124,17 @@ export const SelectWithTagGroup = <T extends object>({
                     state.setValue(Array.from(newSet));
                   } else if (Array.isArray(currentValue)) {
                     state.setValue(currentValue.filter((k) => !keys.has(k)));
+                  } else if (currentValue != null) {
+                    // Handle single key value (unexpected in multiple selection mode, but handle gracefully)
+                    // Convert to Set format for consistent handling, remove keys, then set as array
+                    const newSet = new Set([currentValue]);
+                    keys.forEach((key) => newSet.delete(key));
+                    state.setValue(Array.from(newSet));
                   }
                 }}>
                 {(item) => {
                   const key = getItemKey ? getItemKey(item) : ((item as { id?: React.Key }).id ?? m.unknown());
-                  const displayText = getItemText ? getItemText(item) : ((item as { name?: string }).name ?? m.Unknown());
+                  const displayText = getItemText ? getItemText(item) : ((item as { name?: string }).name ?? m.unknown());
 
                   return (
                     <Tag key={key} id={String(key)} {...({ allowsRemoving: true } as { allowsRemoving: boolean })}>
@@ -153,7 +159,7 @@ export const SelectWithTagGroup = <T extends object>({
         <Autocomplete filter={filterFn}>
           <SearchField autoFocus variant="search" />
 
-          <ListBox items={items} variant="search">
+          <ListBox items={items} variant="search" selectionMode="multiple">
             {children}
           </ListBox>
         </Autocomplete>

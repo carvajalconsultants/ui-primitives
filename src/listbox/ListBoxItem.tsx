@@ -1,12 +1,12 @@
 import { ListBoxItem as AriaListBoxItem } from "react-aria-components";
 
-import { cx } from "../../styled-system/css";
 import { listBoxItem } from "../../styled-system/recipes";
 
 import type { FC } from "react";
 import type { ListBoxItemProps as AriaListBoxItemProps } from "react-aria-components";
 
 import type { ListBoxItemVariantProps } from "../../styled-system/recipes";
+import type { WithoutClassName } from "../types";
 
 /**
  * Represents the properties for a ListBox item component.
@@ -20,7 +20,7 @@ import type { ListBoxItemVariantProps } from "../../styled-system/recipes";
  * @property {boolean} [isDisabled] - Whether the item is disabled from user interaction
  * @property {ReactNode} [children] - The content to be rendered within the list item
  */
-type ListBoxItemProps = AriaListBoxItemProps & Partial<ListBoxItemVariantProps> & { className?: string };
+type ListBoxItemProps = WithoutClassName<AriaListBoxItemProps> & Partial<ListBoxItemVariantProps>;
 
 /**
  * A selectable item within a ListBox component that provides accessible interactions and styling.
@@ -43,4 +43,4 @@ type ListBoxItemProps = AriaListBoxItemProps & Partial<ListBoxItemVariantProps> 
  * @param {ListBoxItemProps} props - The component properties
  * @returns {JSX.Element} A styled and accessible list box item component
  */
-export const ListBoxItem: FC<ListBoxItemProps> = ({ size, variant, className, ...props }) => <AriaListBoxItem {...props} className={cx(listBoxItem({ size, variant }), className)} />;
+export const ListBoxItem: FC<ListBoxItemProps> = ({ size, variant, ...props }) => <AriaListBoxItem {...props} className={listBoxItem({ size, variant })} />;

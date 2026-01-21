@@ -138,7 +138,6 @@ export const OTPTextField = ({ name, value, onChange, pattern, isDisabled }: OTP
           autoComplete="one-time-code"
           pattern={pattern}
           tabIndex={-1}
-          aria-hidden="true"
           data-form-field="otpCode"
           className={styles.input}
         />

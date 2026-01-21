@@ -98,10 +98,22 @@ export const selectRecipe = defineSlotRecipe({
       // Allows the value to take up the remaining space in the button
       flex: "1",
       textAlign: "left",
+      overflow: "hidden",
+      whiteSpace: "nowrap",
+      textOverflow: "ellipsis",
     },
     popover: {
       // Makes the dropdown width match the button width
       width: "var(--trigger-width)",
+      minWidth: "var(--trigger-width)",
+      zIndex: "50",
+
+      // Styles for ListBox within the Popover
+      "& .listBox": {
+        width: "unset !important",
+        maxHeight: "inherit !important",
+        minHeight: "unset !important",
+      },
     },
   },
 

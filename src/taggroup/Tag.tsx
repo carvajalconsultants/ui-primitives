@@ -41,7 +41,7 @@ export const Tag = ({ children, ...props }: TagProps) => {
 
           {/* Add a remove button (ⓧ) when the tag is configured to be removable */}
           {values.allowsRemoving && (
-            <Button slot="remove">
+            <Button slot="remove" className={styles.button}>
               <Icon id="x" size="4" />
             </Button>
           )}

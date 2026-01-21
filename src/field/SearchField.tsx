@@ -61,7 +61,7 @@ export type SearchFieldProps = Omit<InputProps, "size" | "onChange"> &
  * @param props.onChange - Handler for search value changes
  * @param props.bordered - Whether to show a border around the field
  */
-export const SearchField = ({ size, variant, debounceTime = 500, onChange, bordered = false, className, ...props }: SearchFieldProps) => {
+export const SearchField = ({ size, variant, debounceTime = 500, onChange, bordered = false, ...props }: SearchFieldProps) => {
   // Apply styling classes based on size and border preferences
   const classes = input({ variant, size, bordered });
 
@@ -113,7 +113,7 @@ export const SearchField = ({ size, variant, debounceTime = 500, onChange, borde
       )}>
       <Icon id="search" size="4" className={classes.leftIcon} />
 
-      <Input data-search-field="true" className={cx(classes.input, className)} {...props} />
+      <Input data-search-field="true" className={classes.input} {...props} />
 
       <Button onPress={clearHandler} aria-label="Clear search" className={classes.clearButton}>
         <Icon id="x" size="4" />

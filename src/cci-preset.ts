@@ -12,10 +12,10 @@ import { inputRecipe } from "./field/input.recipe";
 import { otpTextFieldRecipe } from "./field/otpTextField.recipe";
 import { sliderRecipe } from "./field/slider.recipe";
 import { switchRecipe } from "./field/switch.recipe";
-import { dropdownItemRecipe } from "./listbox/dropdownItem.recipe";
-import { dropdownSectionRecipe } from "./listbox/dropdownSection.recipe";
 import { listBoxRecipe } from "./listbox/listBox.recipe";
 import { listBoxItemRecipe } from "./listbox/listBoxItem.recipe";
+import { selectItemRecipe } from "./listbox/selectItem.recipe";
+import { selectSectionRecipe } from "./listbox/selectSection.recipe";
 import { dialogRecipe } from "./overlay/dialog.recipe";
 import { modalRecipe } from "./overlay/modal.recipe";
 import { emptyRecipe } from "./placeholder/empty.recipe";
@@ -98,8 +98,8 @@ export const cciPreset = definePreset({
       tab: tabRecipe,
       tagGroup: tagGroupRecipe,
       empty: emptyRecipe,
-      dropdownItem: dropdownItemRecipe,
-      dropdownSection: dropdownSectionRecipe,
+      selectItem: selectItemRecipe,
+      selectSection: selectSectionRecipe,
 
       // For some reason, the `switch` is not working. (maybe it's reserved word)
       switchh: switchRecipe,
