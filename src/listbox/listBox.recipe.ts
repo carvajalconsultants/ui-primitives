@@ -7,6 +7,7 @@ export const listBoxRecipe = defineRecipe({
   base: {
     // Enables scrolling when options exceed the listbox height, keeping the UI compact and usable
     overflow: "auto",
+    borderColor: "border.primary",
   },
 
   variants: {
@@ -16,13 +17,12 @@ export const listBoxRecipe = defineRecipe({
         display: "block",
         // Makes the listbox expand to fill its parent container's width, preventing awkward partial-width dropdowns
         width: "full",
-        // Creates a clean white background to ensure options are easily readable against any page background
-        bg: "text.white",
+        // Creates a clean background to ensure options are easily readable against any page background
+        bg: "bg.primary.index",
         // Softens the corners to match modern UI design patterns and provide visual harmony with other components
         borderRadius: "lg",
         border: "1",
         borderStyle: "solid",
-        borderColor: "border.secondary._alt",
 
         //TODO This feels very limited, should be a prop or something where it can be set per use case
         maxHeight: "100",
