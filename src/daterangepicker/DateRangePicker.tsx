@@ -40,7 +40,7 @@ type DateRangePickerProps<T extends Presets> = Omit<AriaDateRangePickerProps<Dat
 
     /** Custom labels for the preset ranges */
     presetLabels?: Record<keyof T, string> & { empty: string };
-    
+
     /** Hides the chevron down icon */
     hideChevronDown?: boolean;
   };
@@ -124,10 +124,9 @@ export const DateRangePicker = <T extends Presets>({
       onChange={setDraftSelection}
       onOpenChange={(open) => {
         setOpen(open);
-        if (!open)setDraftSelection(value);
+        if (!open) setDraftSelection(value);
       }}
-      shouldCloseOnSelect={false}
-      >
+      shouldCloseOnSelect={false}>
       {label && <Label>{label}</Label>}
 
       <Group onClick={() => setOpen(true)} className={classes.group}>
