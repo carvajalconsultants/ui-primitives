@@ -13,4 +13,21 @@ export type ButtonProps = WithoutClassName<AriaButtonProps> & Partial<ButtonVari
 /**
  * ARIA compliant button component that provides consistent styling, accessibility, variants, sizes, and width configurations.
  */
-export const Button: FC<ButtonProps> = ({ variant = "primary", width, size, ...props }) => <AriaButton className={button({ variant, width, size })} {...props} />;
+export const Button: FC<ButtonProps> = ({
+  variant = "primary",
+  width,
+  size,
+  children,
+  ...props
+}) => (
+  <AriaButton
+    className={button({ variant, width, size })}
+    aria-label={
+      props["aria-label"] ??
+      (typeof children === "string" ? children : undefined)
+    }
+    {...props}
+  >
+    {children}
+  </AriaButton>
+);
