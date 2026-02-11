@@ -45,8 +45,7 @@ export const selectRecipe = defineSlotRecipe({
 
       // Styles for the dropdown indicator icon (usually a chevron)
       "& > svg": {
-        fill: "text.white",
-        stroke: "text.primary",
+        color: "text.primary",
 
         // Smooth animation for the dropdown icon rotation
         transition: "all",

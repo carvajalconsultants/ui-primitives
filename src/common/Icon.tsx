@@ -23,13 +23,20 @@ export type IconProps = Omit<HTMLStyledProps<"svg">, "width" | "height"> &
   };
 
 /**
- * Loads an SVG icon.
+ * Loads an SVG icon from the sprite map.
  *
- * If you need to an icon, add the SVG in public/icons from: https://tabler.io/icons
- * You can simply use the "Copy SVG" option and paste the content in the file.
+ * Icons use `currentColor` for stroke/fill, so pass the `color` prop or set `color` via CSS
+ * to control icon color. The icon inherits text color by default.
+ *
+ * To add an icon, add the SVG in public/icons from: https://tabler.io/icons
+ * (use "Copy SVG" option). Ensure strokes/fills use `currentColor` for styleability.
  */
 export const Icon = ({ id, size = "5", className = "", ...props }: IconProps) => (
-  <styled.svg {...props} className={`${square({ size })} ${className}`}>
+  <styled.svg
+      color={"currentColor" as never}
+      {...props}
+      className={`${square({ size })} ${className}`}
+    >
     <use xlinkHref={`/__spritemap#${id}`} />
   </styled.svg>
 );
