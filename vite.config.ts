@@ -28,10 +28,16 @@ export default defineConfig({
       svgo: {
         plugins: [
           {
+            name: "convertColors",
+            params: {
+              currentColor: true,
+            },
+          },
+          {
             name: "removeAttrs",
             params: {
               attrs: ["class"],
-            }
+            },
           },
         ],
       },
