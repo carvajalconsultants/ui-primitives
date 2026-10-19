@@ -1,12 +1,12 @@
 import { DisclosureGroup as AriaDisclosureGroup } from "react-aria-components";
 
-import { cx } from "../../styled-system/css";
-import { accordion } from "../../styled-system/recipes/accordion";
+import { cx } from "#styled-system/css";
+import { accordion } from "#styled-system/recipes/accordion";
 
+import type { AccordionVariantProps } from "#styled-system/recipes";
 import type { FC } from "react";
 import type { DisclosureGroupProps as AriaDisclosureGroupProps } from "react-aria-components";
 
-import type { AccordionVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type AccordionProps = WithoutClassName<AriaDisclosureGroupProps> & Partial<AccordionVariantProps>;

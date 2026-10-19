@@ -1,13 +1,12 @@
 import { Radio as AriaRadio } from "react-aria-components";
 
-import { cx } from "../../styled-system/css";
-import { radioGroup } from "../../styled-system/recipes";
+import { cx } from "#styled-system/css";
+import { radioGroup } from "#styled-system/recipes";
 
+import type { RadioGroupVariantProps } from "#styled-system/recipes";
 import type { FC } from "react";
 import type { RadioProps as AriaRadioProps } from "react-aria-components";
 import type { WithoutClassName } from "src/types";
-
-import type { RadioGroupVariantProps } from "../../styled-system/recipes";
 
 /**
  * ARIA compliant Radio component that renders a radio button.

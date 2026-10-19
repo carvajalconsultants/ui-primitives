@@ -1,13 +1,14 @@
 import { NumberField as AriaNumberField, FieldError, Input } from "react-aria-components";
 
-import { input } from "../../styled-system/recipes";
+import { input } from "#styled-system/recipes";
+
 import { Label } from "../common/Label";
 import { Text } from "../typography/Text";
 
+import type { InputVariantProps } from "#styled-system/recipes";
 import type { ReactNode } from "react";
 import type { NumberFieldProps as AriaNumberFieldProps } from "react-aria-components";
 
-import type { InputVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type NumberFieldProps = WithoutClassName<AriaNumberFieldProps> &

@@ -1,8 +1,8 @@
-import { row } from "../../styled-system/recipes";
+import { row } from "#styled-system/recipes";
 
+import type { RowVariantProps } from "#styled-system/recipes";
 import type { ComponentProps, Ref } from "react";
 
-import type { RowVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type RowProps = WithoutClassName<ComponentProps<"tr">> &

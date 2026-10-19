@@ -1,15 +1,16 @@
 import { Dialog as AriaDialog } from "react-aria-components";
 
-import { cx } from "../../styled-system/css";
-import { Box } from "../../styled-system/jsx";
-import { dialog } from "../../styled-system/recipes";
+import { cx } from "#styled-system/css";
+import { Box } from "#styled-system/jsx";
+import { dialog } from "#styled-system/recipes";
+
 import { Button } from "../button/Button";
 import { Icon } from "../common/Icon";
 
+import type { DialogVariantProps } from "#styled-system/recipes";
 import type { FC, PropsWithChildren, ReactNode } from "react";
 import type { DialogProps as AriaDialogProps } from "react-aria-components";
 
-import type { DialogVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export interface DialogProps extends PropsWithChildren<WithoutClassName<AriaDialogProps>>, Partial<DialogVariantProps> {

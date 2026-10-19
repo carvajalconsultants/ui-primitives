@@ -1,4 +1,5 @@
-import { HStack, Stack } from "../../../styled-system/jsx";
+import { HStack, Stack } from "#styled-system/jsx";
+
 import { Heading } from "../../typography/Heading";
 import { Paragraph } from "../../typography/Paragraph";
 

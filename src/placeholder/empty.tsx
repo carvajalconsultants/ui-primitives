@@ -1,11 +1,12 @@
-import { empty } from "../../styled-system/recipes";
+import { empty } from "#styled-system/recipes";
+
 import { Icon } from "../common/Icon";
 import { Heading } from "../typography/Heading";
 import { Paragraph } from "../typography/Paragraph";
 
+import type { EmptyVariantProps } from "#styled-system/recipes";
 import type { FC } from "react";
 
-import type { EmptyVariantProps } from "../../styled-system/recipes";
 import type { IconProps } from "../common/Icon";
 
 type EmptyProps = EmptyVariantProps & {

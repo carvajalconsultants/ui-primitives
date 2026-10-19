@@ -2,17 +2,18 @@ import { useState } from "react";
 import { useDateFormatter } from "react-aria";
 import { Button as AriaButton, DateRangePicker as AriaDateRangePicker, CalendarCell, CalendarGrid, Dialog, FieldError, Group, Heading, Popover, RangeCalendar } from "react-aria-components";
 
-import { Box, HStack, VStack } from "../../styled-system/jsx";
-import { datePicker, input } from "../../styled-system/recipes";
+import { Box, HStack, VStack } from "#styled-system/jsx";
+import { datePicker, input } from "#styled-system/recipes";
+
 import { Button } from "../button/Button";
 import { Icon } from "../common/Icon";
 import { Label } from "../common/Label";
 import { Text } from "../typography/Text";
 import { DEFAULT_PRESET_RANGES, getSelectedRangeText } from "./helpers";
 
+import type { DatePickerVariantProps } from "#styled-system/recipes";
 import type { DateRangePickerProps as AriaDateRangePickerProps, DateRange, DateValue, ValidationResult } from "react-aria-components";
 
-import type { DatePickerVariantProps } from "../../styled-system/recipes";
 import type { PresetFunction, Presets } from "./helpers";
 
 type DateRangePickerProps<T extends Presets> = Omit<AriaDateRangePickerProps<DateValue>, "onChange" | "value"> &

@@ -1,12 +1,12 @@
 import { TagGroup as AriaTagGroup, TagList } from "react-aria-components";
 
-import { tagGroup } from "../../styled-system/recipes";
+import { tagGroup } from "#styled-system/recipes";
+
 import { Label } from "../common/Label";
 import { Text } from "../typography/Text";
 
+import type { TagGroupVariant } from "#styled-system/recipes";
 import type { TagGroupProps as AriaTagGroupProps, TagListProps } from "react-aria-components";
-
-import type { TagGroupVariant } from "../../styled-system/recipes";
 
 /**
  * Configuration interface for the TagGroup component, defining its customization options

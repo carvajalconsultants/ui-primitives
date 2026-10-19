@@ -1,8 +1,7 @@
-import { cell } from "../../styled-system/recipes";
+import { cell } from "#styled-system/recipes";
 
+import type { CellVariantProps } from "#styled-system/recipes";
 import type { ComponentProps } from "react";
-
-import type { CellVariantProps } from "../../styled-system/recipes";
 
 export type CellProps = ComponentProps<"td"> & Partial<CellVariantProps>;
 

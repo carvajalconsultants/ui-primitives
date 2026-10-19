@@ -1,7 +1,8 @@
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
 
-import { Stack } from "../../styled-system/jsx";
+import { Stack } from "#styled-system/jsx";
+
 import { Badge } from "../badge/Badge";
 import { DataGrid } from "./DataGrid";
 import { DataGridBody } from "./DataGridBody";

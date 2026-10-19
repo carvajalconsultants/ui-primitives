@@ -1,9 +1,8 @@
-import { cx } from "../../styled-system/css";
-import { avatar } from "../../styled-system/recipes";
+import { cx } from "#styled-system/css";
+import { avatar } from "#styled-system/recipes";
 
+import type { AvatarVariantProps } from "#styled-system/recipes";
 import type { ComponentProps } from "react";
-
-import type { AvatarVariantProps } from "../../styled-system/recipes";
 
 type AvatarProps = ComponentProps<"img"> &
   Partial<AvatarVariantProps> & {

@@ -22,6 +22,7 @@
     "noFallthroughCasesInSwitch": true,
 
     "baseUrl": ".",
+    "rootDir": ".",
     "declaration": true,
     "declarationDir": "./dist"
   },
