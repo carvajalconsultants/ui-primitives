@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Button as AriaButton, DialogTrigger, Group, Input } from "react-aria-components";
 
+import { css } from "#styled-system/css";
+import { Box, HStack, Stack } from "#styled-system/jsx";
 import * as v from "valibot";
 
-import { css } from "../styled-system/css";
-import { Box, HStack, Stack } from "../styled-system/jsx";
 import { Accordion } from "./accordion/Accordion";
 import { AccordionHeader } from "./accordion/AccordionHeader";
 import { AccordionItem } from "./accordion/AccordionItem";

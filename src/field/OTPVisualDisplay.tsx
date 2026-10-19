@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { InputContext } from "react-aria-components";
 
-import { otpTextField } from "../../styled-system/recipes";
+import { otpTextField } from "#styled-system/recipes";
 
 import type { FC } from "react";
 

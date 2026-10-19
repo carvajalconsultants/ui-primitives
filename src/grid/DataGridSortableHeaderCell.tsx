@@ -1,6 +1,7 @@
 import { flexRender } from "@tanstack/react-table";
 
-import { HStack } from "../../styled-system/jsx";
+import { HStack } from "#styled-system/jsx";
+
 import { Icon } from "../common/Icon";
 import { DataGridHeaderCell } from "./DataGridHeaderCell";
 

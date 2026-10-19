@@ -1,8 +1,9 @@
 import { getCoreRowModel, getExpandedRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { Fragment, useCallback, useState } from "react";
 
-import { css } from "../../styled-system/css";
-import { Stack } from "../../styled-system/jsx";
+import { css } from "#styled-system/css";
+import { Stack } from "#styled-system/jsx";
+
 import { Badge } from "../badge/Badge";
 import { fetchData, makeData } from "../grid/mock-data/data";
 import { useMockInfiniteQuery } from "../test/use-mock-infinite-query";

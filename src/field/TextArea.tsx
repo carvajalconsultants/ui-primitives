@@ -1,12 +1,13 @@
 import { TextArea as AriaTextArea, TextField as AriaTextField, FieldError } from "react-aria-components";
 
-import { input } from "../../styled-system/recipes";
+import { input } from "#styled-system/recipes";
+
 import { Label } from "../common/Label";
 import { Text } from "../typography/Text";
 
+import type { InputVariantProps } from "#styled-system/recipes";
 import type { TextFieldProps as AriaTextFieldProps } from "react-aria-components";
 
-import type { InputVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type TextareaProps = WithoutClassName<AriaTextFieldProps> &

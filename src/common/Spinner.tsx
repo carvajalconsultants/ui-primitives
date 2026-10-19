@@ -1,9 +1,8 @@
-import { Box } from "../../styled-system/jsx";
-import { square } from "../../styled-system/patterns";
+import { Box } from "#styled-system/jsx";
+import { square } from "#styled-system/patterns";
 
+import type { BoxProps } from "#styled-system/jsx";
 import type { SystemProperties } from "styled-system/types";
-
-import type { BoxProps } from "../../styled-system/jsx";
 
 export interface SpinnerProps extends Omit<BoxProps, "width" | "height"> {
   /**

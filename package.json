@@ -7,6 +7,13 @@
   "private": false,
   "type": "module",
   "main": "src/index.ts",
+  "imports": {
+    "#styled-system/css": "./styled-system/css/index.js",
+    "#styled-system/jsx": "./styled-system/jsx/index.js",
+    "#styled-system/patterns": "./styled-system/patterns/index.js",
+    "#styled-system/recipes": "./styled-system/recipes/index.js",
+    "#styled-system/recipes/*": "./styled-system/recipes/*.js"
+  },
   "files": [
     "src",
     "src/paraglide",

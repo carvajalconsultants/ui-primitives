@@ -1,10 +1,10 @@
 import { ListBox as AriaListBox } from "react-aria-components";
 
-import { listBox } from "../../styled-system/recipes";
+import { listBox } from "#styled-system/recipes";
 
+import type { ListBoxVariantProps } from "#styled-system/recipes";
 import type { ListBoxProps as AriaListBoxProps } from "react-aria-components";
 
-import type { ListBoxVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 /**

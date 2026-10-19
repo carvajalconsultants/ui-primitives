@@ -1,8 +1,8 @@
-import { table } from "../../styled-system/recipes";
+import { table } from "#styled-system/recipes";
 
+import type { TableVariantProps } from "#styled-system/recipes";
 import type { ComponentProps, RefObject } from "react";
 
-import type { TableVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type TableProps = WithoutClassName<ComponentProps<"table">> &

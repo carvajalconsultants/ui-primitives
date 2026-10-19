@@ -1,6 +1,6 @@
 import { Collection, Header, ListBoxSection } from "react-aria-components";
 
-import { selectSection } from "../../styled-system/recipes";
+import { selectSection } from "#styled-system/recipes";
 
 import type * as React from "react";
 import type { SectionProps } from "react-aria-components";

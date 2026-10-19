@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import { HStack, Stack } from "../../styled-system/jsx";
+import { HStack, Stack } from "#styled-system/jsx";
+
 import { Icon } from "../common/Icon";
 import { Heading } from "../typography/Heading";
 import { Paragraph } from "../typography/Paragraph";

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { TextField as AriaTextField, Input } from "react-aria-components";
 
-import { css } from "../../styled-system/css";
-import { otpTextField } from "../../styled-system/recipes";
+import { css } from "#styled-system/css";
+import { otpTextField } from "#styled-system/recipes";
+
 import { OTPVisualDisplay } from "./OTPVisualDisplay";
 
 import type { TextFieldProps as AriaTextFieldProps } from "react-aria-components";

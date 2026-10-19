@@ -1,13 +1,14 @@
 import { DatePicker as AriaDatePicker, Button, Calendar, CalendarCell, CalendarGrid, DateInput, DateSegment, Dialog, FieldError, Group, Heading, Popover } from "react-aria-components";
 
-import { datePicker, input } from "../../styled-system/recipes";
+import { datePicker, input } from "#styled-system/recipes";
+
 import { Icon } from "../common/Icon";
 import { Label } from "../common/Label";
 import { Text } from "../typography/Text";
 
+import type { DatePickerVariantProps } from "#styled-system/recipes";
 import type { DatePickerProps as AriaDatePickerProps, DateValue, ValidationResult } from "react-aria-components";
 
-import type { DatePickerVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 interface DatePickerProps<T extends DateValue> extends WithoutClassName<AriaDatePickerProps<T>, "children">, Partial<DatePickerVariantProps> {

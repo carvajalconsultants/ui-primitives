@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { Button, DisclosureStateContext } from "react-aria-components";
 
-import { css, cx } from "../../styled-system/css";
-import { accordion } from "../../styled-system/recipes/accordion";
+import { css, cx } from "#styled-system/css";
+import { accordion } from "#styled-system/recipes/accordion";
+
 import { Icon } from "../common/Icon";
 
+import type { AccordionVariantProps } from "#styled-system/recipes";
 import type { FC, ReactNode } from "react";
 import type { ButtonProps as AriaButtonProps } from "react-aria-components";
 
-import type { AccordionVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export interface AccordionHeaderProps extends WithoutClassName<AriaButtonProps, "children">, Partial<AccordionVariantProps> {
