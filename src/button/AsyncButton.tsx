@@ -4,10 +4,10 @@ import { Spinner } from "../common/Spinner";
 import { Button } from "./Button";
 
 import type { PressEvent } from "@react-types/shared";
+import type { ButtonVariantProps } from "#styled-system/recipes";
 import type { FC, ReactNode } from "react";
 import type { ButtonProps as AriaButtonProps } from "react-aria-components";
 
-import type { ButtonVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export interface AsyncButtonProps extends Omit<WithoutClassName<AriaButtonProps>, "onPress" | "isPending">, Partial<ButtonVariantProps> {

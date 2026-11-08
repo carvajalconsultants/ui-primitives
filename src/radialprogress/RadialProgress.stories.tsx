@@ -1,4 +1,5 @@
-import { Box } from "../../styled-system/jsx";
+import { Box } from "#styled-system/jsx";
+
 import { Heading } from "../typography/Heading";
 import { Paragraph } from "../typography/Paragraph";
 import { RadialProgress } from "./RadialProgress";

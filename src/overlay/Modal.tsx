@@ -1,11 +1,11 @@
 import { Modal as AriaModal, ModalOverlay } from "react-aria-components";
 
-import { modal } from "../../styled-system/recipes";
+import { modal } from "#styled-system/recipes";
 
+import type { ModalVariantProps } from "#styled-system/recipes";
 import type { FC } from "react";
 import type { ModalOverlayProps as AriaModalOverlayProps } from "react-aria-components";
 
-import type { ModalVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type ModalProps = WithoutClassName<AriaModalOverlayProps> & Partial<ModalVariantProps>;

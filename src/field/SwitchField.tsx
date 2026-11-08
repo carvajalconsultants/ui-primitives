@@ -1,13 +1,14 @@
 import { Switch as AriaSwitch, Label } from "react-aria-components";
 
-import { cx } from "../../styled-system/css";
-import { switchh } from "../../styled-system/recipes";
+import { cx } from "#styled-system/css";
+import { switchh } from "#styled-system/recipes";
+
 import { Text } from "../typography/Text";
 
+import type { SwitchhVariant } from "#styled-system/recipes";
 import type { FC, ReactNode } from "react";
 import type { SwitchProps as AriaSwitchProps } from "react-aria-components";
 
-import type { SwitchhVariant } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export interface SwitchFieldProps extends WithoutClassName<AriaSwitchProps>, Partial<SwitchhVariant> {

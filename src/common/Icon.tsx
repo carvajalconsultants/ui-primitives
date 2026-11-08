@@ -1,8 +1,8 @@
-import { styled } from "../../styled-system/jsx";
-import { square } from "../../styled-system/patterns";
+import { styled } from "#styled-system/jsx";
+import { square } from "#styled-system/patterns";
 
-import type { HTMLStyledProps } from "../../styled-system/jsx";
-import type { SquareProperties } from "../../styled-system/patterns";
+import type { HTMLStyledProps } from "#styled-system/jsx";
+import type { SquareProperties } from "#styled-system/patterns";
 
 /**
  * Supported icons in a map format so that it can be extended easily with augmentation.

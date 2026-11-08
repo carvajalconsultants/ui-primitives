@@ -1,4 +1,5 @@
-import { Box } from "../../styled-system/jsx";
+import { Box } from "#styled-system/jsx";
+
 import { Paragraph } from "../typography/Paragraph";
 
 /*

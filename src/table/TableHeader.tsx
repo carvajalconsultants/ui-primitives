@@ -1,8 +1,8 @@
-import { tableHeader } from "../../styled-system/recipes";
+import { tableHeader } from "#styled-system/recipes";
 
+import type { TableHeaderVariantProps } from "#styled-system/recipes";
 import type { ComponentProps } from "react";
 
-import type { TableHeaderVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type TableHeaderProps = WithoutClassName<ComponentProps<"thead">> & Partial<TableHeaderVariantProps>;

@@ -1,6 +1,6 @@
 import { ListBox as AriaListBox, ListLayout, Virtualizer } from "react-aria-components";
 
-import { listBox } from "../../styled-system/recipes";
+import { listBox } from "#styled-system/recipes";
 
 import type { ListBoxProps as AriaListBoxProps } from "react-aria-components";
 

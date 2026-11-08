@@ -1,6 +1,7 @@
 import { Tag as AriaTag, Button } from "react-aria-components";
 
-import { tagGroup } from "../../styled-system/recipes";
+import { tagGroup } from "#styled-system/recipes";
+
 import { Icon } from "../common/Icon";
 
 import type { TagProps } from "react-aria-components";

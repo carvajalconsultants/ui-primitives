@@ -1,8 +1,7 @@
-import { badge } from "../../styled-system/recipes";
+import { badge } from "#styled-system/recipes";
 
+import type { BadgeVariantProps } from "#styled-system/recipes";
 import type { ComponentProps } from "react";
-
-import type { BadgeVariantProps } from "../../styled-system/recipes";
 
 type BadgeProps = ComponentProps<"span"> & Partial<BadgeVariantProps>;
 

@@ -1,14 +1,15 @@
 import { ComboBox as AriaComboBox, Button, FieldError, Input, Popover } from "react-aria-components";
 
-import { comboBox, input } from "../../styled-system/recipes";
+import { comboBox, input } from "#styled-system/recipes";
+
 import { Icon } from "../common/Icon";
 import { Label } from "../common/Label";
 import { VirtualizedListBox } from "../listbox/VirtualizedListBox";
 import { Text } from "../typography/Text";
 
+import type { ComboBoxVariantProps } from "#styled-system/recipes";
 import type { ComboBoxProps as AriaComboBoxProps } from "react-aria-components";
 
-import type { ComboBoxVariantProps } from "../../styled-system/recipes";
 import type { VirtualizedListBoxProps } from "../listbox/VirtualizedListBox";
 import type { WithoutClassName } from "../types";
 

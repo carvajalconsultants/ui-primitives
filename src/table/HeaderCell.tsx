@@ -1,8 +1,8 @@
-import { headerCell } from "../../styled-system/recipes";
+import { headerCell } from "#styled-system/recipes";
 
+import type { HeaderCellVariantProps } from "#styled-system/recipes";
 import type { ComponentProps } from "react";
 
-import type { HeaderCellVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type HeaderCellProps = WithoutClassName<ComponentProps<"th">> & Partial<HeaderCellVariantProps>;

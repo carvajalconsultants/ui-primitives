@@ -1,8 +1,8 @@
-import { Box } from "../../styled-system/jsx";
-import { radialProgress } from "../../styled-system/recipes";
+import { Box } from "#styled-system/jsx";
+import { radialProgress } from "#styled-system/recipes";
 
-import type { BoxProps } from "../../styled-system/jsx";
-import type { RadialProgressVariantProps } from "../../styled-system/recipes";
+import type { BoxProps } from "#styled-system/jsx";
+import type { RadialProgressVariantProps } from "#styled-system/recipes";
 
 type RadialProgressProps = RadialProgressVariantProps &
   BoxProps & {

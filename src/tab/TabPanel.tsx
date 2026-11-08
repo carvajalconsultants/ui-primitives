@@ -1,12 +1,12 @@
 import { TabPanel as AriaTabPanel } from "react-aria-components";
 
-import { cx } from "../../styled-system/css";
-import { tab } from "../../styled-system/recipes/tab";
+import { cx } from "#styled-system/css";
+import { tab } from "#styled-system/recipes/tab";
 
+import type { TabVariantProps } from "#styled-system/recipes";
 import type { FC } from "react";
 import type { TabPanelProps as AriaTabPanelProps } from "react-aria-components";
 
-import type { TabVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type TabPanelProps = WithoutClassName<AriaTabPanelProps> & Partial<TabVariantProps>;

@@ -1,11 +1,11 @@
 import { Checkbox as AriaCheckbox } from "react-aria-components";
 
-import { checkbox } from "../../styled-system/recipes";
+import { checkbox } from "#styled-system/recipes";
 
+import type { CheckboxVariantProps } from "#styled-system/recipes";
 import type { FC } from "react";
 import type { CheckboxProps as AriaCheckboxProps } from "react-aria-components";
 
-import type { CheckboxVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 type CheckboxProps = WithoutClassName<AriaCheckboxProps> & Partial<CheckboxVariantProps>;

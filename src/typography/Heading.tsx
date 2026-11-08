@@ -1,11 +1,11 @@
 import { Heading as AriaHeading } from "react-aria-components";
 
-import { heading } from "../../styled-system/recipes";
+import { heading } from "#styled-system/recipes";
 
+import type { HeadingVariant } from "#styled-system/recipes";
 import type { FC } from "react";
 import type { HeadingProps as AriaHeadingProps } from "react-aria-components";
 
-import type { HeadingVariant } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 type HeadingProps = Partial<HeadingVariant> & WithoutClassName<AriaHeadingProps>;

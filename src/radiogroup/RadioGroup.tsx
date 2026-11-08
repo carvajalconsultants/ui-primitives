@@ -1,11 +1,11 @@
 import { RadioGroup as AriaRadioGroup } from "react-aria-components";
 
-import { radioGroup } from "../../styled-system/recipes";
+import { radioGroup } from "#styled-system/recipes";
 
+import type { RadioGroupVariantProps } from "#styled-system/recipes";
 import type { FC } from "react";
 import type { RadioGroupProps as AriaRadioGroupProps } from "react-aria-components";
 
-import type { RadioGroupVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type RadioGroupProps = WithoutClassName<AriaRadioGroupProps> & Partial<RadioGroupVariantProps>;

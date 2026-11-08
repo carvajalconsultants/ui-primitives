@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { DisclosurePanel as AriaDisclosurePanel, DisclosureStateContext } from "react-aria-components";
 
-import { cx } from "../../styled-system/css";
-import { accordion } from "../../styled-system/recipes/accordion";
+import { cx } from "#styled-system/css";
+import { accordion } from "#styled-system/recipes/accordion";
 
+import type { AccordionVariantProps } from "#styled-system/recipes";
 import type { FC } from "react";
 import type { DisclosurePanelProps as AriaDisclosurePanelProps } from "react-aria-components";
 
-import type { AccordionVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type AccordionPanelProps = WithoutClassName<AriaDisclosurePanelProps> & Partial<AccordionVariantProps>;

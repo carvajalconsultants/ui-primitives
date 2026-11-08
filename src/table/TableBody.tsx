@@ -1,8 +1,8 @@
-import { tableBody } from "../../styled-system/recipes";
+import { tableBody } from "#styled-system/recipes";
 
+import type { TableBodyVariantProps } from "#styled-system/recipes";
 import type { ComponentProps } from "react";
 
-import type { TableBodyVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type TableBodyProps = WithoutClassName<ComponentProps<"tbody">> & Partial<TableBodyVariantProps>;

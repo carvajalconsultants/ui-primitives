@@ -1,14 +1,15 @@
 import { Select as AriaSelect, Button, FieldError, Popover, SelectValue } from "react-aria-components";
 
-import { css } from "../../styled-system/css";
-import { input, select } from "../../styled-system/recipes";
+import { css } from "#styled-system/css";
+import { input, select } from "#styled-system/recipes";
+
 import { Icon } from "../common/Icon";
 import { Label } from "../common/Label";
 import { Text } from "../typography/Text";
 
+import type { SelectVariant } from "#styled-system/recipes";
 import type { SelectProps as AriaSelectProps, PopoverProps } from "react-aria-components";
 
-import type { SelectVariant } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type SelectProps<T extends object> = WithoutClassName<AriaSelectProps<T>, "children"> &

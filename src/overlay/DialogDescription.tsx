@@ -1,8 +1,7 @@
 import { Paragraph } from "../typography/Paragraph";
 
+import type { TextVariant } from "#styled-system/recipes";
 import type { FC, PropsWithChildren } from "react";
-
-import type { TextVariant } from "../../styled-system/recipes";
 
 type ParagraphProps = PropsWithChildren & Partial<TextVariant>;
 

@@ -1,8 +1,8 @@
-import { tableFooter } from "../../styled-system/recipes";
+import { tableFooter } from "#styled-system/recipes";
 
+import type { TableFooterVariantProps } from "#styled-system/recipes";
 import type { HTMLAttributes } from "react";
 
-import type { TableFooterVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type TableFooterProps = WithoutClassName<HTMLAttributes<HTMLTableSectionElement>> & Partial<TableFooterVariantProps>;

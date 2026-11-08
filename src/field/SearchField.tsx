@@ -1,15 +1,14 @@
 import { useCallback } from "react";
 import { SearchField as AriaSearchField, Button, Input } from "react-aria-components";
 
+import { css, cx } from "#styled-system/css";
+import { input } from "#styled-system/recipes";
 import { useDebounceCallback } from "usehooks-ts";
 
-import { css, cx } from "../../styled-system/css";
-import { input } from "../../styled-system/recipes";
 import { Icon } from "../common/Icon";
 
+import type { InputVariantProps } from "#styled-system/recipes";
 import type { InputProps } from "react-aria-components";
-
-import type { InputVariantProps } from "../../styled-system/recipes";
 
 /**
  * A search input field component that provides real-time search functionality with performance optimization.

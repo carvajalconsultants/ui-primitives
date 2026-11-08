@@ -1,11 +1,11 @@
 import { ListBoxItem as AriaListBoxItem } from "react-aria-components";
 
-import { listBoxItem } from "../../styled-system/recipes";
+import { listBoxItem } from "#styled-system/recipes";
 
+import type { ListBoxItemVariantProps } from "#styled-system/recipes";
 import type { FC } from "react";
 import type { ListBoxItemProps as AriaListBoxItemProps } from "react-aria-components";
 
-import type { ListBoxItemVariantProps } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 /**

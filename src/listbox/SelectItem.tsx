@@ -1,6 +1,7 @@
 import { ListBoxItem as AriaListBoxItem, composeRenderProps } from "react-aria-components";
 
-import { selectItem } from "../../styled-system/recipes";
+import { selectItem } from "#styled-system/recipes";
+
 import { Icon } from "../common/Icon";
 
 import type { FC } from "react";

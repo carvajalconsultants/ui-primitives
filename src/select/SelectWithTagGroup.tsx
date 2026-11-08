@@ -1,8 +1,9 @@
 import { useCallback, useRef } from "react";
 import { Button as AriaButton, Select as AriaSelect, Autocomplete, Popover, SelectValue, useFilter } from "react-aria-components";
 
-import { css } from "../../styled-system/css";
-import { selectWithTagGroup } from "../../styled-system/recipes";
+import { css } from "#styled-system/css";
+import { selectWithTagGroup } from "#styled-system/recipes";
+
 import { Icon } from "../common/Icon";
 import { Label } from "../common/Label";
 import { SearchField } from "../field/SearchField";
@@ -12,9 +13,9 @@ import { Tag } from "../taggroup/Tag";
 import { TagGroup } from "../taggroup/TagGroup";
 import { Text } from "../typography/Text";
 
+import type { SelectWithTagGroupVariant } from "#styled-system/recipes";
 import type { SelectProps as AriaSelectProps, PopoverProps } from "react-aria-components";
 
-import type { SelectWithTagGroupVariant } from "../../styled-system/recipes";
 import type { WithoutClassName } from "../types";
 
 export type SelectWithTagGroupProps<T extends object> = Omit<WithoutClassName<AriaSelectProps<T>, "children">, "onChange" | "validate"> &

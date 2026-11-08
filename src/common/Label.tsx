@@ -1,12 +1,11 @@
 import { Label as AriaLabel } from "react-aria-components";
 
-import { cx } from "../../styled-system/css";
-import { label } from "../../styled-system/recipes";
+import { cx } from "#styled-system/css";
+import { label } from "#styled-system/recipes";
 
+import type { LabelVariantProps } from "#styled-system/recipes";
 import type { FC, PropsWithChildren } from "react";
 import type { LabelProps as AriaLabelProps } from "react-aria-components";
-
-import type { LabelVariantProps } from "../../styled-system/recipes";
 
 type LabelProps = PropsWithChildren<Partial<LabelVariantProps>> & AriaLabelProps;
 

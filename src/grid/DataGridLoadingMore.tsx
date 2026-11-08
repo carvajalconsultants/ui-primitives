@@ -1,12 +1,12 @@
-import { cva } from "../../styled-system/css";
+import { cva } from "#styled-system/css";
+
 import { Cell } from "../table/Cell";
 import { Row } from "../table/Row";
 import { TableBody } from "../table/TableBody";
 
 import type { Table as TTable } from "@tanstack/react-table";
+import type { RecipeVariantProps } from "#styled-system/css";
 import type { ReactNode } from "react";
-
-import type { RecipeVariantProps } from "../../styled-system/css";
 
 // This style system handles the loading indicator that appears at the bottom of infinite scroll lists
 const loadingVariants = cva({
